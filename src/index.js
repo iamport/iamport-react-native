@@ -1,3 +1,3 @@
-import PaymentView from "./Iamport";
+import IamportPaymentWebView from "./Iamport";
 
-export default PaymentView;
+export default IamportPaymentWebView;
