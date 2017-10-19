@@ -138,21 +138,20 @@ IamportPaymentWebView.propTypes = {
         ]),
         language: (props) => {
             const { pg, language } = props;
-            const allowedPg = [ "inicis", "html5_inicis", "uplus", "nice" ];
 
-            if (pg === "paypal") {
-                // refer to https://developer.paypal.com/docs/integration/direct/rest/country-codes/
-            } else if (allowedPg.includes(pg)){
-                if (language && language !== "ko" && language !== "en") {
-                    return new Error(
-                        "올바르지 않은 언어설정입니다. 선택하신 pg사는 'ko' 또는 'en'옵션을 지원합니다."
-                    )
-                }
-            } else {
-                if (language !== "ko") {
-                    return new Error(
-                        "올바르지 않은 언어설정입니다. 선택하신 pg사는 'ko'옵션을 지원합니다.."
-                    )
+            if (language) {
+                const englishAllowedPg = [ "inicis", "html5_inicis", "uplus", "nice" ];
+                
+                if (pg === "paypal") {
+                    // refer to https://developer.paypal.com/docs/integration/direct/rest/country-codes/
+                } else if (englishAllowedPg.includes(pg)){
+                    if (language !== "ko" && language !== "en") {
+                        return new Error("올바르지 않은 언어설정입니다. 선택하신 pg사는 'ko' 또는 'en'옵션을 지원합니다.");
+                    }
+                } else {
+                    if (language !== "ko") {
+                        return new Error("올바르지 않은 언어설정입니다. 선택하신 pg사는 'ko'옵션을 지원합니다..");
+                    }
                 }
             }
         },
