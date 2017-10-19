@@ -3,9 +3,19 @@ import { WebView } from "react-native";
 import PropTypes from "prop-types";
 import isRequiredIf from "react-proptype-conditional-require";
 
-class IamportPaymentWebView extends Component {
-    webview = null;
+// code reference from https://github.com/facebook/react-native/issues/10865 @MrLoh
+const patchPostMessageJsCode = `(${String(function() {
+    var originalPostMessage = window.postMessage
+    var patchedPostMessage = function(message, targetOrigin, transfer) {
+        originalPostMessage(message, targetOrigin, transfer)
+    }
+    patchedPostMessage.toString = function() {
+        return String(Object.hasOwnProperty).replace("hasOwnProperty", "postMessage")
+    }
+    window.postMessage = patchedPostMessage
+})})();`
 
+class IamportPaymentWebView extends Component {
     getIMPInit = () => {
         const { iamportUserCode } = this.props;
         const script = `
