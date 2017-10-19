@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { View, Button } from "react-native";
+import { WebView } from "react-native";
 import PropTypes from "prop-types";
 import isRequiredIf from "react-proptype-conditional-require";
-import { WebView } from "react-native-webview-messaging/WebView";
 
 class IamportPaymentWebView extends Component {
     webview = null;
