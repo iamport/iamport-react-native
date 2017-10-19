@@ -17,32 +17,11 @@ class IamportPaymentWebView extends Component {
     }
 
     getIMPRequestPay = () => {
-        const { pg, pay_method, escrow, merchant_uid, name, amount, tax_free, currency, language, buyer_name, buyer_tel, buyer_addr, buyer_email, buyer_postcode, custom_data, notice_url, display, digital, vbank_due, m_redirect_url, app_scheme, biz_num } = this.props.parameters;
+        const { parameters } = this.props;
         const script = `
-            IMP.request_pay({
-                pg: "${pg}",
-                pay_method: "${pay_method}",
-                escrow: "${escrow}",
-                merchant_uid: "${merchant_uid}",
-                name: "${name}",
-                amount: "${amount}",
-                tax_free: "${tax_free}",
-                currency: "${currency}",
-                language: "${language}",
-                buyer_name: "${buyer_name}",
-                buyer_tel: "${buyer_tel}",
-                buyer_email: "${buyer_email}",
-                buyer_postcode: "${buyer_postcode}",
-                custom_data: "${custom_data}",
-                notice_url: "${notice_url}",
-                display: "${display}",
-                digital: "${digital}",
-                vbank_due: "${vbank_due}",
-                m_redirect_url: "${m_redirect_url}",
-                app_scheme: "${app_scheme}",
-                biz_num: "${biz_num}"
-            }, function(rsp){
-                window.postMessage(rsp);
+            var params = ${JSON.stringify(parameters)};
+            IMP.request_pay(params, function(rsp) {
+                window.postMessage(JSON.stringify(rsp));
             });
         `;
 
@@ -58,7 +37,6 @@ class IamportPaymentWebView extends Component {
                     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
                     <script type="text/javascript">
                         ${this.getIMPInit()}
-                        ${this.getIMPRequestPay()}
                     </script>
                     <style>
                         .message {
@@ -74,6 +52,9 @@ class IamportPaymentWebView extends Component {
                     <div class="message">
                         <span class="message-text">잠시만 기다려주세요.</span>
                     </div>
+                    <script type="text/javascript">
+                       ${this.getIMPRequestPay()}
+                    </script>
                 </body>
             </html>
         `;
