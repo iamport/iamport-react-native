@@ -71,15 +71,25 @@ class IamportPaymentWebView extends Component {
         return html;
     }
 
+    handlePostMessage = (e) => {
+        const { onPaymentSuccess, onPaymentFailure } = this.props;
+        const data = JSON.parse(e.nativeEvent.data);
+        const{ success } = data;
+
+        if (success) {
+            onPaymentSuccess(data);
+        } else {
+            onPaymentFailure(data);
+        }
+    }
+
     render() {
         return (
             <WebView
-                ref={webview => { this.webview = webview; }}
+                injectedJavaScript={patchPostMessageJsCode}
                 startInLoadingState={true}
-                source={{
-                    html: this.getHtmlSource()
-                }}
-                onMessage={(rsp) => console.log("postmessage", rsp)}
+                source={{ html: this.getHtmlSource() }}
+                onMessage={this.handlePostMessage}
                 { ...this.props }
             />
         );
