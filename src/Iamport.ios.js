@@ -98,6 +98,12 @@ class IamportPaymentWebView extends Component {
         }
     }
 
+    handleJSInWebView = (script) => {
+        if (this.webview) {
+            this.webview.injectJavaScript(script);
+        }
+    }
+
     render() {
         return (
             <WebView
