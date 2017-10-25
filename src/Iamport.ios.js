@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { WebView } from "react-native";
+import { WebView, Linking } from "react-native";
 import PropTypes from "prop-types";
 import isRequiredIf from "react-proptype-conditional-require";
 import {
@@ -117,16 +117,28 @@ class IamportPaymentWebView extends Component {
         }
     }
 
+    handleWebViewError = () => {
+        const { targetScheme } = this.state;
+        if (targetScheme) { // the value which is pointing the app that a user is trying to pay with.
+            Linking.openURL(MARKET_URL_IOS[targetScheme]); // opening the app store
+        }
+        this.handleJSInWebView(`
+            window.stop(); // stops window action
+            window.history.back(); // redirects back to main PG main page view.
+        `);
+    }
+
     render() {
         return (
             <WebView
-                injectedJavaScript={patchPostMessageJsCode}
-                startInLoadingState={true}
-                source={{ html: this.getHtmlSource() }}
-                onMessage={this.handlePostMessage}
-                { ...this.props }
                 ref={webview => this.webview = webview} // reference to component
+                injectedJavaScript={patchPostMessageJsCode} // injects javascript code prior to loading start
+                startInLoadingState={true} // loading UI
+                source={{ html: this.getHtmlSource() }} // main html source to be rendered in webview
+                onMessage={this.handlePostMessage} // the handler which takes webview's window.postMessage event
                 onNavigationStateChange={this.handleNavigationStateChange} // tracks status of webview
+                onError={this.handleWebViewError} // error handler
+                { ...this.props } // passing other webview properties. Preset props can be overridden.
             />
         );
     }
