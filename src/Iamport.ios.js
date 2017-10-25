@@ -24,9 +24,9 @@ const patchPostMessageJsCode = `(${String(function() {
 })})();`;
 
 class IamportPaymentWebView extends Component {
-    getIMPInit = () => {
     webview = null;
 
+    getIMPInitScript = () => {
         const { iamportUserCode } = this.props;
         const script = `
             var IMP = window.IMP;
@@ -36,8 +36,8 @@ class IamportPaymentWebView extends Component {
         return script;
     }
 
-    getIMPRequestPay = () => {
         const { parameters } = this.props;
+    getIMPRequestPayScript = () => {
         const script = `
             var params = ${JSON.stringify(parameters)};
             IMP.request_pay(params, function(rsp) {
@@ -56,7 +56,7 @@ class IamportPaymentWebView extends Component {
                     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js" ></script>
                     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
                     <script type="text/javascript">
-                        ${this.getIMPInit()}
+                        ${this.getIMPInitScript()}
                     </script>
                     <style>
                         .message {
@@ -73,7 +73,7 @@ class IamportPaymentWebView extends Component {
                         <span class="message-text">잠시만 기다려주세요.</span>
                     </div>
                     <script type="text/javascript">
-                       ${this.getIMPRequestPay()}
+                       ${this.getIMPRequestPayScript()}
                     </script>
                 </body>
             </html>
