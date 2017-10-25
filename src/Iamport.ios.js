@@ -26,6 +26,8 @@ const patchPostMessageJsCode = `(${String(function() {
 class IamportPaymentWebView extends Component {
     webview = null;
 
+    state = { targetScheme: "" };
+
     getIMPInitScript = () => {
         const { iamportUserCode } = this.props;
         const script = `
@@ -103,6 +105,18 @@ class IamportPaymentWebView extends Component {
         }
     }
 
+    handleNavigationStateChange = (state) => {
+        const { url } = state;
+
+        // Cutting out url scheme from url, and if it's not a standard http scheme,
+        // we assume that it is an mobile app url. Therefore, set the value as a react state
+        // to handle app opening properly if the targeted app is not installed in user's deivce.
+        const scheme = url.split("://")[0];
+        if (scheme !== "http" && scheme !== "https" && scheme !== "about:blank") {
+            this.setState({ targetScheme: scheme });
+        }
+    }
+
     render() {
         return (
             <WebView
@@ -112,6 +126,7 @@ class IamportPaymentWebView extends Component {
                 onMessage={this.handlePostMessage}
                 { ...this.props }
                 ref={webview => this.webview = webview} // reference to component
+                onNavigationStateChange={this.handleNavigationStateChange} // tracks status of webview
             />
         );
     }
