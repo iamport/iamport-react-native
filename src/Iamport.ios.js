@@ -36,13 +36,18 @@ class IamportPaymentWebView extends Component {
         return script;
     }
 
-        const { parameters } = this.props;
     getIMPRequestPayScript = () => {
+        const { pg } = this.props.parameters;
+        const isCallbackSupported = CALLBACK_SUPPORT_PG_LIST.includes(pg);
+
         const script = `
-            var params = ${JSON.stringify(parameters)};
-            IMP.request_pay(params, function(rsp) {
-                window.postMessage(JSON.stringify(rsp));
-            });
+            var params = ${JSON.stringify(this.props.parameters)};
+            function requestPay() {
+                IMP.request_pay(params${isCallbackSupported ? `, function(rsp) {
+                    window.postMessage(JSON.stringify(rsp));
+                }` : ""});
+            }
+            requestPay();
         `;
 
         return script;
