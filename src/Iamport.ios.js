@@ -125,7 +125,6 @@ class IamportPaymentWebView extends Component {
             `)
         }
 
-        console.log("Webview URL", url);
         // Cutting out url scheme from url, and if it's not a standard http scheme,
         // we assume that it is an mobile app url. Therefore, set the value as a react state
         // to handle app opening properly if the targeted app is not installed in user's deivce.
