@@ -21,10 +21,12 @@ const patchPostMessageJsCode = `(${String(function() {
         return String(Object.hasOwnProperty).replace("hasOwnProperty", "postMessage")
     }
     window.postMessage = patchedPostMessage
-})})();`
+})})();`;
 
 class IamportPaymentWebView extends Component {
     getIMPInit = () => {
+    webview = null;
+
         const { iamportUserCode } = this.props;
         const script = `
             var IMP = window.IMP;
@@ -99,6 +101,7 @@ class IamportPaymentWebView extends Component {
                 source={{ html: this.getHtmlSource() }}
                 onMessage={this.handlePostMessage}
                 { ...this.props }
+                ref={webview => this.webview = webview} // reference to component
             />
         );
     }
