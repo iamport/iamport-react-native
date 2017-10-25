@@ -201,13 +201,16 @@ IamportPaymentWebView.propTypes = {
         display: PropTypes.shape({
             card_quota: PropTypes.arrayOf(PropTypes.number)
         }),
-        digital: isRequiredIf(PropTypes.bool, props => (props.pay_method === "phone")), // pay_method가 phone일 경우 필수
+        digital: isRequiredIf(PropTypes.bool, props => (props.pay_method === "phone")), // required if `pay_method` is `phone`
         vbank_due: PropTypes.string,
-        m_redirect_url: PropTypes.string,
+        m_redirect_url: isRequiredIf(PropTypes.string, (props) => {
+            const { pg } = props;
+            return pg !== "kakao" && pg !== "danal_tpay" && pg !== "mobilians"
+        }),
         app_scheme: PropTypes.string.isRequired,
         biz_num: isRequiredIf(PropTypes.string, props => {
             const { pg, pay_method } = props;
-            return (pg === "danal" || pay_method === "vbank")
+            return pg === "danal_tpay" && pay_method === "vbank"
         }) // 다날-가상계좌 결제시 필수
     })
 };
