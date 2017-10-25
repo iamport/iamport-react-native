@@ -89,9 +89,8 @@ class IamportPaymentWebView extends Component {
     handlePostMessage = (e) => {
         const { onPaymentSuccess, onPaymentFailure } = this.props;
         const data = JSON.parse(e.nativeEvent.data);
-        const{ success } = data;
 
-        if (success) {
+        if (data.success) {
             onPaymentSuccess(data);
         } else {
             onPaymentFailure(data);
