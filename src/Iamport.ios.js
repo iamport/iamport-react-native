@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import { WebView } from "react-native";
 import PropTypes from "prop-types";
 import isRequiredIf from "react-proptype-conditional-require";
+import {
+    CALLBACK_SUPPORT_PG_LIST,
+    PG,
+    PAY_METHOD,
+    CURRENCY,
+    ENGLISH_ALLOWED_PG,
+    MARKET_URL_IOS
+} from "../src/constants";
 
 // code reference from https://github.com/facebook/react-native/issues/10865 @MrLoh
 const patchPostMessageJsCode = `(${String(function() {
@@ -98,53 +106,20 @@ class IamportPaymentWebView extends Component {
 
 IamportPaymentWebView.propTypes = {
     parameters: PropTypes.shape({
-        pg: PropTypes.oneOf([
-            "html5_inicis",
-            "inicis",
-            "uplus",
-            "nice",
-            "jtnet",
-            "kakao",
-            "danal",
-            "danal_tpay",
-            "mobilians",
-            "syrup",
-            "payco",
-            "paypal",
-            "eximbay"
-        ]),
-        pay_method: PropTypes.oneOf([
-            "card",
-            "trans",
-            "vbank",
-            "phone",
-            "samsung",
-            "kpay",
-            "cultureland",
-            "smartculture",
-            "happymoney",
-            "booknlife"
-        ]),
+        pg: PropTypes.oneOf(PG),
+        pay_method: PropTypes.oneOf(PAY_METHOD),
         escrow: PropTypes.bool,
         merchant_uid: PropTypes.string.isRequired,
         name: PropTypes.string,
         amount: PropTypes.number.isRequired,
         tax_free: PropTypes.number,
-        currency: PropTypes.PropTypes.oneOf([
-            "KRW",
-            "USD",
-            "EUR",
-            "JPY"
-        ]),
+        currency: PropTypes.PropTypes.oneOf(CURRENCY),
         language: (props) => {
             const { pg, language } = props;
-
             if (language) {
-                const englishAllowedPg = [ "inicis", "html5_inicis", "uplus", "nice" ];
-                
                 if (pg === "paypal") {
                     // refer to https://developer.paypal.com/docs/integration/direct/rest/country-codes/
-                } else if (englishAllowedPg.includes(pg)){
+                } else if (ENGLISH_ALLOWED_PG.includes(pg)) {
                     if (language !== "ko" && language !== "en") {
                         return new Error("올바르지 않은 언어설정입니다. 선택하신 pg사는 'ko' 또는 'en'옵션을 지원합니다.");
                     }
