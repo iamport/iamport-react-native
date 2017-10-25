@@ -108,6 +108,24 @@ class IamportPaymentWebView extends Component {
     handleNavigationStateChange = (state) => {
         const { url } = state;
 
+        // In case of NHN KCP
+        if (url.includes("kcp")) {
+            this.handleJSInWebView(`
+                // In the case of 'ISP app' opening scenario when user uses NHN KCP as PG provider.
+                function handleKcpIspApp() {
+                    if (document.frm_mpi.submitISP) {
+                        document.frm_mpi.submitISP(); // a function creates an url which contains data with ispapp:// appscheme
+                    }
+                    var ispUrl = document.frm_mpi.call_isp_frm.action; // get generated ispapp app url
+                    if (ispUrl) {
+                        window.location.replace(ispUrl); // opening the app while passing the payment data
+                    }
+                }
+                handleKcpIspApp();
+            `)
+        }
+
+        console.log("Webview URL", url);
         // Cutting out url scheme from url, and if it's not a standard http scheme,
         // we assume that it is an mobile app url. Therefore, set the value as a react state
         // to handle app opening properly if the targeted app is not installed in user's deivce.
