@@ -28,7 +28,7 @@ npm install iamport-react-native
 3. item `0`에 원하는 앱 scheme을 작성합니다.
 
 #### 2. `LSApplicationQueriesSchemes` 에 외부앱 리스트 추가
-3rd party앱(e.g. 간편결제 앱)을 실행할 수 있도록 [LSApplicationQueriesSchemes](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW14)에 아래의 코드를 `info.plist`에 등록합니다.
+3rd party앱(e.g. 간편결제 앱)을 실행할 수 있도록 `info.plist`에 [LSApplicationQueriesSchemes](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW14)속성을 등록합니다.
 ```
 <key>LSApplicationQueriesSchemes</key>
 <array>
