@@ -1,6 +1,6 @@
 {
   "name": "iamport-react-native",
-  "version": "0.0.1",
+  "version": "0.7.0",
   "description": "React Native용 아임포트 결제 연동 모듈",
   "main": "src/index.js",
   "scripts": {
@@ -21,7 +21,6 @@
     "react-native": "*"
   },
   "dependencies": {
-    "react": "^16.0.0",
     "react-proptype-conditional-require": "^1.0.4"
   }
 }
