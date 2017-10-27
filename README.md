@@ -3,11 +3,12 @@
 
 모바일 앱의 웹뷰를 활용하여 결제를 진행하며, PG사에서 제공하는 다양한 결제 앱으로의 자연스러운 이동 처리가 구현되어 있습니다. 
 
-* 설치
+## 문서 구성
+* [설치](#설치)
     * [iOS](#ios)
-        1. App Scheme 등록
-        2. `LSApplicationQueriesSchemes` 에 외부앱 리스트 추가
-        3. App Transport Security 설정
+        1. [App Scheme 등록](#1-app-scheme-등록)
+        2. [`LSApplicationQueriesSchemes` 에 외부앱 리스트 추가](#2-lsapplicationqueriesschemes-에-외부앱-리스트-추가)
+        3. [App Transport Security 설정](#3-app-transport-security-설정)
     * Android(미구현)
 * [사용 방법](#사용-방법)
 
