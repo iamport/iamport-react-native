@@ -1,0 +1,26 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "iamport-react-native": "file:..",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
+    "react-native-svg": "^6.5.2",
+    "react-native-svg-uri": "^1.2.3",
+    "react-navigation": "^2.11.2"
+  },
+  "devDependencies": {
+    "babel-jest": "23.4.2",
+    "babel-preset-react-native": "^5",
+    "jest": "23.4.2",
+    "react-test-renderer": "16.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

@@ -1,26 +1,23 @@
 {
   "name": "iamport-react-native",
-  "version": "0.8.0",
-  "description": "React Native용 아임포트 결제 연동 모듈",
-  "main": "src/index.js",
+  "version": "1.0.0",
+  "description": "리액트 네이티브용 아임포트 결제연동 라이브러리",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "iamport",
-    "react-native",
-    "react-native-component",
-    "payment",
-    "아임포트",
-    "결제"
+    "react",
+    "react-native"
   ],
-  "author": "Hyeokwoo Alex Kwon khwalex@gmail.com",
+  "author": "Solee Deedee Choi",
   "license": "MIT",
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "react-native": "^0.41.2"
   },
   "dependencies": {
-    "react-proptype-conditional-require": "^1.0.4"
+    "query-string": "^6.1.0",
+    "react": "^16.4.2"
   }
 }

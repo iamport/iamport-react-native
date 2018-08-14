@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/example/node_modules/iamport-react-native/android/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/deedee/.android/build-cache/8ddecc3054a79ffe9e26d867a6c7758c0868ee61/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/example/node_modules/iamport-react-native/android/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/deedee/.android/build-cache/8ddecc3054a79ffe9e26d867a6c7758c0868ee61/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/example/node_modules/iamport-react-native/android/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/deedee/.android/build-cache/8ddecc3054a79ffe9e26d867a6c7758c0868ee61/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/android/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/deedee/.android/build-cache/8ddecc3054a79ffe9e26d867a6c7758c0868ee61/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/android/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/deedee/.android/build-cache/8ddecc3054a79ffe9e26d867a6c7758c0868ee61/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/android/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/deedee/.android/build-cache/8ddecc3054a79ffe9e26d867a6c7758c0868ee61/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/example/node_modules/iamport-react-native/android/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/deedee/.android/build-cache/8ddecc3054a79ffe9e26d867a6c7758c0868ee61/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/android/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/deedee/.android/build-cache/8ddecc3054a79ffe9e26d867a6c7758c0868ee61/output/res/layout-v21/notification_action.xml"
+    }
+]
