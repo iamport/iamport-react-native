@@ -1,6 +1,6 @@
 {
-  "name": "iamport-react-native",
-  "version": "1.0.0",
+  "name": "iamport-react-native-beta",
+  "version": "1.0.0-beta",
   "description": "리액트 네이티브용 아임포트 결제연동 라이브러리",
   "main": "index.js",
   "scripts": {
