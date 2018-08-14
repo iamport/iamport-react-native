@@ -16,6 +16,7 @@ class ErrorOnParams extends React.Component {
   }
 
   render() {
+    const { message } = this.props;
     const { container, img, text, button } = styles;
 
     return (

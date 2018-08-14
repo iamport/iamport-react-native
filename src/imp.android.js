@@ -86,7 +86,12 @@ class IMP extends React.Component {
       );
     }
     
-    return <ErrorOnParams appScheme={app_scheme} />;
+    return (
+      <ErrorOnParams 
+        appScheme={app_scheme} 
+        message={message}
+      />
+    );
   }
 }
 
