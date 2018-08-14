@@ -106,5 +106,52 @@
 	$ npm install
 	$ react-native run-android
   ```
-- AVD Manager([logo]: ./src/img/android-studio-avd-manager.png)를 눌러 안드로이드 emulator를 통해 테스트하실 수도 있습니다.
+- `react-native run-android`에서 SDK location not found 에러로 빌드에 실패하는 경우, android 내부에 local.properties 파일을 만들고 `sdk.dir = /Users/deedee/Library/Android/sdk`를 입력해 저장합니다.
+- AVD Manager([logo]: src/img/android-studio-avd-manager.png)를 클릭해 안드로이드 emulator를 통해 테스트하실 수도 있습니다.
 - 빌드가 성공하고 example이라는 이름의 앱이 설치된 것을 확인하실 수 있습니다.
+
+## Application Example
+#### iOS
+
+#### Android
+```
+  import React from 'react';
+  import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
+
+  class App extends React.Component {
+    callback = (response) => { 
+      const { success, error_msg } = response;
+      if (success) {
+        alert('결제 성공!');
+      } else {
+        alert('결제 실패!');
+      }
+    }
+
+    render() {
+      const data = {
+        pg: 'html5_inicis',
+        pay_method: 'card',
+        name: '아임포트 결제데이터 분석',
+        merchant_uid: `mid_${new Date().getTime()}`,
+        amount: '1000',
+        buyer_name: '홍길동',
+        buyer_tel: '01012345678',
+        buyer_email: 'example@naver.com',
+        buyer_addr: '서울시 강남구 신사동 661-16',
+        buyer_postcode: '06018',
+        app_scheme: 'test'
+      }
+
+      return (
+        <IMP
+          userCode={'iamport'} // 가맹점 식별코드
+          data={data} // 결제 데이터
+          callback={this.callback} // 결제 종료 후 콜백
+        />
+      );
+    }
+  }
+
+  export default App;
+```
