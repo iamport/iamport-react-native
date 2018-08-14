@@ -1,5 +1,5 @@
 
-# iamport-react-native-beta
+# iamport-react-native
 리액트 네이티브용 아임포트 결제연동 모듈입니다. 안드로이드와 iOS 모두 지원합니다.
 
 ## Version
@@ -20,14 +20,14 @@
 아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다.
 
 ```
-$ npm install iamport-react-native-beta --save
+$ npm install iamport-react-native --save
 ```
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 Android/IOS 프로젝트에 추가할 수 있습니다.
 
 ```
   $ npm install -g react-native-cli
-  $ react-native link iamport-react-native-beta
+  $ react-native link iamport-react-native
 ```
 
 ## Documentation
@@ -36,7 +36,7 @@ $ npm install iamport-react-native-beta --save
 #### iOS
 
 1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `iamport-react-native-beta` and add `IamportReactNative.xcodeproj`
+2. Go to `node_modules` ➜ `iamport-react-native` and add `IamportReactNative.xcodeproj`
 3. In XCode, in the project navigator, select your project. Add `libIamportReactNative.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
 4. Run your project (`Cmd+R`)
 
@@ -47,12 +47,12 @@ $ npm install iamport-react-native-beta --save
   - Add `new IamportPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   ```
-    include ':iamport-react-native-beta'
-    project(':iamport-react-native-beta').projectDir = new File(rootProject.projectDir, 	'../node_modules/iamport-react-native-beta/android')
+    include ':iamport-react-native'
+    project(':iamport-react-native').projectDir = new File(rootProject.projectDir, 	'../node_modules/iamport-react-native/android')
   ```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
 	```
-    compile project(':iamport-react-native-beta')
+    compile project(':iamport-react-native')
 	```
 
 ## Example
@@ -61,7 +61,7 @@ $ npm install iamport-react-native-beta --save
 
   아래 명령어를 입력해 iOS emulator를 실행시켜 아임포트 모듈 결제테스트를 진행하실 수 있습니다.
   ```
-    $ cd [...]/node_modules/iamport-react-native-beta/example
+    $ cd [...]/node_modules/iamport-react-native/example
     $ npm install
     $ react-native run-ios
   ```
@@ -69,17 +69,17 @@ $ npm install iamport-react-native-beta --save
 - device
   - XCode를 설치합니다.
   - iOS 디바이스를 컴퓨터에 USB로 연결합니다.
-  - xcode 프로젝트(`[...]/node_modules/iamport-react-native-beta/example/ios/example.xcodeproj`)를 오픈합니다.
+  - xcode 프로젝트(`[...]/node_modules/iamport-react-native/example/ios/example.xcodeproj`)를 오픈합니다.
   - 앱을 빌드(`Cmd+R`)합니다.
   - 빌드가 성공하고 디바이스에 example이라는 이름의 앱이 설치된 것을 확인하실 수 있습니다.
 
 #### Android
 - [안드로이드 스튜디오를 설치](https://developer.android.com/studio)합니다.
-- 안드로이드 프로젝트 폴더(`[...]/node_modules/iamport-react-native-beta/example/android`)를 오픈합니다.
+- 안드로이드 프로젝트 폴더(`[...]/node_modules/iamport-react-native/example/android`)를 오픈합니다.
 - 안드로이드 디바이스에서 테스트를 원하는 경우, 디바이스를 컴퓨터에 USB로 연결합니다.
 - 아래 명령어를 입력하거나 `Cmd+F9`를 눌러 앱을 빌드합니다.
   ```
-  	$ cd [...]/node_modules/iamport-react-native-beta/example
+  	$ cd [...]/node_modules/iamport-react-native/example
   	$ npm install
   	$ react-native run-android
   ```
