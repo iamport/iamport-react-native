@@ -13,8 +13,11 @@ import {
 import SvgUri from 'react-native-svg-uri';
 
 import { styles } from '../../styles';
-import { PG } from '../../constants';
-import { getPgWarningMsg } from '../../utils';
+import { PG } from 'constants';
+import { getPgWarningMsg } from 'utils';
+
+const triangleDown = require('img/triangle-down.svg');
+const closePicker = require('img/close-picker.svg');
 
 class PgPicker extends React.Component {
   state = {
@@ -58,10 +61,7 @@ class PgPicker extends React.Component {
               pointerEvents='none'
               value={PG[selectedValue]}
             />
-            <SvgUri 
-              style={dropdown} 
-              source={require('../../img/triangle-down.svg')} 
-            />
+            <SvgUri style={dropdown} source={triangleDown} />
           </TouchableOpacity>
         </View>
         <View style={warnContainer}>
@@ -78,7 +78,7 @@ class PgPicker extends React.Component {
             }} 
             onPress={() => onPressInput('pgPicker', false)}
           >
-            <SvgUri source={require('../../img/close-picker.svg')} />
+            <SvgUri source={closePicker} />
           </TouchableOpacity>
           <PickerIOS
             style={{ 

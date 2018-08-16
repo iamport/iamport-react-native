@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { WebView, Linking } from 'react-native';
 
-import { validateProps } from './utils';
+import { validateProps } from '../../utils';
 import { 
   PG, 
   REDIRECT_NEEDED_PG,
@@ -12,9 +12,11 @@ import {
   PAY_METHOD, 
   CURRENCY, 
   MARKET_URL 
-} from './constants';
+} from '../../constants';
 
-class IMP extends React.Component {
+const source = require('../../html/payment.html');
+
+class Payment extends React.Component {
   static propTypes = {
     userCode: PropTypes.string.isRequired,
     data: PropTypes.shape({
@@ -141,7 +143,7 @@ class IMP extends React.Component {
     return (
       <WebView
         ref={(xdm) => this.xdm = xdm}
-        source={require('./html/payment.html')}
+        source={source}
         onLoad={this.onLoad}
         onError={this.onError}
         onMessage={this.onMessage}
@@ -153,5 +155,5 @@ class IMP extends React.Component {
   }
 }
 
-export default IMP;
+export default Payment;
 

@@ -12,7 +12,10 @@ import {
 import SvgUri from 'react-native-svg-uri';
 
 import { styles } from '../../styles';
-import { PAY_METHOD_BY_PG } from '../../constants';
+import { PAY_METHOD_BY_PG } from 'constants';
+
+const triangleDown = require('img/triangle-down.svg');
+const closePicker = require('img/close-picker.svg');
 
 class PayMethodPicker extends React.Component {
   state = {
@@ -70,10 +73,7 @@ class PayMethodPicker extends React.Component {
             />
             {
               !hideModal &&
-              <SvgUri 
-                style={dropdown} 
-                source={require('../../img/triangle-down.svg')} 
-              />
+              <SvgUri style={dropdown} source={triangleDown} />
             }
           </TouchableOpacity>
         </View>
@@ -106,7 +106,7 @@ class PayMethodPicker extends React.Component {
             }} 
             onPress={() => onPressInput('payMethodPicker', false)}
           >
-            <SvgUri source={require('../../img/close-picker.svg')} />
+            <SvgUri source={closePicker} />
           </TouchableOpacity>
           <PickerIOS
             style={{ 

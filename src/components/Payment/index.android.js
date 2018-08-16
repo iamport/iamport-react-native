@@ -8,14 +8,14 @@ import {
   DeviceEventEmitter 
 } from 'react-native';
 
-import ErrorOnParams from './components/ErrorOnParams';
+import ErrorOnParams from '../ErrorOnParams';
 
-import { validateProps } from './utils';
-import { PG, PAY_METHOD, CURRENCY } from './constants';
+import { validateProps } from '../../utils';
+import { PG, PAY_METHOD, CURRENCY } from '../../constants';
 
 const IamportWebView = requireNativeComponent('IamportWebView', null);
 
-class IMP extends React.Component {
+class Payment extends React.Component {
   static propTypes = {
     userCode: PropTypes.string.isRequired,
     data: PropTypes.shape({
@@ -101,4 +101,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default IMP;
+export default Payment;

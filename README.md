@@ -106,15 +106,12 @@
 	$ npm install
 	$ react-native run-android
   ```
-- `react-native run-android`에서 SDK location not found 에러로 빌드에 실패하는 경우, android 내부에 local.properties 파일을 만들고 `sdk.dir = /Users/deedee/Library/Android/sdk`를 입력해 저장합니다.
-- AVD Manager([logo]: src/img/android-studio-avd-manager.png)를 클릭해 안드로이드 emulator를 통해 테스트하실 수도 있습니다.
+- `react-native run-android`에서 SDK location not found 에러로 빌드에 실패하는 경우, android 내부에 local.properties 파일을 만들고 `sdk.dir = /Users/[username]/Library/Android/sdk`를 입력해 저장합니다.
+- AVD Manager를 클릭해 안드로이드 emulator를 통해 테스트하실 수도 있습니다.
 - 빌드가 성공하고 example이라는 이름의 앱이 설치된 것을 확인하실 수 있습니다.
 
-## Application Example
-#### iOS
-
-#### Android
-```
+## Payment Example
+```javascript
   import React from 'react';
   import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
 

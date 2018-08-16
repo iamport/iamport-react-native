@@ -8,6 +8,8 @@ import {
   StyleSheet, 
 } from 'react-native';
 
+const logo = require('../../img/iamport-logo.png');
+
 class ErrorOnParams extends React.Component {
   onPressGoBack = () => {
     const { appScheme } = this.props;
@@ -21,7 +23,7 @@ class ErrorOnParams extends React.Component {
 
     return (
       <View style={container}>
-        <Image style={img} source={require('../../img/iamport-logo.png')} />
+        <Image style={img} source={logo} />
         <Text style={text}>{message}</Text>
         <TouchableOpacity 
           style={button}

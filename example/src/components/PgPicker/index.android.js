@@ -1,41 +1,52 @@
 
 
 import React from 'react';
-import { 
-  View,
-  Text,
-  Picker,
-} from 'react-native';
+import { View, Text, Picker } from 'react-native';
 
-import { styles } from '../../styles';
-import { PG } from '../../constants';
-import { getPgWarningMsg } from '../../utils';
+import { PG } from 'constants';
+import { warn, info } from './styles';
+import { getPgWarningMsg } from 'utils';
 
 class PgPicker extends React.Component {
-  render() {
-    const { row, text, input, warnContainer, warn } = styles;
-    const { selectedValue, onValueChange } = this.props;
-
+  renderPg() {
     const items = Object.keys(PG).map((pg, key) => {
       return (
         <Picker.Item label={PG[pg]} value={pg} key={key} />
       );
     });
-    
+
+    const { selectedValue, onValueChange } = this.props;
+    const { container, text, input } = info;
+
+    return (
+      <View style={info.container}>
+        <Text style={info.text}>PG사</Text>
+        <Picker
+          style={info.input}
+          selectedValue={selectedValue}
+          onValueChange={onValueChange}>
+          {items}
+        </Picker>
+      </View>
+    );
+  }
+
+  renderWarn() {
+    const { selectedValue } = this.props;
+
+    const { container, text } = warn;
+    return (
+      <View style={container}>
+        <Text style={text}>{getPgWarningMsg(selectedValue)}</Text>
+      </View>
+    );
+  }
+
+  render() {
     return (
       <View>
-        <View style={row}>
-          <Text style={text}>PG사</Text>
-          <Picker
-            style={input}
-            selectedValue={selectedValue}
-            onValueChange={onValueChange}>
-            {items}
-          </Picker>
-        </View>
-        <View style={warnContainer}>
-          <Text style={warn}>{getPgWarningMsg(selectedValue)}</Text>
-        </View>
+        {this.renderPg()}
+        {this.renderWarn()}
       </View>
     );
   }
