@@ -1,28 +1,18 @@
 
 import React from 'react';
-
 import IMP from 'iamport-react-native';
-
 import { View, Text } from 'react-native';
-import { getUserCode } from '../../utils';
+
+import { getUserCode } from 'utils';
 
 class Payment extends React.Component {
-  static nativationOptoins = {
+  static navigationOptions = {
     title: 'Payment'
   }
 
   callback = (response) => {
     const { navigation } = this.props;
-    const { navigate } = navigation;
-
-    const { success, error_msg } = response;
-    console.log(response);
-    if (success === 'true' || success === true) {
-      alert('결제 성공!');
-      navigation.push('Home');
-    } else {
-      navigation.push('Failure', response);
-    }
+    navigation.push('PaymentResult', response);
   }
 
   render() {
@@ -100,9 +90,9 @@ class Payment extends React.Component {
     // if (pg === 'naverpay') {
     //   data['m_redirect_url'] = 'iamport://';
     // }
-
+    
     return (
-      <IMP 
+      <IMP.Payment 
         userCode={getUserCode(pg)}
         data={data}
         callback={this.callback}

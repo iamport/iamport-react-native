@@ -25,6 +25,17 @@ export const PAYMENT_INFO = [{
   value: 'buyer_postcode',
 }];
 
+export const CERTIFICATION_INFO = [{
+  name: '주문번호',
+  value: 'merchant_uid',
+}, {
+  name: '최소나이',
+  value: 'min_age',
+}, {
+  name: '새 창',
+  value: 'popup',
+}];
+
 export const PG = {
   html5_inicis: '웹 표준 이니시스',
   kcp: 'NHN KCP',

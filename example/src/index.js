@@ -9,13 +9,21 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 
-import Home from './components/Home';
-import Payment from './components/Payment';
-import Failure from './components/Failure';
+import Home from 'components/Home';
+import Payment from 'components/Payment';
+import PaymentTest from 'components/PaymentTest';
+import PaymentResult from 'components/PaymentResult';
+import Certification from 'components/Certification';
+import CertificationTest from 'components/CertificationTest';
+import CertificationResult from 'components/CertificationResult';
 
 export default createStackNavigator({
   Home: { screen: Home },
   Payment: { screen: Payment },
-  Failure: { screen: Failure }
+  PaymentTest: { screen: PaymentTest },
+  PaymentResult: { screen: PaymentResult },
+  Certification: { screen: Certification },
+  CertificationTest: { screen: CertificationTest },
+  CertificationResult: { screen: CertificationResult },
 });
 
