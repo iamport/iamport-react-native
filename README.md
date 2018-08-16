@@ -141,10 +141,44 @@
       }
 
       return (
-        <IMP
+        <IMP.Payment
           userCode={'iamport'} // 가맹점 식별코드
           data={data} // 결제 데이터
           callback={this.callback} // 결제 종료 후 콜백
+        />
+      );
+    }
+  }
+
+  export default App;
+```
+
+## Certification Example
+```javascript
+  import React from 'react';
+  import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
+
+  class App extends React.Component {
+    callback = (response) => { 
+      const { success } = response;
+      if (success) {
+        alert('본인인증 성공!');
+      } else {
+        alert('본인인증 실패!');
+      }
+    }
+
+    render() {
+      const data = {
+        merchant_uid: `mid_${new Date().getTime()}`,
+        min_age: '',
+      }
+
+      return (
+        <IMP.Certification
+          userCode={'iamport'} // 가맹점 식별코드
+          data={data} // 본인인증 데이터
+          callback={this.callback} // 본인인증 종료 후 콜백
         />
       );
     }
