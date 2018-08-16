@@ -170,5 +170,6 @@ export {
   info,
   button,
   actionButton,
-  result
+  result,
+  CommonStyles
 }

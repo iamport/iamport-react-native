@@ -1,6 +1,6 @@
 
 import { StyleSheet } from 'react-native';
-import { info } from 'styles';
+import { info, CommonStyles } from 'styles';
 
 const vbank = StyleSheet.create({
   container: {
@@ -22,7 +22,11 @@ const vbank = StyleSheet.create({
   }
 });
 
+const { picker, dropdown, closeButton } = CommonStyles;
 export {
   vbank,
   info,
+  picker,
+  dropdown,
+  closeButton,
 }

@@ -7,6 +7,8 @@ const explanation = StyleSheet.create({
     maxWidth: 400, 
     marginLeft: 'auto', 
     marginRight: 'auto',  
+    paddingLeft: 30,
+    paddingRight: 30,
   },
   row: {
     flexDirection: 'row',
@@ -34,7 +36,7 @@ const button = StyleSheet.create({
   box: {
     ...box,
     backgroundColor: '#fff',
-    width: 150,
+    width: 120,
     alignItems: 'center',
   },
   text: {

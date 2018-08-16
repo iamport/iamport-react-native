@@ -1,6 +1,6 @@
 
 import { StyleSheet } from 'react-native';
-import { info } from 'styles';
+import { info, CommonStyles } from 'styles';
 
 const warn = StyleSheet.create({
   container: {
@@ -16,7 +16,11 @@ const warn = StyleSheet.create({
   }
 });
 
+const { picker, dropdown, closeButton } = CommonStyles;
 export {
   warn,	
   info,
+  picker, 
+  dropdown, 
+  closeButton
 }

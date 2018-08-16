@@ -19,10 +19,10 @@ class PgPicker extends React.Component {
     const { container, text, input } = info;
 
     return (
-      <View style={info.container}>
-        <Text style={info.text}>PG사</Text>
+      <View style={container}>
+        <Text style={text}>PG사</Text>
         <Picker
-          style={info.input}
+          style={input}
           selectedValue={selectedValue}
           onValueChange={onValueChange}>
           {items}
