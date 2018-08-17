@@ -31,15 +31,21 @@
   $ react-native link iamport-react-native
 ```
 
+성공적으로 마쳤을 경우, 아래와 같은 화면을 보실 수 있습니다.
+
+![](src/img/after-linking-module.png)
+
+실패한 경우, 아래 과정을 통해 iamport-react-native 모듈을 귀하의 프로젝트에 [수동으로 연결](https://facebook.github.io/react-native/docs/linking-libraries-ios)시킬 수 있습니다.
+
 #### IOS
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `iamport-react-native` and add `IamportReactNative.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libIamportReactNative.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)
+1. XCode 프로젝트(`[...]/ios/[...].xcodeproj`)를 더블클릭해 오픈합니다.
+2. 왼쪽 프로젝트 네비게이터에서, `Libraries` 폴더를 마우스 오른쪽 클릭 ➜ `Add Files to [your project's name]`를 클릭합니다.
+3. `[...]/node_modules/iamport-react-native/ios/IamportReactNative.xcodeproj`를 선택해 추가합니다.
+4. 왼쪽 프로젝트 네비게이터에서, 귀하의 프로젝트를 클릭 ➜ 오른쪽 상단 `Build Settings`를 클릭합니다.
+5. 세번째 메뉴인 `Link Binary With Libraries`를 열어 `libIamportReactNative.a` 파일을 추가합니다.
 
 #### 안드로이드
-아임포트 모듈을 귀하의 안드로이드 프로젝트에 성공적으로 Linking(`$ react-native link iamport-react-native`)했으면, 아래 과정을 건너뜁니다.
 
 1. `android/app/src/main/java/[...]/MainApplication.java` 파일을 열어 아래 코드를 추가합니다.
   ```java
@@ -57,7 +63,7 @@
   ```
 
 2. `android/settings.gradle` 파일을 열고 아래 코드를 추가합니다.
-  ```
+  ```java
     ...
 
     include ':iamport-react-native'
@@ -67,7 +73,7 @@
   ```
 
 3. `android/app/build.gradle` 파일을 열고 아래 코드를 추가합니다.
-  ```
+  ```java
     dependencies {
         ...
 
@@ -83,7 +89,7 @@
 ##### 1. 디바이스
   - [XCode를 설치](https://developer.apple.com/xcode)합니다.
   - IOS 디바이스를 컴퓨터에 연결합니다.
-  - XCode 프로젝트(`[...]/node_modules/iamport-react-native/example/ios/example.xcodeproj`)를 더블클릭해 XCode에서 오픈합니다.
+  - XCode 프로젝트(`[...]/node_modules/iamport-react-native/example/ios/example.xcodeproj`)를 더블클릭해 오픈합니다.
   - `Cmd+R`를 눌러 앱을 빌드합니다.
   - 빌드가 성공하고 디바이스에 example 앱이 설치된 것을 확인하실 수 있습니다.
 
@@ -146,7 +152,7 @@
         buyer_addr: '서울시 강남구 신사동 661-16',
         buyer_postcode: '06018',
         app_scheme: 'example'
-      }
+      };
 
       return (
         <IMP.Payment
@@ -180,7 +186,7 @@
       const data = {
         merchant_uid: `mid_${new Date().getTime()}`,
         min_age: '',
-      }
+      };
 
       return (
         <IMP.Certification
