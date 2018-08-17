@@ -1,6 +1,6 @@
 
 import { StyleSheet } from 'react-native';
-import * as styles from '../../styles';
+import * as styles from 'styles';
 
 const explanation = StyleSheet.create({
   container: {
@@ -46,18 +46,7 @@ const button = StyleSheet.create({
   },
 });
 
-const HomeStyles = StyleSheet.create({
-  background: {
-    backgroundColor: '#fff',
-    borderRadius: 3,
-    marginTop: 30,
-    marginLeft: 20,
-    marginRight: 20, 
-  }
-});
-
-const { title } = styles;
-const { background } = HomeStyles;
+const { title, background } = styles;
 export {
   title,
   background,

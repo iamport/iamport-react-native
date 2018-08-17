@@ -143,28 +143,30 @@ class PaymentTest extends React.Component {
     
     return (
       <ScrollView>
-        {this.renderTitle()}
         <View style={background}>
-          {/* PG사 드롭다운 */}
-          <PgPicker 
-            visible={pgPicker}
-            selectedValue={pg}
-            onPressInput={this.onChangeValue}
-            onValueChange={this.onChangePg}
-          />
-          {/* 결제수단 드롭다운 */}
-          <PayMethodPicker 
-            pg={pg}
-            vbankDue={vbank_due}
-            visible={payMethodPicker}
-            selectedValue={pay_method}
-            onPressInput={this.onChangeValue}
-            onValueChange={this.onChangePayMethod}
-          />
-          {/* 나머지 결제정보 입력필드 */}
-          {this.renderPaymentInfo()}
+          {this.renderTitle()}
+          <View>
+            {/* PG사 드롭다운 */}
+            <PgPicker 
+              visible={pgPicker}
+              selectedValue={pg}
+              onPressInput={this.onChangeValue}
+              onValueChange={this.onChangePg}
+            />
+            {/* 결제수단 드롭다운 */}
+            <PayMethodPicker 
+              pg={pg}
+              vbankDue={vbank_due}
+              visible={payMethodPicker}
+              selectedValue={pay_method}
+              onPressInput={this.onChangeValue}
+              onValueChange={this.onChangePayMethod}
+            />
+            {/* 나머지 결제정보 입력필드 */}
+            {this.renderPaymentInfo()}
+          </View>
+          {this.renderButton()}
         </View>
-        {this.renderButton()}
       </ScrollView>
     );
   }

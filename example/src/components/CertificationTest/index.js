@@ -52,7 +52,7 @@ class CertificationTest extends React.Component {
 
     const { merchant_uid, min_age, popup } = this.state;
     return (
-      <View style={background}>
+      <View>
         <View style={container}>
           <Text style={text}>주문번호</Text>
           <TextInput
@@ -89,7 +89,7 @@ class CertificationTest extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={background}>
         {this.renderTitle()}
         {this.renderCertificationInfo()}
         {this.renderButton()}

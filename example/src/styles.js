@@ -132,14 +132,11 @@ const result = StyleSheet.create({
 const CommonStyles = StyleSheet.create({
   background: {
     backgroundColor: '#fff',
-    marginLeft: 'auto', 
-    marginRight: 'auto',
-    width: '90%',
-    paddingTop: 20, 
-    paddingBottom: 10,
     borderRadius: 3,
-    borderWidth: 1,
-    borderColor: '#fff'
+    marginTop: 30,
+    marginLeft: 20,
+    marginRight: 20, 
+    marginBottom: 30,
   },
   picker: { // PG사, 결제수단 선택 목록
     backgroundColor: 'white',
