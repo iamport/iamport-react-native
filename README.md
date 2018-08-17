@@ -113,8 +113,9 @@
 ##### 2. Emulator
   - [안드로이드 스튜디오를 설치](https://developer.android.com/studio)합니다.
   - 안드로이드 프로젝트(`[...]/node_modules/iamport-react-native/example/android`)를 안드로이드 스튜디오에서 오픈합니다.
-  - ![](src/img/android-studio-build.png)을 클릭 또는 `Cmd+F9`를 눌러 앱을 빌드합니다.
-  - ![](src/img/android-studio-avd-manager.png)을 클릭해 안드로이드 emulator에 example 앱이 설치된 것을 확인하실 수 있습니다.
+  - ![](src/img/android-studio-build.png) 또는 `Cmd+F9`를 눌러 앱을 빌드합니다.
+  - ![AVD Manager](src/img/android-studio-avd-manager.png)을 눌러 안드로이드 emulator를 실행시킵니다.
+  - example 앱이 설치된 것을 확인하실 수 있습니다.
 
 
 ## 일반/정기결제 사용예제
