@@ -101,10 +101,6 @@
     $ react-native run-ios
   ```
 
-![](src/img/ios-emulator-home.png)
-![](src/img/ios-emulator-payment.png)
-![](src/img/ios-emulator-certification.png)
-
 #### 안드로이드
 ##### 1. 디바이스
   - 안드로이드 디바이스를 컴퓨터에 연결합니다.
@@ -123,6 +119,9 @@
   - ![AVD Manager](src/img/android-studio-avd-manager.png)을 눌러 안드로이드 emulator를 실행시킵니다.
   - example 앱이 설치된 것을 확인하실 수 있습니다.
 
+![](src/img/ios-emulator-home.png)
+![](src/img/ios-emulator-payment.png)
+![](src/img/ios-emulator-certification.png)
 
 ## 일반/정기결제 사용예제
 ```javascript
