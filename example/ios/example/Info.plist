@@ -27,7 +27,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>IamportReactNative</string>
+				<string>example</string>
 			</array>
 		</dict>
 	</array>
