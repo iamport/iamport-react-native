@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Build;
 import android.webkit.CookieManager;
 import android.view.ViewGroup.LayoutParams;
+import android.webkit.WebViewClient;
 
 import com.iamport.webviewclient.IamportWebViewClient;
 import com.iamport.webviewclient.NiceWebViewClient;
@@ -35,18 +36,11 @@ public class IamportViewManager extends SimpleViewManager<IamportWebView> {
 
     IamportWebView webView = new IamportWebView(this, context);
 
-    // UI설정?
-    webView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-    // 쿠키설정
-    CookieManager cookieManager = CookieManager.getInstance();
-    cookieManager.setAcceptCookie(true);
-    cookieManager.setAcceptFileSchemeCookies(true); // add default cookie support
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      cookieManager.setAcceptThirdPartyCookies(webView, true);
-    }
-
-    // 로딩 화면 오픈
+    /* Load custom loading */
     webView.loadUrl("file:///android_asset/html/payment.html");
+
+    /* Set web chrome client */
+    webView.setWebChromeClient(new IamportWebChromeClient());
 
     return webView;
   }
@@ -61,7 +55,7 @@ public class IamportViewManager extends SimpleViewManager<IamportWebView> {
 
   @ReactProp(name = "param")
   public void setParam(IamportWebView view, ReadableMap param) {
-    // PG사에 따라 WebViewClient 설정
+    /* Set web view client by pg provider */
     ReadableMap data = param.getMap("data");
     String pg = data.getString("pg");
     switch(pg) {
@@ -69,9 +63,6 @@ public class IamportViewManager extends SimpleViewManager<IamportWebView> {
         view.setWebViewClient(new NiceWebViewClient(reactContext, activity, param));
         break;
       }
-//      case "payco": {
-//        break;
-//      }
       default: {
         view.setWebViewClient(new IamportWebViewClient(reactContext, activity, param));
         break;
