@@ -22,6 +22,7 @@ class Payment extends React.Component {
     let data = {
       pg,
       pay_method,
+      app_scheme: 'example',
       name: navigation.getParam('name'),
       amount: navigation.getParam('amount'),
       buyer_email: navigation.getParam('buyer_email'),
@@ -30,8 +31,7 @@ class Payment extends React.Component {
       buyer_addr: navigation.getParam('buyer_addr'),
       buyer_postcode: navigation.getParam('buyer_postcode'),
       merchant_uid: navigation.getParam('merchant_uid'),
-      app_scheme: 'iamport',
-      // m_redirect_url: 'https://www.naver.com',
+      m_redirect_url: navigation.getParam('m_redirect_url'),
     };
 
     /* 가상계좌의 경우, 입금기한 추가 */
@@ -41,7 +41,7 @@ class Payment extends React.Component {
     }
 
     /* 정기결제의 경우, customer_uid는 필수입력필드 */
-    if (pg === 'kcp_billing' || pg === 'syrup') {
+    if (pg === 'kcp_billing') {
       data['customer_uid'] = `cuid_${new Date().getTime()}`;
     }
 
@@ -85,11 +85,6 @@ class Payment extends React.Component {
         }
       }];
     }
-
-    // /* 네이버페이의 경우, m_direct_url은 필수입력 */
-    // if (pg === 'naverpay') {
-    //   data['m_redirect_url'] = 'iamport://';
-    // }
     
     return (
       <IMP.Payment 

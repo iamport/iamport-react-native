@@ -45,6 +45,8 @@ class Payment extends React.Component {
       buyer_postcode: PropTypes.string,
       custom_data: PropTypes.object,
       vbank_due: PropTypes.string,
+      m_redirect_url: PropTypes.string,
+      popup: PropTypes.bool,
     })
   };
 
@@ -69,7 +71,6 @@ class Payment extends React.Component {
   render() {
     const { webView, container, text, button } = styles;
     const { userCode, data, callback } = this.props;
-    const { app_scheme, m_redirect_url } = data;
 
     const { validate, message } = validateProps(userCode, data);
     if (validate) {
@@ -86,12 +87,8 @@ class Payment extends React.Component {
       );
     }
     
-    return (
-      <ErrorOnParams 
-        appScheme={app_scheme} 
-        message={message}
-      />
-    );
+    const { app_scheme } = data;
+    return <ErrorOnParams appScheme={app_scheme} message={message} />;
   }
 }
 

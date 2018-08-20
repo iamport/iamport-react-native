@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { WebView, Linking } from 'react-native';
 
+import ErrorOnParams from '../ErrorOnParams';
 import { validateProps } from '../../utils';
 import { 
   PG, 
@@ -46,6 +47,8 @@ class Payment extends React.Component {
       buyer_postcode: PropTypes.string,
       custom_data: PropTypes.object,
       vbank_due: PropTypes.string,
+      m_redirect_url: PropTypes.string,
+      popup: PropTypes.bool,
     })
   };
 
@@ -140,18 +143,25 @@ class Payment extends React.Component {
   }
 
   render() {
-    return (
-      <WebView
-        ref={(xdm) => this.xdm = xdm}
-        source={source}
-        onLoad={this.onLoad}
-        onError={this.onError}
-        onMessage={this.onMessage}
-        originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
-        injectedJavaScript={this.getInjectedJavascript()} // https://github.com/facebook/react-native/issues/10865
-        onNavigationStateChange={this.onNavigationStateChange}
-      />
-    );
+    const { userCode, data } = this.props;
+    const { validate, message } = validateProps(userCode, data);
+    if (validate) {
+      return (
+        <WebView
+          ref={(xdm) => this.xdm = xdm}
+          source={source}
+          onLoad={this.onLoad}
+          onError={this.onError}
+          onMessage={this.onMessage}
+          originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
+          injectedJavaScript={this.getInjectedJavascript()} // https://github.com/facebook/react-native/issues/10865
+          onNavigationStateChange={this.onNavigationStateChange}
+        />
+      );
+    }
+
+    const { app_scheme } = data;
+    return <ErrorOnParams appScheme={app_scheme} message={message} />;
   }
 }
 

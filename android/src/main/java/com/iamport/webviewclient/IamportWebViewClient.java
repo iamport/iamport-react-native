@@ -46,6 +46,8 @@ public class IamportWebViewClient extends WebViewClient {
 
   @Override
   public boolean shouldOverrideUrlLoading(WebView view, String url) {
+    Log.i("url", url);
+
     if (isUrlStartsWithRedirectUrl(url) || isUrlStartsWithProtocol(url)) return false;
 
     Intent intent = null;

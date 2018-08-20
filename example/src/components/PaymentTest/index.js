@@ -31,14 +31,14 @@ class PaymentTest extends React.Component {
     pay_method: 'card',
     name: '아임포트 결제데이터 분석',
     merchant_uid: `mid_${new Date().getTime()}`,
-    // amount: '39000',
-    amount: '1000',
+    amount: '39000',
     buyer_name: '홍길동',
     buyer_tel: '01012345678',
     buyer_email: 'example@naver.com',
     buyer_addr: '서울시 강남구 신사동 661-16',
     buyer_postcode: '06018',
     vbank_due: getCurrentDate(),
+    m_redirect_url: 'https://service.iamport.kr',
   }
 
   onPressPayment = () => { // 결제하기 눌렀을떄 
@@ -54,6 +54,7 @@ class PaymentTest extends React.Component {
       buyer_addr,
       buyer_postcode,
       vbank_due,
+      m_redirect_url,
     } = this.state;
 
     const param = {
@@ -68,6 +69,7 @@ class PaymentTest extends React.Component {
       buyer_addr,
       buyer_postcode,
       vbank_due,
+      m_redirect_url,
     };
 
     const { navigation } = this.props;

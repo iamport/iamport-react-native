@@ -12,7 +12,7 @@ export function validateProps(userCode, data) {
     return { validate: false, message: '결제 파라미터(data)는 필수입력입니다.' };
   }
 
-  const { pg, pay_method, merchant_uid, amount, buyer_tel, app_scheme, language, digital, m_redirect_url, biz_num, customer_uid } = data;
+  const { pg, pay_method, merchant_uid, amount, buyer_tel, app_scheme, language, digital, m_redirect_url, biz_num, customer_uid, naverPopupMode, popup } = data;
   if (!merchant_uid) {
     return { validate: false, message: '주문번호(merchant_uid)는 필수입력입니다.' };
   }
@@ -37,7 +37,28 @@ export function validateProps(userCode, data) {
   if (pay_method === 'phone' && typeof digital === 'undefined') {
     return { validate: false, message: '휴대폰 소액결제시 "digital"은 필수입력입니다.' };
   }
-  // m_redirect_url
+  if (pg === 'eximbay') {
+    return { validate: false, message: '해당 모듈은 현재 엑심베이 지원을 위한 개발을 진행중입니다.' };
+  }
+  if (pg === 'syrup') {
+    return { validate: false, message: '해당 모듈은 현재 시럽페이를 지원하지 않습니다.' };
+  }
+  if (pg === 'paypal') {
+    if (popup === true) {
+      return { validate: false, message: '해당 모듈은 페이팔 또는 네이버 결제시\n팝업 방식은 지원하지 않습니다.' };
+    }
+    if (!m_redirect_url) {
+      return { validate: false, message: '해당 모듈은 페이팔 또는 네이버 결제시\n"m_redirect_url"은 필수입력입니다.' };
+    }
+  }
+  if (pg === 'naverpay') {
+    if (naverPopupMode === true) {
+      return { validate: false, message: '해당 모듈은 네이버 결제시 팝업 방식은 지원하지 않습니다.' };
+    }
+    if (!m_redirect_url) {
+      return { validate: false, message: '해당 모듈은 네이버 결제시 "m_redirect_url"은 필수입력입니다.' };
+    }
+  }
   if (pg === 'danal_tpay' && pay_method === 'vbank' && !biz_num) {
     return { validate: false, message: '다날-가상계좌시 "biz_num"은 필수입력입니다.' };
   }

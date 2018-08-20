@@ -14,7 +14,7 @@ class ErrorOnParams extends React.Component {
   onPressGoBack = () => {
     const { appScheme } = this.props;
 
-    window.location.href = appScheme + '://';
+    window.location.href = `${appScheme}://`;
   }
 
   render() {

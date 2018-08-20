@@ -19,6 +19,5 @@
   "dependencies": {
     "query-string": "^6.1.0",
     "react": "^16.4.2"
-  },
-  "devDependencies": {}
+  }
 }
