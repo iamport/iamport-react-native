@@ -18,6 +18,7 @@ export function getUserCode(pg) {
     case 'kakao': return 'imp10391932';
     case 'paypal': return 'imp09350031';
     case 'mobilians': return 'imp60029475';
+    case 'naverco': return 'imp41073887';
     case 'naverpay': return 'imp41073887';
     default: return 'imp19424728';
   }

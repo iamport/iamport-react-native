@@ -14,11 +14,8 @@ const PG = [
   'kicc',
   'settle',
   'mobilians', 
-  'syrup', 
-  'shinhan',
   'payco', 
   'paypal', 
-  'eximbay', 
   'naverco',
   'naverpay'
 ];

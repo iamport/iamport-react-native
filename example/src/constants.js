@@ -50,13 +50,10 @@ export const PG = {
   kicc: '한국 정보통신',
   paypal: '페이팔',
   mobilians: '모빌리언스 휴대폰 소액결제',
-  eximbay: '엑심베이',
   payco: '페이코',
   settle: '세틀뱅크 가상계좌',
-  shinhan: '신한',
   naverco: '네이버 체크아웃',
   naverpay: '네이버페이',
-  syrup: '시럽페이',
 };
 
 export const PAY_METHOD = {
@@ -90,13 +87,10 @@ export const PAY_METHOD_BY_PG = {
   mobilians: {
     phone: '휴대폰 소액결제'
   },
-  eximbay: PAY_METHOD,
   payco: {
     card: '신용카드'
   },
   settle: PAY_METHOD,
-  shinhan: PAY_METHOD,
   naverco: PAY_METHOD,
   naverpay: PAY_METHOD,
-  syrup: PAY_METHOD,
 }
