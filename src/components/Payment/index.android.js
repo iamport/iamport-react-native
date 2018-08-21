@@ -50,7 +50,13 @@ class Payment extends React.Component {
       popup: PropTypes.bool,
     }),
     callback: PropTypes.func.isRequired,
-    loading: PropTypes.object
+    loading: PropTypes.shape({
+      message: PropTypes.string,
+      image: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]),
+    })
   };
 
   componentDidMount() {
