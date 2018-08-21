@@ -26,6 +26,10 @@ class Certification extends React.Component {
         userCode={'imp10391932'}
         data={data}
         callback={this.callback}
+        loading={{
+          message: '잠시만 기다려주세요...',
+          image: require('img/iamport-logo.png')
+        }}
       />
     );
   }

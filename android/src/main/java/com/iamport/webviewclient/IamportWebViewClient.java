@@ -29,6 +29,7 @@ public class IamportWebViewClient extends WebViewClient {
   private boolean isCallbackDefined;
   private ReadableMap data;
   protected String appScheme;
+  private ReadableMap loading;
 
   private Boolean loadingFinished = false;
 
@@ -42,6 +43,7 @@ public class IamportWebViewClient extends WebViewClient {
     isCallbackDefined = param.getBoolean("isCallbackDefined");
     data = param.getMap("data");
     appScheme = data.getString("app_scheme");
+    loading = param.getMap("loading");
   }
 
   @Override
@@ -76,11 +78,22 @@ public class IamportWebViewClient extends WebViewClient {
   /* WebView가 load되면 IMP.init, IMP.request_pay를 호출한다 */
   public void onPageFinished(WebView view, String url) {
     if (!loadingFinished && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { // 무한루프 방지
+      setCustomLoadingPage(view);
+
       view.evaluateJavascript("IMP.init('" + userCode + "');", null);
       view.evaluateJavascript("IMP.request_pay(" + toJSONObject(data) + ");", null);
 
       loadingFinished = true;
     }
+  }
+
+  /* 커스텀 로딩화면 셋팅 */
+  private void setCustomLoadingPage(WebView view) {
+    String image = loading.getString("image");
+    String message = loading.getString("message");
+
+    view.evaluateJavascript("document.getElementById('imp-rn-img').src = '" + image + "';", null);
+    view.evaluateJavascript("document.getElementById('imp-rn-msg').innerText = '" + message + "';", null);
   }
 
   /* ReadableMap을 JSONObject로 변경 */

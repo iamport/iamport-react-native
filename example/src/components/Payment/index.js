@@ -91,6 +91,10 @@ class Payment extends React.Component {
         userCode={getUserCode(pg)}
         data={data}
         callback={this.callback}
+        loading={{
+          message: '잠시만 기다려주세요...',
+          image: require('img/iamport-logo.png')
+        }}
       />
     );
   }

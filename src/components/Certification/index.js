@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { WebView } from 'react-native';
+import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 import ErrorOnParams from '../ErrorOnParams';
 
@@ -17,6 +18,7 @@ class Certification extends React.Component {
       min_age: PropTypes.string,
     }),
     callback: PropTypes.func.isRequired,
+    loading: PropTypes.object,
   };
 
   state = {
@@ -26,15 +28,37 @@ class Certification extends React.Component {
   onLoad = () => {
     const { status } = this.state;
     if (status === 'ready') { // 포스트 메시지를 한번만 보내도록(무한루프 방지)
-      const { userCode, data } = this.props;
+      const { userCode, data, loading } = this.props;
       const { m_redirect_url } = data;
 
-      const params = JSON.stringify({ userCode, data });
+      const params = JSON.stringify({ 
+        userCode, 
+        data, 
+        loading: { 
+          message: loading.message || '잠시만 기다려주세요...', 
+          image: this.getCustomLoadingImage()
+        }
+      });
       this.xdm.postMessage(params);
       this.setState({ status: 'sent' });
     }
   }
 
+  getCustomLoadingImage() {
+    const { loading } = this.props;
+    const { image } = loading;
+
+    if (typeof image === 'number') {
+      return resolveAssetSource(image).uri;
+    }
+
+    if (typeof image === 'string') {
+      return image;
+    }
+
+    return '../img/iamport-logo.png';
+  }
+  
   onMessage = (e) => { // 본인인증 결과를 받아 callback을 실행한다 
     const { callback } = this.props;
     const response = JSON.parse(e.nativeEvent.data);
@@ -57,18 +81,12 @@ class Certification extends React.Component {
       window.postMessage = patchedPostMessage;
     };
 
-    return `(${String(patchPostMessageFunction)})();`;
+    return `(${String(patchPostMessageFunction)})(); `;
   }
-
-  // onNavigationStateChange = (e) => {
-  //   const { status } = this.state;
-  //   if (status === 'sent') {
-  //     console.log(e.url);
-  //   } 
-  // }
 
   render() {
     const { userCode } = this.props;
+
     if (userCode) {
       return (
         <WebView
@@ -78,7 +96,6 @@ class Certification extends React.Component {
           onMessage={this.onMessage}
           originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
           injectedJavaScript={this.getInjectedJavascript()} // https://github.com/facebook/react-native/issues/10865
-          // onNavigationStateChange={this.onNavigationStateChange}
         />
       );
     }

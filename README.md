@@ -158,6 +158,10 @@
           userCode={'iamport'} // 가맹점 식별코드
           data={data} // 결제 데이터
           callback={this.callback} // 결제 종료 후 콜백
+          loading={{
+            message: '잠시만 기다려주세요...', // 로딩화면 메시지 
+            image: require('img/iamport-logo.png') // 로딩화면 이미지
+          }}
         />
       );
     }
@@ -165,6 +169,15 @@
 
   export default App;
 ```
+
+| Prop          | Type          |  Description                                                | Default             | Required   |
+| ------------- | ------------- | ----------------------------------------------------------- | ------------------- | ---------- |
+| userCode      | string        | 가맹점 식별코드                                                 | undefined           | true       |
+| data          | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | undefined           | true       |
+| callback      | function      | 결제 후 실행 될 함수                                            | undefined           | true       |
+| loading       | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지                          |                     | false      |
+| - message     | string        | 로딩화면 메시지                                                 | '잠시만 기다려주세요...' | false      |
+| - image       |               | 로딩화면 이미지(url도 가능)                                       | 아임포트 로고 이미지     | false      |
 
 ## 휴대폰 본인인증 사용예제
 ```javascript
@@ -192,6 +205,10 @@
           userCode={'iamport'} // 가맹점 식별코드
           data={data} // 본인인증 데이터
           callback={this.callback} // 본인인증 종료 후 콜백
+          loading={{
+            message: '잠시만 기다려주세요...', // 로딩화면 메시지 
+            image: require('img/iamport-logo.png') // 로딩화면 이미지
+          }}
         />
       );
     }
@@ -199,3 +216,16 @@
 
   export default App;
 ```
+
+| Prop          | Type          |  Description                       | Default             | Required   |
+| ------------- | ------------- | ---------------------------------- | ------------------- | ---------- |
+| userCode      | string        | 가맹점 식별코드                        | undefined           | true       |
+| data          | object        | 본인인증에 필요한 정보                   | undefined           | true       |
+| - merchant_uid| string        | 가맹점 주문번호                        | random              | false      |
+| - min_age     | number        | 본인인증 허용 최소 연령                  | undefined           | false      |
+| callback      | function      | 본인인증 후 실행 될 함수                 | undefined           | true       |
+| loading       | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지  |                     | false      |
+| - message     | string        | 로딩화면 메시지                        | '잠시만 기다려주세요...' | false      |
+| - image       |               | 로딩화면 이미지(url도 가능)              | 아임포트 로고 이미지     | false      |
+
+

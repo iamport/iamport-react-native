@@ -7,6 +7,7 @@ import {
   requireNativeComponent, 
   DeviceEventEmitter 
 } from 'react-native';
+import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 import ErrorOnParams from '../ErrorOnParams';
 
@@ -47,7 +48,9 @@ class Payment extends React.Component {
       vbank_due: PropTypes.string,
       m_redirect_url: PropTypes.string,
       popup: PropTypes.bool,
-    })
+    }),
+    callback: PropTypes.func.isRequired,
+    loading: PropTypes.object
   };
 
   componentDidMount() {
@@ -68,9 +71,24 @@ class Payment extends React.Component {
     callback(newQuery);
   }
 
+  getCustomLoadingImage() {
+    const { loading } = this.props;
+    const { image } = loading;
+
+    if (typeof image === 'number') {
+      return resolveAssetSource(image).uri;
+    }
+
+    if (typeof image === 'string') {
+      return image;
+    }
+
+    return '../img/iamport-logo.png';
+  }
+
   render() {
     const { webView, container, text, button } = styles;
-    const { userCode, data, callback } = this.props;
+    const { userCode, data, callback, loading } = this.props;
 
     const { validate, message } = validateProps(userCode, data);
     if (validate) {
@@ -81,6 +99,10 @@ class Payment extends React.Component {
             userCode, 
             data, 
             isCallbackDefined,
+            loading: {
+              message: loading.message || '잠시만 기다려주세요...',
+              image: this.getCustomLoadingImage()
+            }
           }}
           style={webView} 
         />
