@@ -1,5 +1,6 @@
 
 #import "IamportReactNative.h"
+#import <React/RCTLinkingManager.h>
 
 @implementation IamportReactNative
 
