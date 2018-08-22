@@ -176,7 +176,7 @@
 | data          | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | undefined           | true       |
 | callback      | function      | 결제 후 실행 될 함수                                            | undefined           | true       |
 | loading       | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지                          |                     | false      |
-| - message     | string        | 로딩화면 메시지                                                 | '잠시만 기다려주세요...' | false      |
+| - message     | string        | 로딩화면 메시지                                                 | 잠시만 기다려주세요...    | false      |
 | - image       |               | 로딩화면 이미지(url도 가능)                                       | 아임포트 로고 이미지     | false      |
 
 ## 휴대폰 본인인증 사용예제
@@ -225,7 +225,7 @@
 | - min_age     | number        | 본인인증 허용 최소 연령                  | undefined           | false      |
 | callback      | function      | 본인인증 후 실행 될 함수                 | undefined           | true       |
 | loading       | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지  |                     | false      |
-| - message     | string        | 로딩화면 메시지                        | '잠시만 기다려주세요...' | false      |
+| - message     | string        | 로딩화면 메시지                        | 잠시만 기다려주세요...   | false      |
 | - image       |               | 로딩화면 이미지(url도 가능)              | 아임포트 로고 이미지     | false      |
 
 
