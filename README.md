@@ -21,7 +21,7 @@
 아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다.
 
 ```
-  $ npm install iamport-react-native --save
+  $ npm install https://github.com/iamport/iamport-react-native.git#feature/merge-android-n-ios --save
 ```
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.
