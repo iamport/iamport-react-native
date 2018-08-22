@@ -16,7 +16,7 @@ class CertificationResult extends React.Component {
     if (paymentResult) {
       return (
         <Text style={title}>
-          <Text style={success}>🎉</Text>
+          <Text style={success}>🎉 </Text>
           본인인증에 성공하였습니다.
         </Text>
       );

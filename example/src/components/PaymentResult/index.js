@@ -17,7 +17,7 @@ class PaymentResult extends React.Component {
     if (paymentResult === 'true') {
       return (
         <Text style={title}>
-          <Text style={success}>🎉</Text>
+          <Text style={success}>🎉 </Text>
           결제에 성공하였습니다.
         </Text>
       );
@@ -41,9 +41,10 @@ class PaymentResult extends React.Component {
 
     const { container, table, row, name, value, button } = result;
 
+    const paymentResult = typeof success === 'undefined' ? navigation.getParam('imp_success') : success;
     return (
       <View style={container}>
-        {this.renderMessage(success)}
+        {this.renderMessage(paymentResult)}
         <View style={table}>
           <View style={row}>
             <Text style={name}>아임포트 번호</Text>
@@ -54,7 +55,7 @@ class PaymentResult extends React.Component {
             <Text style={value}>{merchant_uid || '없음'}</Text>
           </View>
           {
-            success === 'false' && 
+            paymentResult === 'false' && 
             <View style={row}>
               <Text style={name}>에러 메시지</Text>
               <Text style={value}>{error_msg || '없음'}</Text>
