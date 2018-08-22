@@ -13,7 +13,7 @@ class CertificationResult extends React.Component {
   renderMessage(paymentResult) {
     const { title, failure, success } = result;
 
-    if (paymentResult === 'true') {
+    if (paymentResult) {
       return (
         <Text style={title}>
           <Text style={success}>🎉</Text>
@@ -58,7 +58,7 @@ class CertificationResult extends React.Component {
             <Text style={value}>{merchant_uid || '없음'}</Text>
           </View>
           {
-            success === 'false' && 
+            !success && 
             <View style={row}>
               <Text style={name}>에러 메시지</Text>
               <Text style={value}>{error_msg || '없음'}</Text>

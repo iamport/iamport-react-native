@@ -68,7 +68,7 @@ class Certification extends React.Component {
   onMessage = (e) => { // 본인인증 결과를 받아 callback을 실행한다 
     const { callback } = this.props;
     const response = JSON.parse(e.nativeEvent.data);
-
+    
     callback(response);
   }
 
