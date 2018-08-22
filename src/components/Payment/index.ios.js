@@ -196,8 +196,7 @@ class Payment extends React.Component {
       );
     }
 
-    const { app_scheme } = data;
-    return <ErrorOnParams appScheme={app_scheme} message={message} />;
+    return <ErrorOnParams message={message} />;
   }
 }
 

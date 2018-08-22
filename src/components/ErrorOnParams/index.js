@@ -1,5 +1,6 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { 
   View, 
   Image, 
@@ -11,10 +12,8 @@ import {
 const logo = require('../../img/iamport-logo.png');
 
 class ErrorOnParams extends React.Component {
-  onPressGoBack = () => {
-    const { appScheme } = this.props;
-
-    window.location.href = `${appScheme}://`;
+  static PropTypes = {
+    message: PropTypes.string,
   }
 
   render() {
@@ -25,12 +24,12 @@ class ErrorOnParams extends React.Component {
       <View style={container}>
         <Image style={img} source={logo} />
         <Text style={text}>{message}</Text>
-        <TouchableOpacity 
+        {/*<TouchableOpacity 
           style={button}
-          onPress={this.onPressGoBack} 
+          onPress={} 
         >
           <Text>돌아가기</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
       </View>
     );
   }
@@ -43,8 +42,9 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   text: {
-    fontSize: 14,
+    fontSize: 16,
     marginTop: 20,
+    lineHeight: 25
   },
   button: {
     backgroundColor: '#fff',

@@ -103,6 +103,7 @@ class Payment extends React.Component {
           param={{ 
             userCode, 
             data, 
+            callback: String(callback),
             isCallbackDefined,
             loading: {
               message: loading.message || '잠시만 기다려주세요...',
@@ -114,8 +115,7 @@ class Payment extends React.Component {
       );
     }
     
-    const { app_scheme } = data;
-    return <ErrorOnParams appScheme={app_scheme} message={message} />;
+    return <ErrorOnParams message={message} />;
   }
 }
 
