@@ -73,8 +73,7 @@ class Payment extends React.Component {
     const { callback } = this.props;
     const { query } = queryString.parseUrl(url);
     
-    const newQuery = { ...query, success: false };
-    callback(newQuery);
+    callback(query);
   }
 
   getCustomLoadingImage() {

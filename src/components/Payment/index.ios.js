@@ -119,7 +119,7 @@ class Payment extends React.Component {
   onMessage = (e) => { // PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 
     const { callback } = this.props;
     const response = JSON.parse(e.nativeEvent.data);
-
+    
     callback(response);
   }
 
@@ -145,32 +145,37 @@ class Payment extends React.Component {
     const { status } = this.state;
     if (status === 'sent') {
       const { url, query } = queryString.parseUrl(e.url);
-      const { data } = this.props;
+      const { data, callback } = this.props;
       const { pg, m_redirect_url } = data;
       
       // 웹뷰를 로드하는데 실패하는 경우를 대비해 (필요한 앱이 설치되지 않은 경우 등)
       // app scheme값을 갖고 있는다
       const splittedScheme = url.split('://');
       const scheme = splittedScheme[0];
-      console.log(e.url);
       if (scheme !== 'http' && scheme !== 'https' && scheme !== 'about:blank') {
         this.setState({ 
-          // marketUrl: scheme.includes('itms') ? `https://${splittedScheme[1]}` :  MARKET_URL[scheme] 
           marketUrl: scheme === 'itmss' ? `https://${splittedScheme[1]}` :  MARKET_URL[scheme] 
         });
       }
 
       // callback을 지원하지 않는 PG사의 경우를 대비해 
       // url을 기준으로 callback을 강제로 실행시킨다
-      const matchedUrl = m_redirect_url ? m_redirect_url : 'https://service.iamport.kr/payments/fail';
-      if (url.includes(matchedUrl) && CALLBACK_AVAILABLE_PG.indexOf(pg) === -1) { // in case of not supporting callback
-        const { callback } = this.props;
-        const newQuery = { ...query, success: false };
-        callback(newQuery);
+      if (this.isUrlMatchingWithIamportUrl(url) && CALLBACK_AVAILABLE_PG.indexOf(pg) === -1) { // in case of not supporting callback
+        callback(query);
         
         this.setState({ status: 'done' });
       }
     } 
+  }
+
+  isUrlMatchingWithIamportUrl(url) {
+    const { data } = this.props;
+    const { m_redirect_url } = data;
+
+    if (m_redirect_url) return url.includes(m_redirect_url);
+    if (url.includes('https://service.iamport.kr/payments/fail')) return true;
+    if (url.includes('https://service.iamport.kr/payments/success')) return true;
+    return false;
   }
 
   render() {
