@@ -28,20 +28,23 @@ public class IamportWebViewClient extends WebViewClient {
   private String userCode;
   private boolean isCallbackDefined;
   private ReadableMap data;
+  private String callback;
   protected String appScheme;
   private ReadableMap loading;
 
   private Boolean loadingFinished = false;
 
-  private static final String DEFAULT_REDIRECT_URL = "https://service.iamport.kr";
+  private static final String DEFAULT_REDIRECT_URL_WHEN_SUCCESS = "https://service.iamport.kr/payments/fail";
+  private static final String DEFAULT_REDIRECT_URL_WHEN_FAILURE = "https://service.iamport.kr/payments/success";
 
   public IamportWebViewClient(ThemedReactContext reactContext, Activity activity, ReadableMap param) {
     this.reactContext = reactContext;
     this.activity = activity;
-    
+
     userCode = param.getString("userCode");
     isCallbackDefined = param.getBoolean("isCallbackDefined");
     data = param.getMap("data");
+    callback = param.getString("callback");
     appScheme = data.getString("app_scheme");
     loading = param.getMap("loading");
   }
@@ -81,7 +84,7 @@ public class IamportWebViewClient extends WebViewClient {
       setCustomLoadingPage(view);
 
       view.evaluateJavascript("IMP.init('" + userCode + "');", null);
-      view.evaluateJavascript("IMP.request_pay(" + toJSONObject(data) + ");", null);
+      view.evaluateJavascript("IMP.request_pay(" + toJSONObject(data) + ", " + callback + ");", null);
 
       loadingFinished = true;
     }
@@ -134,18 +137,23 @@ public class IamportWebViewClient extends WebViewClient {
 
   /* url이 m_redirect_url로 시작하는지 체크 */
   private boolean isUrlStartsWithRedirectUrl(String url) {
-    Boolean isRedirectUrlDefined = data.hasKey("m_redirect_url");
-    String redirectUrl = DEFAULT_REDIRECT_URL;
-    if (isRedirectUrlDefined) redirectUrl = data.getString("m_redirect_url");
-
-    if (url.startsWith(redirectUrl)) { // 결제시도가 종료된 경우
-      if (isCallbackDefined) { // 콜백이 설정되었으면, 리액트 네이티브로 event dispatch
-        reactContext
-          .getJSModule(RCTDeviceEventEmitter.class)
-          .emit("message", url);
-      }
+    if (isPaymentOver(url) && isCallbackDefined) { // 결제시도가 종료된 후, 콜백이 설정되었으면, 리액트 네이티브로 event dispatch
+      reactContext
+        .getJSModule(RCTDeviceEventEmitter.class)
+        .emit("message", url);
       return true;
     }
+
+    return false;
+  }
+
+  /* m_redirect_url값과 현재 url을 비교해, 결제가 종료되었는지 여부를 판단한다 */
+  private boolean isPaymentOver(String url) {
+    Boolean isRedirectUrlDefined = data.hasKey("m_redirect_url");
+    String redirectUrl = data.getString("m_redirect_url");
+    if (isRedirectUrlDefined && !redirectUrl.isEmpty()) {
+      if (url.startsWith(redirectUrl)) return true;
+    } else if (url.startsWith(DEFAULT_REDIRECT_URL_WHEN_FAILURE) || url.startsWith(DEFAULT_REDIRECT_URL_WHEN_SUCCESS)) return true;
 
     return false;
   }
