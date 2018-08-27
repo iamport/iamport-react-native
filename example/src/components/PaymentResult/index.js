@@ -14,7 +14,7 @@ class PaymentResult extends React.Component {
     const { navigation } = this.props;
     const { title, failure, success } = result;
 
-    if (paymentResult === 'true') {
+    if (paymentResult === 'true' || paymentResult === true) {
       return (
         <Text style={title}>
           <Text style={success}>🎉 </Text>

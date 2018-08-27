@@ -69,10 +69,15 @@ class Payment extends React.Component {
     DeviceEventEmitter.removeAllListeners('message');
   }
 
-  onMessage = (url) => {
+  onMessage = (callbackUrl) => {
     const { callback } = this.props;
-    const { query } = queryString.parseUrl(url);
+    const { url, query } = queryString.parseUrl(callbackUrl);
     
+    /* 신한/현대 앱카드 대비 */
+    const queryKeys = Object.keys(query);
+    if (queryKeys.indexOf('success') === -1 && queryKeys.indexOf('imp_success') === -1) {
+      query['success'] = !(url.indexOf('success') === -1);
+    }
     callback(query);
   }
 
