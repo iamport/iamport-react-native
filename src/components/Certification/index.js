@@ -8,8 +8,6 @@ import ErrorOnParams from '../ErrorOnParams';
 
 import { validateProps } from '../../utils';
 
-const source = require('../../html/certification.html');
-
 class Certification extends React.Component {
   static propTypes = {
     userCode: PropTypes.string.isRequired,
@@ -92,6 +90,7 @@ class Certification extends React.Component {
 
   render() {
     const { userCode } = this.props;
+    const source = Platform.OS === 'android' ? {uri: "file:///android_asset/html/certification.html"} : require('../../html/certification.html');
 
     if (userCode) {
       return (
