@@ -9,7 +9,6 @@ import ErrorOnParams from '../ErrorOnParams';
 import { validateProps } from '../../utils';
 import { 
   PG, 
-  REDIRECT_NEEDED_PG,
   CALLBACK_AVAILABLE_PG, 
   PAY_METHOD, 
   CURRENCY, 

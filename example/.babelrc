@@ -6,7 +6,7 @@
       "extensions": [".ios.js", ".android.js", ".js", ".json"],
       "alias": {
         "test": "./test",
-        "underscore": "lodash",
+        "underscore": "lodash"
       }
     }]
   ]
