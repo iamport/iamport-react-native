@@ -1,12 +1,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { WebView } from 'react-native';
+import { WebView, Platform } from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 import ErrorOnParams from '../ErrorOnParams';
-
-import { validateProps } from '../../utils';
 
 class Certification extends React.Component {
   static propTypes = {
@@ -90,7 +88,7 @@ class Certification extends React.Component {
 
   render() {
     const { userCode } = this.props;
-    const source = Platform.OS === 'android' ? {uri: "file:///android_asset/html/certification.html"} : require('../../html/certification.html');
+    const source = Platform.OS === 'android' && __DEV__ ? { uri: 'file:///android_asset/html/certification.html' } : require('../../html/certification.html'); // https://github.com/facebook/react-native/issues/505
 
     if (userCode) {
       return (
