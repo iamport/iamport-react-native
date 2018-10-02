@@ -32,6 +32,7 @@ class Payment extends React.Component {
       buyer_postcode: navigation.getParam('buyer_postcode'),
       merchant_uid: navigation.getParam('merchant_uid'),
       m_redirect_url: navigation.getParam('m_redirect_url'),
+      custom_data: { 'hello': 'world' }
     };
 
     /* 가상계좌의 경우, 입금기한 추가 */
