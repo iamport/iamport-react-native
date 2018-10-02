@@ -120,6 +120,12 @@ public class IamportWebViewClient extends WebViewClient {
           case String:
             jsonObject.put(key, data.getString(key));
             break;
+          case Map: // nested object recursive하게 처리
+            jsonObject.put(key, toJSONObject(data.getMap(key)));
+            break;
+          default :
+            jsonObject.put(key, data.getMap(key));
+            break;
         }
       }
     } catch(JSONException e) {
