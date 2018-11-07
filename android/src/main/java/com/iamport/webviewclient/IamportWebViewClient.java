@@ -156,11 +156,14 @@ public class IamportWebViewClient extends WebViewClient {
   /* m_redirect_url값과 현재 url을 비교해, 결제가 종료되었는지 여부를 판단한다 */
   private boolean isPaymentOver(String url) {
     Boolean isRedirectUrlDefined = data.hasKey("m_redirect_url");
-    String redirectUrl = data.getString("m_redirect_url");
-    if (isRedirectUrlDefined && !redirectUrl.isEmpty()) {
-      if (url.startsWith(redirectUrl)) return true;
-    } else if (url.startsWith(DEFAULT_REDIRECT_URL_WHEN_FAILURE) || url.startsWith(DEFAULT_REDIRECT_URL_WHEN_SUCCESS)) return true;
-
+    if (isRedirectUrlDefined) { 
+      String redirectUrl = data.getString("m_redirect_url");
+      if (!redirectUrl.isEmpty()) {
+        if (url.startsWith(redirectUrl)) return true;
+        return false;
+      } 
+    }
+    if (url.startsWith(DEFAULT_REDIRECT_URL_WHEN_FAILURE) || url.startsWith(DEFAULT_REDIRECT_URL_WHEN_SUCCESS)) return true;
     return false;
   }
 
