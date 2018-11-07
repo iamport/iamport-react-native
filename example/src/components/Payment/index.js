@@ -1,7 +1,6 @@
 
 import React from 'react';
 import IMP from 'iamport-react-native';
-import { View, Text } from 'react-native';
 
 import { getUserCode } from 'utils';
 

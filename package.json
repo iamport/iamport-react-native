@@ -17,6 +17,7 @@
     "react-native": "^0.41.2"
   },
   "dependencies": {
+    "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
     "react": "^16.4.2"
   }

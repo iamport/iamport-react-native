@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "node node_modules/react-native/local-cli/cli.js start -- --reset-cache",
     "test": "jest"
   },
   "dependencies": {
-    "iapmort-react-native": "git+https://github.com/iamport/iamport-react-native.git#feature/merge-android-n-ios",
+    "iamport-react-native": "git+https://github.com/iamport/iamport-react-native.git#feature/merge-android-n-ios",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-svg": "^6.5.2",
