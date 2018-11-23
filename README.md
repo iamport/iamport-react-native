@@ -10,11 +10,11 @@
 
 ## 버전 정보
 - [v0.8.0](https://github.com/iamport/iamport-react-native/tree/v0.8.0)
-  - stable 버전으로 안드로이드만 지원합니다.
+  - 안드로이드만 지원합니다.
   - 일반/정기결제 기능만 제공합니다.
 
 - [v1.0.0](https://github.com/iamport/iamport-react-native/tree/master) 
-  - beta 버전으로 안드로이드와 IOS 모두 지원합니다. 현재 정식 버전으로 패치를 위한 테스트를 진행 중입니다.
+  - 안드로이드와 IOS 모두 지원합니다.
   - 일반/정기결제 및 휴대폰 본인인증 기능을 제공합니다.
 
 
