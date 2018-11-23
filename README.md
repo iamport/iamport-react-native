@@ -205,7 +205,7 @@
 
   class App extends React.Component {
     callback = (response) => { 
-      // 결제 성공/실패 여부에 따라 콜백처리
+      /* response에 따라 결제 성공/실패시 로직 작성 */
     }
 
     render() {
@@ -230,7 +230,7 @@
           callback={this.callback} // 결제 종료 후 콜백
           loading={{
             message: '잠시만 기다려주세요...', // 로딩화면 메시지 
-            image: require('img/iamport-logo.png') // 로딩화면 이미지
+            image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
           }}
         />
       );
@@ -256,7 +256,7 @@
 
   class App extends React.Component {
     callback = (response) => { 
-      // 결제 성공/실패 여부에 따라 콜백처리
+      /* response에 따라 본인인증 성공/실패시 로직 작성 */
     }
 
     render() {
@@ -272,7 +272,7 @@
           callback={this.callback} // 본인인증 종료 후 콜백
           loading={{
             message: '잠시만 기다려주세요...', // 로딩화면 메시지 
-            image: require('img/iamport-logo.png') // 로딩화면 이미지
+            image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
           }}
         />
       );
