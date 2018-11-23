@@ -13,7 +13,7 @@
   - 안드로이드만 지원합니다.
   - 일반/정기결제 기능만 제공합니다.
 
-- [v1.0.0](https://github.com/iamport/iamport-react-native/tree/master) 
+- [v1.0.1](https://github.com/iamport/iamport-react-native/tree/master) 
   - 안드로이드와 IOS 모두 지원합니다.
   - 일반/정기결제 및 휴대폰 본인인증 기능을 제공합니다.
 
