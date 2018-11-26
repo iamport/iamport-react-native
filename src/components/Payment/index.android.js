@@ -48,6 +48,7 @@ class Payment extends React.Component {
       vbank_due: PropTypes.string,
       m_redirect_url: PropTypes.string,
       popup: PropTypes.bool,
+      digital: PropTypes.bool,
     }),
     callback: PropTypes.func.isRequired,
     loading: PropTypes.shape({
@@ -96,6 +97,22 @@ class Payment extends React.Component {
     return '../img/iamport-logo.png';
   }
 
+  triggerCallback = (response) => { // 콜백을 지원하는 PG사의 경우, 결제 시도 종료 후 해당 함수가 트리거된다
+    const { success, imp_uid, merchant_uid } = response;
+    const BASE_URL = 'https://service.iamport.kr/payments';
+    let path = '';
+    let query = `imp_success=${success}&imp_uid=${imp_uid}&merchant_uid=${merchant_uid}`;
+    if (success) {
+      path = 'success';
+    } else {
+      const { err_msg } = response;
+      path = 'fail'
+      query += `&err_msg=${err_msg}`;
+    }
+
+    location.href = `${BASE_URL}/${path}?${query}`;
+  }
+
   render() {
     const { webView, container, text, button } = styles;
     const { userCode, data, callback, loading } = this.props;
@@ -109,11 +126,12 @@ class Payment extends React.Component {
             userCode, 
             data, 
             callback: String(callback),
+            triggerCallback: String(this.triggerCallback),
             isCallbackDefined,
             loading: {
               message: loading.message || '잠시만 기다려주세요...',
               image: this.getCustomLoadingImage()
-            }
+            },
           }}
           style={webView} 
         />

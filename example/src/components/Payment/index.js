@@ -85,6 +85,10 @@ class Payment extends React.Component {
         }
       }];
     }
+
+    if (pay_method === 'phone') {
+      data['digital'] = false;
+    }
     
     return (
       <IMP.Payment 

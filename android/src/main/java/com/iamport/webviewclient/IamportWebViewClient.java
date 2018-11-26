@@ -29,6 +29,7 @@ public class IamportWebViewClient extends WebViewClient {
   private boolean isCallbackDefined;
   private ReadableMap data;
   private String callback;
+  private String triggerCallback;
   protected String appScheme;
   private ReadableMap loading;
 
@@ -45,6 +46,7 @@ public class IamportWebViewClient extends WebViewClient {
     isCallbackDefined = param.getBoolean("isCallbackDefined");
     data = param.getMap("data");
     callback = param.getString("callback");
+    triggerCallback = param.getString("triggerCallback");
     appScheme = data.getString("app_scheme");
     loading = param.getMap("loading");
   }
@@ -82,9 +84,9 @@ public class IamportWebViewClient extends WebViewClient {
   public void onPageFinished(WebView view, String url) {
     if (!loadingFinished && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { // 무한루프 방지
       setCustomLoadingPage(view);
-
+      
       view.evaluateJavascript("IMP.init('" + userCode + "');", null);
-      view.evaluateJavascript("IMP.request_pay(" + toJSONObject(data) + ", " + callback + ");", null);
+      view.evaluateJavascript("IMP.request_pay(" + toJSONObject(data) + ", " + triggerCallback + ");", null);
 
       loadingFinished = true;
     }
