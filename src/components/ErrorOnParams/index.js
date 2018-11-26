@@ -5,20 +5,20 @@ import {
   View, 
   Image, 
   Text, 
-  TouchableOpacity, 
+  // TouchableOpacity, 
   StyleSheet, 
 } from 'react-native';
 
 const logo = require('../../img/iamport-logo.png');
 
 class ErrorOnParams extends React.Component {
-  static PropTypes = {
+  static propTypes = {
     message: PropTypes.string,
   }
 
   render() {
     const { message } = this.props;
-    const { container, img, text, button } = styles;
+    const { container, img, text/*, button*/ } = styles;
 
     return (
       <View style={container}>
