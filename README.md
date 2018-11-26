@@ -9,13 +9,16 @@
 
 
 ## 버전 정보
+- [v1.0.2](https://github.com/iamport/iamport-react-native/tree/master) 
+  - 다날, 카카오페이, 모빌리언스 등 콜백 지원 PG에 대해 결제시도 완료 후 콜백이 트리거 되지 않는 이슈를 해결하였습니다.
+
+- [v1.0.1](https://github.com/iamport/iamport-react-native/tree/v1.0.1) 
+  - 안드로이드와 IOS 모두 지원합니다.
+  - 일반/정기결제 및 휴대폰 본인인증 기능을 제공합니다.
+
 - [v0.8.0](https://github.com/iamport/iamport-react-native/tree/v0.8.0)
   - 안드로이드만 지원합니다.
   - 일반/정기결제 기능만 제공합니다.
-
-- [v1.0.1](https://github.com/iamport/iamport-react-native/tree/master) 
-  - 안드로이드와 IOS 모두 지원합니다.
-  - 일반/정기결제 및 휴대폰 본인인증 기능을 제공합니다.
 
 
 
