@@ -105,9 +105,9 @@ class Payment extends React.Component {
     if (success) {
       path = 'success';
     } else {
-      const { err_msg } = response;
+      const { error_msg } = response;
       path = 'fail'
-      query += `&err_msg=${err_msg}`;
+      query += `&error_msg=${error_msg}`;
     }
 
     location.href = `${BASE_URL}/${path}?${query}`;
