@@ -53,7 +53,6 @@ public class IamportWebViewClient extends WebViewClient {
   public boolean shouldOverrideUrlLoading(WebView view, String url) {
     Log.i("url", url);
 
-    if (isUrlStartsWithProtocol(url)) return false;
     if (isPaymentOver(url)) { // 결제시도가 종료된 후, 콜백이 설정되었으면, 리액트 네이티브로 event dispatch
       reactContext
         .getJSModule(RCTDeviceEventEmitter.class)
@@ -61,6 +60,7 @@ public class IamportWebViewClient extends WebViewClient {
 
       return false;
     }
+    if (isUrlStartsWithProtocol(url)) return false;
 
     Intent intent = null;
     try {
