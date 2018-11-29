@@ -9,7 +9,10 @@
 
 
 ## 버전 정보
-- [v1.0.2](https://github.com/iamport/iamport-react-native/tree/master) 
+- [v1.0.3](https://github.com/iamport/iamport-react-native/tree/master)
+  - 콜백 함수를 필수입력으로 설정하였습니다.
+
+- [v1.0.2](https://github.com/iamport/iamport-react-native/tree/v1.0.2) 
   - 다날, 카카오페이, 모빌리언스 등 콜백 지원 PG에 대해 결제시도 완료 후 콜백이 트리거 되지 않는 이슈를 해결하였습니다.
 
 - [v1.0.1](https://github.com/iamport/iamport-react-native/tree/v1.0.1) 
@@ -339,12 +342,12 @@ callback = (response) => {
 #### 3. 결과에 따라 로직 작성하기
 callback 함수의 첫번째 인자(response)는 결제/본인인증 결과를 담고 있는 오브젝트로 아래와 같이 구성되어 있습니다.
 
-| key           |  Description            | 
-| ------------- | ----------------------- | 
-| success       | 결제성공 여부              |
-| imp_uid       | 아임포트 번호              |
-| merchant_uid  | 주문번호                  |
-| error_msg     | 결제가 실패한 경우, 에러메시지 |
+| key           |  Description       | 
+| ------------- | ------------------ | 
+| success       | 성공 여부            |
+| imp_uid       | 아임포트 번호         |
+| merchant_uid  | 주문번호             |
+| error_msg     | 실패한 경우, 에러메시지  |
 
 response에 따라 결제/본인인증 성공/실패 여부를 판단해 아래와 같이 각기 다른 로직을 구성할 수 있습니다.
 
