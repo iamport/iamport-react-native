@@ -11,7 +11,7 @@ class Payment extends React.Component {
 
   callback = (response) => {
     const { navigation } = this.props;
-    navigation.push('PaymentResult', response);
+    navigation.replace('PaymentResult', response);
   }
 
   render() {

@@ -79,7 +79,10 @@ class Payment extends React.Component {
     if (queryKeys.indexOf('success') === -1 && queryKeys.indexOf('imp_success') === -1) {
       query['success'] = !(url.indexOf('success') === -1);
     }
-    callback(query);
+
+    if (typeof callback === 'function') {
+      callback(query);
+    }
   }
 
   getCustomLoadingImage() {
@@ -101,7 +104,7 @@ class Payment extends React.Component {
     const { success, imp_uid, merchant_uid } = response;
     const BASE_URL = 'https://service.iamport.kr/payments';
     let path = '';
-    let query = `imp_success=${success}&imp_uid=${imp_uid}&merchant_uid=${merchant_uid}`;
+    let query = `success=${success}&imp_uid=${imp_uid}&merchant_uid=${merchant_uid}`;
     if (success) {
       path = 'success';
     } else {
@@ -114,7 +117,7 @@ class Payment extends React.Component {
   }
 
   render() {
-    const { webView, container, text, button } = styles;
+    const { webView } = styles;
     const { userCode, data, callback, loading } = this.props;
 
     const { validate, message } = validateProps(userCode, data);

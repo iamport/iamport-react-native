@@ -26,14 +26,14 @@
 아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다.
 
 ```
-  $ npm install iamport-react-native --save
+$ npm install iamport-react-native --save
 ```
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.
 
 ```
-  $ npm install -g react-native-cli
-  $ react-native link iamport-react-native
+$ npm install -g react-native-cli
+$ react-native link iamport-react-native
 ```
 
 성공적으로 마쳤을 경우, 아래와 같은 화면을 보실 수 있습니다.
@@ -54,38 +54,38 @@
 
 1. `android/app/src/main/java/[...]/MainApplication.java` 파일을 열어 아래 코드를 추가합니다.
   ```java
-    import com.iamport.IamportPackage; // 아임포트 패키지를 불러옵니다.
+  import com.iamport.IamportPackage; // 아임포트 패키지를 불러옵니다.
 
-    ...
+  ...
 
-    @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new IamportPackage() // 아임포트 패키지를 추가합니다.
-      );
-    }
+  @Override
+  protected List<ReactPackage> getPackages() {
+    return Arrays.<ReactPackage>asList(
+        new MainReactPackage(),
+          new IamportPackage() // 아임포트 패키지를 추가합니다.
+    );
+  }
   ```
 
 2. `android/settings.gradle` 파일을 열고 아래 코드를 추가합니다.
   ```java
-    ...
+  ...
 
-    include ':iamport-react-native'
-    project(':iamport-react-native').projectDir = new File(rootProject.projectDir,  '../node_modules/iamport-react-native/android')
+  include ':iamport-react-native'
+  project(':iamport-react-native').projectDir = new File(rootProject.projectDir,  '../node_modules/iamport-react-native/android')
 
-    ...
+  ...
   ```
 
 3. `android/app/build.gradle` 파일을 열고 아래 코드를 추가합니다.
   ```java
-    dependencies {
-        ...
+  dependencies {
+    ...
 
-        compile project(':iamport-react-native')
+    compile project(':iamport-react-native')
 
-        ...
-    }
+    ...
+  }
   ```
 
 
@@ -103,7 +103,7 @@
 3rd party앱(예) 간편결제 앱)을 실행할 수 있도록 외부 앱 리스트를 등록해야합니다. 
 1. `[프로젝트 폴더]/ios/[프로젝트 이름]/info.plist` 파일을 오픈합니다.
 2. [LSApplicationQueriesSchemes](https://developer.apple.com/library/content/documentation/General/Reference/InfoPlistKeyReference/Articles/LaunchServicesKeys.html#//apple_ref/doc/uid/TP40009250-SW14)속성을 추가하고 아래에 외부 앱 리스트를 등록합니다.
-```javascript
+```html
 <key>LSApplicationQueriesSchemes</key>
 <array>
   <string>kakao0123456789abcdefghijklmn</string>
@@ -150,7 +150,7 @@
 2. `App Transport Security` 속성을 추가합니다.
 3. 하부 속성에 `Allow Arbitrary Loads in Web Content`,`Allow Arbitrary Loads` 속성을 추가하고 각각의 값(value)을 `YES`로 변경합니다.
 4. 설정된 결과는 아래와 같습니다.
-```javascript
+```html
 <key>NSAppTransportSecurity</key>
 <dict>
   <key>NSAllowsArbitraryLoadsInWebContent</key>
@@ -174,9 +174,9 @@
 ##### 2. Emulator
   - 아래 명령어를 입력해 IOS emulator를 실행시켜 아임포트 모듈 결제테스트를 진행하실 수 있습니다.
   ```
-    $ cd [...]/node_modules/iamport-react-native/example
-    $ npm install
-    $ react-native run-ios
+  $ cd [...]/node_modules/iamport-react-native/example
+  $ npm install
+  $ react-native run-ios
   ```
 
 #### 안드로이드
@@ -201,88 +201,97 @@
 ![](src/img/ios-emulator-payment.png)
 ![](src/img/ios-emulator-certification.png)
 
+
+
 ## 일반/정기결제 사용예제
 ```javascript
-  import React from 'react';
-  import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
+import React from 'react';
+import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
 
-  class App extends React.Component {
-    callback = (response) => { 
-      /* response에 따라 결제 성공/실패시 로직 작성 */
-    }
+class App extends React.Component {
+  callback = (response) => { /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
+    const { navigation } = this.props;
+    navigation.replace('PaymentResult', response);
+  };
 
-    render() {
-      const data = {
-        pg: 'html5_inicis',
-        pay_method: 'card',
-        name: '아임포트 결제데이터 분석',
-        merchant_uid: `mid_${new Date().getTime()}`,
-        amount: '1000',
-        buyer_name: '홍길동',
-        buyer_tel: '01012345678',
-        buyer_email: 'example@naver.com',
-        buyer_addr: '서울시 강남구 신사동 661-16',
-        buyer_postcode: '06018',
-        app_scheme: 'example'
-      };
+  render() {
+    /* [필수입력] 결제에 필요한 데이터를 입력합니다. */
+    const data = {
+      pg: 'html5_inicis',
+      pay_method: 'card',
+      name: '아임포트 결제데이터 분석',
+      merchant_uid: `mid_${new Date().getTime()}`,
+      amount: '39000',
+      buyer_name: '홍길동',
+      buyer_tel: '01012345678',
+      buyer_email: 'example@naver.com',
+      buyer_addr: '서울시 강남구 신사동 661-16',
+      buyer_postcode: '06018',
+      app_scheme: 'example'
+    };
 
-      return (
-        <IMP.Payment
-          userCode={'iamport'} // 가맹점 식별코드
-          data={data} // 결제 데이터
-          callback={this.callback} // 결제 종료 후 콜백
-          loading={{
-            message: '잠시만 기다려주세요...', // 로딩화면 메시지 
-            image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
-          }}
-        />
-      );
-    }
+    return (
+      <IMP.Payment
+        userCode={'iamport'} // 가맹점 식별코드
+        data={data} // 결제 데이터
+        callback={this.callback} // 결제 종료 후 콜백
+        loading={{
+          message: '잠시만 기다려주세요...', // 로딩화면 메시지 
+          image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
+        }}
+      />
+    );
   }
+}
 
-  export default App;
+export default App;
 ```
 
 | Prop          | Type          |  Description                                                | Default             | Required   |
 | ------------- | ------------- | ----------------------------------------------------------- | ------------------- | ---------- |
 | userCode      | string        | 가맹점 식별코드                                                 | undefined           | true       |
 | data          | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | undefined           | true       |
-| callback      | function      | 결제 후 실행 될 함수                                            | undefined           | true       |
+| callback      | function      | 결제 후 실행 될 함수 [자세히보기](#callback)                       | undefined           | true       |
 | loading       | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지                          |                     | false      |
 | - message     | string        | 로딩화면 메시지                                                 | 잠시만 기다려주세요...    | false      |
 | - image       |               | 로딩화면 이미지(url도 가능)                                       | 아임포트 로고 이미지     | false      |
 
+
+
+
 ## 휴대폰 본인인증 사용예제
 ```javascript
-  import React from 'react';
-  import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
+import React from 'react';
+import IMP from 'iamport-react-native'; // 아임포트 본인인증 모듈을 불러옵니다.
 
-  class App extends React.Component {
-    callback = (response) => { 
-      /* response에 따라 본인인증 성공/실패시 로직 작성 */
-    }
+class App extends React.Component {
+  callback = (response) => { /* [필수입력] 본인인증 종료 후, 라우터를 변경하고 결과를 전달합니다. */
+    const { navigation } = this.props;
+    navigation.replace('CertificationResult', response);
+  };
 
-    render() {
-      const data = {
-        merchant_uid: `mid_${new Date().getTime()}`,
-        min_age: '',
-      };
+  render() {
+    /* [필수입력] 본인인증에 필요한 데이터를 입력합니다. */
+    const data = {
+      merchant_uid: `mid_${new Date().getTime()}`,
+      min_age: '',
+    };
 
-      return (
-        <IMP.Certification
-          userCode={'iamport'} // 가맹점 식별코드
-          data={data} // 본인인증 데이터
-          callback={this.callback} // 본인인증 종료 후 콜백
-          loading={{
-            message: '잠시만 기다려주세요...', // 로딩화면 메시지 
-            image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
-          }}
-        />
-      );
-    }
+    return (
+      <IMP.Certification
+        userCode={'iamport'} // 가맹점 식별코드
+        data={data} // 본인인증 데이터
+        callback={this.callback} // 본인인증 종료 후 콜백
+        loading={{
+          message: '잠시만 기다려주세요...', // 로딩화면 메시지 
+          image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
+        }}
+      />
+    );
   }
+}
 
-  export default App;
+export default App;
 ```
 
 | Prop          | Type          |  Description                       | Default             | Required   |
@@ -295,5 +304,89 @@
 | loading       | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지  |                     | false      |
 | - message     | string        | 로딩화면 메시지                        | 잠시만 기다려주세요...   | false      |
 | - image       |               | 로딩화면 이미지(url도 가능)              | 아임포트 로고 이미지     | false      |
+
+
+
+## Callback 함수
+#### 1. Callback는 필수입력
+callback 함수는 필수입력 필드로, 결제/본인인증 완료 후 실패/성공 여부에 맞게 로직을 작성할 수 있습니다.
+<b>callback 함수를 설정하지 않으면, 결제/본인인증 완료 후 아래와 같이 아임포트가 기본적으로 제공하는 페이지(PG사에 따라 로딩화면이 보여지는 경우도 있음)로 넘어가게 됩니다.</b>
+따라서 <span style="color: #f5222d">반드시 callback 함수를 설정</span>해주어야 합니다.
+
+![](src/img/without-callback.png)
+
+
+#### 2. Callback 함수 설정하기
+결제/본인인증 완료 후 [react-navigation](https://github.com/react-navigation/react-navigation)를 통해 라우터를 변경하는 경우, 아래와 같이 [push 함수](https://reactnavigation.org/docs/en/stack-actions.html#push)가 아닌 [replace 함수](https://reactnavigation.org/docs/en/stack-actions.html#replace)를 사용해야 합니다.
+push 함수를 사용할 경우, 결제 완료 후 라우터가 변경되더라도 유저가 뒤로가기를 했을 경우 아임포트 모듈이 다시 렌더링됩니다. 하지만 replace 함수를 사용하면, 결제 완료 후 라우터가 변경되고 유저가 뒤로가기를 하면 원래 결제화면으로 넘어가게 됩니다.
+
+### 잘못된 사용 예제
+```javascript
+callback = (response) => {
+  const { navigation } = this.props;
+  navigation.push('Result', response); // [에러] push 함수 사용
+};
+```
+
+### 올바른 사용 예제
+```javascript
+callback = (response) => {
+  const { navigation } = this.props;
+  navigation.replace('Result', response);
+};
+```
+
+#### 3. 결과에 따라 로직 작성하기
+callback 함수의 첫번째 인자(response)는 결제/본인인증 결과를 담고 있는 오브젝트로 아래와 같이 구성되어 있습니다.
+
+| key           |  Description            | 
+| ------------- | ----------------------- | 
+| success       | 결제성공 여부              |
+| imp_uid       | 아임포트 번호              |
+| merchant_uid  | 주문번호                  |
+| error_msg     | 결제가 실패한 경우, 에러메시지 |
+
+response에 따라 결제/본인인증 성공/실패 여부를 판단해 아래와 같이 각기 다른 로직을 구성할 수 있습니다.
+
+```javascript
+// Result.js
+...
+render() {
+  const { navigation } = this.props;
+  const success = navigation.getParam('success');
+  const imp_uid = navigation.getParma('imp_uid');
+  const merchant_uid = navigation.getParma('merchant_uid');
+  
+  return (
+    <View style={container}>
+      <Text>{`결제/본인인증에 ${success ? '성공' : '실패'}하였습니다.`}</Text>
+      <View style={table}>
+        <View style={row}>
+          <Text style={name}>아임포트 번호</Text>
+          <Text style={value}>{imp_uid || '없음'}</Text>
+        </View>
+        <View style={row}>
+          <Text style={name}>주문 번호</Text>
+          <Text style={value}>{merchant_uid || '없음'}</Text>
+        </View>
+        {
+          !success && 
+          <View style={row}>
+            <Text style={name}>에러 메시지</Text>
+            <Text style={value}>{error_msg || '없음'}</Text>
+          </View>
+        }
+      </View>
+    </View>
+  );
+}
+...
+```
+
+위 코드는 예시일 뿐, 실제로 success값으로만 결제 성공/실패여부를 판단해서는 안됩니다. 정확한 판단을 위해서는 response의 imp_uid와 merchant_uid값으로 결제 위/변조여부를 검증해야합니다.
+자세한 내용은 [아임포트 문서](https://docs.iamport.kr/implementation/payment)의 STEP4 - 5를 참조하세요.
+
+
+
 
 

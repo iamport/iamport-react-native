@@ -3,7 +3,6 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 
 import { result } from 'styles';
-import { PG } from 'constants';
 
 class PaymentResult extends React.Component {
   static nativationOptions = {
@@ -11,7 +10,6 @@ class PaymentResult extends React.Component {
   }
 
   renderMessage(paymentResult) {
-    const { navigation } = this.props;
     const { title, failure, success } = result;
 
     if (paymentResult === 'true' || paymentResult === true) {
@@ -34,7 +32,7 @@ class PaymentResult extends React.Component {
   render() {
     const { navigation } = this.props;
     const success = navigation.getParam('success');
-    const type = navigation.getParam('type');
+
     const imp_uid = navigation.getParam('imp_uid');
     const merchant_uid = navigation.getParam('merchant_uid');
     const error_msg = navigation.getParam('error_msg');

@@ -10,7 +10,7 @@ class Certification extends React.Component {
 
   callback = (response) => {
     const { navigation } = this.props;
-    navigation.push('CertificationResult', response);
+    navigation.replace('CertificationResult', response);
   }
 
   render() {

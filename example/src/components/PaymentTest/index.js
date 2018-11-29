@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 
-import Dropdown from 'components/Dropdown';
 import PgPicker from 'components/PgPicker';
 import PayMethodPicker from 'components/PayMethodPicker';
 
@@ -22,7 +21,7 @@ const logo = require('img/iamport-text-logo.svg');
 class PaymentTest extends React.Component {
   static nativationOptions = {
     title: 'PaymentTest'
-  }
+  };
 
   state = {
     pgPicker: false,
@@ -39,7 +38,7 @@ class PaymentTest extends React.Component {
     buyer_postcode: '06018',
     vbank_due: getCurrentDate(),
     m_redirect_url: 'https://service.iamport.kr',
-  }
+  };
 
   onPressPayment = () => { // 결제하기 눌렀을떄 
     const { 
@@ -74,7 +73,7 @@ class PaymentTest extends React.Component {
 
     const { navigation } = this.props;
     navigation.push('Payment', param);
-  }
+  };
 
   onChangePg = (pg) => {
     if (pg === this.state.pg) return;
@@ -85,7 +84,7 @@ class PaymentTest extends React.Component {
       this.setState({ pay_method: Object.keys(payMethodLists)[0] });
     }
     this.setState({ pg, pgPicker: false, payMethodPicker: false, });
-  }
+  };
 
   onChangePayMethod = (pay_method) => {
     if (pay_method === this.state.pay_method) return;
@@ -97,7 +96,7 @@ class PaymentTest extends React.Component {
     if (value === this.state[type]) return;
 
     this.setState({ [type]: value });
-  }
+  };
 
   renderPaymentInfo() {
     const { container, text, input } = info;

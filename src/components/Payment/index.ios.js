@@ -119,7 +119,9 @@ class Payment extends React.Component {
     const { callback } = this.props;
     const response = JSON.parse(e.nativeEvent.data);
     
-    callback(response);
+    if (typeof callback === 'function') {
+      callback(response);
+    }
   }
 
   getInjectedJavascript() { // 웹뷰 onMessage override 방지 코드
@@ -160,7 +162,9 @@ class Payment extends React.Component {
       // callback을 지원하지 않는 PG사의 경우를 대비해 
       // url을 기준으로 callback을 강제로 실행시킨다
       if (this.isUrlMatchingWithIamportUrl(url) && CALLBACK_AVAILABLE_PG.indexOf(pg) === -1) { // in case of not supporting callback
-        callback(query);
+        if (typeof callback === 'function') {
+          callback(query);
+        }
         
         this.setState({ status: 'done' });
       }
