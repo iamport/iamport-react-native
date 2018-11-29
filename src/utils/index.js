@@ -47,17 +47,17 @@ export function validateProps(userCode, data) {
     if (popup === true) {
       return { validate: false, message: '해당 모듈에서 popup은\n페이팔 결제시 지원하지 않습니다.' };
     }
-    if (!m_redirect_url) {
-      return { validate: false, message: '해당 모듈에서 m_redirect_url은\n페이팔 결제시 필수입력입니다.' };
-    }
+    // if (!m_redirect_url) {
+    //   return { validate: false, message: '해당 모듈에서 m_redirect_url은\n페이팔 결제시 필수입력입니다.' };
+    // }
   }
   if (pg === 'naverpay' || pg === 'naverco') {
     if (naverPopupMode === true) {
       return { validate: false, message: '해당 모듈에서 popup은\n네이버 페이 결제시 지원하지 않습니다.' };
     }
-    if (!m_redirect_url) {
-      return { validate: false, message: '해당 모듈에서 m_redirect_url은\n네이버 페이 결제시 필수입력입니다.' };
-    }
+    // if (!m_redirect_url) {
+    //   return { validate: false, message: '해당 모듈에서 m_redirect_url은\n네이버 페이 결제시 필수입력입니다.' };
+    // }
   }
   if (pg === 'danal_tpay' && pay_method === 'vbank' && !biz_num) {
     return { validate: false, message: '다날-가상계좌시 biz_num은 필수입력입니다.' };

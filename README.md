@@ -230,7 +230,8 @@ class App extends React.Component {
       buyer_email: 'example@naver.com',
       buyer_addr: '서울시 강남구 신사동 661-16',
       buyer_postcode: '06018',
-      app_scheme: 'example'
+      app_scheme: 'example',
+      // [Deprecated v1.0.3]: m_redirect_url
     };
 
     return (
@@ -250,14 +251,15 @@ class App extends React.Component {
 export default App;
 ```
 
-| Prop          | Type          |  Description                                                | Default             | Required   |
-| ------------- | ------------- | ----------------------------------------------------------- | ------------------- | ---------- |
-| userCode      | string        | 가맹점 식별코드                                                 | undefined           | true       |
-| data          | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | undefined           | true       |
-| callback      | function      | 결제 후 실행 될 함수 [자세히보기](#callback)                       | undefined           | true       |
-| loading       | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지                          |                     | false      |
-| - message     | string        | 로딩화면 메시지                                                 | 잠시만 기다려주세요...    | false      |
-| - image       |               | 로딩화면 이미지(url도 가능)                                       | 아임포트 로고 이미지     | false      |
+| Prop             | Type          |  Description                                                | Default             | Required   |
+| ---------------- | ------------- | ----------------------------------------------------------- | ------------------- | ---------- |
+| userCode         | string        | 가맹점 식별코드                                                 | undefined           | true       |
+| data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | undefined           | true       |
+| - m_redirect_url | string        | [Deprecated]                                                | undefined           | false       |
+| callback         | function      | 결제 후 실행 될 함수 [자세히보기](#callback)                       | undefined           | true       |
+| loading          | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지                          |                     | false      |
+| - message        | string        | 로딩화면 메시지                                                 | 잠시만 기다려주세요...    | false      |
+| - image          |               | 로딩화면 이미지(url도 가능)                                       | 아임포트 로고 이미지     | false      |
 
 
 

@@ -10,6 +10,7 @@ class Payment extends React.Component {
   }
 
   callback = (response) => {
+    console.log(response);
     const { navigation } = this.props;
     navigation.replace('PaymentResult', response);
   }
@@ -30,7 +31,6 @@ class Payment extends React.Component {
       buyer_addr: navigation.getParam('buyer_addr'),
       buyer_postcode: navigation.getParam('buyer_postcode'),
       merchant_uid: navigation.getParam('merchant_uid'),
-      m_redirect_url: navigation.getParam('m_redirect_url'),
       custom_data: { 'hello': 'world' }
     };
 

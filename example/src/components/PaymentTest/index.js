@@ -37,7 +37,6 @@ class PaymentTest extends React.Component {
     buyer_addr: '서울시 강남구 신사동 661-16',
     buyer_postcode: '06018',
     vbank_due: getCurrentDate(),
-    m_redirect_url: '',
   };
 
   onPressPayment = () => { // 결제하기 눌렀을떄 
@@ -53,7 +52,6 @@ class PaymentTest extends React.Component {
       buyer_addr,
       buyer_postcode,
       vbank_due,
-      m_redirect_url,
     } = this.state;
 
     const param = {
@@ -68,7 +66,6 @@ class PaymentTest extends React.Component {
       buyer_addr,
       buyer_postcode,
       vbank_due,
-      m_redirect_url,
     };
 
     const { navigation } = this.props;

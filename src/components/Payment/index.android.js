@@ -46,7 +46,6 @@ class Payment extends React.Component {
       buyer_postcode: PropTypes.string,
       custom_data: PropTypes.object,
       vbank_due: PropTypes.string,
-      m_redirect_url: PropTypes.string,
       popup: PropTypes.bool,
       digital: PropTypes.bool,
     }),
@@ -79,7 +78,7 @@ class Payment extends React.Component {
     if (queryKeys.indexOf('success') === -1 && queryKeys.indexOf('imp_success') === -1) {
       query['success'] = !(url.indexOf('success') === -1);
     }
-
+    
     if (typeof callback === 'function') {
       callback(query);
     }
@@ -122,7 +121,6 @@ class Payment extends React.Component {
 
     const { validate, message } = validateProps(userCode, data);
     if (validate) {
-      const isCallbackDefined = typeof callback === 'function' ? true : false;
       return (
         <IamportWebView
           param={{ 
@@ -130,7 +128,6 @@ class Payment extends React.Component {
             data, 
             callback: String(callback),
             triggerCallback: String(this.triggerCallback),
-            isCallbackDefined,
             loading: {
               message: loading.message || '잠시만 기다려주세요...',
               image: this.getCustomLoadingImage()

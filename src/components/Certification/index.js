@@ -31,7 +31,6 @@ class Certification extends React.Component {
     const { status } = this.state;
     if (status === 'ready') { // 포스트 메시지를 한번만 보내도록(무한루프 방지)
       const { userCode, data, loading } = this.props;
-      const { m_redirect_url } = data;
 
       const params = JSON.stringify({ 
         userCode, 

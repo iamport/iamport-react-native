@@ -47,7 +47,6 @@ class Payment extends React.Component {
       buyer_postcode: PropTypes.string,
       custom_data: PropTypes.object,
       vbank_due: PropTypes.string,
-      m_redirect_url: PropTypes.string,
       popup: PropTypes.bool,
     }).isRequired,
     callback: PropTypes.func.isRequired,
@@ -69,7 +68,6 @@ class Payment extends React.Component {
     const { status } = this.state;
     if (status === 'ready') { // 포스트 메시지를 한번만 보내도록(무한루프 방지)
       const { userCode, data, loading } = this.props;
-      const { m_redirect_url } = data;
 
       const params = JSON.stringify({ 
         userCode, 
@@ -147,7 +145,7 @@ class Payment extends React.Component {
     if (status === 'sent') {
       const { url, query } = queryString.parseUrl(e.url);
       const { data, callback } = this.props;
-      const { pg, m_redirect_url } = data;
+      const { pg } = data;
       
       // 웹뷰를 로드하는데 실패하는 경우를 대비해 (필요한 앱이 설치되지 않은 경우 등)
       // app scheme값을 갖고 있는다
@@ -172,10 +170,6 @@ class Payment extends React.Component {
   }
 
   isUrlMatchingWithIamportUrl(url) {
-    const { data } = this.props;
-    const { m_redirect_url } = data;
-
-    if (m_redirect_url) return url.includes(m_redirect_url);
     if (url.includes('https://service.iamport.kr/payments/fail')) return true;
     if (url.includes('https://service.iamport.kr/payments/success')) return true;
     return false;

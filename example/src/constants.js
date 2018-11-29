@@ -23,9 +23,6 @@ export const PAYMENT_INFO = [{
 }, {
   name: '우편번호',
   value: 'buyer_postcode',
-}, {
-  name: '결제 후',
-  value: 'm_redirect_url'
 }];
 
 export const CERTIFICATION_INFO = [{
