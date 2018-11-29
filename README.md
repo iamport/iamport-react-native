@@ -9,7 +9,10 @@
 
 
 ## 버전 정보
-- [v1.0.3](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.0.4](https://github.com/iamport/iamport-react-native/tree/master)
+  - m_redirect_url 변수가 deprecated 되었습니다.
+
+- [v1.0.3](https://github.com/iamport/iamport-react-native/tree/v1.0.3)
   - 콜백 함수를 필수입력으로 설정하였습니다.
 
 - [v1.0.2](https://github.com/iamport/iamport-react-native/tree/v1.0.2) 
