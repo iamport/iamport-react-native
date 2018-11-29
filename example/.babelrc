@@ -2,11 +2,10 @@
   "presets": ["react-native"],
   "plugins": [
     ["module-resolver", {
-      "root": ["./src/**"],
-      "extensions": [".ios.js", ".android.js", ".js", ".json"],
+      "cwd": "babelrc",
+      "root": "./src",
       "alias": {
-        "test": "./test",
-        "underscore": "lodash"
+        "components": "./src/components"
       }
     }]
   ]

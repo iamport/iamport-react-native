@@ -95,7 +95,6 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.example"
@@ -134,9 +133,11 @@ android {
             }
         }
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
+    compile project(':react-native-gesture-handler')
     compile project(':react-native-svg')
     compile project(':iamport-react-native')
     compile fileTree(dir: "libs", include: ["*.jar"])

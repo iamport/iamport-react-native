@@ -386,9 +386,6 @@ render() {
 ...
 ```
 
-위 코드는 예시일 뿐, 실제로 success값으로만 결제 성공/실패여부를 판단해서는 안됩니다. 정확한 판단을 위해서는 response의 imp_uid와 merchant_uid값으로 결제 위/변조여부를 검증해야합니다.
-자세한 내용은 [아임포트 문서](https://docs.iamport.kr/implementation/payment)의 STEP4 - 5를 참조하세요.
-
 
 
 

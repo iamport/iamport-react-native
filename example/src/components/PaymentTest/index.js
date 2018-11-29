@@ -14,7 +14,7 @@ import PayMethodPicker from 'components/PayMethodPicker';
 
 import { getCurrentDate } from 'utils';
 import { title, background, info, actionButton } from 'styles';
-import { PAYMENT_INFO, PG, PAY_METHOD_BY_PG } from 'constants';
+import { PAYMENT_INFO, PAY_METHOD_BY_PG } from 'constants';
 
 const logo = require('img/iamport-text-logo.svg');
 
@@ -37,7 +37,7 @@ class PaymentTest extends React.Component {
     buyer_addr: '서울시 강남구 신사동 661-16',
     buyer_postcode: '06018',
     vbank_due: getCurrentDate(),
-    m_redirect_url: 'https://service.iamport.kr',
+    m_redirect_url: '',
   };
 
   onPressPayment = () => { // 결제하기 눌렀을떄 

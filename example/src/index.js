@@ -7,7 +7,8 @@
  */
 
 import React from 'react';
-import { createStackNavigator } from 'react-navigation';
+import { Platform } from 'react-native';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 
 import Home from 'components/Home';
 import Payment from 'components/Payment';
@@ -17,7 +18,9 @@ import Certification from 'components/Certification';
 import CertificationTest from 'components/CertificationTest';
 import CertificationResult from 'components/CertificationResult';
 
-export default createStackNavigator({
+const headerMode = Platform.OS === 'ios' ? 'float' : 'none';
+
+const AppNavigator = createStackNavigator({
   Home: { screen: Home },
   Payment: { screen: Payment },
   PaymentTest: { screen: PaymentTest },
@@ -25,5 +28,10 @@ export default createStackNavigator({
   Certification: { screen: Certification },
   CertificationTest: { screen: CertificationTest },
   CertificationResult: { screen: CertificationResult },
+}, {
+  headerMode
 });
+
+const AppContainer = createAppContainer(AppNavigator);
+export default AppContainer;
 

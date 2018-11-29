@@ -16,12 +16,12 @@
         "source": "/Users/deedee/.android/build-cache/38d61403a5f6225eead2454d14057b6114cf10d7/output/res/anim/abc_popup_enter.xml"
     },
     {
-        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/example/node_modules/iamport-react-native/android/build/intermediates/res/merged/release/anim/catalyst_push_up_out.xml",
-        "source": "/Users/deedee/.android/build-cache/444be1938c74affb8d6bc74918cf4adf8c5381ea/output/res/anim/catalyst_push_up_out.xml"
-    },
-    {
         "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/example/node_modules/iamport-react-native/android/build/intermediates/res/merged/release/anim/catalyst_fade_out.xml",
         "source": "/Users/deedee/.android/build-cache/444be1938c74affb8d6bc74918cf4adf8c5381ea/output/res/anim/catalyst_fade_out.xml"
+    },
+    {
+        "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/example/node_modules/iamport-react-native/android/build/intermediates/res/merged/release/anim/catalyst_push_up_out.xml",
+        "source": "/Users/deedee/.android/build-cache/444be1938c74affb8d6bc74918cf4adf8c5381ea/output/res/anim/catalyst_push_up_out.xml"
     },
     {
         "merged": "/Users/deedee/Desktop/iamport/react-native/iamport-react-native/example/node_modules/iamport-react-native/android/build/intermediates/res/merged/release/anim/abc_shrink_fade_out_from_bottom.xml",
