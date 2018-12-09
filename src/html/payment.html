@@ -7,7 +7,33 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js" ></script>
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.7.js"></script>
 
-    <script type="text/javascript" src="../js/payment.js"></script>
+    <script type="text/javascript">
+      window.addEventListener('DOMContentLoaded', function(event) {
+        var IMP = window.IMP;
+
+        document.addEventListener('message', function(e) {
+          var params = JSON.parse(e.data);
+
+          /* 로딩 화면 커스터마이징 */
+          var loading = params.loading;
+          var image = loading.image;
+          document.getElementById('imp-rn-img').src = image;
+
+          var message = loading.message;
+          document.getElementById('imp-rn-msg').innerText = message;
+
+          /* 결제 요청 */
+          var userCode = params.userCode;
+          var data = params.data;
+          
+          IMP.init(userCode);
+
+          IMP.request_pay(data, function(response) {
+            window.postMessage(JSON.stringify(response));
+          });
+        });
+      });
+    </script>
     
     <style>
       div#imp-rn-container {
