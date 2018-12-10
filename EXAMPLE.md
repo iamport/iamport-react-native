@@ -46,7 +46,7 @@
 
 
 
-## 일반/정기결제 사용예제
+#### 1. 일반/정기결제 사용예제
 ```javascript
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
@@ -104,7 +104,7 @@ export default App;
 
 
 
-## 휴대폰 본인인증 사용예제
+#### 2. 휴대폰 본인인증 사용예제
 ```javascript
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 본인인증 모듈을 불러옵니다.

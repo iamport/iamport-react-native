@@ -18,7 +18,7 @@
 최신버전은 [v1.0.5](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
 
 ## 설치하기
-아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. 보다 자세한 내용은 [설치하기](INSTALL.md)를 참고하세요.
+아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. 보다 자세한 안내는 [설치하기](INSTALL.md)를 참고하세요.
 
 ```
 $ npm install iamport-react-native --save
@@ -31,8 +31,8 @@ $ npm install -g react-native-cli
 $ react-native link iamport-react-native
 ```
 
-## IOS 설정하기
-IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3가지 항목을 설정해주셔야 합니다. 보다 자세한 내요은 [설정하기](SETTING.md)를 참고하세요.
+## 설정하기(IOS)
+IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3가지 항목을 설정해주셔야 합니다. 보다 자세한 설명은 [설정하기](SETTING.md)를 참고하세요.
 
 #### 1. App Scheme 등록
 외부 결제 앱(예) 페이코, 신한 판 페이)에서 결제 후 돌아올 때 사용할 URL identifier를 설정해야합니다.
@@ -86,7 +86,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
 
 #### 3. App Transport Security 설정
 
-![](./assets/allow-arbitrary.gif)
+![](src/img/allow-arbitrary.gif)
 
 ```html
 <key>NSAppTransportSecurity</key>
@@ -100,9 +100,9 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
 
 
 ## 예제
-아임포트 결제연동 모듈을 사용해 아래와 같이 일반/정기결제 및 휴대폰 본인인증 기능을 구현할 수 있습니다. 필요한 파라미터에 대한 설명은 [예제](EXAMPLE.md)를 참고하세요.
+아임포트 결제연동 모듈을 사용해 아래와 같이 일반/정기결제 및 휴대폰 본인인증 기능을 구현할 수 있습니다. 필요한 파라미터는 [예제](EXAMPLE.md)를 참고하세요.
 
-## 일반/정기결제 사용예제
+#### 1. 일반/정기결제 사용예제
 ```javascript
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
@@ -148,7 +148,7 @@ export default App;
 ```
 
 
-## 휴대폰 본인인증 사용예제
+#### 2. 휴대폰 본인인증 사용예제
 ```javascript
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 본인인증 모듈을 불러옵니다.
@@ -185,7 +185,7 @@ export default App;
 
 
 ## 콜백 함수 설정하기
-콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 실패/성공 여부에 맞게 아래와 같이 로직을 작성할 수 있습니다. 콜백 함수에 대한 자세한 내용은 [콜백 설정하기](CALLBACK.md)를 참고하세요.
+콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 실패/성공 여부에 맞게 아래와 같이 로직을 작성할 수 있습니다. 콜백 함수에 대한 자세한 설명은 [콜백 설정하기](CALLBACK.md)를 참고하세요.
 
 ```javascript
 callback = (response) => {
