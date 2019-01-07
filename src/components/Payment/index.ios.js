@@ -114,12 +114,14 @@ class Payment extends React.Component {
   }
 
   onMessage = (e) => { // PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 
-    const { callback } = this.props;
-    const response = JSON.parse(e.nativeEvent.data);
-    
-    if (typeof callback === 'function') {
-      callback(response);
-    }
+    try {
+      const response = JSON.parse(e.nativeEvent.data);
+      
+      const { callback } = this.props;
+      if (typeof callback === 'function') {
+        callback(response);
+      }
+    } catch (e) {}
   }
 
   getInjectedJavascript() { // 웹뷰 onMessage override 방지 코드
