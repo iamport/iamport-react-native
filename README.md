@@ -15,7 +15,7 @@
 - 아임포트 asset 추가하기
 
 ## 버전정보
-최신버전은 [v1.0.5](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
+최신버전은 [v1.0.6](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
 
 ## 설치하기
 아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. 보다 자세한 안내는 [설치하기](INSTALL.md)를 참고하세요.

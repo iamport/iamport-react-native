@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "iamport-react-native": "1.0.5",
+    "iamport-react-native": "1.0.6",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-svg": "^6.5.2",

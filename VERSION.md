@@ -6,7 +6,10 @@
 리액트 네이티브용 아임포트 결제연동 모듈 버전 정보 안내입니다.
 
 ## 버전정보
-- [v1.0.5](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.0.6](https://github.com/iamport/iamport-react-native/tree/master)
+  - ios 페이코 웹 결제시, 결제 완료 전 postMessage 수신으로 발생하는 이슈를 해결하였습니다.
+
+- [v1.0.5](https://github.com/iamport/iamport-react-native/tree/v1.0.5)
   - ios 프로덕션 모드에서 js assets이 포함되지 않는 이슈를 해결하였습니다.
 
 - [v1.0.4](https://github.com/iamport/iamport-react-native/tree/v1.0.4)
