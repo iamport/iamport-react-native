@@ -32,7 +32,7 @@ class Payment extends React.Component {
         card_quota: PropTypes.arrayOf(PropTypes.number)
       }),
       merchant_uid: PropTypes.string.isRequired,
-      amoung: PropTypes.oneOfType([
+      amount: PropTypes.oneOfType([
         PropTypes.string.isRequired,
         PropTypes.number.isRequired,
       ]),
@@ -191,6 +191,7 @@ class Payment extends React.Component {
           originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
           injectedJavaScript={this.getInjectedJavascript()} // https://github.com/facebook/react-native/issues/10865
           onNavigationStateChange={this.onNavigationStateChange}
+          useWebKit
         />
       );
     }
