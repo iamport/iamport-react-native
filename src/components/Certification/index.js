@@ -25,7 +25,7 @@ class Certification extends React.Component {
 
   state = {
     status: 'ready',
-  }
+  };
 
   onLoad = () => {
     const { status } = this.state;
@@ -43,7 +43,7 @@ class Certification extends React.Component {
       this.xdm.postMessage(params);
       this.setState({ status: 'sent' });
     }
-  }
+  };
 
   getCustomLoadingImage() {
     const { loading } = this.props;
@@ -60,12 +60,19 @@ class Certification extends React.Component {
     return '../img/iamport-logo.png';
   }
   
-  onMessage = (e) => { // 본인인증 결과를 받아 callback을 실행한다 
+  onMessage = e => { // 본인인증 결과를 받아 callback을 실행한다 
+    const { data } = e.nativeEvent;
+    let response = data;
+    while(decodeURIComponent(response) !== response) {
+      response = decodeURIComponent(response);
+    }
+    response = JSON.parse(response);
+
     const { callback } = this.props;
-    const response = JSON.parse(e.nativeEvent.data);
-    
-    callback(response);
-  }
+    if (typeof callback === 'function') {
+      callback(response);
+    }
+  };
 
   getInjectedJavascript() { // 웹뷰 onMessage override 방지 코드
     const patchPostMessageFunction = function() {

@@ -62,7 +62,7 @@ class Payment extends React.Component {
   state = {
     marketUrl: '',
     status: 'ready',
-  }
+  };
 
   onLoad = () => {
     const { status } = this.state;
@@ -80,7 +80,7 @@ class Payment extends React.Component {
       this.xdm.postMessage(params);
       this.setState({ status: 'sent' });
     }
-  }
+  };
 
   getCustomLoadingImage() {
     const { loading } = this.props;
@@ -99,8 +99,6 @@ class Payment extends React.Component {
 
   onError = () => {
     const { marketUrl } = this.state;
-    console.log('onError:', marketUrl);
-
     if (marketUrl) {
       Linking.openURL(marketUrl); // 앱 스토어로 이동
     }
@@ -111,18 +109,21 @@ class Payment extends React.Component {
       window.stop(); 
       window.history.back();
     `);
-  }
+  };
 
-  onMessage = (e) => { // PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 
-    try {
-      const response = JSON.parse(e.nativeEvent.data);
-      
-      const { callback } = this.props;
-      if (typeof callback === 'function') {
-        callback(response);
-      }
-    } catch (e) {}
-  }
+  onMessage = e => { // PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 
+    const { data } = e.nativeEvent;
+    let response = data;
+    while(decodeURIComponent(response) !== response) {
+      response = decodeURIComponent(response);
+    }
+    response = JSON.parse(response);
+
+    const { callback } = this.props;
+    if (typeof callback === 'function') {
+      callback(response);
+    }
+  };
 
   getInjectedJavascript() { // 웹뷰 onMessage override 방지 코드
     const patchPostMessageFunction = function() {
@@ -142,7 +143,7 @@ class Payment extends React.Component {
     return `(${String(patchPostMessageFunction)})();`;
   }
 
-  onNavigationStateChange = (e) => {
+  onNavigationStateChange = e => {
     const { status } = this.state;
     if (status === 'sent') {
       const { url, query } = queryString.parseUrl(e.url);
@@ -155,13 +156,13 @@ class Payment extends React.Component {
       const scheme = splittedScheme[0];
       if (scheme !== 'http' && scheme !== 'https' && scheme !== 'about:blank') {
         this.setState({ 
-          marketUrl: scheme === 'itmss' ? `https://${splittedScheme[1]}` :  MARKET_URL[scheme] 
+          marketUrl: scheme === 'itmss' ? `https://${splittedScheme[1]}` :  MARKET_URL[scheme],
         });
       }
 
       // callback을 지원하지 않는 PG사의 경우를 대비해 
       // url을 기준으로 callback을 강제로 실행시킨다
-      if (this.isUrlMatchingWithIamportUrl(url) && CALLBACK_AVAILABLE_PG.indexOf(pg) === -1) { // in case of not supporting callback
+      if (this.isUrlMatchingWithIamportUrl(url) && CALLBACK_AVAILABLE_PG.indexOf(pg) === -1) {
         if (typeof callback === 'function') {
           callback(query);
         }
@@ -169,14 +170,14 @@ class Payment extends React.Component {
         this.setState({ status: 'done' });
       }
     } 
-  }
+  };
 
   isUrlMatchingWithIamportUrl(url) {
     if (url.includes('https://service.iamport.kr/payments/fail')) return true;
     if (url.includes('https://service.iamport.kr/payments/success')) return true;
     return false;
   }
-
+  
   render() {
     const { userCode, data } = this.props;
     const { validate, message } = validateProps(userCode, data);
