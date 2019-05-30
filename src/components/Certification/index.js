@@ -11,6 +11,8 @@ class Certification extends React.Component {
     userCode: PropTypes.string.isRequired,
     data: PropTypes.shape({
       merchant_uid: PropTypes.string,
+      name: PropTypes.string,
+      phone: PropTypes.string,
       min_age: PropTypes.string,
     }),
     callback: PropTypes.func.isRequired,
@@ -18,9 +20,9 @@ class Certification extends React.Component {
       message: PropTypes.string,
       image: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.number
+        PropTypes.number,
       ]),
-    })
+    }),
   };
 
   state = {
@@ -30,20 +32,40 @@ class Certification extends React.Component {
   onLoad = () => {
     const { status } = this.state;
     if (status === 'ready') { // 포스트 메시지를 한번만 보내도록(무한루프 방지)
-      const { userCode, data, loading } = this.props;
-
+      const { userCode, data } = this.props;
       const params = JSON.stringify({ 
         userCode, 
         data, 
-        loading: { 
-          message: loading.message || '잠시만 기다려주세요...', 
-          image: this.getCustomLoadingImage()
-        }
+        loading: this.getCustomLoading(),
       });
       this.xdm.postMessage(params);
       this.setState({ status: 'sent' });
     }
   };
+
+  getCustomLoading() {
+    const { loading } = this.props;
+    if (typeof loading === 'undefined') {
+      return {
+        message: '잠시만 기다려주세요...',
+        image: '../img/iamport-logo.png',
+      };
+    }
+    
+    return {
+      message: this.getCustomLoadingMessage(),
+      image: this.getCustomLoadingImage(),
+    };
+  }
+
+  getCustomLoadingMessage() {
+    const { loading } = this.props;
+    const { message } = loading;
+    if (typeof message === 'string') {
+      return message;
+    }
+    return '잠시만 기다려주세요...';
+  }
 
   getCustomLoadingImage() {
     const { loading } = this.props;
@@ -94,7 +116,10 @@ class Certification extends React.Component {
 
   render() {
     const { userCode } = this.props;
-    const source = Platform.OS === 'android' ? { uri: 'file:///android_asset/html/certification.html' } : require('../../html/certification.html'); // https://github.com/facebook/react-native/issues/505
+    const source =
+      Platform.OS === 'android' ?
+      { uri: 'file:///android_asset/html/certification.html' } :
+      require('../../html/certification.html'); // https://github.com/facebook/react-native/issues/505
 
     if (userCode) {
       return (

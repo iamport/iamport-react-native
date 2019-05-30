@@ -26,10 +26,10 @@ class Payment extends React.Component {
       currency: PropTypes.oneOf(CURRENCY),
       notice_url: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string)
+        PropTypes.arrayOf(PropTypes.string),
       ]),
       display: PropTypes.shape({
-        card_quota: PropTypes.arrayOf(PropTypes.number)
+        card_quota: PropTypes.arrayOf(PropTypes.number),
       }),
       merchant_uid: PropTypes.string.isRequired,
       amoung: PropTypes.oneOfType([
@@ -54,9 +54,9 @@ class Payment extends React.Component {
       message: PropTypes.string,
       image: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.number
+        PropTypes.number,
       ]),
-    })
+    }),
   };
 
   state = {
@@ -67,20 +67,41 @@ class Payment extends React.Component {
   onLoad = () => {
     const { status } = this.state;
     if (status === 'ready') { // 포스트 메시지를 한번만 보내도록(무한루프 방지)
-      const { userCode, data, loading } = this.props;
+      const { userCode, data } = this.props;
 
       const params = JSON.stringify({ 
         userCode, 
         data, 
-        loading: { 
-          message: loading.message || '잠시만 기다려주세요...', 
-          image: this.getCustomLoadingImage()
-        }
+        loading: this.getCustomLoading(),
       });
       this.xdm.postMessage(params);
       this.setState({ status: 'sent' });
     }
   };
+
+  getCustomLoading() {
+    const { loading } = this.props;
+    if (typeof loading === 'undefined') {
+      return {
+        message: '잠시만 기다려주세요...',
+        image: '../img/iamport-logo.png',
+      };
+    }
+    
+    return {
+      message: this.getCustomLoadingMessage(),
+      image: this.getCustomLoadingImage(),
+    };
+  }
+
+  getCustomLoadingMessage() {
+    const { loading } = this.props;
+    const { message } = loading;
+    if (typeof message === 'string') {
+      return message;
+    }
+    return '잠시만 기다려주세요...';
+  }
 
   getCustomLoadingImage() {
     const { loading } = this.props;
