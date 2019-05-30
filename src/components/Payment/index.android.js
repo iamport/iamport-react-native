@@ -84,6 +84,30 @@ class Payment extends React.Component {
     }
   }
 
+  getCustomLoading() {
+    const { loading } = this.props;
+    if (typeof loading === 'undefined') {
+      return {
+        message: '잠시만 기다려주세요...',
+        image: '../img/iamport-logo.png',
+      };
+    }
+    
+    return {
+      message: this.getCustomLoadingMessage(),
+      image: this.getCustomLoadingImage(),
+    };
+  }
+
+  getCustomLoadingMessage() {
+    const { loading } = this.props;
+    const { message } = loading;
+    if (typeof message === 'string') {
+      return message;
+    }
+    return '잠시만 기다려주세요...';
+  }
+
   getCustomLoadingImage() {
     const { loading } = this.props;
     const { image } = loading;
@@ -128,10 +152,7 @@ class Payment extends React.Component {
             data, 
             callback: String(callback),
             triggerCallback: String(this.triggerCallback),
-            loading: {
-              message: loading.message || '잠시만 기다려주세요...',
-              image: this.getCustomLoadingImage()
-            },
+            loading: this.getCustomLoading(),
           }}
           style={webView} 
         />
