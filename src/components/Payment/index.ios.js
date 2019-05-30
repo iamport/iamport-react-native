@@ -32,7 +32,7 @@ class Payment extends React.Component {
         card_quota: PropTypes.arrayOf(PropTypes.number),
       }),
       merchant_uid: PropTypes.string.isRequired,
-      amoung: PropTypes.oneOfType([
+      amount: PropTypes.oneOfType([
         PropTypes.string.isRequired,
         PropTypes.number.isRequired,
       ]),
