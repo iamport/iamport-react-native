@@ -2,7 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
-import { WebView, Linking } from 'react-native';
+import { WebView } from 'react-native-webview';
+import { Linking } from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 import ErrorOnParams from '../ErrorOnParams';
@@ -148,7 +149,7 @@ class Payment extends React.Component {
 
   getInjectedJavascript() { // 웹뷰 onMessage override 방지 코드
     const patchPostMessageFunction = function() {
-      var originalPostMessage = window.postMessage;
+      var originalPostMessage = window.ReactNativeWebView.postMessage;
 
       var patchedPostMessage = function(message, targetOrigin, transfer) { 
         originalPostMessage(message, targetOrigin, transfer);
@@ -158,7 +159,7 @@ class Payment extends React.Component {
         return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
       };
 
-      window.postMessage = patchedPostMessage;
+      window.ReactNativeWebView.postMessage = patchedPostMessage;
     };
 
     return `(${String(patchPostMessageFunction)})();`;

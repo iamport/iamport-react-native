@@ -6,7 +6,7 @@
       "root": "./src",
       "alias": {
         "components": "./src/components",
-      }
-    }]
-  ]
+      },
+    }],
+  ],
 }
