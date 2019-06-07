@@ -48,6 +48,7 @@
 		5AB4305322AA1E1000B65B10 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A126FCF229F71B30093CAC1 /* libRNGestureHandler.a */; };
 		5AB4305422AA1E1600B65B10 /* libIamportReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEA9F40229FBF53003B4B3F /* libIamportReactNative.a */; };
 		5AB4305522AA1EB600B65B10 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A126FD1229F71B30093CAC1 /* libRNGestureHandler-tvOS.a */; };
+		5AB4305622AA2ECC00B65B10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB61A68108700A75B9A /* Info.plist */; };
 		5FC9E3A3C8774BF8B6FC19FC /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A186C83BE4644D5A877A7BF /* MaterialCommunityIcons.ttf */; };
 		61F0933797354D78BB592489 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D65A1B002734D659A9EF8A8 /* SimpleLineIcons.ttf */; };
 		69DE276023BA448ABF693ABC /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B16C815DA47417CB4676E04 /* FontAwesome.ttf */; };
@@ -1236,6 +1237,7 @@
 				0D79C2E926B345E99C019303 /* rubicon-icon-font.ttf in Resources */,
 				61F0933797354D78BB592489 /* SimpleLineIcons.ttf in Resources */,
 				824D726D1C0146D79E0EE2F0 /* Zocial.ttf in Resources */,
+				5AB4305622AA2ECC00B65B10 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,7 +1271,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;

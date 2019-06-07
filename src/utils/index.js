@@ -1,18 +1,27 @@
 
-import { 
-  LANGUAGE,
-  EN_AVAILABLE_PG 
-} from '../constants';
+import { LANGUAGE, EN_AVAILABLE_PG } from '../constants';
 
 export function validateProps(userCode, data) {
+  const {
+    pg,
+    pay_method,
+    merchant_uid,
+    amount,
+    buyer_tel,
+    app_scheme,
+    language,
+    digital,
+    biz_num,
+    customer_uid,
+    naverPopupMode,
+    popup,
+  } = data;
 	if (!userCode) {
     return { validate: false, message: '가맹점 식별코드(userCode)는 필수입력입니다.' };
   } 
   if (typeof data === 'undefined') {
     return { validate: false, message: '결제 파라미터(data)는 필수입력입니다.' };
   }
-
-  const { pg, pay_method, merchant_uid, amount, buyer_tel, app_scheme, language, digital, m_redirect_url, biz_num, customer_uid, naverPopupMode, popup } = data;
   if (!merchant_uid) {
     return { validate: false, message: '주문번호(merchant_uid)는 필수입력입니다.' };
   }
@@ -43,21 +52,11 @@ export function validateProps(userCode, data) {
   if (pg === 'syrup') {
     return { validate: false, message: '해당 모듈은 현재 시럽페이를 지원하지 않습니다.' };
   }
-  if (pg === 'paypal') {
-    if (popup === true) {
-      return { validate: false, message: '해당 모듈에서 popup은\n페이팔 결제시 지원하지 않습니다.' };
-    }
-    // if (!m_redirect_url) {
-    //   return { validate: false, message: '해당 모듈에서 m_redirect_url은\n페이팔 결제시 필수입력입니다.' };
-    // }
+  if (pg === 'paypal' && popup === true) {
+    return { validate: false, message: '해당 모듈에서 popup은\n페이팔 결제시 지원하지 않습니다.' };
   }
-  if (pg === 'naverpay' || pg === 'naverco') {
-    if (naverPopupMode === true) {
-      return { validate: false, message: '해당 모듈에서 popup은\n네이버 페이 결제시 지원하지 않습니다.' };
-    }
-    // if (!m_redirect_url) {
-    //   return { validate: false, message: '해당 모듈에서 m_redirect_url은\n네이버 페이 결제시 필수입력입니다.' };
-    // }
+  if ((pg === 'naverpay' || pg === 'naverco') && naverPopupMode === true) {
+    return { validate: false, message: '해당 모듈에서 popup은\n네이버 페이 결제시 지원하지 않습니다.' };
   }
   if (pg === 'danal_tpay' && pay_method === 'vbank' && !biz_num) {
     return { validate: false, message: '다날-가상계좌시 biz_num은 필수입력입니다.' };
@@ -67,4 +66,17 @@ export function validateProps(userCode, data) {
   }
   
   return { validate: true, message: '' };
+}
+
+export function isUrlStartsWithAppScheme(url) {
+  const splittedScheme = url.split('://');
+  const scheme = splittedScheme[0];
+  return scheme !== 'http' && scheme !== 'https' && scheme !== 'about:blank';
+}
+
+export function isUrlMatchingWithIamportUrl(url) {
+  if (url.includes('https://service.iamport.kr/payments/fail')) return true;
+  if (url.includes('https://service.iamport.kr/payments/success')) return true;
+  if (url.includes('https://service.iamport.kr/payments/vbank')) return true; // KG 이니시스, LG 유플러스, 나이스 가상계좌 발급성공
+  return false;
 }
