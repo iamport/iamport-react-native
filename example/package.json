@@ -7,19 +7,21 @@
     "test": "jest"
   },
   "dependencies": {
-    "iamport-react-native": "1.0.6",
-    "react": "16.4.1",
-    "react-native": "0.56.0",
-    "react-native-svg": "^6.5.2",
-    "react-native-svg-uri": "^1.2.3",
-    "react-navigation": "^3.0.2"
+    "iamport-react-native": "file:..",
+    "native-base": "^2.12.1",
+    "react": "^16.8.3",
+    "react-native": "0.59.8",
+    "react-native-gesture-handler": "^1.2.1",
+    "react-navigation": "^3.11.0"
   },
   "devDependencies": {
-    "babel-jest": "23.4.2",
-    "babel-plugin-module-resolver": "^3.1.1",
-    "babel-preset-react-native": "^5",
-    "jest": "23.4.2",
-    "react-test-renderer": "16.4.1"
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "jest": "^24.8.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "react-test-renderer": "16.8.3"
   },
   "jest": {
     "preset": "react-native"
