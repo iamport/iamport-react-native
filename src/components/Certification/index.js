@@ -1,7 +1,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { WebView, Platform } from 'react-native';
+import { Platform } from 'react-native';
+import { WebView } from 'react-native-webview';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
 import ErrorOnParams from '../ErrorOnParams';
@@ -98,7 +99,7 @@ class Certification extends React.Component {
 
   getInjectedJavascript() { // 웹뷰 onMessage override 방지 코드
     const patchPostMessageFunction = function() {
-      var originalPostMessage = window.postMessage;
+      var originalPostMessage = window.ReactNativeWebView.postMessage;
 
       var patchedPostMessage = function(message, targetOrigin, transfer) { 
         originalPostMessage(message, targetOrigin, transfer);
@@ -108,7 +109,7 @@ class Certification extends React.Component {
         return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
       };
 
-      window.postMessage = patchedPostMessage;
+      window.ReactNativeWebView.postMessage = patchedPostMessage;
     };
 
     return `(${String(patchPostMessageFunction)})(); `;
