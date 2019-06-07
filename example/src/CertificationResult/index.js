@@ -9,7 +9,7 @@ export default function CertificationResult({ navigation }) {
   const { success, imp_uid, merchant_uid, error_msg } = response;
   const { wrapper, title, listContainer, list, label, value } = resultStyles;
 
-  const isSuccess = success === 'true';
+  const isSuccess = success === true;
   const { icon, btn, btnText, btnIcon } = isSuccess ? resultSuccessStyles : resultFailureStyles;
 
   return (
