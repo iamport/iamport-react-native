@@ -141,7 +141,7 @@ class Payment extends React.Component {
 
   render() {
     const { webView } = styles;
-    const { userCode, data, callback, loading } = this.props;
+    const { userCode, data, callback } = this.props;
 
     const { validate, message } = validateProps(userCode, data);
     if (validate) {

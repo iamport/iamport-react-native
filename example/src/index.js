@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import { StyleSheet } from 'react-native';
 import { Container } from 'native-base';
 
 import Header from './Header';
@@ -95,15 +94,8 @@ export default function App() {
         ref={navigatorRef => {
           NavigationService.setTopLevelNavigator(navigatorRef);
         }}
-        style={styles.container}
         onNavigationStateChange={handleNavigation}
       />
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 20,
-  },
-});

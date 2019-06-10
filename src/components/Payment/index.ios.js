@@ -147,7 +147,7 @@ export function Payment({ userCode, data, loading, callback }) {
       }
       setIsWebViewLoaded(false);
     }
-  };
+  }
   
   const { validate, message } = validateProps(userCode, data);
   if (validate) {
