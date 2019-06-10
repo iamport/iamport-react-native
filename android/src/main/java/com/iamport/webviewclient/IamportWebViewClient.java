@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -18,6 +19,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEm
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.net.URISyntaxException;
 
@@ -130,6 +132,9 @@ public class IamportWebViewClient extends WebViewClient {
           case Map: // nested object recursive하게 처리
             jsonObject.put(key, toJSONObject(data.getMap(key)));
             break;
+          case Array: // notice_url, card_quota
+            jsonObject.put(key, toJSONArray(data.getArray(key)));
+            break;
           default :
             jsonObject.put(key, data.getMap(key));
             break;
@@ -140,6 +145,32 @@ public class IamportWebViewClient extends WebViewClient {
     }
 
     return jsonObject;
+  }
+
+  private JSONArray toJSONArray(ReadableArray data) {
+    JSONArray jsonArray = new JSONArray();
+
+    try {
+      for (int i = 0, size = data.size(); i < size; i++) {
+        ReadableType type = data.getType(i);
+
+        switch (type) {
+          case Number: // card_quota
+            jsonArray.put(i, data.getDouble(i));
+            break;
+          case String: // notice_url
+            jsonArray.put(i, data.getString(i));
+            break;
+          default:
+            jsonArray.put(i, data.getDynamic(i));
+            break;
+        }
+      }
+    } catch (JSONException e) {
+
+    }
+
+    return jsonArray;
   }
 
   /* url이 https, http 또는 javascript로 시작하는지 체크 */
