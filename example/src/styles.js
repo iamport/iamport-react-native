@@ -37,7 +37,6 @@ const formStyles = StyleSheet.create({
     marginTop: 15,
     marginLeft: 'auto',
     marginRight: 'auto',
-    width: 120,
     backgroundColor: '#344e81',
   },
   btnText: {
