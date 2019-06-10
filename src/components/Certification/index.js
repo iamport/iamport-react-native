@@ -91,7 +91,11 @@ export function Certification({ userCode, data, loading, callback }) {
 
   function onShouldStartLoadWithRequest(request) {
     const { url } = request;
-    if (url.startsWith('https://itunes.apple.com')) {
+    if (url.startsWith('https://itunes.apple.com')) { // IOS
+      Linking.openURL(url);
+      return false;
+    }
+    if (url.startsWith('market://details')) { // Android
       Linking.openURL(url);
       return false;
     }
