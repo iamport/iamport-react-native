@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { Grid, Col, Button, Icon, Title } from 'native-base';
 
 import NavigationService from '../NavigationService';
@@ -13,7 +13,7 @@ export default function Header({ title }) {
           <Icon name='arrow-back' style={icon} />
         </Button>
       </Col>
-      <Col size={2}>
+      <Col size={3}>
         <Title style={text}>{title}</Title>
       </Col>
       <Col size={1} />
@@ -23,7 +23,7 @@ export default function Header({ title }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: Platform.OS === 'ios' ? 20 : 0,
     maxHeight: 80,
     backgroundColor: '#344e81',
     flex: 1,
