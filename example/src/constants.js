@@ -25,11 +25,11 @@ export const PGS = [
   },
   {
     value: 'kakaopay',
-    label: '카카오페이',
+    label: '신 - 카카오페이',
   },
   {
     value: 'kakao',
-    label: 'LG CNS 카카오페이',
+    label: '구 - LG CNS 카카오페이',
   },
   {
     value: 'danal',
@@ -49,7 +49,7 @@ export const PGS = [
   },
   {
     value: 'mobilians',
-    label: '모빌리언스 휴대폰 소액결제',
+    label: '모빌리언스',
   },
   {
     value: 'payco',
@@ -66,6 +66,10 @@ export const PGS = [
   {
     value: 'naverpay',
     label: '네이버페이',
+  },
+  {
+    value: 'smilepay',
+    label: '스마일페이',
   },
 ];
 
@@ -135,6 +139,17 @@ export const METHODS_FOR_KCP =
       label: '삼성페이',
     },
   ]);
+
+export const METHODS_FOR_MOBILIANS = [
+  {
+    value: 'card',
+    label: '신용카드',
+  },
+  {
+    value: 'phone',
+    label: '휴대폰 소액결제',
+  },
+];
 
 export const METHOD_FOR_CARD = [
   {
