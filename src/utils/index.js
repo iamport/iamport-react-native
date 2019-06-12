@@ -1,5 +1,5 @@
 
-import { LANGUAGE, EN_AVAILABLE_PG } from '../constants';
+import { LANGUAGE, EN_AVAILABLE_PG, CALLBACK_AVAILABLE_PG } from '../constants';
 
 export function validateProps(userCode, data) {
   const {
@@ -79,4 +79,11 @@ export function isUrlMatchingWithIamportUrl(url) {
   if (url.includes('https://service.iamport.kr/payments/success')) return true;
   if (url.includes('https://service.iamport.kr/payments/vbank')) return true; // KG 이니시스, LG 유플러스, 나이스 가상계좌 발급성공
   return false;
+}
+
+export function isCallbackSupported(pg, method) {
+  if (pg === 'mobilians') {
+    return method === 'phone';
+  }
+  return CALLBACK_AVAILABLE_PG.indexOf(pg) !== -1;
 }

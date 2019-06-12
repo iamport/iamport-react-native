@@ -11,13 +11,13 @@ import {
   validateProps,
   isUrlMatchingWithIamportUrl,
   isUrlStartsWithAppScheme,
+  isCallbackSupported,
 } from '../../utils';
 import { 
   PG,
   PAY_METHOD, 
   CURRENCY, 
   MARKET_URL,
-  CALLBACK_AVAILABLE_PG,
 } from '../../constants';
 
 const source = require('../../html/payment.html');
@@ -139,8 +139,9 @@ export function Payment({ userCode, data, loading, callback }) {
 
   function onNavigationStateChange(e) {
     const { url } = e;
-    const { pg } = data;
-    if (isUrlMatchingWithIamportUrl(url) && CALLBACK_AVAILABLE_PG.indexOf(pg) === -1) { // 결제 종료 후, 콜백 실행
+    const { pg, pay_method } = data;
+
+    if (isUrlMatchingWithIamportUrl(url) && !isCallbackSupported(pg, pay_method)) { // 결제 종료 후, 콜백 실행
       const { query } = queryString.parseUrl(url);
       if (typeof callback === 'function') {
         callback(query);
