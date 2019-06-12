@@ -76,7 +76,9 @@ export default function PaymentTest({ navigation }) {
             selectedValue={pg}
             onValueChange={value => {
               setPg(value);
-              setMethod('card');
+
+              const methods = getMethods(value);
+              setMethod(methods[0].value);
             }}
           />
         </Item>
@@ -116,6 +118,7 @@ export default function PaymentTest({ navigation }) {
             <Input
               style={input}
               value={bizNum}
+              keyboardType="number-pad"
               onChangeText={value => setBizNum(value)}
             />
           </Item>  
