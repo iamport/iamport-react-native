@@ -17,7 +17,8 @@ const PG = [
   'payco', 
   'paypal', 
   'naverco',
-  'naverpay'
+  'naverpay',
+  'smilepay',
 ];
 
 const CALLBACK_AVAILABLE_PG = ['kakao', 'danal', 'danal_tpay', 'mobilians'];

@@ -4,6 +4,7 @@ import {
   METHODS_FOR_KCP,
   METHODS_FOR_UPLUS,
   METHODS_FOR_INICIS,
+  METHODS_FOR_MOBILIANS,
   METHOD_FOR_CARD,
   METHOD_FOR_PHONE,
   METHOD_FOR_VBANK,
@@ -53,15 +54,18 @@ export function getMethods(pg) {
     case 'kakaopay':
     case 'kakao':
     case 'paypal':
-    case 'payco': {
+    case 'payco': 
+    case 'smilepay': {
       return METHOD_FOR_CARD;
     }
     case 'uplus': {
       return METHODS_FOR_UPLUS;
     }
-    case 'danal':
-    case 'mobilians': {
+    case 'danal': {
       return METHOD_FOR_PHONE;
+    }
+    case 'mobilians': {
+      return METHODS_FOR_MOBILIANS;
     }
     case 'settle': {
       return METHOD_FOR_VBANK;
