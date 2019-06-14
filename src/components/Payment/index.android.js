@@ -19,14 +19,7 @@ const IamportWebView = requireNativeComponent('IamportWebView', null);
 export function Payment({ userCode, data, loading, callback }) {
   useEffect(() => {
     function onMessage(callbackUrl) {
-      const { url, query } = queryString.parseUrl(callbackUrl);
-      
-      /* 신한/현대 앱카드 대비 */
-      const queryKeys = Object.keys(query);
-      if (queryKeys.indexOf('success') === -1 && queryKeys.indexOf('imp_success') === -1) {
-        query['success'] = !(url.indexOf('success') === -1);
-      }
-      
+      const { query } = queryString.parseUrl(callbackUrl);
       if (typeof callback === 'function') {
         callback(query);
       }
