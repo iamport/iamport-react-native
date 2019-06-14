@@ -33,7 +33,7 @@ $ npm install iamport-react-native --save
 ```
 $ npm install -g react-native-cli
 $ react-native link iamport-react-native
-$ react-native link react-native-webview
+$ react-native link react-native-webview // v1.1.0 이상 필수
 ```
 
 ## 설정하기(IOS)
