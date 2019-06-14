@@ -17,10 +17,11 @@ const PG = [
   'payco', 
   'paypal', 
   'naverco',
-  'naverpay'
+  'naverpay',
+  'smilepay',
 ];
 
-const CALLBACK_AVAILABLE_PG = ['kakao', 'danal', 'danal_tpay', 'mobilians'];
+const CALLBACK_AVAILABLE_PG = ['kakao', 'danal', 'danal_tpay'];
 const REDIRECT_NEEDED_PG = ['uplus'];
 const PAY_METHOD = ['card', 'trans', 'vbank', 'phone', 'samsung', 'kpay', 'cultureland', 'smartculture', 'happymoney', 'booknlife'];
 const CURRENCY = ['KRW', 'USD', 'EUR', 'JPY'];

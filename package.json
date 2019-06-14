@@ -13,16 +13,26 @@
   ],
   "author": "Solee Deedee Choi",
   "license": "MIT",
-  "peerDependencies": {
-    "react-native": "^0.41.2"
-  },
   "dependencies": {
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
-    "react": "^16.4.2"
+    "react-native-webview": "^5.11.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/iamport/iamport-react-native"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "@babel/runtime": "*",
+    "prop-types": "*",
+    "query-string": "*",
+    "react-native-webview": "*"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.4.5",
+    "react": "^16.8.6",
+    "react-native": "^0.59.8"
   }
 }

@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -18,6 +19,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEm
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
 import java.net.URISyntaxException;
 
@@ -31,11 +33,16 @@ public class IamportWebViewClient extends WebViewClient {
   private String triggerCallback;
   protected String appScheme;
   private ReadableMap loading;
-
   private Boolean loadingFinished = false;
 
   private static final String DEFAULT_REDIRECT_URL_WHEN_SUCCESS = "https://service.iamport.kr/payments/success";
   private static final String DEFAULT_REDIRECT_URL_WHEN_FAILURE = "https://service.iamport.kr/payments/fail";
+  private static final String DEFAULT_REDIRECT_URL_WHEN_VBANK_SUCCESS = "https://service.iamport.kr/payments/vbank";
+
+  private final static String BANKPAY = "kftc-bankpay";
+  private final static String ISP = "ispmobile"; // ISP 모바일(ispmobile://TID=nictest00m01011606281506341724)
+  private final static String PACKAGE_ISP = "kvp.jjy.MispAndroid320";
+  private final static String PACKAGE_BANKPAY = "com.kftc.bankpay.android";
 
   public IamportWebViewClient(ThemedReactContext reactContext, Activity activity, ReadableMap param) {
     this.reactContext = reactContext;
@@ -64,8 +71,6 @@ public class IamportWebViewClient extends WebViewClient {
 
     Intent intent = null;
     try {
-      beforeStartNewActivity();
-
       intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME); // Intent URI 처리
       if (intent == null) return false;
 
@@ -130,6 +135,9 @@ public class IamportWebViewClient extends WebViewClient {
           case Map: // nested object recursive하게 처리
             jsonObject.put(key, toJSONObject(data.getMap(key)));
             break;
+          case Array: // notice_url, card_quota
+            jsonObject.put(key, toJSONArray(data.getArray(key)));
+            break;
           default :
             jsonObject.put(key, data.getMap(key));
             break;
@@ -142,25 +150,47 @@ public class IamportWebViewClient extends WebViewClient {
     return jsonObject;
   }
 
+  private JSONArray toJSONArray(ReadableArray data) {
+    JSONArray jsonArray = new JSONArray();
+
+    try {
+      for (int i = 0, size = data.size(); i < size; i++) {
+        ReadableType type = data.getType(i);
+
+        switch (type) {
+          case Number: // card_quota
+            jsonArray.put(i, data.getDouble(i));
+            break;
+          case String: // notice_url
+            jsonArray.put(i, data.getString(i));
+            break;
+          default:
+            jsonArray.put(i, data.getDynamic(i));
+            break;
+        }
+      }
+    } catch (JSONException e) {
+
+    }
+
+    return jsonArray;
+  }
+
   /* url이 https, http 또는 javascript로 시작하는지 체크 */
-  private boolean isUrlStartsWithProtocol(String url) {
+  protected boolean isUrlStartsWithProtocol(String url) {
     if (url.startsWith("https://") || url.startsWith("http://") || url.startsWith("javascript:")) return true;
     return false;
   }
 
   /* 결제가 종료되었는지 여부를 판단한다 */
-  private boolean isPaymentOver(String url) {
+  protected boolean isPaymentOver(String url) {
     if (
       url.startsWith(DEFAULT_REDIRECT_URL_WHEN_FAILURE) ||
-      url.startsWith(DEFAULT_REDIRECT_URL_WHEN_SUCCESS)
+      url.startsWith(DEFAULT_REDIRECT_URL_WHEN_SUCCESS) ||
+      url.startsWith(DEFAULT_REDIRECT_URL_WHEN_VBANK_SUCCESS) /* KG 이니시스, LG 유플러스, 나이스 가상계좌 발급성공 */
     ) return true;
 
     return false;
-  }
-
-  /* 나이스 정보통신 실시간 계좌이체 예외처리 등 */
-  protected void beforeStartNewActivity() {
-
   }
 
   protected void startNewActivity(String parsingUri) {
@@ -172,6 +202,17 @@ public class IamportWebViewClient extends WebViewClient {
 
   /* ActivityNotFoundException에서 market 실행여부 확인 */
   protected boolean isPaymentSchemeNotFound(String scheme) {
+    if (ISP.equalsIgnoreCase(scheme)) {
+      startNewActivity("market://details?id=" + PACKAGE_ISP);
+      return true;
+    } else if (BANKPAY.equalsIgnoreCase(scheme)) {
+      startNewActivity("market://details?id=" + PACKAGE_BANKPAY);
+      return true;
+    }
+
     return false;
   }
+
+  /* 실시간 계좌이체 인증 후 후속처리 루틴 */
+  public void bankPayPostProcess(int requestCode, int resultCode, Intent data) {}
 }

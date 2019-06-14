@@ -25,7 +25,7 @@ public class IamportPackage implements ReactPackage {
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
       return Arrays.<ViewManager>asList(
-        new IamportViewManager()
+        new IamportViewManager(reactContext)
       );
     }
 }
