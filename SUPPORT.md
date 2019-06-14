@@ -63,18 +63,50 @@ IOS에서 `웹 표준 이니시스(이하 이니시스)` 또는 `나이스 정�
 }
 ```
 
-2. 아임포트 RN 모듈 예제 프로젝트의 파일을 통째로 복사합니다.
-`[귀하의 프로젝트]/ios`에 `iamport-react-native/example/ios/AppDelegate+Iamport.m` 파일과 `iamport-react-native/example/ios/AppDelegate+Iamport.h` 파일을 통쨰로 복사합니다. 복사 후 폴더 구조는 아래와 같습니다.
+2. 귀하의 프로젝트에 아임포트 RN 모듈 예제 프로젝트 AppDelegate 파일을 추가합니다.
+- 귀하의 Xcode 프로젝트를 오픈합니다.
+- 왼쪽 프로젝트 네비게이터에서 귀하의 타깃에 커서를 두고 마우스 오른쪽 버튼을 클릭합니다.
+- 하위 메뉴에서 `New File...`를 클릭합니다.
+- `Header File`을 선택하고 Next 버튼을 누릅니다.
+![](src/img/ios-trans-create-header-file-1.png)
+- 파일 이름을 적는 란에 `AppDelegate+Iamport`를 입력하고 Create 버튼을 누릅니다.
+![](src/img/ios-trans-create-header-file-2.png)
+- 생성된 `AppDelegate+Iamport.h` 파일에 아래 코드(iamport-react-native/example/ios/AppDelegate+Iamport.h)를 복사합니다.
+```objectivec
+#ifndef AppDelegate_Iamport_h
+#define AppDelegate_Iamport_h
 
-```bash
-├── ios
-│   ├── [AppDelegate+Iamport.h] // 복사된 파일
-│   ├── [AppDelegate+Iamport.m] // 복사된 파일
-│   ├── [프로젝트 이름]
-│   ├── [프로젝트 이름-tvOS]
-│   ├── [프로젝트 이름-tvOSTests]
-│   ├── [프로젝트 이름.xcodeproj]
-└───└── [프로젝트 이름Tests]
+#import "AppDelegate.h"
+
+@interface AppDelegate (프로젝트 이름)
+
+@end
+
+#endif
 ```
+- 같은 방식으로 귀하의 타깃에서 마우스 오른쪽 버튼 클릭 후 `New File...`를 클릭합니다.
+- `Objective-C File`을 클릭하고 Next 버튼을 누릅니다.
+![](src/img/ios-trans-create-objectivec-file-1.png)
+- 파일 이름을 적는 란에 `AppDelegate+Iamport`를 입력하고 Next 버튼을 누릅니다.
+![](src/img/ios-trans-create-objectivec-file-2.png)
+- 마지막 화면에서 Create 버튼을 누릅니다.
+- 생성된 AppDelegate+Iamport.m 파일에 아래 코드(iamport-react-native/example/ios/AppDelegate+Iamport.m)를 복사합니다.
+```objectivec
+#import "AppDelegate+Iamport.h"
+#import <React/RCTLinkingManager.h>
+
+@implementation AppDelegate (프로젝트 이름)
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  return [RCTLinkingManager application:application openURL:url options:options];
+}
+
+@end
+```
+- 생성된 결과는 아래와 같습니다.
+![](src/img/ios-trans-result.png)
 
 
