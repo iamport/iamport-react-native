@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { WebView } from 'react-native-webview';
@@ -20,12 +20,53 @@ import {
   MARKET_URL,
 } from '../../constants';
 
-const source = require('../../html/payment.html');
+const DEFAULT_SOURCE = require('../../html/payment.html');
+const HTML5_INICIS_TRANS = 'HTML5_INICIS_TRANS';
+const NICE_TRANS_URL = 'https://web.nicepay.co.kr/smart/bank/payTrans.jsp';
+
 export function Payment({ userCode, data, loading, callback }) {
   const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
+  const [source, setSource] = useState(DEFAULT_SOURCE);
+
+  useEffect(() => {
+    function handleOpenURL(event) {
+      const { pg, pay_method } = data;
+      const { url } = event;
+      const decodedUrl = decodeURIComponent(url);
+      const extractedQuery = queryString.extract(decodedUrl);
+      if (pg === 'html5_inicis' && pay_method === 'trans' && typeof callback === 'function') {
+        // 웹 표준 이니시스 & 실시간 계좌이체 대비
+        const { imp_uid, m_redirect_url, merchant_uid } = queryString.parse(extractedQuery);
+        if (m_redirect_url && m_redirect_url.includes(HTML5_INICIS_TRANS)) {
+          const query = {
+            imp_uid,
+            merchant_uid: typeof merchant_uid === 'object' ? merchant_uid[0] : merchant_uid,
+          };
+          callback(query);
+        }
+      }
+
+      if (pg === 'nice' && pay_method === 'trans') {
+        // 나이스 & 실시간 계좌이체 대비
+        const uri = `${NICE_TRANS_URL}?${extractedQuery}`;
+        setSource({ uri });
+      }
+    }
+    Linking.addEventListener('url', handleOpenURL);
+    
+    return function cleanup() {
+      Linking.removeEventListener('url', handleOpenURL);
+    }
+  });
 
   function onLoad () {
     if (!isWebViewLoaded) { // 포스트 메시지를 한번만 보내도록(무한루프 방지)
+      const { pg, pay_method } = data;
+      // 웹 표준 이니시스 & 실시간 계좌이체 대비
+      if (pg === 'html5_inicis' && pay_method === 'trans') {
+        data.m_redirect_url = HTML5_INICIS_TRANS;
+      }
+
       const params = JSON.stringify({ 
         userCode, 
         data, 
@@ -116,9 +157,9 @@ export function Payment({ userCode, data, loading, callback }) {
   function onShouldStartLoadWithRequest(request) {
     const { url } = request;
     if (isUrlStartsWithAppScheme(url)) {
-      const splittedScheme = url.split('://');
-      const scheme = splittedScheme[0];
-      const marketUrl = scheme === 'itmss' ? `https://${splittedScheme[1]}` :  url;
+      const splittedUrl = url.split('://');
+      const scheme = splittedUrl[0];
+      const marketUrl = scheme === 'itmss' ? `https://${splittedUrl[1]}` :  url;
       // 앱 오픈
       Linking.openURL(marketUrl).catch(() => {
         // 앱 미설치 경우, 마켓 URL로 연결
@@ -140,7 +181,6 @@ export function Payment({ userCode, data, loading, callback }) {
   function onNavigationStateChange(e) {
     const { url } = e;
     const { pg, pay_method } = data;
-
     if (isUrlMatchingWithIamportUrl(url) && !isCallbackSupported(pg, pay_method)) { // 결제 종료 후, 콜백 실행
       const { query } = queryString.parseUrl(url);
       if (typeof callback === 'function') {
