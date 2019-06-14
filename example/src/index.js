@@ -1,37 +1,101 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { useState, useEffect } from 'react';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import React from 'react';
-import { Platform } from 'react-native';
-import { createAppContainer, createStackNavigator } from 'react-navigation';
+import { Container } from 'native-base';
 
-import Home from 'components/Home';
-import Payment from 'components/Payment';
-import PaymentTest from 'components/PaymentTest';
-import PaymentResult from 'components/PaymentResult';
-import Certification from 'components/Certification';
-import CertificationTest from 'components/CertificationTest';
-import CertificationResult from 'components/CertificationResult';
+import Header from './Header';
+import Home from './Home';
+import PaymentTest from './PaymentTest';
+import Payment from './Payment';
+import PaymentResult from './PaymentResult';
+import CertificationTest from './CertificationTest';
+import Certification from './Certification';
+import CertificationResult from './CertificationResult';
 
-const headerMode = Platform.OS === 'ios' ? 'float' : 'none';
+import NavigationService from './NavigationService';
+
+const noHeader = {
+  headerStyle: {
+    height: 0,
+  },
+};
+
+const hideHeader = {
+  header: null,
+};
 
 const AppNavigator = createStackNavigator({
-  Home: { screen: Home },
-  Payment: { screen: Payment },
-  PaymentTest: { screen: PaymentTest },
-  PaymentResult: { screen: PaymentResult },
-  Certification: { screen: Certification },
-  CertificationTest: { screen: CertificationTest },
-  CertificationResult: { screen: CertificationResult },
+  Home: {
+    screen: Home,
+    navigationOptions: noHeader,
+  },
+  PaymentTest: {
+    screen: PaymentTest,
+    navigationOptions: hideHeader,
+  },
+  Payment: {
+    screen: Payment,
+    navigationOptions: noHeader,
+  },
+  PaymentResult: {
+    screen: PaymentResult,
+    navigationOptions: hideHeader,
+  },
+  CertificationTest: {
+    screen: CertificationTest,
+    navigationOptions: hideHeader,
+  },
+  Certification: {
+    screen: Certification,
+    navigationOptions: noHeader,
+  },
+  CertificationResult: {
+    screen: CertificationResult,
+    navigationOptions: hideHeader,
+  },
 }, {
-  headerMode
+  initialRouteName: 'Home',
 });
 
 const AppContainer = createAppContainer(AppNavigator);
-export default AppContainer;
 
+export default function App() {
+  const [isHeaderShow, setIsHeaderShow] = useState(false);
+  const [headerTitle, setHeaderTitle] = useState('');
+  const [currentScreen, setCurrentScreen] = useState('Home');
+
+  useEffect(() => {
+    let headerTitle = '';
+    let isHeaderShow = true;
+    if (currentScreen === 'PaymentTest') {
+      headerTitle = '아임포트 결제 테스트';
+    } else if (currentScreen === 'CertificationTest') {
+      headerTitle = '아임포트 본인인증 테스트';
+    } else {
+      isHeaderShow = false;
+    }
+
+    setIsHeaderShow(isHeaderShow);
+    setHeaderTitle(headerTitle);
+  }, [currentScreen]);
+
+  function handleNavigation(prevState, newState) {
+    const { routes } = newState;
+    const { routeName } = routes[routes.length - 1];
+    if (currentScreen !== routeName) {
+      setCurrentScreen(routeName);
+    }
+  }
+
+  return (
+    <Container>
+      {isHeaderShow && <Header title={headerTitle} />}
+      <AppContainer
+        ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }}
+        onNavigationStateChange={handleNavigation}
+      />
+    </Container>
+  );
+}

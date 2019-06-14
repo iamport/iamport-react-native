@@ -17,10 +17,11 @@ const PG = [
   'payco', 
   'paypal', 
   'naverco',
-  'naverpay'
+  'naverpay',
+  'smilepay',
 ];
 
-const CALLBACK_AVAILABLE_PG = ['kakao', 'danal', 'danal_tpay', 'mobilians'];
+const CALLBACK_AVAILABLE_PG = ['kakao', 'danal', 'danal_tpay'];
 const REDIRECT_NEEDED_PG = ['uplus'];
 const PAY_METHOD = ['card', 'trans', 'vbank', 'phone', 'samsung', 'kpay', 'cultureland', 'smartculture', 'happymoney', 'booknlife'];
 const CURRENCY = ['KRW', 'USD', 'EUR', 'JPY'];
@@ -41,7 +42,8 @@ const MARKET_URL = {
   'nhallonepayansimclick': 'https://itunes.apple.com/kr/app/id1177889176', // NH농협카드 올원페이(앱카드)
   'cloudpay': 'https://itunes.apple.com/kr/app/id847268987', // 하나1Q페이(앱카드)
   'lguthepay': 'https://itunes.apple.com/kr/app/id760098906', // 페이나우
-}
+  'kftc-bankpay': 'https://itunes.apple.com/kr/app/id398456030', // 뱅크페이
+};
 
 export {
   PG,

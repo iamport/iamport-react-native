@@ -11,7 +11,7 @@
       window.addEventListener('DOMContentLoaded', function(event) {
         var IMP = window.IMP;
 
-        document.addEventListener('message', function(e) {
+        window.addEventListener('message', function(e) {
           var params = JSON.parse(e.data);
 
           /* 로딩 화면 커스터마이징 */
@@ -29,12 +29,12 @@
           IMP.init(userCode);
 
           IMP.request_pay(data, function(response) {
-            window.postMessage(JSON.stringify(response));
+            window.ReactNativeWebView.postMessage(JSON.stringify(response));
           });
         });
       });
     </script>
-    
+
     <style>
       div#imp-rn-container {
         text-align: center; 

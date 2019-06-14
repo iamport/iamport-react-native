@@ -1,11 +1,11 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import { 
   StyleSheet, 
   requireNativeComponent, 
-  DeviceEventEmitter 
+  DeviceEventEmitter,
 } from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
@@ -16,76 +16,47 @@ import { PG, PAY_METHOD, CURRENCY } from '../../constants';
 
 const IamportWebView = requireNativeComponent('IamportWebView', null);
 
-class Payment extends React.Component {
-  static propTypes = {
-    userCode: PropTypes.string.isRequired,
-    data: PropTypes.shape({
-      pg: PropTypes.oneOf(PG),
-      pay_method: PropTypes.oneOf(PAY_METHOD),
-      currency: PropTypes.oneOf(CURRENCY),
-      notice_url: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string)
-      ]),
-      display: PropTypes.shape({
-        card_quota: PropTypes.arrayOf(PropTypes.number)
-      }),
-      merchant_uid: PropTypes.string.isRequired,
-      amoung: PropTypes.oneOfType([
-        PropTypes.string.isRequired,
-        PropTypes.number.isRequired,
-      ]),
-      buyer_tel: PropTypes.string.isRequired,
-      app_scheme: PropTypes.string.isRequired,
-      escrow: PropTypes.bool,
-      name: PropTypes.string,
-      tax_free: PropTypes.number,
-      buyer_name: PropTypes.string,
-      buyer_email: PropTypes.string,
-      buyer_addr: PropTypes.string,
-      buyer_postcode: PropTypes.string,
-      custom_data: PropTypes.object,
-      vbank_due: PropTypes.string,
-      popup: PropTypes.bool,
-      digital: PropTypes.bool,
-    }),
-    callback: PropTypes.func.isRequired,
-    loading: PropTypes.shape({
-      message: PropTypes.string,
-      image: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-      ]),
-    })
-  };
+export function Payment({ userCode, data, loading, callback }) {
+  useEffect(() => {
+    function onMessage(callbackUrl) {
+      const { query } = queryString.parseUrl(callbackUrl);
+      if (typeof callback === 'function') {
+        callback(query);
+      }
+    }
 
-  componentDidMount() {
     // add event listener
-    DeviceEventEmitter.addListener('message', this.onMessage);
-  }
+    DeviceEventEmitter.addListener('message', onMessage);
 
-  componentWillUnmount() {
-    // remove event listener
-    DeviceEventEmitter.removeAllListeners('message');
-  }
+    return function cleanup() {
+      // remove event listener
+      DeviceEventEmitter.removeAllListeners('message');
+    }
+  });
 
-  onMessage = (callbackUrl) => {
-    const { callback } = this.props;
-    const { url, query } = queryString.parseUrl(callbackUrl);
-    
-    /* 신한/현대 앱카드 대비 */
-    const queryKeys = Object.keys(query);
-    if (queryKeys.indexOf('success') === -1 && queryKeys.indexOf('imp_success') === -1) {
-      query['success'] = !(url.indexOf('success') === -1);
+  function getCustomLoading() {
+    if (typeof loading === 'undefined') {
+      return {
+        message: '잠시만 기다려주세요...',
+        image: '../img/iamport-logo.png',
+      };
     }
     
-    if (typeof callback === 'function') {
-      callback(query);
-    }
+    return {
+      message: getCustomLoadingMessage(),
+      image: getCustomLoadingImage(),
+    };
   }
 
-  getCustomLoadingImage() {
-    const { loading } = this.props;
+  function getCustomLoadingMessage() {
+    const { message } = loading;
+    if (typeof message === 'string') {
+      return message;
+    }
+    return '잠시만 기다려주세요...';
+  }
+
+  function getCustomLoadingImage() {
     const { image } = loading;
 
     if (typeof image === 'number') {
@@ -99,7 +70,7 @@ class Payment extends React.Component {
     return '../img/iamport-logo.png';
   }
 
-  triggerCallback = (response) => { // 콜백을 지원하는 PG사의 경우, 결제 시도 종료 후 해당 함수가 트리거된다
+  function triggerCallback(response) { // 콜백을 지원하는 PG사의 경우, 결제 시도 종료 후 해당 함수가 트리거된다
     const { success, imp_uid, merchant_uid } = response;
     const BASE_URL = 'https://service.iamport.kr/payments';
     let path = '';
@@ -115,32 +86,69 @@ class Payment extends React.Component {
     location.href = `${BASE_URL}/${path}?${query}`;
   }
 
-  render() {
-    const { webView } = styles;
-    const { userCode, data, callback, loading } = this.props;
 
-    const { validate, message } = validateProps(userCode, data);
-    if (validate) {
-      return (
-        <IamportWebView
-          param={{ 
-            userCode, 
-            data, 
-            callback: String(callback),
-            triggerCallback: String(this.triggerCallback),
-            loading: {
-              message: loading.message || '잠시만 기다려주세요...',
-              image: this.getCustomLoadingImage()
-            },
-          }}
-          style={webView} 
-        />
-      );
-    }
-    
-    return <ErrorOnParams message={message} />;
+  const { webView } = styles;
+
+  const { validate, message } = validateProps(userCode, data);
+  if (validate) {
+    return (
+      <IamportWebView
+        param={{ 
+          userCode, 
+          data, 
+          callback: String(callback),
+          triggerCallback: String(triggerCallback),
+          loading: getCustomLoading(),
+        }}
+        style={webView} 
+      />
+    );
   }
+  
+  return <ErrorOnParams message={message} />;
 }
+
+Payment.propTypes = {
+  userCode: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    pg: PropTypes.oneOf(PG),
+    pay_method: PropTypes.oneOf(PAY_METHOD),
+    currency: PropTypes.oneOf(CURRENCY),
+    notice_url: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]),
+    display: PropTypes.shape({
+      card_quota: PropTypes.arrayOf(PropTypes.number),
+    }),
+    merchant_uid: PropTypes.string.isRequired,
+    amount: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired,
+    ]),
+    buyer_tel: PropTypes.string.isRequired,
+    app_scheme: PropTypes.string.isRequired,
+    escrow: PropTypes.bool,
+    name: PropTypes.string,
+    tax_free: PropTypes.number,
+    buyer_name: PropTypes.string,
+    buyer_email: PropTypes.string,
+    buyer_addr: PropTypes.string,
+    buyer_postcode: PropTypes.string,
+    custom_data: PropTypes.object,
+    vbank_due: PropTypes.string,
+    popup: PropTypes.bool,
+    digital: PropTypes.bool,
+  }),
+  callback: PropTypes.func.isRequired,
+  loading: PropTypes.shape({
+    message: PropTypes.string,
+    image: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
+  }),
+};
 
 const styles = StyleSheet.create({ 
   webView: {

@@ -1,12 +1,25 @@
 # iamport-react-native
-[ ![alt text](https://img.shields.io/badge/react-v16.4.2-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
-[ ![alt text](https://img.shields.io/badge/react--native-v0.41.2-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
+[ ![alt text](https://img.shields.io/badge/react-v16.8.6-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
+[ ![alt text](https://img.shields.io/badge/react--native-v0.59.8-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
 [ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
 
-리액트 네이티브용 아임포트 결제연동 모듈 버전 정보 안내입니다.
+아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
 ## 버전정보
-- [v1.0.6](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.1.0](https://github.com/iamport/iamport-react-native/tree/master)
+  - React(v16.8.6), React Native(v0.59.8) 버전을 업그레이드 하였습니다.
+  - React Hook을 적용하였습니다.
+  - WebView 라이브러리를 react-native에서 react-native-webview로 변경하였습니다.
+  - 결제 데이터에 Array 타입의 값을 허용하도록 설정하였습니다.
+  - 로딩 데이터가 없어도 에러가 발생하지 않도록 조치하였습니다.
+  - 스마일페이를 추가하였습니다.
+  - 모빌리언스 신용카드 결제를 추가하였습니다.
+  - 가상계좌 발급시 콜백 미실행 버그를 해결하였습니다.
+  - 실시간 계좌이체 뱅크페이 앱 결제 후 후속처리 로직을 추가하였습니다.
+  - 휴대폰 본인인증 PASS 앱 사용을 위한 설정을 추가하였습니다.
+  - Vue Native 지원을 위해, onMessage로 전달되는 data를 decode 하는 코드를 추가하였습니다.
+
+- [v1.0.6](https://github.com/iamport/iamport-react-native/tree/v1.0.6)
   - ios 페이코 웹 결제시, 결제 완료 전 postMessage 수신으로 발생하는 이슈를 해결하였습니다.
 
 - [v1.0.5](https://github.com/iamport/iamport-react-native/tree/v1.0.5)

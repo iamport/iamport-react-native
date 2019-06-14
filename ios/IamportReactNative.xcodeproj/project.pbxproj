@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AB42F9622AA1BD200B65B10 /* libRNCWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A127059229FB6660093CAC1 /* libRNCWebView.a */; };
 		B3E7B58A1CC2AC0600A0062D /* IamportReactNative.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* IamportReactNative.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A127058229FB6660093CAC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12561EF3D2A34E93A9B38779 /* RNCWebView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNCWebView;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
@@ -23,7 +34,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12561EF3D2A34E93A9B38779 /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCWebView.xcodeproj; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; };
 		134814201AA4EA6300B7C361 /* libIamportReactNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIamportReactNative.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		35198C18A77245EEAD7FE605 /* libRNCWebView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCWebView.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* IamportReactNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IamportReactNative.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* IamportReactNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IamportReactNative.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AB42F9622AA1BD200B65B10 /* libRNCWebView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +67,41 @@
 				B3E7B5881CC2AC0600A0062D /* IamportReactNative.h */,
 				B3E7B5891CC2AC0600A0062D /* IamportReactNative.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				A43FDE9198864ED5B9B41517 /* Libraries */,
+				5A127054229FB6660093CAC1 /* Recovered References */,
+				5AB42F9522AA1BD200B65B10 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		5A127054229FB6660093CAC1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				35198C18A77245EEAD7FE605 /* libRNCWebView.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		5A127055229FB6660093CAC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A127059229FB6660093CAC1 /* libRNCWebView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5AB42F9522AA1BD200B65B10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A43FDE9198864ED5B9B41517 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				12561EF3D2A34E93A9B38779 /* RNCWebView.xcodeproj */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,7 +130,7 @@
 		58B511D31A9E6C8500147676 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 830;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
@@ -100,12 +148,28 @@
 			mainGroup = 58B511D21A9E6C8500147676;
 			productRefGroup = 58B511D21A9E6C8500147676;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5A127055229FB6660093CAC1 /* Products */;
+					ProjectRef = 12561EF3D2A34E93A9B38779 /* RNCWebView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				58B511DA1A9E6C8500147676 /* IamportReactNative */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5A127059229FB6660093CAC1 /* libRNCWebView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCWebView.a;
+			remoteRef = 5A127058229FB6660093CAC1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -204,12 +268,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
-				"$(inherited)",
+					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/IamportReactNative\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IamportReactNative;
 				SKIP_INSTALL = YES;
@@ -225,7 +292,10 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/IamportReactNative\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IamportReactNative;
 				SKIP_INSTALL = YES;
