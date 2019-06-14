@@ -1,13 +1,14 @@
 
 # iamport-react-native
-[ ![alt text](https://img.shields.io/badge/react-v16.4.2-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
-[ ![alt text](https://img.shields.io/badge/react--native-v0.41.2-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
+[ ![alt text](https://img.shields.io/badge/react-v16.8.6-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
+[ ![alt text](https://img.shields.io/badge/react--native-v0.59.8-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
 [ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
 
-리액트 네이티브용 아임포트 결제연동 모듈입니다.
+아임포트 리액트 네이티브 모듈입니다.
 
 ## 목차
 - [버전정보](VERSION.md)
+- [지원정보](SUPPORT.md)
 - [설치하기](INSTALL.md)
 - [설정하기](SETTING.md)
 - [예제](EXAMPLE.md)
@@ -15,7 +16,10 @@
 - 아임포트 asset 추가하기
 
 ## 버전정보
-최신버전은 [v1.0.6](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
+최신버전은 [v1.1.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
+
+## 지원정보
+아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](SUPPORT.md)를 참고하세요.
 
 ## 설치하기
 아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. 보다 자세한 안내는 [설치하기](INSTALL.md)를 참고하세요.
@@ -29,6 +33,7 @@ $ npm install iamport-react-native --save
 ```
 $ npm install -g react-native-cli
 $ react-native link iamport-react-native
+$ react-native link react-native-webview
 ```
 
 ## 설정하기(IOS)
@@ -107,41 +112,38 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
 
-class App extends React.Component {
-  callback = (response) => { /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
-    const { navigation } = this.props;
+export function App({ navigation }) {
+  function callback(response) { /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
     navigation.replace('PaymentResult', response);
+  }
+
+  /* [필수입력] 결제에 필요한 데이터를 입력합니다. */
+  const data = {
+    pg: 'html5_inicis',
+    pay_method: 'card',
+    name: '아임포트 결제데이터 분석',
+    merchant_uid: `mid_${new Date().getTime()}`,
+    amount: '39000',
+    buyer_name: '홍길동',
+    buyer_tel: '01012345678',
+    buyer_email: 'example@naver.com',
+    buyer_addr: '서울시 강남구 신사동 661-16',
+    buyer_postcode: '06018',
+    app_scheme: 'example',
+    // [Deprecated v1.0.3]: m_redirect_url
   };
 
-  render() {
-    /* [필수입력] 결제에 필요한 데이터를 입력합니다. */
-    const data = {
-      pg: 'html5_inicis',
-      pay_method: 'card',
-      name: '아임포트 결제데이터 분석',
-      merchant_uid: `mid_${new Date().getTime()}`,
-      amount: '39000',
-      buyer_name: '홍길동',
-      buyer_tel: '01012345678',
-      buyer_email: 'example@naver.com',
-      buyer_addr: '서울시 강남구 신사동 661-16',
-      buyer_postcode: '06018',
-      app_scheme: 'example',
-      // [Deprecated v1.0.3]: m_redirect_url
-    };
-
-    return (
-      <IMP.Payment
-        userCode={'iamport'} // 가맹점 식별코드
-        data={data} // 결제 데이터
-        callback={this.callback} // 결제 종료 후 콜백
-        loading={{
-          message: '잠시만 기다려주세요...', // 로딩화면 메시지 
-          image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
-        }}
-      />
-    );
-  }
+  return (
+    <IMP.Payment
+      userCode={'iamport'} // 가맹점 식별코드
+      data={data} // 결제 데이터
+      callback={callback} // 결제 종료 후 콜백
+      loading={{
+        message: '잠시만 기다려주세요...', // 로딩화면 메시지 
+        image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
+      }}
+    />
+  );
 }
 
 export default App;
@@ -153,31 +155,28 @@ export default App;
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 본인인증 모듈을 불러옵니다.
 
-class App extends React.Component {
-  callback = (response) => { /* [필수입력] 본인인증 종료 후, 라우터를 변경하고 결과를 전달합니다. */
-    const { navigation } = this.props;
+export function App({ navigation }) {
+  function callback(response) { /* [필수입력] 본인인증 종료 후, 라우터를 변경하고 결과를 전달합니다. */
     navigation.replace('CertificationResult', response);
+  }
+
+  /* [필수입력] 본인인증에 필요한 데이터를 입력합니다. */
+  const data = {
+    merchant_uid: `mid_${new Date().getTime()}`,
+    min_age: '',
   };
 
-  render() {
-    /* [필수입력] 본인인증에 필요한 데이터를 입력합니다. */
-    const data = {
-      merchant_uid: `mid_${new Date().getTime()}`,
-      min_age: '',
-    };
-
-    return (
-      <IMP.Certification
-        userCode={'iamport'} // 가맹점 식별코드
-        data={data} // 본인인증 데이터
-        callback={this.callback} // 본인인증 종료 후 콜백
-        loading={{
-          message: '잠시만 기다려주세요...', // 로딩화면 메시지 
-          image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
-        }}
-      />
-    );
-  }
+  return (
+    <IMP.Certification
+      userCode={'iamport'} // 가맹점 식별코드
+      data={data} // 본인인증 데이터
+      callback={callback} // 본인인증 종료 후 콜백
+      loading={{
+        message: '잠시만 기다려주세요...', // 로딩화면 메시지 
+        image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
+      }}
+    />
+  );
 }
 
 export default App;
@@ -188,10 +187,9 @@ export default App;
 콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 실패/성공 여부에 맞게 아래와 같이 로직을 작성할 수 있습니다. 콜백 함수에 대한 자세한 설명은 [콜백 설정하기](CALLBACK.md)를 참고하세요.
 
 ```javascript
-callback = (response) => {
-  const { navigation } = this.props;
+function callback(response) {
   navigation.replace('Result', response);
-};
+}
 ```
 
 
@@ -226,7 +224,7 @@ $ react-native bundle --platform android --dev false --entry-file index.js --bun
 │   │       │       ├── html
 │   │       │       │   ├── payment.html // 아임포트 결제 asset
 │   │       │       │   └── certification.html // 아임포트 휴대폰 본인인증 asset
-│   │       │       └── src
+│   │       │       └── img
 │   │       │           └── iamport-logo.png
 │   │       └── ...
 │   ├── main.jsbundle // bundle 파일

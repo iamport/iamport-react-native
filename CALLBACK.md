@@ -1,10 +1,10 @@
 
 # iamport-react-native
-[ ![alt text](https://img.shields.io/badge/react-v16.4.2-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
-[ ![alt text](https://img.shields.io/badge/react--native-v0.41.2-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
+[ ![alt text](https://img.shields.io/badge/react-v16.8.6-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
+[ ![alt text](https://img.shields.io/badge/react--native-v0.59.8-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
 [ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
 
-리액트 네이티브용 아임포트 결제연동 모듈 콜백 설정 안내입니다.
+리액트 네이티브용 아임포트 모듈 콜백 설정 안내입니다.
 
 ## 콜백 함수 설정하기
 #### 1. 콜백은 필수입력
@@ -21,18 +21,16 @@ push 함수를 사용할 경우, 결제 완료 후 라우터가 변경되더라�
 
 ### 잘못된 사용 예제
 ```javascript
-callback = (response) => {
-  const { navigation } = this.props;
+function callback(response) {
   navigation.push('Result', response); // [에러] push 함수 사용
-};
+}
 ```
 
 ### 올바른 사용 예제
 ```javascript
-callback = (response) => {
-  const { navigation } = this.props;
+function callback(response) {
   navigation.replace('Result', response);
-};
+}
 ```
 
 #### 3. 결과에 따라 로직 작성하기
@@ -49,35 +47,31 @@ response에 따라 결제/본인인증 성공/실패 여부를 판단해 아래�
 
 ```javascript
 // Result.js
-...
-render() {
-  const { navigation } = this.props;
-  const success = navigation.getParam('success');
-  const imp_uid = navigation.getParma('imp_uid');
-  const merchant_uid = navigation.getParma('merchant_uid');
-  
-  return (
-    <View style={container}>
-      <Text>{`결제/본인인증에 ${success ? '성공' : '실패'}하였습니다.`}</Text>
-      <View style={table}>
-        <View style={row}>
-          <Text style={name}>아임포트 번호</Text>
-          <Text style={value}>{imp_uid || '없음'}</Text>
-        </View>
-        <View style={row}>
-          <Text style={name}>주문 번호</Text>
-          <Text style={value}>{merchant_uid || '없음'}</Text>
-        </View>
-        {
-          !success && 
-          <View style={row}>
-            <Text style={name}>에러 메시지</Text>
-            <Text style={value}>{error_msg || '없음'}</Text>
-          </View>
-        }
+const success = navigation.getParam('success');
+const imp_uid = navigation.getParma('imp_uid');
+const merchant_uid = navigation.getParma('merchant_uid');
+
+return (
+  <View style={container}>
+    <Text>{`결제/본인인증에 ${success ? '성공' : '실패'}하였습니다.`}</Text>
+    <View style={table}>
+      <View style={row}>
+        <Text style={name}>아임포트 번호</Text>
+        <Text style={value}>{imp_uid || '없음'}</Text>
       </View>
+      <View style={row}>
+        <Text style={name}>주문 번호</Text>
+        <Text style={value}>{merchant_uid || '없음'}</Text>
+      </View>
+      {
+        !success && 
+        <View style={row}>
+          <Text style={name}>에러 메시지</Text>
+          <Text style={value}>{error_msg || '없음'}</Text>
+        </View>
+      }
     </View>
-  );
-}
+  </View>
+);
 ...
 ```
