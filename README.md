@@ -16,7 +16,7 @@
 - 아임포트 asset 추가하기
 
 ## 버전정보
-최신버전은 [v1.1.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
+최신버전은 [v1.1.1](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
 
 ## 지원정보
 아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](SUPPORT.md)를 참고하세요.

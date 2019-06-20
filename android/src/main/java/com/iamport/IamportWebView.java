@@ -19,10 +19,10 @@ public class IamportWebView extends WebView {
 
     this.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-      // Enables debugging of web contents (HTML / CSS / JavaScript) loaded into any WebViews of this application
-      this.setWebContentsDebuggingEnabled(true);
-    }
+    // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+    //   // Enables debugging of web contents (HTML / CSS / JavaScript) loaded into any WebViews of this application
+    //   this.setWebContentsDebuggingEnabled(true);
+    // }
   }
 
   public void setWebSettings() {
