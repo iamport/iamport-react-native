@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', function(event) {
     IMP.init(userCode);
 
     IMP.certification(data, function(response) {
-      window.postMessage(JSON.stringify(response));
+      window.ReactNativeWebView.postMessage(JSON.stringify(response));
     });
   });
 });

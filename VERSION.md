@@ -6,10 +6,13 @@
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
 ## 버전정보
-- [v1.1.1](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.1.2](https://github.com/iamport/iamport-react-native/tree/master)
+  - 결제 종료 후 merchant_uid를 전달하기 위해 default m_redirect_url을 지정하였습니다.
+
+- [v1.1.1](https://github.com/iamport/iamport-react-native/tree/v1.1.1)
   - jQuery cdn을 변경하였습니다.
 
-- [v1.1.0](https://github.com/iamport/iamport-react-native/tree/v1.1.1)
+- [v1.1.0](https://github.com/iamport/iamport-react-native/tree/v1.1.0)
   - React(v16.8.6), React Native(v0.59.8) 버전을 업그레이드 하였습니다.
   - React Hook을 적용하였습니다.
   - WebView 라이브러리를 react-native에서 react-native-webview로 변경하였습니다.

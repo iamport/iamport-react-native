@@ -29,15 +29,12 @@ public class IamportWebViewClient extends WebViewClient {
 
   private String userCode;
   private ReadableMap data;
+  private String mRedirectUrl;
   private String callback;
   private String triggerCallback;
   protected String appScheme;
   private ReadableMap loading;
   private Boolean loadingFinished = false;
-
-  private static final String DEFAULT_REDIRECT_URL_WHEN_SUCCESS = "https://service.iamport.kr/payments/success";
-  private static final String DEFAULT_REDIRECT_URL_WHEN_FAILURE = "https://service.iamport.kr/payments/fail";
-  private static final String DEFAULT_REDIRECT_URL_WHEN_VBANK_SUCCESS = "https://service.iamport.kr/payments/vbank";
 
   private final static String BANKPAY = "kftc-bankpay";
   private final static String ISP = "ispmobile"; // ISP 모바일(ispmobile://TID=nictest00m01011606281506341724)
@@ -50,6 +47,7 @@ public class IamportWebViewClient extends WebViewClient {
 
     userCode = param.getString("userCode");
     data = param.getMap("data");
+    mRedirectUrl = data.getString("m_redirect_url");
     callback = param.getString("callback");
     triggerCallback = param.getString("triggerCallback");
     appScheme = data.getString("app_scheme");
@@ -64,7 +62,7 @@ public class IamportWebViewClient extends WebViewClient {
       reactContext
         .getJSModule(RCTDeviceEventEmitter.class)
         .emit("message", url);
-
+      view.destroy();
       return false;
     }
     if (isUrlStartsWithProtocol(url)) return false;
@@ -184,12 +182,7 @@ public class IamportWebViewClient extends WebViewClient {
 
   /* 결제가 종료되었는지 여부를 판단한다 */
   protected boolean isPaymentOver(String url) {
-    if (
-      url.startsWith(DEFAULT_REDIRECT_URL_WHEN_FAILURE) ||
-      url.startsWith(DEFAULT_REDIRECT_URL_WHEN_SUCCESS) ||
-      url.startsWith(DEFAULT_REDIRECT_URL_WHEN_VBANK_SUCCESS) /* KG 이니시스, LG 유플러스, 나이스 가상계좌 발급성공 */
-    ) return true;
-
+    if (url.startsWith(mRedirectUrl)) return true;
     return false;
   }
 

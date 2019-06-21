@@ -45,6 +45,8 @@ const MARKET_URL = {
   'kftc-bankpay': 'https://itunes.apple.com/kr/app/id398456030', // 뱅크페이
 };
 
+const DEFAULT_M_REDIRECT_URL = 'http://localhost/iamport';
+
 export {
   PG,
   CALLBACK_AVAILABLE_PG,
@@ -53,5 +55,6 @@ export {
   CURRENCY,
   LANGUAGE,
   EN_AVAILABLE_PG,
-  MARKET_URL
+  MARKET_URL,
+  DEFAULT_M_REDIRECT_URL,
 };

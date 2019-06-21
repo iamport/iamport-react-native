@@ -9,7 +9,6 @@ import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 import ErrorOnParams from '../ErrorOnParams';
 import {
   validateProps,
-  isUrlMatchingWithIamportUrl,
   isUrlStartsWithAppScheme,
   isCallbackSupported,
 } from '../../utils';
@@ -18,6 +17,7 @@ import {
   PAY_METHOD, 
   CURRENCY, 
   MARKET_URL,
+  DEFAULT_M_REDIRECT_URL,
 } from '../../constants';
 
 const DEFAULT_SOURCE = require('../../html/payment.html');
@@ -36,8 +36,8 @@ export function Payment({ userCode, data, loading, callback }) {
       const extractedQuery = queryString.extract(decodedUrl);
       if (pg === 'html5_inicis' && pay_method === 'trans' && typeof callback === 'function') {
         // 웹 표준 이니시스 & 실시간 계좌이체 대비
-        const { imp_uid, m_redirect_url, merchant_uid } = queryString.parse(extractedQuery);
-        if (m_redirect_url && m_redirect_url.includes(HTML5_INICIS_TRANS)) {
+        const { m_redirect_url, imp_uid, merchant_uid } = queryString.parse(extractedQuery);
+        if (m_redirect_url.includes(HTML5_INICIS_TRANS)) {
           const query = {
             imp_uid,
             merchant_uid: typeof merchant_uid === 'object' ? merchant_uid[0] : merchant_uid,
@@ -62,10 +62,10 @@ export function Payment({ userCode, data, loading, callback }) {
   function onLoad () {
     if (!isWebViewLoaded) { // 포스트 메시지를 한번만 보내도록(무한루프 방지)
       const { pg, pay_method } = data;
-      // 웹 표준 이니시스 & 실시간 계좌이체 대비
-      if (pg === 'html5_inicis' && pay_method === 'trans') {
-        data.m_redirect_url = HTML5_INICIS_TRANS;
-      }
+      /* [v1.1.2] 콜백에 merchant_uid 전달을 위해 m_redirect_url을 dummy url로 지정 */
+      /* 웹 표준 이니시스 & 실시간 계좌이체 대비 */
+      data.m_redirect_url =
+        pg === 'html5_inicis' && pay_method === 'trans' ? HTML5_INICIS_TRANS : DEFAULT_M_REDIRECT_URL;
 
       const params = JSON.stringify({ 
         userCode, 
@@ -181,13 +181,18 @@ export function Payment({ userCode, data, loading, callback }) {
   function onNavigationStateChange(e) {
     const { url } = e;
     const { pg, pay_method } = data;
-    if (isUrlMatchingWithIamportUrl(url) && !isCallbackSupported(pg, pay_method)) { // 결제 종료 후, 콜백 실행
+    if (isPaymentOver(url) && !isCallbackSupported(pg, pay_method)) { // 결제 종료 후, 콜백 실행
       const { query } = queryString.parseUrl(url);
       if (typeof callback === 'function') {
         callback(query);
       }
       setIsWebViewLoaded(false);
     }
+  }
+
+  function isPaymentOver(url) {
+    if (url.includes(DEFAULT_M_REDIRECT_URL)) return true;
+    return false;
   }
   
   const { validate, message } = validateProps(userCode, data);
