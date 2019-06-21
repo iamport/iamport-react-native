@@ -12,7 +12,7 @@ import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource'
 import ErrorOnParams from '../ErrorOnParams';
 
 import { validateProps } from '../../utils';
-import { PG, PAY_METHOD, CURRENCY } from '../../constants';
+import { PG, PAY_METHOD, CURRENCY, DEFAULT_M_REDIRECT_URL } from '../../constants';
 
 const IamportWebView = requireNativeComponent('IamportWebView', null);
 
@@ -71,25 +71,18 @@ export function Payment({ userCode, data, loading, callback }) {
   }
 
   function triggerCallback(response) { // 콜백을 지원하는 PG사의 경우, 결제 시도 종료 후 해당 함수가 트리거된다
-    const { success, imp_uid, merchant_uid } = response;
-    const BASE_URL = 'https://service.iamport.kr/payments';
-    let path = '';
-    let query = `success=${success}&imp_uid=${imp_uid}&merchant_uid=${merchant_uid}`;
-    if (success) {
-      path = 'success';
-    } else {
-      const { error_msg } = response;
-      path = 'fail'
-      query += `&error_msg=${error_msg}`;
-    }
+    const query = [];
+    Object.keys(response).forEach(key => {
+      query.push(`${key}=${response[key]}`);
+    });
 
-    location.href = `${BASE_URL}/${path}?${query}`;
+    location.href = `http://localhost/iamport?${query.join('&')}`;
   }
 
-
   const { webView } = styles;
-
   const { validate, message } = validateProps(userCode, data);
+  /* [v1.1.2] 콜백에 merchant_uid 전달을 위해 m_redirect_url을 dummy url로 지정 */
+  data.m_redirect_url = DEFAULT_M_REDIRECT_URL;
   if (validate) {
     return (
       <IamportWebView
@@ -153,7 +146,7 @@ Payment.propTypes = {
 const styles = StyleSheet.create({ 
   webView: {
     flex: 1, // or gets white screen
-  }
+  },
 });
 
 export default Payment;
