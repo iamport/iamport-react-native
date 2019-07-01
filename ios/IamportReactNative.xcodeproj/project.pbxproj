@@ -215,7 +215,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/IamportReactNative\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IamportReactNative;
 				SKIP_INSTALL = YES;
 			};
@@ -235,7 +234,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/IamportReactNative\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IamportReactNative;
 				SKIP_INSTALL = YES;
 			};
