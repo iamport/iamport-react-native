@@ -6,7 +6,10 @@
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
 ## 버전정보
-- [v1.1.2](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.1.3-rc](https://github.com/iamport/iamport-react-native/tree/master)
+  - duplicate symbols for architecture x86_64 에러를 해결하였습니다.
+
+- [v1.1.2](https://github.com/iamport/iamport-react-native/tree/v1.1.2)
   - 결제 종료 후 merchant_uid를 전달하기 위해 default m_redirect_url을 지정하였습니다.
 
 - [v1.1.1](https://github.com/iamport/iamport-react-native/tree/v1.1.1)

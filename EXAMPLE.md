@@ -51,7 +51,7 @@
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
 
-export function App({ navigation }) {
+export function Payment({ navigation }) {
   function callback(response) { /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
     navigation.replace('PaymentResult', response);
   }
@@ -85,7 +85,7 @@ export function App({ navigation }) {
   );
 }
 
-export default App;
+export default Payment;
 ```
 
 | Prop             | Type          |  Description                                                | Default             | Required   |
@@ -106,7 +106,7 @@ export default App;
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 본인인증 모듈을 불러옵니다.
 
-export function App({ navigation }) {
+export function Certification({ navigation }) {
   function callback(response) { /* [필수입력] 본인인증 종료 후, 라우터를 변경하고 결과를 전달합니다. */
     navigation.replace('CertificationResult', response);
   }
@@ -130,7 +130,7 @@ export function App({ navigation }) {
   );
 }
 
-export default App;
+export default Certification;
 ```
 
 | Prop          | Type          |  Description                       | Default             | Required   |

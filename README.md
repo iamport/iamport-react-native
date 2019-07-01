@@ -16,7 +16,7 @@
 - 아임포트 asset 추가하기
 
 ## 버전정보
-최신버전은 [v1.1.2](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
+최신버전은 [v1.1.3-rc](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
 
 ## 지원정보
 아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](SUPPORT.md)를 참고하세요.
@@ -112,7 +112,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
 
-export function App({ navigation }) {
+export function Payment({ navigation }) {
   function callback(response) { /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
     navigation.replace('PaymentResult', response);
   }
@@ -146,7 +146,7 @@ export function App({ navigation }) {
   );
 }
 
-export default App;
+export default Payment;
 ```
 
 
@@ -155,7 +155,7 @@ export default App;
 import React from 'react';
 import IMP from 'iamport-react-native'; // 아임포트 본인인증 모듈을 불러옵니다.
 
-export function App({ navigation }) {
+export function Certification({ navigation }) {
   function callback(response) { /* [필수입력] 본인인증 종료 후, 라우터를 변경하고 결과를 전달합니다. */
     navigation.replace('CertificationResult', response);
   }
@@ -179,7 +179,7 @@ export function App({ navigation }) {
   );
 }
 
-export default App;
+export default Certification;
 ```
 
 
