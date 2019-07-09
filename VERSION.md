@@ -6,7 +6,10 @@
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
 ## 버전정보
-- [v1.1.3-rc](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.1.4-rc.0](https://github.com/iamport/iamport-react-native/tree/master)
+  - 안드로이드에서 react-native-fbsdk와 충돌하는 이슈를 해결하였습니다.
+
+- [v1.1.3-rc](https://github.com/iamport/iamport-react-native/tree/v1.1.3-rc)
   - duplicate symbols for architecture x86_64 에러를 해결하였습니다.
 
 - [v1.1.2](https://github.com/iamport/iamport-react-native/tree/v1.1.2)
