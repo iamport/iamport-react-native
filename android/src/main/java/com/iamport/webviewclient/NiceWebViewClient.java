@@ -22,7 +22,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEm
 
 public class NiceWebViewClient extends IamportWebViewClient {
     private final static String BANKPAY = "kftc-bankpay";
-    private final static int RESCODE = 1;
+    private final static int RESCODE = 4117; // 나이스 우편번호
     private final static String NICE_BANK_URL = "https://web.nicepay.co.kr/smart/bank/payTrans.jsp";    // 계좌이체 거래 요청 URL(V2부터는 가변적일 수 있음)
 
     private String BANK_TID = "";
