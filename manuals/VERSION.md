@@ -1,11 +1,7 @@
-# iamport-react-native
-[ ![alt text](https://img.shields.io/badge/react-v16.8.6-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
-[ ![alt text](https://img.shields.io/badge/react--native-v0.59.8-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
-[ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
+# 버전정보
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-## 버전정보
 - [v1.1.4-rc.0](https://github.com/iamport/iamport-react-native/tree/master)
   - 안드로이드에서 react-native-fbsdk와 충돌하는 이슈를 해결하였습니다.
 
