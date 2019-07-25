@@ -4,7 +4,7 @@
 [ ![alt text](https://img.shields.io/badge/react--native-v0.59.8-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
 [ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
 
-아임포트 리액트 네이티브 모듈입니다. 모든 화면을 웹뷰로 띄우는 경우, [아임포트 리액트 네이티브 웹뷰](manuals/WEBVIEW.md) 문서를 참고해주세요.
+아임포트 리액트 네이티브 모듈입니다. 웹 페이지를 리액트 네이티브에서 웹뷰로 띄워 재사용 하는 경우, [아임포트 리액트 네이티브 웹뷰](exampleForWebView/README.md) 문서를 참고해주세요.
 
 ## 목차
 - [버전정보](manuals/VERSION.md)
