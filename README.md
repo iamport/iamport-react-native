@@ -4,25 +4,25 @@
 [ ![alt text](https://img.shields.io/badge/react--native-v0.59.8-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
 [ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
 
-아임포트 리액트 네이티브 모듈입니다.
+아임포트 리액트 네이티브 모듈입니다. 웹 페이지를 리액트 네이티브에서 웹뷰로 띄워 재사용 하는 경우, [아임포트 리액트 네이티브 웹뷰](exampleForWebView/README.md) 문서를 참고해주세요.
 
 ## 목차
-- [버전정보](VERSION.md)
-- [지원정보](SUPPORT.md)
-- [설치하기](INSTALL.md)
-- [설정하기](SETTING.md)
-- [예제](EXAMPLE.md)
-- [콜백 함수 설정하기](CALLBACK.md)
+- [버전정보](manuals/VERSION.md)
+- [지원정보](manuals/SUPPORT.md)
+- [설치하기](manuals/INSTALL.md)
+- [설정하기](manuals/SETTING.md)
+- [예제](manuals/EXAMPLE.md)
+- [콜백 함수 설정하기](manuals/CALLBACK.md)
 - 아임포트 asset 추가하기
 
 ## 버전정보
-최신버전은 [v1.1.4-rc.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](VERSION.md)를 참고하세요.
+최신버전은 [v1.1.4-rc.1](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
 
 ## 지원정보
-아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](SUPPORT.md)를 참고하세요.
+아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](manuals/SUPPORT.md)를 참고하세요.
 
 ## 설치하기
-아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. 보다 자세한 안내는 [설치하기](INSTALL.md)를 참고하세요.
+아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. 보다 자세한 안내는 [설치하기](manuals/INSTALL.md)를 참고하세요.
 
 ```
 $ npm install iamport-react-native --save
@@ -37,7 +37,7 @@ $ react-native link react-native-webview // v1.1.0 이상 필수
 ```
 
 ## 설정하기(IOS)
-IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3가지 항목을 설정해주셔야 합니다. 보다 자세한 설명은 [설정하기](SETTING.md)를 참고하세요.
+IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3가지 항목을 설정해주셔야 합니다. 보다 자세한 설명은 [설정하기](manuals/SETTING.md)를 참고하세요.
 
 #### 1. App Scheme 등록
 외부 결제 앱(예) 페이코, 신한 판 페이)에서 결제 후 돌아올 때 사용할 URL identifier를 설정해야합니다.
@@ -105,7 +105,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
 
 
 ## 예제
-아임포트 결제연동 모듈을 사용해 아래와 같이 일반/정기결제 및 휴대폰 본인인증 기능을 구현할 수 있습니다. 필요한 파라미터는 [예제](EXAMPLE.md)를 참고하세요.
+아임포트 결제연동 모듈을 사용해 아래와 같이 일반/정기결제 및 휴대폰 본인인증 기능을 구현할 수 있습니다. 필요한 파라미터는 [예제](manuals/EXAMPLE.md)를 참고하세요.
 
 #### 1. 일반/정기결제 사용예제
 ```javascript
@@ -184,7 +184,7 @@ export default Certification;
 
 
 ## 콜백 함수 설정하기
-콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 실패/성공 여부에 맞게 아래와 같이 로직을 작성할 수 있습니다. 콜백 함수에 대한 자세한 설명은 [콜백 설정하기](CALLBACK.md)를 참고하세요.
+콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 실패/성공 여부에 맞게 아래와 같이 로직을 작성할 수 있습니다. 콜백 함수에 대한 자세한 설명은 [콜백 설정하기](manuals/CALLBACK.md)를 참고하세요.
 
 ```javascript
 function callback(response) {
