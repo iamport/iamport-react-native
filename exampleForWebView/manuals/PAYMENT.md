@@ -1,12 +1,12 @@
 # 결제 웹 페이지 재활용하기
 
-리액트 네이티브에서 웹 페이지로 작성한 결제 화면을 웹뷰로 띄워 재사용하는 경우가 있습니다. 이 경우 결제하기 버튼을 눌렀을때 결제 환경이 리액트 네이티브인지 판단해, `IMP.request_pay` 함수 호출이 아닌, **리액트 네이티브로 post message를 보내야** 합니다.
+웹 페이지로 작성한 결제 화면을 리액트 네이티브에서 웹뷰로 띄워 재사용하는 경우가 있습니다. 이 경우 결제하기 버튼을 눌렀을때 결제 환경이 리액트 네이티브인지 판단해 **리액트 네이티브로 post message를 보내야** 합니다.
 
-리액트 네이티브에 아임포트 리액트 네이티브 모듈(`iamport-react-native`)을 설치한 후, 리액트로부터 `post message`를 받으면 해당 결제 화면을 렌더링 하도록 로직을 작성해야 합니다.
+리액트 네이티브 프로젝트에 아임포트 리액트 네이티브 모듈(`iamport-react-native`)을 설치한 후, 리액트로부터 `post message`를 받으면 해당 결제 화면을 렌더링 하도록 로직을 작성해야 합니다.
 
 ### 1. 리액트 네이티브로 `post message` 보내기
 
-결제 하기 버튼을 눌렀을 때 결제 환경이 리액트 네이티브인지 여부를 판단해야 합니다. 결제 환경이 리액트 네이티브인 경우, **리액트 네이티브로 `가맹점 식별코드`, `결제 데이터` 그리고 `액션 유형`을 post message로 보냅니다.**
+결제 하기 버튼을 눌렀을 때 결제 환경이 리액트 네이티브인지 여부를 먼저 판단해야 합니다. 결제 환경이 리액트 네이티브인 경우, **리액트 네이티브로 `가맹점 식별코드`, `결제 데이터` 그리고 `액션 유형`을 post message로 보냅니다.**
 
 ```javascript
   // iamport-react-example/src/Payment/index.js
@@ -53,18 +53,7 @@
 
     /* 콜백 함수 정의하기 */
     function callback(response) {
-      const {
-        success,
-        merchant_uid,
-        error_msg,
-        ...
-      } = response;
-
-      if (success) {
-        alert('결제 성공');
-      } else {
-        alert(`결제 실패: ${error_msg}`);
-      }
+      ...
     }
 
     function isReactNative() {
@@ -94,9 +83,8 @@
 
 ```javascript
   // iamport-react-native/exampleForWebView/src/Home.js
-  import React, { useState, useEffect } from 'react';
+  import React from 'react';
   import WebView from 'react-native-webview';
-  import queryString from 'query-string';
 
   function Home({ navigation }) {
     const domain = `http://${가맹점 IP}:3000`;
@@ -172,7 +160,7 @@
         userCode={userCode}
         data={{
           ...data,
-          app_scheme: 'test',
+          app_scheme: 'exampleForWebView',
         }}
         callback={callback}
       />
