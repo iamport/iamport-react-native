@@ -38,7 +38,7 @@ export default function PaymentTest({ navigation }) {
     // 신용카드의 경우, 할부기한 추가
     if (method === 'card' && cardQuota !== 0) {
       params.display = {
-        card_auota: cardQuota === 1 ? [] : [cardQuota],
+        card_quota: cardQuota === 1 ? [] : [cardQuota],
       };
     }
 
