@@ -8,7 +8,7 @@ function Certification({ navigation }) {
   
   /* [필수입력] 본인인증 후 실행될 콜백 함수 입력 */
   function callback(response) {
-    const isSuccessed = getIsSuccessed();
+    const isSuccessed = getIsSuccessed(response);
     if (isSuccessed) {
       // 본인인증 성공한 경우, 리디렉션 위해 홈으로 이동한다
       const params = {
