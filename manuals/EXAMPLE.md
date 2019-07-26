@@ -1,11 +1,7 @@
-# iamport-react-native
-[ ![alt text](https://img.shields.io/badge/react-v16.8.6-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
-[ ![alt text](https://img.shields.io/badge/react--native-v0.59.8-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
-[ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
+# 예제 프로젝트
 
 아임포트 리액트 네이티브 모듈 예제 안내입니다.
 
-## 예제 프로젝트
 #### IOS
 ##### 1. 디바이스
   - [XCode를 설치](https://developer.apple.com/xcode)합니다.
@@ -36,8 +32,8 @@
 ##### 2. Emulator
   - [안드로이드 스튜디오를 설치](https://developer.android.com/studio)합니다.
   - 안드로이드 프로젝트(`[...]/node_modules/iamport-react-native/example/android`)를 안드로이드 스튜디오에서 오픈합니다.
-  - ![](src/img/android-studio-build.png) 또는 `Cmd+F9`를 눌러 앱을 빌드합니다.
-  - ![AVD Manager](src/img/android-studio-avd-manager.png)을 눌러 안드로이드 emulator를 실행시킵니다.
+  - ![](../src/img/android-studio-build.png) 또는 `Cmd+F9`를 눌러 앱을 빌드합니다.
+  - ![AVD Manager](../src/img/android-studio-avd-manager.png)을 눌러 안드로이드 emulator를 실행시킵니다.
   - example 앱이 설치된 것을 확인하실 수 있습니다.
 
 ![](src/img/ios-emulator-home.png)
