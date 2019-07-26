@@ -3,14 +3,14 @@ import WebView from 'react-native-webview';
 import queryString from 'query-string';
 
 function Home({ navigation }) {
-  const domain = 'http://192.168.0.15';
+  const domain = 'http://192.168.0.15:3000';
   const [uri, setUri] = useState(domain);
 
   useEffect(() => {
+    const type = navigation.getParam('type');
     const response = navigation.getParam('response');
     if (response) {
       const query = queryString.stringify(response);
-      const { type } = query;
       if (type === 'payment') {
         setUri(`${domain}/payment/result?${query}`);    
       } else {
