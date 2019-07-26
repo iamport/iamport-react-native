@@ -12,7 +12,7 @@ function Payment({ navigation }) {
     if (isSuccessed) {
       // 결제 성공한 경우, 리디렉션 위해 홈으로 이동한다
       const params = {
-        ...response,
+        response,
         type: 'payment',
       };
       navigation.replace('Home', params);
@@ -36,7 +36,7 @@ function Payment({ navigation }) {
       userCode={userCode}
       data={{
         ...data,
-        app_scheme: 'test',
+        app_scheme: 'exampleForWebView',
       }}
       callback={callback}
     />
