@@ -36,7 +36,7 @@ function Payment({ navigation }) {
       userCode={userCode}
       data={{
         ...data,
-        app_scheme: 'test',
+        app_scheme: 'exampleForWebView',
       }}
       callback={callback}
     />
