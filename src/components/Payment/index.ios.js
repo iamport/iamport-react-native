@@ -191,7 +191,19 @@ export function Payment({ userCode, data, loading, callback }) {
   }
 
   function isPaymentOver(url) {
+    /* 결제 완료 */
     if (url.includes(DEFAULT_M_REDIRECT_URL)) return true;
+
+    /* 웹 표준 이니시스 & 실시간 계좌이체 결제 중단 */
+    const { pg, pay_method } = data;
+    if (
+      pg === 'html5_inicis' &&
+      pay_method === 'trans' &&
+      url.includes(HTML5_INICIS_TRANS.toLocaleLowerCase())
+    ) {
+      return true;
+    }
+
     return false;
   }
   

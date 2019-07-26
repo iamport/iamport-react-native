@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":iamport-react-native" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/../exampleForWebView/android/app" external.system.id="GRADLE" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+        <option name="GRADLE_PROJECT_PATH" value=":iamport-react-native" />
+      </configuration>
+    </facet>
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="SELECTED_BUILD_VARIANT" value="debug" />
+        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
+        <afterSyncTasks>
+          <task>generateDebugSources</task>
+        </afterSyncTasks>
+        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../exampleForWebView/node_modules/iamport-react-native/android/src/main/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/../exampleForWebView/node_modules/iamport-react-native/android/src/main/res" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../exampleForWebView/node_modules/iamport-react-native/android/src/main/assets" />
+        <option name="PROJECT_TYPE" value="1" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+    <output url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes" />
+    <output-test url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/javac/debugUnitTest/compileDebugUnitTestJavaWithJavac/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/source/apt/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/aidl_source_output_dir/debug/compileDebugAidl/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/renderscript_source_output_dir/debug/compileDebugRenderscript/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/res/rs/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/res/resValues/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/source/apt/androidTest/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/aidl_source_output_dir/debugAndroidTest/compileDebugAndroidTestAidl/out" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/renderscript_source_output_dir/debugAndroidTest/compileDebugAndroidTestRenderscript/out" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/res/rs/androidTest/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/res/resValues/androidTest/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/source/apt/test/debug" isTestSource="true" generated="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/not_namespaced_r_class_sources" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/generated/source/r" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/aapt_friendly_merged_manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/annotation_processor_list" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/attr" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/blame" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/bundles" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/check_manifest_result" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/compile_only_not_namespaced_r_class_jar" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/incremental" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/incremental-safeguard" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/intermediate-jars" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/javaPrecompile" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/javac" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/jniLibs" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/library_assets" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/library_manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/lint_jar" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/merged_manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/packagedAssets" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/packaged_res" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/public_res" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/res" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/rs" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/shader_assets" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/shaders" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/symbols" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/intermediates/transforms" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/build/tmp" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/aidl">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/aidl" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/assets" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/java">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/res">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/res" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/resources" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/rs">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/rs" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/shaders">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTest/shaders" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/aidl">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/aidl" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/assets" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/java">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/res">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/res" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/resources" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/rs">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/rs" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/shaders">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/androidTestDebug/shaders" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/aidl">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/aidl" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/assets" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/java">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/java" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/res">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/res" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/resources" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/rs">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/rs" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/shaders">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/debug/shaders" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/aidl">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/aidl" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/assets" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/java">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/java" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/res">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/res" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/resources" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/rs">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/rs" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/shaders">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/main/shaders" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/aidl">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/aidl" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/assets" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/java">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/res">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/res" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/resources" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/rs">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/rs" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/shaders">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/test/shaders" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/aidl">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/aidl" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/assets" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/java">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/res">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/res" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/resources">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/resources" type="java-test-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/rs">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/rs" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/shaders">
+      <sourceFolder url="file://$MODULE_DIR$/../exampleForWebView/node_modules/iamport-react-native/android/src/testDebug/shaders" isTestSource="true" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 28 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp-urlconnection:3.12.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.fresco:fresco:1.10.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-fragment:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:localbroadcastmanager:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.fresco:fbcore:1.10.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:documentfile:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.fresco:drawee:1.10.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:slidingpanelayout:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.lifecycle:viewmodel:1.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.12.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:loader:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.core:runtime:1.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.lifecycle:livedata-core:1.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:collections:28.0.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:cursoradapter:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime:1.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-compat:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-core-ui:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-okhttp3:1.10.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:asynclayoutinflater:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:print:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline-base:1.10.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: javax.inject:javax.inject:1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.core:common:1.1.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:versionedparcelable:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.soloader:soloader:0.6.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.infer.annotation:infer-annotation:0.11.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.fresco:imagepipeline:1.10.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:viewpager:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.facebook.react:react-native:0.59.9@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-core-utils:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:support-annotations:28.0.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.lifecycle:common:1.1.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:interpolator:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: android.arch.lifecycle:livedata:1.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:drawerlayout:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:coordinatorlayout:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:customview:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.android.support:swiperefreshlayout:28.0.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.15.0@jar" level="project" />
+  </component>
+</module>
