@@ -1,61 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Platform, Linking } from 'react-native';
+import { Linking } from 'react-native';
 import { WebView } from 'react-native-webview';
-import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
+import Loading from '../Loading';
 import ErrorOnParams from '../ErrorOnParams';
+import { validateCertificationProps } from '../../utils';
 
 export function Certification({ userCode, data, loading, callback }) {
-  const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
-
-  function onLoad() {
-    if (!isWebViewLoaded) { // 포스트 메시지를 한번만 보내도록(무한루프 방지)
-      const params = JSON.stringify({ 
-        userCode, 
-        data, 
-        loading: getCustomLoading(),
+  function onLoadEnd() {
+    this.xdm.injectJavaScript(`
+      IMP.init("${userCode}");
+      IMP.certification(${JSON.stringify(data)}, function(response) {
+        window.ReactNativeWebView.postMessage(JSON.stringify(response));
       });
-      this.xdm.postMessage(params);
-
-      setIsWebViewLoaded(true);
-    }
-  }
-
-  function getCustomLoading() {
-    if (typeof loading === 'undefined') {
-      return {
-        message: '잠시만 기다려주세요...',
-        image: '../img/iamport-logo.png',
-      };
-    }
-    
-    return {
-      message: getCustomLoadingMessage(),
-      image: getCustomLoadingImage(),
-    };
-  }
-
-  function getCustomLoadingMessage() {
-    const { message } = loading;
-    if (typeof message === 'string') {
-      return message;
-    }
-    return '잠시만 기다려주세요...';
-  }
-
-  function getCustomLoadingImage() {
-    const { image } = loading;
-
-    if (typeof image === 'number') {
-      return resolveAssetSource(image).uri;
-    }
-
-    if (typeof image === 'string') {
-      return image;
-    }
-
-    return '../img/iamport-logo.png';
+    `);
   }
   
   function onMessage(e) { // 본인인증 결과를 받아 callback을 실행한다 
@@ -71,24 +30,6 @@ export function Certification({ userCode, data, loading, callback }) {
     }
   }
 
-  function getInjectedJavascript() { // 웹뷰 onMessage override 방지 코드
-    const patchPostMessageFunction = function() {
-      var originalPostMessage = window.ReactNativeWebView.postMessage;
-
-      var patchedPostMessage = function(message, targetOrigin, transfer) { 
-        originalPostMessage(message, targetOrigin, transfer);
-      };
-
-      patchedPostMessage.toString = function() { 
-        return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
-      };
-
-      window.ReactNativeWebView.postMessage = patchedPostMessage;
-    };
-
-    return `(${String(patchPostMessageFunction)})(); `;
-  }
-
   function onShouldStartLoadWithRequest(request) {
     const { url } = request;
     if (url.startsWith('https://itunes.apple.com')) { // IOS
@@ -102,27 +43,37 @@ export function Certification({ userCode, data, loading, callback }) {
     return true;
   }
 
-  const source =
-    Platform.OS === 'android' ?
-    { uri: 'file:///android_asset/html/certification.html' } :
-    require('../../html/certification.html'); // https://github.com/facebook/react-native/issues/505
+  const html = `
+    <html>
+      <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js" ></script>
+        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.7.js"></script>
+      </head>
+      <body></body>
+    </html>
+  `;
 
-  if (userCode) {
+  const { isValid, message } = validateCertificationProps(userCode, loading);
+  if (isValid) {
     return (
       <WebView
         ref={(xdm) => this.xdm = xdm}
         useWebKit
-        source={source}
-        onLoad={onLoad}
+        source={{ html }}
+        onLoadEnd={onLoadEnd}
         onMessage={onMessage}
+        startInLoadingState
+        renderLoading={() => loading || <Loading />}
         originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
-        injectedJavaScript={getInjectedJavascript()} // https://github.com/facebook/react-native/issues/10865
         onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
       />
     );
   }
 
-  return <ErrorOnParams message={'가맹점 식별코드는 필수입력입니다.'} />;
+  return <ErrorOnParams message={message} />;
 }
 
 Certification.propTypes = {
@@ -134,13 +85,7 @@ Certification.propTypes = {
     min_age: PropTypes.string,
   }),
   callback: PropTypes.func.isRequired,
-  loading: PropTypes.shape({
-    message: PropTypes.string,
-    image: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-  }),
+  loading: PropTypes.object,
 };
 
 export default Certification;

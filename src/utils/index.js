@@ -68,6 +68,16 @@ export function validateProps(userCode, data) {
   return { validate: true, message: '' };
 }
 
+export function validateCertificationProps(userCode, loading) {
+  if (userCode === undefined) {
+    return { isValid: false, message: '가맹점 식별코드(userCode)는 필수입력입니다.' };
+  }
+  if (loading !== undefined && typeof loading !== 'object') {
+    return { isValid: false, message: '로딩(loading) 컴포넌트가 올바르지 않습니다.'};
+  }
+  return { isValid: true, message: '' };
+}
+
 export function isUrlStartsWithAppScheme(url) {
   const splittedScheme = url.split('://');
   const scheme = splittedScheme[0];
