@@ -2,7 +2,13 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.1.4-rc.1](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.2.0](https://github.com/iamport/iamport-react-native/tree/master)
+  - [IOS] ipa 파일 설치시 결제/본인인증 창이 뜨지 않는 이슈를 해결하였습니다.
+  - [안드로이드 - 결제] native code의 역할을 react-native단에서 수행하도록 수정하였습니다.
+  - [본인인증] 회사명(`company`)과 통신사(`carrier`) 파라메터를 추가하였습니다.
+  - 웹뷰 로딩 파라메터를 컴포넌트로 수정하였습니다.
+
+- [v1.1.4-rc.1](https://github.com/iamport/iamport-react-native/tree/v1.1.4-rc.1)
   - 기존에 작성된 웹 페이지를 리액트 네이티브에서 웹뷰로 재활용하는 경우를 위한 exampleForWebView 예제 프로젝트를 추가하였습니다.
   - 예제 프로젝트의 신용카드 할부 개월수 변수명 오타를 수정하였습니다.
   - 웹 표준 이니시스 & 실시간 계좌이체 결제 중단시 처리 로직을 추가하였습니다.

@@ -7,7 +7,7 @@
 <b>콜백 함수를 설정하지 않으면, 결제/본인인증 완료 후 아래와 같이 아임포트가 기본적으로 제공하는 페이지(PG사에 따라 로딩화면이 보여지는 경우도 있음)로 넘어가게 됩니다.</b>
 따라서 <span style="color: #f5222d">반드시 callback 함수를 설정</span>해주어야 합니다.
 
-![](src/img/iamport-default-page.png)
+![](../src/img/iamport-default-page.png)
 
 
 #### 2. 콜백 함수 작성하기
