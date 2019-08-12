@@ -12,7 +12,6 @@ export default function CertificationTest({ navigation }) {
   const [carrier, setCarrier] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [birth, setBirth] = useState('');
   const [minAge, setMinAge] = useState();
 
   onPress = () => {
@@ -24,9 +23,6 @@ export default function CertificationTest({ navigation }) {
     }
     if (carrier) {
       params.carrier = carrier;
-    }
-    if (birth) {
-      params.birth = birth;
     }
     if (name) {
       params.name = name;
@@ -85,16 +81,6 @@ export default function CertificationTest({ navigation }) {
             keyboardType="number-pad"
             value={phone}
             onChangeText={value => setPhone(value)}
-          />
-        </Item>
-        <Item inlineLabel style={item}>
-          <Label style={label}>생년월일</Label>
-          <Input
-            style={input}
-            keyboardType="number-pad"
-            placeholder="YYYYMMDD 또는 YYYY-MM-DD"
-            value={birth}
-            onChangeText={value => setBirth(value)}
           />
         </Item>
         <Item inlineLabel style={item}>

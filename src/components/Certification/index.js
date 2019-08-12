@@ -73,7 +73,6 @@ Certification.propTypes = {
     carrier: PropTypes.oneOf(CARRIERS),
     name: PropTypes.string,
     phone: PropTypes.string,
-    birth: PropTypes.string,
     min_age: PropTypes.string,
   }),
   callback: PropTypes.func.isRequired,
