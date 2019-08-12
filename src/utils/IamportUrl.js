@@ -17,7 +17,7 @@ class IamportUrl {
   }
 
   isPaymentOver() {
-    return this.url.includes(M_REDIRECT_URL);
+    return this.url.includes(IamportUrl.M_REDIRECT_URL);
   }
 
   isAppUrl() {
