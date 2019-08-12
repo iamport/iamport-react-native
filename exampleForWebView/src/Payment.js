@@ -1,6 +1,8 @@
 import React from 'react';
 import IMP from 'iamport-react-native';
 
+import Loading from './Loading';
+
 function Payment({ navigation }) {
   /* 가맹점 식별코드, 결제 데이터 추출 */
   const userCode = navigation.getParam('userCode');
@@ -34,6 +36,7 @@ function Payment({ navigation }) {
   return (
     <IMP.Payment
       userCode={userCode}
+      loading={<Loading />}
       data={{
         ...data,
         app_scheme: 'exampleForWebView',
