@@ -5,7 +5,9 @@ import { WebView } from 'react-native-webview';
 
 import Loading from '../Loading';
 import ErrorOnParams from '../ErrorOnParams';
-import { validateCertificationProps } from '../../utils';
+
+import Validation from '../../utils/Validation';
+import { WEBVIEW_SOURCE_HTML, CARRIERS } from '../../constants';
 
 export function Certification({ userCode, data, loading, callback }) {
   function onLoadEnd() {
@@ -43,26 +45,13 @@ export function Certification({ userCode, data, loading, callback }) {
     return true;
   }
 
-  const html = `
-    <html>
-      <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js" ></script>
-        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.7.js"></script>
-      </head>
-      <body></body>
-    </html>
-  `;
-
-  const { isValid, message } = validateCertificationProps(userCode, loading);
-  if (isValid) {
+  const validation = new Validation(userCode, loading);
+  if (validation.getIsValid()) {
     return (
       <WebView
         ref={(xdm) => this.xdm = xdm}
         useWebKit
-        source={{ html }}
+        source={{ html: WEBVIEW_SOURCE_HTML }}
         onLoadEnd={onLoadEnd}
         onMessage={onMessage}
         startInLoadingState
@@ -73,15 +62,18 @@ export function Certification({ userCode, data, loading, callback }) {
     );
   }
 
-  return <ErrorOnParams message={message} />;
+  return <ErrorOnParams message={validation.getMessage()} />;
 }
 
 Certification.propTypes = {
   userCode: PropTypes.string.isRequired,
   data: PropTypes.shape({
     merchant_uid: PropTypes.string,
+    company: PropTypes.string,
+    carrier: PropTypes.oneOf(CARRIERS),
     name: PropTypes.string,
     phone: PropTypes.string,
+    birth: PropTypes.string,
     min_age: PropTypes.string,
   }),
   callback: PropTypes.func.isRequired,

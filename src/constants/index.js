@@ -25,6 +25,7 @@ const PAY_METHOD = ['card', 'trans', 'vbank', 'phone', 'samsung', 'kpay', 'cultu
 const CURRENCY = ['KRW', 'USD', 'EUR', 'JPY'];
 const LANGUAGE = ['ko', 'en'];
 const EN_AVAILABLE_PG = ['inicis', 'html5_inicis', 'uplus', 'nice'];
+const CARRIERS = ['SKT', 'KTF', 'LGT', 'MVNO'];
 
 const WEBVIEW_SOURCE_HTML = `
 <html>
@@ -45,5 +46,6 @@ export {
   CURRENCY,
   LANGUAGE,
   EN_AVAILABLE_PG,
+  CARRIERS,
   WEBVIEW_SOURCE_HTML,
 };
