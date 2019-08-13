@@ -1,10 +1,12 @@
-# 설정하기(IOS)
+# IOS 설정하기
 
 아임포트 리액트 네이티브 모듈 설정 안내입니다. IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3가지 항목을 설정해주셔야 합니다.
 
 #### 1. App Scheme 등록
 외부 결제 앱(예) 페이코, 신한 판 페이)에서 결제 후 돌아올 때 사용할 URL identifier를 설정해야합니다.
-![](src/img/app-scheme-registry.gif)
+
+![](../src/img/app-scheme-registry.gif)
+
 1. `[프로젝트 폴더]/ios/[프로젝트 이름]/info.plist` 파일을 연 후 `URL types`속성을 추가합니다.
 2. item `0`를 확장하여 `URL schemes`를 선택합니다.
 3. item `0`에 App Scheme을 작성합니다.
@@ -56,7 +58,7 @@
 
 
 #### 3. App Transport Security 설정
-![](src/img/allow-arbitrary.gif)
+![](../src/img/allow-arbitrary.gif)
 1. `[프로젝트 폴더]/ios/[프로젝트 이름]/info.plist` 파일을 오픈합니다.
 2. `App Transport Security` 속성을 추가합니다.
 3. 하부 속성에 `Allow Arbitrary Loads in Web Content`,`Allow Arbitrary Loads` 속성을 추가하고 각각의 값(value)을 `YES`로 변경합니다.

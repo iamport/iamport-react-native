@@ -1,6 +1,8 @@
 import React from 'react';
 import IMP from 'iamport-react-native';
 
+import Loading from './Loading';
+
 function Certification({ navigation }) {
   /* 가맹점 식별코드, 본인인증 데이터 추출 */
   const userCode = navigation.getParam('userCode');
@@ -32,6 +34,7 @@ function Certification({ navigation }) {
   return (
     <IMP.Certification
       userCode={userCode}
+      loading={<Loading />}
       data={data}
       callback={callback}
     />

@@ -1,6 +1,8 @@
 import React from 'react';
 import IMP from 'iamport-react-native';
 
+import Loading from '../Loading';
+
 import { getUserCode } from '../utils';
 
 export default function Payment({ navigation }) {
@@ -10,12 +12,11 @@ export default function Payment({ navigation }) {
     ...params,
     app_scheme: 'example',
   };
+  
   return (
     <IMP.Payment
       userCode={getUserCode(pg)}
-      loading={{
-        message: '결제가 진행중입니다...',
-      }}
+      loading={<Loading />}
       data={data}
       callback={response => navigation.replace('PaymentResult', { response })}
     />

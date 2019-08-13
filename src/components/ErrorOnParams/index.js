@@ -11,17 +11,11 @@ import {
 
 const logo = require('../../img/iamport-logo.png');
 
-class ErrorOnParams extends React.Component {
-  static propTypes = {
-    message: PropTypes.string,
-  }
-
-  render() {
-    const { message } = this.props;
-    const { container, img, text/*, button*/ } = styles;
-
-    return (
-      <View style={container}>
+function ErrorOnParams({ message }) {
+  const { container, contents, img, text/*, button*/ } = styles;
+  return (
+    <View style={container}>
+      <View style={contents}>
         <Image style={img} source={logo} />
         <Text style={text}>{message}</Text>
         {/*<TouchableOpacity 
@@ -31,15 +25,25 @@ class ErrorOnParams extends React.Component {
           <Text>돌아가기</Text>
         </TouchableOpacity>*/}
       </View>
-    );
-  }
+    </View>
+  );
+}
+
+ErrorOnParams.propTypes = {
+  message: PropTypes.string,
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 50,
+    flexDirection:'row',
+    justifyContent:'center',
+  },
+  contents: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent:'center',
   },
   text: {
     fontSize: 16,

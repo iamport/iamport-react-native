@@ -2,7 +2,7 @@
 
 아임포트 리액트 네이티브 모듈 예제 안내입니다.
 
-#### IOS
+#### IOS에 예제 프로젝트 설치하기
 ##### 1. 디바이스
   - [XCode를 설치](https://developer.apple.com/xcode)합니다.
   - IOS 디바이스를 컴퓨터에 연결합니다.
@@ -18,7 +18,7 @@
   $ react-native run-ios
   ```
 
-#### 안드로이드
+#### 안드로이드에 예제 프로젝트 설치하기
 ##### 1. 디바이스
   - 안드로이드 디바이스를 컴퓨터에 연결합니다.
   - 아래 명령어를 입력해 앱을 빌드합니다.
@@ -36,19 +36,24 @@
   - ![AVD Manager](../src/img/android-studio-avd-manager.png)을 눌러 안드로이드 emulator를 실행시킵니다.
   - example 앱이 설치된 것을 확인하실 수 있습니다.
 
-![](src/img/ios-emulator-home.png)
-![](src/img/ios-emulator-payment.png)
-![](src/img/ios-emulator-certification.png)
+![](../src/img/ios-emulator-home.png)
+![](../src/img/ios-emulator-payment.png)
+![](../src/img/ios-emulator-certification.png)
 
 
 
-#### 1. 일반/정기결제 사용예제
+#### 일반/정기결제 코드 작성 예시
 ```javascript
 import React from 'react';
-import IMP from 'iamport-react-native'; // 아임포트 결제모듈을 불러옵니다.
+/* 아임포트 결제모듈을 불러옵니다. */
+import IMP from 'iamport-react-native';
+
+/* 로딩 컴포넌트를 불러옵니다. */
+import Loading from './Loading';
 
 export function Payment({ navigation }) {
-  function callback(response) { /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
+  /* [필수입력] 결제 종료 후, 라우터를 변경하고 결과를 전달합니다. */
+  function callback(response) {
     navigation.replace('PaymentResult', response);
   }
 
@@ -70,13 +75,10 @@ export function Payment({ navigation }) {
 
   return (
     <IMP.Payment
-      userCode={'iamport'} // 가맹점 식별코드
-      data={data} // 결제 데이터
-      callback={callback} // 결제 종료 후 콜백
-      loading={{
-        message: '잠시만 기다려주세요...', // 로딩화면 메시지 
-        image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
-      }}
+      userCode={'iamport'}    // 가맹점 식별코드
+      loading={<Loading />}   // 로딩 컴포넌트
+      data={data}             // 결제 데이터
+      callback={callback}     // 결제 종료 후 콜백
     />
   );
 }
@@ -90,38 +92,42 @@ export default Payment;
 | data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | undefined           | true       |
 | - m_redirect_url | string        | [Deprecated]                                                | undefined           | false       |
 | callback         | function      | 결제 후 실행 될 함수 [자세히보기](#callback)                       | undefined           | true       |
-| loading          | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지                          |                     | false      |
-| - message        | string        | 로딩화면 메시지                                                 | 잠시만 기다려주세요...    | false      |
-| - image          |               | 로딩화면 이미지(url도 가능)                                       | 아임포트 로고 이미지     | false      |
+| loading          | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트                                        |                     | false      |
 
 
 
 
-#### 2. 휴대폰 본인인증 사용예제
+#### 휴대폰 본인인증 코드 작성 예시
 ```javascript
 import React from 'react';
-import IMP from 'iamport-react-native'; // 아임포트 본인인증 모듈을 불러옵니다.
+/* 아임포트 본인인증 모듈을 불러옵니다. */
+import IMP from 'iamport-react-native';
+
+/* 로딩 컴포넌트를 불러옵니다. */
+import Loading from './Loading';
 
 export function Certification({ navigation }) {
-  function callback(response) { /* [필수입력] 본인인증 종료 후, 라우터를 변경하고 결과를 전달합니다. */
+  /* [필수입력] 본인인증 종료 후, 라우터를 변경하고 결과를 전달합니다. */
+  function callback(response) {
     navigation.replace('CertificationResult', response);
   }
 
   /* [필수입력] 본인인증에 필요한 데이터를 입력합니다. */
   const data = {
     merchant_uid: `mid_${new Date().getTime()}`,
+    company: '아임포트',
+    carrier: 'SKT',
+    name: '홍길동',
+    phone: '01012341234',
     min_age: '',
   };
 
   return (
     <IMP.Certification
-      userCode={'iamport'} // 가맹점 식별코드
-      data={data} // 본인인증 데이터
-      callback={callback} // 본인인증 종료 후 콜백
-      loading={{
-        message: '잠시만 기다려주세요...', // 로딩화면 메시지 
-        image: require('img/iamport-logo.png') // 커스텀 로딩화면 이미지
-      }}
+      userCode={'iamport'}    // 가맹점 식별코드
+      loading={<Loading />}   // 로딩 컴포넌트
+      data={data}             // 본인인증 데이터
+      callback={callback}     // 본인인증 종료 후 콜백
     />
   );
 }
@@ -134,6 +140,10 @@ export default Certification;
 | userCode      | string        | 가맹점 식별코드                        | undefined           | true       |
 | data          | object        | 본인인증에 필요한 정보                   | undefined           | true       |
 | - merchant_uid| string        | 가맹점 주문번호                        | random              | false      |
+| - company     | string        | 회사명 또는 URL                       | undefined           | false      |
+| - carrier     | string        | 통신사                               | undefined           | false      |
+| - name        | string        | 본인인증 할 이름                        | undefined           | false      |
+| - phone       | number        | 본인인증 할 전화번호                     | undefined           | false      |
 | - min_age     | number        | 본인인증 허용 최소 연령                  | undefined           | false      |
 | callback      | function      | 본인인증 후 실행 될 함수                 | undefined           | true       |
 | loading       | object        | 로딩 화면 커스터마이징 위한 메시지 및 이미지  |                     | false      |

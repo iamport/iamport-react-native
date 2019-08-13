@@ -15,8 +15,8 @@ $ react-native link react-native-webview
 
 성공적으로 마쳤을 경우, 아래와 같은 화면을 보실 수 있습니다.
 
-![](src/img/after-linking-iamport.png)
-![](src/img/after-linking-webview.png)
+![](../src/img/after-linking-iamport.png)
+![](../src/img/after-linking-webview.png)
 
 실패한 경우, 아래 과정을 통해 iamport-react-native 모듈을 귀하의 프로젝트에 [수동으로 연결](https://facebook.github.io/react-native/docs/linking-libraries-ios)시킬 수 있습니다.
 
