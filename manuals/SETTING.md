@@ -4,7 +4,9 @@
 
 #### 1. App Scheme 등록
 외부 결제 앱(예) 페이코, 신한 판 페이)에서 결제 후 돌아올 때 사용할 URL identifier를 설정해야합니다.
+
 ![](../src/img/app-scheme-registry.gif)
+
 1. `[프로젝트 폴더]/ios/[프로젝트 이름]/info.plist` 파일을 연 후 `URL types`속성을 추가합니다.
 2. item `0`를 확장하여 `URL schemes`를 선택합니다.
 3. item `0`에 App Scheme을 작성합니다.

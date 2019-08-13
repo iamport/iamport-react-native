@@ -10,10 +10,11 @@
 - [버전정보](manuals/VERSION.md)
 - [지원정보](manuals/SUPPORT.md)
 - [설치하기](manuals/INSTALL.md)
-- [IOS 설정하기](manuals/SETTING.md)
+- 설정하기
+  - [IOS 설정하기](manuals/SETTING.md)
+  - [실시간 계좌이체 설정하기](manuals/TRANS.md)
 - [예제](manuals/EXAMPLE.md)
 - [콜백 함수 설정하기](manuals/CALLBACK.md)
-- 아임포트 asset 추가하기
 
 ## 버전정보
 최신버전은 [v1.2.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
@@ -36,7 +37,8 @@ $ react-native link iamport-react-native
 $ react-native link react-native-webview // v1.1.0 이상 필수
 ```
 
-## IOS 설정하기
+## 설정하기
+### IOS 설정하기
 IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3가지 항목을 설정해주셔야 합니다. 보다 자세한 설명은 [IOS 설정하기](manuals/SETTING.md)를 참고하세요.
 
 #### 1. App Scheme 등록
@@ -103,14 +105,17 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
 </dict>
 ```
 
+### 실시간 계좌이체 설정하기
+웹 표준 이니시스와 나이스 정보통신은 뱅크페이 앱을 통해 실시간 계좌이체를 진행합니다. 뱅크페이에서 결제 인증 후 본래의 앱으로 복귀 해 다음단계로 진행을 하려면 별도 설정이 요구됩니다. 자세한 내용은 [실시간 계좌이체 설정하기](manuals/TRANS.md)를 참고해주세요.
+
 
 ## 예제
 아임포트 결제연동 모듈을 사용해 아래와 같이 일반/정기결제 및 휴대폰 본인인증 기능을 구현할 수 있습니다. 필요한 파라미터는 [예제](manuals/EXAMPLE.md)를 참고하세요.
 
-#### 일반/정기결제 사용예제
+#### 일반/정기결제 예제
 ```javascript
 import React from 'react';
-/* 아임포트 결제모듈을 불러옵니다. */
+/* 아임포트 모듈을 불러옵니다. */
 import IMP from 'iamport-react-native';
 
 /* 로딩 컴포넌트를 불러옵니다. */
@@ -152,10 +157,10 @@ export default Payment;
 ```
 
 
-#### 휴대폰 본인인증 사용예제
+#### 휴대폰 본인인증 예제
 ```javascript
 import React from 'react';
-/* 아임포트 본인인증 모듈을 불러옵니다. */
+/* 아임포트 모듈을 불러옵니다. */
 import IMP from 'iamport-react-native';
 /* 로딩 컴포넌트를 불러옵니다. */
 import Loading from './Loading';
@@ -206,7 +211,7 @@ export default Loading;
 ```
 
 ## 콜백 함수 설정하기
-콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 실패/성공 여부에 맞게 아래와 같이 로직을 작성할 수 있습니다. 콜백 함수에 대한 자세한 설명은 [콜백 설정하기](manuals/CALLBACK.md)를 참고하세요.
+콜백 함수는 필수입력 필드로, 결제/본인인증 완료 후 라우트 이동을 위해 아래와 같이 로직을 작성할 수 있습니다. 콜백 함수에 대한 자세한 설명은 [콜백 설정하기](manuals/CALLBACK.md)를 참고하세요.
 
 ```javascript
 function callback(response) {
