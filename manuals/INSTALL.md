@@ -3,6 +3,7 @@
 
 ```
 $ npm install iamport-react-native --save
+$ npm install react-native-webview --save // RN v0.60 이상 필수
 ```
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.

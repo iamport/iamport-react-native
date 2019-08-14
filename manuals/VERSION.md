@@ -2,7 +2,10 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.2.0](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.2.1](https://github.com/iamport/iamport-react-native/tree/master)
+  - [IOS] RN v0.60이상에서 동작하기 위해 podspec 파일을 추가하였습니다.
+
+- [v1.2.0](https://github.com/iamport/iamport-react-native/tree/v1.2.0)
   - [IOS] ipa 파일 설치시 결제/본인인증 창이 뜨지 않는 이슈를 해결하였습니다.
   - [안드로이드] native code의 역할을 react-native단에서 수행하도록 수정하였습니다.
   - [본인인증] 회사명(`company`)과 통신사(`carrier`) 파라메터를 추가하였습니다.

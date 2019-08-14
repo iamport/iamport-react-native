@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { WebView } from 'react-native-webview';
 import { Linking, Platform } from 'react-native';
 
+import Loading from '../Loading';
 import ErrorOnParams from '../ErrorOnParams';
 
 import IamportUrl from '../../utils/IamportUrl.js';
