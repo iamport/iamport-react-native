@@ -17,7 +17,7 @@
 - [콜백 함수 설정하기](manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v1.2.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
+최신버전은 [v1.2.1](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
 
 ## 지원정보
 아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](manuals/SUPPORT.md)를 참고하세요.
@@ -27,6 +27,7 @@
 
 ```
 $ npm install iamport-react-native --save
+$ npm install react-native-webview --save // RN v0.60 이상 필수
 ```
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.
@@ -197,15 +198,22 @@ export default Certification;
 #### 웹뷰 로딩 컴포넌트 예제
 ```javascript
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export function Loading() {
+  const { container } = styles;
   return (
-    <View>
+    <View style={container}>
       <Text>잠시만 기다려주세요...</Text>
     </View>  
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+  },
+});
 
 export default Loading;
 ```
