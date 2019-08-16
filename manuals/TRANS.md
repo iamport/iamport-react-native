@@ -102,7 +102,8 @@ IOS와 동일하게 뱅크페이 앱에서 귀하의 앱으로 복귀할때를 �
 deep linking 기능을 활성화하기 위해 `Intent Filter`를 추가하고 `MainActivity`의 `launchMode`를 아래와 같이 `singleTask`로 설정해야 합니다. 자세한 내용은 [RN Linking](https://facebook.github.io/react-native/docs/linking)을 참고하세요.
 
 ```xml
-...
+..
+<!-- [프로젝트 폴더]/android/app/src/main/AndroidManifest.xml -->.
 <!-- MainActivity의 launchMode를 singleTask로 설정 -->
 <activity
   android:name=".MainActivity"

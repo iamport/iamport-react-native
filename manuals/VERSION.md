@@ -3,6 +3,9 @@
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
 - [v1.2.1](https://github.com/iamport/iamport-react-native/tree/master)
+  - [IOS] package.json에 homepage값을 추가하였습니다.
+
+- [v1.2.1](https://github.com/iamport/iamport-react-native/tree/v1.2.1)
   - [IOS] RN v0.60이상에서 동작하기 위해 podspec 파일을 추가하였습니다.
 
 - [v1.2.0](https://github.com/iamport/iamport-react-native/tree/v1.2.0)
