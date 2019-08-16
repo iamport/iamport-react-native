@@ -41,27 +41,28 @@ function Result({ navigation }) {
   const merchant_uid = navigation.getParma('merchant_uid');
 
   return (
-    <View style={container}>
+    <View>
       <Text>{`결제/본인인증에 ${success ? '성공' : '실패'}하였습니다.`}</Text>
-      <View style={table}>
-        <View style={row}>
-          <Text style={name}>아임포트 번호</Text>
-          <Text style={value}>{imp_uid || '없음'}</Text>
+      <View>
+        <View>
+          <Text>아임포트 번호</Text>
+          <Text>{imp_uid || '없음'}</Text>
         </View>
-        <View style={row}>
-          <Text style={name}>주문 번호</Text>
-          <Text style={value}>{merchant_uid || '없음'}</Text>
+        <View>
+          <Text>주문 번호</Text>
+          <Text>{merchant_uid || '없음'}</Text>
         </View>
         {
           !success && 
-          <View style={row}>
-            <Text style={name}>에러 메시지</Text>
-            <Text style={value}>{error_msg || '없음'}</Text>
+          <View>
+            <Text>에러 메시지</Text>
+            <Text>{error_msg || '없음'}</Text>
           </View>
         }
       </View>
     </View>
   );
 }
-...
+
+export default Result;
 ```

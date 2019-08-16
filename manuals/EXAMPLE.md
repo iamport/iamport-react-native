@@ -86,13 +86,13 @@ export function Payment({ navigation }) {
 export default Payment;
 ```
 
-| Prop             | Type          |  Description                                                | Default             | Required   |
-| ---------------- | ------------- | ----------------------------------------------------------- | ------------------- | ---------- |
-| userCode         | string        | 가맹점 식별코드                                                 | undefined           | true       |
-| data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | undefined           | true       |
-| - m_redirect_url | string        | [Deprecated]                                                | undefined           | false       |
-| callback         | function      | 결제 후 실행 될 함수 [자세히보기](#callback)                       | undefined           | true       |
-| loading          | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트                                        |                     | false      |
+| Prop             | Type          |  Description                                                | Required   |
+| ---------------- | ------------- | ----------------------------------------------------------- | ---------- |
+| userCode         | string        | 가맹점 식별코드                                                 | true       |
+| data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | true       |
+| - m_redirect_url | string        | [Deprecated]                                                | false       |
+| callback         | function      | 결제 후 실행 될 함수 [자세히보기](#callback)                       | true       |
+| loading          | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트                                        | false      |
 
 
 
@@ -135,20 +135,18 @@ export function Certification({ navigation }) {
 export default Certification;
 ```
 
-| Prop          | Type          |  Description                       | Default             | Required   |
-| ------------- | ------------- | ---------------------------------- | ------------------- | ---------- |
-| userCode      | string        | 가맹점 식별코드                        | undefined           | true       |
-| data          | object        | 본인인증에 필요한 정보 [자세히 보기](https://https://docs.iamport.kr/tech/mobile-authentication#call-authentication)      | undefined           | true       |
-| - merchant_uid| string        | 가맹점 주문번호                        | random              | false      |
-| - company     | string        | 회사명 또는 URL                       | undefined           | false      |
-| - carrier     | string        | 통신사                               | undefined           | false      |
-| - name        | string        | 본인인증 할 이름                        | undefined           | false      |
-| - phone       | number        | 본인인증 할 전화번호                     | undefined           | false      |
-| - min_age     | number        | 본인인증 허용 최소 연령                  | undefined           | false      |
-| callback      | function      | 본인인증 후 실행 될 함수                 | undefined           | true       |
-| loading       | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트               |                     | false      |
-| - message     | string        | 로딩화면 메시지                        | 잠시만 기다려주세요...   | false      |
-| - image       |               | 로딩화면 이미지(url도 가능)              | 아임포트 로고 이미지     | false      |
+| Prop          | Type          |  Description                       | Required   |
+| ------------- | ------------- | ---------------------------------- | ---------- |
+| userCode      | string        | 가맹점 식별코드                        | true       |
+| data          | object        | 본인인증에 필요한 정보 [자세히 보기](https://https://docs.iamport.kr/tech/mobile-authentication#call-authentication)      | true       |
+| - merchant_uid| string        | 가맹점 주문번호                        | false      |
+| - company     | string        | 회사명 또는 URL                       | false      |
+| - carrier     | string        | 통신사                               | false      |
+| - name        | string        | 본인인증 할 이름                        | false      |
+| - phone       | number        | 본인인증 할 전화번호                     | false      |
+| - min_age     | number        | 본인인증 허용 최소 연령                  | false      |
+| callback      | function      | 본인인증 후 실행 될 함수                 | true       |
+| loading       | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트               | false      |
 
 #### 웹뷰 로딩 컴포넌트 코드 작성 예시
 웹뷰가 로드되기 전 보여질 로딩 화면을 컴포넌트로 생성해 loading 파라메터로 넘깁니다. 미 입력시 아임포트가 보여주는 default 로딩 페이지가 렌더링됩니다. 아래는 로딩 컴포넌트 코드 작성 예시입니다.
