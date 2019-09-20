@@ -54,40 +54,35 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
 ```html
 <key>LSApplicationQueriesSchemes</key>
 <array>
-  <string>kakao0123456789abcdefghijklmn</string>
-  <string>kakaokompassauth</string>
-  <string>storykompassauth</string>
-  <string>kakaolink</string>
-  <string>kakaotalk</string>
-  <string>kakaostory</string>
-  <string>storylink</string>
-  <string>payco</string>
-  <string>kftc-bankpay</string>
-  <string>ispmobile</string>
-  <string>itms-apps</string>
-  <string>hdcardappcardansimclick</string>
-  <string>smhyundaiansimclick</string>
-  <string>shinhan-sr-ansimclick</string>
-  <string>smshinhanansimclick</string>
-  <string>kb-acp</string>
-  <string>mpocket.online.ansimclick</string>
-  <string>ansimclickscard</string>
-  <string>ansimclickipcollect</string>
-  <string>vguardstart</string>
-  <string>samsungpay</string>
-  <string>scardcertiapp</string>
-  <string>lottesmartpay</string>
-  <string>lotteappcard</string>
-  <string>cloudpay</string>
-  <string>nhappvardansimclick</string>
-  <string>nonghyupcardansimclick</string>
-  <string>nhallonepayansimclick</string>
-  <string>citispay</string>
-  <string>citicardappkr</string>
-  <string>citimobileapp</string>
-  <string>itmss</string>
-  <string>lpayapp</string>
-  <string>kpay</string>
+  <string>kftc-bankpay</string> <!-- 계좌이체 -->
+  <string>ispmobile</string> <!-- ISP모바일 -->
+  <string>itms-apps</string> <!-- 앱스토어 -->
+  <string>hdcardappcardansimclick</string> <!-- 현대카드-앱카드 -->
+  <string>smhyundaiansimclick</string> <!-- 현대카드-공인인증서 -->
+  <string>shinhan-sr-ansimclick</string> <!-- 신한카드-앱카드 -->
+  <string>smshinhanansimclick</string> <!-- 신한카드-공인인증서 -->
+  <string>kb-acp</string> <!-- 국민카드-앱카드 -->
+  <string>mpocket.online.ansimclick</string> <!-- 삼성카드-앱카드 -->
+  <string>ansimclickscard</string> <!-- 삼성카드-온라인결제 -->
+  <string>ansimclickipcollect</string> <!-- 삼성카드-온라인결제 -->
+  <string>vguardstart</string> <!-- 삼성카드-백신 -->
+  <string>samsungpay</string> <!-- 삼성카드-삼성페이 -->
+  <string>scardcertiapp</string> <!-- 삼성카드-공인인증서 -->
+  <string>lottesmartpay</string> <!-- 롯데카드-모바일결제 -->
+  <string>lotteappcard</string> <!-- 롯데카드-앱카드 -->
+  <string>cloudpay</string> <!-- 하나카드-앱카드 -->
+  <string>nhappvardansimclick</string> <!-- 농협카드-앱카드 -->
+  <string>nonghyupcardansimclick</string> <!-- 농협카드-공인인증서 -->
+  <string>citispay</string> <!-- 씨티카드-앱카드 -->
+  <string>citicardappkr</string> <!-- 씨티카드-공인인증서 -->
+  <string>citimobileapp</string> <!-- 씨티카드-간편결제 -->
+  <string>kakaotalk</string> <!-- 카카오톡 -->
+  <string>payco</string> <!-- 페이코 -->
+  <string>lpayapp</string> <!-- 롯데 L페이 -->
+  <string>hanamopmoasign</string> <!-- 하나카드 공인인증앱 -->
+  <string>wooripay</string> <!-- 우리페이 -->
+  <string>nhallonepayansimclick</string> <!-- NH 올원페이 -->
+  <string>hanawalletmembers</string> <!-- 하나카드(하나멤버스 월렛) -->
 </array>
 ```
 
