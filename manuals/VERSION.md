@@ -2,7 +2,10 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.2.1](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.2.3](https://github.com/iamport/iamport-react-native/tree/master)
+  - 3rd-party 앱 URL scheme값에 하나멤버스를 추가하였습니다.
+
+- [v1.2.2](https://github.com/iamport/iamport-react-native/tree/v1.2.2)
   - [IOS] package.json에 homepage값을 추가하였습니다.
 
 - [v1.2.1](https://github.com/iamport/iamport-react-native/tree/v1.2.1)
