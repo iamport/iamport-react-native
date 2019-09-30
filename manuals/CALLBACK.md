@@ -37,8 +37,8 @@ import { View, Text } from 'react-native';
 
 function Result({ navigation }) {
   const success = navigation.getParam('success');
-  const imp_uid = navigation.getParma('imp_uid');
-  const merchant_uid = navigation.getParma('merchant_uid');
+  const imp_uid = navigation.getParam('imp_uid');
+  const merchant_uid = navigation.getParam('merchant_uid');
 
   return (
     <View>
