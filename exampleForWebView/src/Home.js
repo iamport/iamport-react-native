@@ -3,7 +3,7 @@ import WebView from 'react-native-webview';
 import queryString from 'query-string';
 
 function Home({ navigation }) {
-  const domain = 'http://192.168.0.15:3000';
+  const domain = 'http://192.168.0.25:3000';
   const [uri, setUri] = useState(domain);
 
   useEffect(() => {
