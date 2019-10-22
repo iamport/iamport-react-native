@@ -2,7 +2,11 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.2.3](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.3.0](https://github.com/iamport/iamport-react-native/tree/master)
+  - IOS13의 UIWebView deprecated error에 대응하기 위해 react-native-webview의 버전을 7.4.2로 업데이트 하였습니다.
+  - expo 사용자를 위한 가이드 문서와 예제 프로젝트를 추가하였습니다.
+
+- [v1.2.3](https://github.com/iamport/iamport-react-native/tree/v1.2.3)
   - 3rd-party 앱 URL scheme값에 하나멤버스를 추가하였습니다.
 
 - [v1.2.2](https://github.com/iamport/iamport-react-native/tree/v1.2.2)
