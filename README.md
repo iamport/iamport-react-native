@@ -5,6 +5,7 @@
 [ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
 
 아임포트 리액트 네이티브 모듈입니다. 웹 페이지를 리액트 네이티브에서 웹뷰로 띄워 재사용 하는 경우, [아임포트 리액트 네이티브 웹뷰](exampleForWebView/README.md) 문서를 참고해주세요.
+EXPO 환경인 경우, [엑스포에서 아임포트 연동하기](manuals/EXPO.md) 문서를 참고해주세요.
 
 ## 목차
 - [버전정보](manuals/VERSION.md)
