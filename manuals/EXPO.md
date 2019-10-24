@@ -38,7 +38,7 @@
 프로젝트 폴더에서 expo 명령어를 통해 eject 합니다. android와 ios 폴더가 생성되며 필요한 dependency들이 설치됩니다.
 
 ```
-  $ expo eject
+$ expo eject
 ```
 
 위 명령어를 실행하면 아래와 같은 내용이 출력됩니다.
@@ -49,10 +49,9 @@
 
 ## 4. [아임포트 설치 및 링킹하기](./INSTALL.md)
 ```
-  $ npm install --save iamport-react-native
-  $ npm install --save react-native-webview@7.0.5 // EXPO와 호환되는 최신 버전
-  $ react-native link iamport-react-native
-  $ react-native link iamport-react-native
+$ yarn add iamport-react-native
+$ expo install react-native-webview@7.0.5 // EXPO와 호환되는 최신 버전
+$ react-native link iamport-react-native
 ```
 
 ## 5. 설정하기
@@ -62,3 +61,17 @@
 ## 6. [예제](./EXAMPLE.md)
 
 ## 7. [콜백 함수 설정하기](./CALLBACK.md)
+
+## 8. exampleForExpo 실행하기
+
+아래 명령어를 통해 `exampleForExpo` 프로젝트를 실행합니다.
+
+```
+$ cd ./iamport-react-native/exampleForExpo
+$ yarn add
+$ react-native link iamport-react-native
+$ react-native link react-native-webview
+$ expo start
+```
+
+IOS는 ios/exampleforexpo.xcworkspace 파일을 오픈해 Xcode에서 빌드합니다. Android는 Android Studio에서 android 폴더를 열고 앱을 빌드 및 런칭(Run)합니다. 생성된 앱에서 결제 및 휴대폰 본인인증이 원활히 동작하는 것을 확인하실 수 있습니다.
