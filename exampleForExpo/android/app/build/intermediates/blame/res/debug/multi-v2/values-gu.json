@@ -1,0 +1,145 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/iamport/Desktop/iamport-react-native/exampleForExpo/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-gu/values-gu.xml",
+            "map": [
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/core-1.0.0.aar/f145a2c01ba0f240219e8933d540af84/res/values-gu/values-gu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "73",
+                        "startColumns": "4",
+                        "startOffsets": "8311",
+                        "endColumns": "100",
+                        "endOffsets": "8407"
+                    }
+                },
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/jetified-play-services-wallet-16.0.1.aar/98345fab948f66bf1c460bda2af0b7a3/res/values-gu/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "200",
+                        "endColumns": "101",
+                        "endOffsets": "301"
+                    },
+                    "to": {
+                        "startLines": "74",
+                        "startColumns": "4",
+                        "startOffsets": "8412",
+                        "endColumns": "105",
+                        "endOffsets": "8513"
+                    }
+                },
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/jetified-play-services-base-16.0.1.aar/997671cbb023db7e969909b5c6a8f493/res/values-gu/values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "245,351,549,672,782,979,1099,1236,1361,1568,1674,1869,1992,2194,2370,2457,2549",
+                        "endColumns": "105,197,122,109,196,119,136,124,206,105,194,122,201,175,86,91,106",
+                        "endOffsets": "350,548,671,781,978,1098,1235,1360,1567,1673,1868,1991,2193,2369,2456,2548,2655"
+                    },
+                    "to": {
+                        "startLines": "52,53,54,55,56,57,58,59,61,62,63,64,65,66,67,68,69",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "5361,5471,5669,5796,5910,6107,6231,6372,6707,6914,7024,7219,7346,7548,7728,7819,7915",
+                        "endColumns": "109,197,126,113,196,123,140,128,206,109,194,126,201,179,90,95,110",
+                        "endOffsets": "5466,5664,5791,5905,6102,6226,6367,6496,6909,7019,7214,7341,7543,7723,7814,7910,8021"
+                    }
+                },
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/jetified-firebase-messaging-18.0.0.aar/4eeab2dcc6f197e6c03e06c711ca3c27/res/values-gu/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "205",
+                        "endColumns": "99",
+                        "endOffsets": "304"
+                    },
+                    "to": {
+                        "startLines": "70",
+                        "startColumns": "4",
+                        "startOffsets": "8026",
+                        "endColumns": "103",
+                        "endOffsets": "8125"
+                    }
+                },
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/jetified-play-services-basement-16.2.0.aar/1c801e48cb2cef542945736a75417549/res/values-gu/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "205",
+                        "endOffsets": "452"
+                    },
+                    "to": {
+                        "startLines": "60",
+                        "startColumns": "4",
+                        "startOffsets": "6501",
+                        "endColumns": "205",
+                        "endOffsets": "6702"
+                    }
+                },
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/appcompat-1.0.0.aar/758ce38d0e74016ff2349501c426ad25/res/values-gu/values-gu.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,214,318,425,512,613,736,813,891,982,1075,1174,1268,1369,1462,1557,1654,1745,1836,1916,2022,2124,2221,2330,2429,2539,2699,2802",
+                        "endColumns": "108,103,106,86,100,122,76,77,90,92,98,93,100,92,94,96,90,90,79,105,101,96,108,98,109,159,102,79",
+                        "endOffsets": "209,313,420,507,608,731,808,886,977,1070,1169,1263,1364,1457,1552,1649,1740,1831,1911,2017,2119,2216,2325,2424,2534,2694,2797,2877"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,72",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,214,318,425,512,613,736,813,891,982,1075,1174,1268,1369,1462,1557,1654,1745,1836,1916,2022,2124,2221,2330,2429,2539,2699,8231",
+                        "endColumns": "108,103,106,86,100,122,76,77,90,92,98,93,100,92,94,96,90,90,79,105,101,96,108,98,109,159,102,79",
+                        "endOffsets": "209,313,420,507,608,731,808,886,977,1070,1169,1263,1364,1457,1552,1649,1740,1831,1911,2017,2119,2216,2325,2424,2534,2694,2797,8306"
+                    }
+                },
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/jetified-facebook-login-5.0.1.aar/63bac8a50eebde01bfab499a29a4cfa7/res/values-gu/values-gu.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,219,350,485,595,678,767,851,940,1033,1148,1257,1352,1447,1550,1688,1769,1853,2043,2139,2238,2354,2462",
+                        "endColumns": "163,130,134,109,82,88,83,88,92,114,108,94,94,102,137,80,83,189,95,98,115,107,151",
+                        "endOffsets": "214,345,480,590,673,762,846,935,1028,1143,1252,1347,1442,1545,1683,1764,1848,2038,2134,2233,2349,2457,2609"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2802,2966,3097,3232,3342,3425,3514,3598,3687,3780,3895,4004,4099,4194,4297,4435,4516,4600,4790,4886,4985,5101,5209",
+                        "endColumns": "163,130,134,109,82,88,83,88,92,114,108,94,94,102,137,80,83,189,95,98,115,107,151",
+                        "endOffsets": "2961,3092,3227,3337,3420,3509,3593,3682,3775,3890,3999,4094,4189,4292,4430,4511,4595,4785,4881,4980,5096,5204,5356"
+                    }
+                },
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/jetified-play-services-gcm-16.1.0.aar/fc594e6bd29bcd6d88a9eae22592c934/res/values-gu/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "190",
+                        "endColumns": "96",
+                        "endOffsets": "286"
+                    },
+                    "to": {
+                        "startLines": "71",
+                        "startColumns": "4",
+                        "startOffsets": "8130",
+                        "endColumns": "100",
+                        "endOffsets": "8226"
+                    }
+                }
+            ]
+        }
+    ]
+}

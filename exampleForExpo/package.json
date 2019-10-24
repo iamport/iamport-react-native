@@ -1,0 +1,31 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "postinstall": "jetifier -r"
+  },
+  "dependencies": {
+    "expo": "^35.0.0",
+    "expo-font": "~7.0.0",
+    "expokit": "35.0.1",
+    "iamport-react-native": "https://github.com/iamport/iamport-react-native#develop",
+    "native-base": "^2.13.8",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-unimodules": "^0.6.0",
+    "react-native-web": "^0.11.7",
+    "react-native-webview": "7.0.5",
+    "react-navigation": "^4.0.10",
+    "react-navigation-stack": "^1.10.2"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^7.1.0",
+    "jetifier": "^1.6.4"
+  },
+  "private": true
+}
