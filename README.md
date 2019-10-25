@@ -14,6 +14,7 @@ EXPO 환경인 경우, [엑스포에서 아임포트 연동하기](manuals/EXPO.
 - [설치하기](manuals/INSTALL.md)
 - 설정하기
   - [IOS 설정하기](manuals/SETTING.md)
+  - AndroidX 설정하기
   - [실시간 계좌이체 설정하기](manuals/TRANS.md)
 - [예제](manuals/EXAMPLE.md)
 - [콜백 함수 설정하기](manuals/CALLBACK.md)
@@ -29,7 +30,7 @@ EXPO 환경인 경우, [엑스포에서 아임포트 연동하기](manuals/EXPO.
 
 ```
 $ npm install iamport-react-native --save
-$ npm install react-native-webview --save // IOS13 대비 위해 7.x 버전 설치 필수
+$ npm install react-native-webview --save // IOS13 대비 7.0.0 이상 버전 설치 필수
 ```
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.
@@ -101,6 +102,22 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
   <key>NSAllowsArbitraryLoads</key>
   <true/>
 </dict>
+```
+
+## AndroidX 설정하기
+AndroidX를 사용하시는 경우 추가 설정이 필요합니다. AndroidX를 사용하려면, 컴파일 SDK를 Android 9.0(API 레벨 28)이상으로 설정하고 android/gradle.properties 파일에 아래 두 Android Gradle 플러그인 플래그를 `true`로 설정해야 합니다.
+
+```
+// android/gradle.properties
+android.useAndroidX=true
+android.enableJetifier=true
+```
+
+iamport-react-native 모듈은 네이티브 코드를 포함하기 때문에 이 또한 AndroidX로 변형해야 합니다. 이를 위해 [jetifier](https://github.com/mikehardy/jetifier)를 사용합니다. jetifier는 리액트 네이티브 버전 0.60 이상에서는 자동으로 포함되어 있기 때문에 0.59 이하 버전을 사용하는 경우에만 아래 코드를 실행해주세요.
+
+```
+npm install --save-dev jetifier
+npx jetifier
 ```
 
 ### 실시간 계좌이체 설정하기

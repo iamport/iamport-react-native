@@ -3,7 +3,7 @@
 
 ## 1. 엑스포 CLI 설치하기
 ```
-  $ npm install -g expo-cli
+$ npm install -g expo-cli
 ```
 
 ## 2. 설정 파일(app.json) 확인하기
@@ -49,8 +49,8 @@ $ expo eject
 
 ## 4. [아임포트 설치 및 링킹하기](./INSTALL.md)
 ```
-$ yarn add iamport-react-native
-$ expo install react-native-webview@7.0.5 // EXPO와 호환되는 최신 버전
+$ npm install --save iamport-react-native
+$ npm install --save react-native-webview@7.0.5 // EXPO와 호환되는 최신 버전 7.0.5 설치
 $ react-native link iamport-react-native
 ```
 
@@ -60,17 +60,7 @@ $ react-native link iamport-react-native
 
 ## 6. [예제](./EXAMPLE.md)
 
+- [예제 코드 작성하기](./EXAMPLE.md)
+- [예제 프로젝트 실행하기](../exampleForExpo/README.md)
+
 ## 7. [콜백 함수 설정하기](./CALLBACK.md)
-
-## 8. exampleForExpo 실행하기
-
-아래 명령어를 통해 `exampleForExpo` 프로젝트를 실행합니다.
-
-```
-$ cd ./iamport-react-native/exampleForExpo
-$ npm install
-$ npx jetifier
-$ expo start
-```
-
-IOS는 ios/exampleforexpo.xcworkspace 파일을 오픈해 Xcode에서 빌드합니다. Android는 Android Studio에서 android 폴더를 열고 앱을 빌드 및 런칭(Run)합니다. 생성된 앱에서 결제 및 휴대폰 본인인증이 원활히 동작하는 것을 확인하실 수 있습니다.

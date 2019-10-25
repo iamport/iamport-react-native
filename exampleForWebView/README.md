@@ -47,23 +47,28 @@ $ git clone https://github.com/iamport/iamport-react-native
 
 ## exampleForWebView 실행하기
 
-iamport-react-native 모듈을 클론받아 폴더 위치를 `exampleForWebView` 프로젝트로 이동합니다.
+iamport-react-native 모듈을 clone받아 폴더 위치를 `exampleForWebView` 프로젝트로 이동합니다.
 
 ```
 $ git clone https://github.com/iamport/iamport-react-native.git
 $ cd ./iamport-react-native/exampleForWebView
 ```
 
-아래 명령어를 통해 프로젝트를 실행합니다.
+필요한 npm 모듈을 설치합니다.
 
 ```
 $ npm install
-$ npx jetifier // iamport-react-native v1.3.0 이상 필수
-$ react-native run-android 또는 react-native run-ios
+$ npx jetifier // AndroidX 환경 대비
 ```
 
-생성된 앱에서 결제 및 휴대폰 본인인증이 원활히 동작하는 것을 확인하실 수 있습니다.
+앱을 실행합니다.
 
+```
+$ npm start -- --reset-cache
+```
+
+각 환경에 맞게 앱을 빌드합니다. 자세한 내용은 [예제 프로젝트](../manuals/EXAMPLE.md)를 참고하세요.
+ㄴ
 아래는 위와 같이 웹 페이지를 리액트 네이티브에서 웹뷰로 띄워 재활용 할때, 아임포트 결제 및 휴대폰 본인을 연동하는 과정을 설명합니다. 이해를 돕기 위해 앞서 소개한 `iamport-react-example` 웹앱과 `exampleForWebView` 프로젝트의 코드를 예시로 사용합니다.
 
 - [결제 웹 페이지 재활용하기](manuals/PAYMENT.md)

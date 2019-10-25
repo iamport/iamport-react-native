@@ -2,55 +2,44 @@
 
 아임포트 리액트 네이티브 모듈 예제 안내입니다.
 
-먼저 iamport-react-native 모듈을 클론받아 폴더 위치를 `example` 프로젝트로 이동합니다.
+iamport-react-native 모듈을 clone받아 폴더 위치를 `example` 프로젝트로 이동합니다.
 
 ```
 $ git clone https://github.com/iamport/iamport-react-native.git
 $ cd ./iamport-react-native/example
 ```
 
-#### IOS에 예제 프로젝트 설치하기
-##### 1. 디바이스
-  - [XCode를 설치](https://developer.apple.com/xcode)합니다.
-  - IOS 디바이스를 컴퓨터에 연결합니다.
-  - XCode 프로젝트(`[...]/node_modules/iamport-react-native/example/ios/example.xcodeproj`)를 더블클릭해 오픈합니다.
-  - `Cmd+R`를 눌러 앱을 빌드합니다.
-  - 빌드가 성공하고 디바이스에 example 앱이 설치된 것을 확인하실 수 있습니다.
+필요한 npm 모듈을 설치합니다.
 
-##### 2. Emulator
-  - 아래 명령어를 입력해 IOS emulator를 실행시켜 아임포트 모듈 결제테스트를 진행하실 수 있습니다.
-  ```
-  $ cd [...]/node_modules/iamport-react-native/example
-  $ npm install
-  $ react-native run-ios
-  ```
+```
+$ npm install
+$ npx jetifier // AndroidX 환경 대비
+```
 
-#### 안드로이드에 예제 프로젝트 설치하기
-##### 1. 디바이스
-  - 안드로이드 디바이스를 컴퓨터에 연결합니다.
-  - 아래 명령어를 입력해 앱을 빌드합니다.
-    ```
-    $ cd [...]/node_modules/iamport-react-native/example
-    $ npm install
-    $ npx jetifier // iamport-react-native v1.3.0 이상 필수
-    $ react-native run-android
-    ```
-  - 빌드가 성공하고 example 앱이 디바이스에 설치된 것을 확인하실 수 있습니다.
+앱을 실행합니다.
 
-##### 2. Emulator
-  - [안드로이드 스튜디오를 설치](https://developer.android.com/studio)합니다.
-  - 안드로이드 프로젝트(`[...]/node_modules/iamport-react-native/example/android`)를 안드로이드 스튜디오에서 오픈합니다.
-  - ![](../src/img/android-studio-build.png) 또는 `Cmd+F9`를 눌러 앱을 빌드합니다.
-  - ![AVD Manager](../src/img/android-studio-avd-manager.png)을 눌러 안드로이드 emulator를 실행시킵니다.
-  - example 앱이 설치된 것을 확인하실 수 있습니다.
+```
+$ npm start -- --reset-cache
+```
+
+각 환경에 맞게 앱을 빌드합니다.
+
+### IOS
+- [XCode를 설치](https://developer.apple.com/xcode)합니다.
+- 프로젝트(`[...]/node_modules/iamport-react-native/example/ios/example.xcodeproj`)를 더블클릭해 오픈합니다.
+- 빌드 타깃을 선택하고 앱을 빌드(`Cmd+R`)합니다.
+
+### Android
+- [안드로이드 스튜디오를 설치](https://developer.android.com/studio)합니다.
+- 안드로이드 스튜디오에서 프로젝트(`[...]/node_modules/iamport-react-native/example/android`)를 더블클릭해 오픈합니다.
+- 빌드 타깃을 선택하고 앱을 빌드(![](../src/img/android-studio-build.png) 또는 `Cmd+F9`)합니다.
 
 ![](../src/img/ios-emulator-home.png)
 ![](../src/img/ios-emulator-payment.png)
 ![](../src/img/ios-emulator-certification.png)
 
 
-
-#### 일반/정기결제 코드 작성 예시
+### 일반/정기결제 코드 예시
 ```javascript
 import React from 'react';
 /* 아임포트 결제모듈을 불러옵니다. */
@@ -103,9 +92,7 @@ export default Payment;
 | loading          | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트                                        | false      |
 
 
-
-
-#### 휴대폰 본인인증 코드 작성 예시
+### 휴대폰 본인인증 코드 예시
 ```javascript
 import React from 'react';
 /* 아임포트 본인인증 모듈을 불러옵니다. */
@@ -156,7 +143,7 @@ export default Certification;
 | callback      | function      | 본인인증 후 실행 될 함수                 | true       |
 | loading       | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트               | false      |
 
-#### 웹뷰 로딩 컴포넌트 코드 작성 예시
+### 웹뷰 로딩 컴포넌트 코드 예시
 웹뷰가 로드되기 전 보여질 로딩 화면을 컴포넌트로 생성해 loading 파라메터로 넘깁니다. 미 입력시 아임포트가 보여주는 default 로딩 페이지가 렌더링됩니다. 아래는 로딩 컴포넌트 코드 작성 예시입니다.
 
 ```javascript
