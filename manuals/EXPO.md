@@ -68,9 +68,8 @@ $ react-native link iamport-react-native
 
 ```
 $ cd ./iamport-react-native/exampleForExpo
-$ yarn add
-$ react-native link iamport-react-native
-$ react-native link react-native-webview
+$ npm install
+$ npx jetifier
 $ expo start
 ```
 
