@@ -47,13 +47,18 @@ $ git clone https://github.com/iamport/iamport-react-native
 
 ## exampleForWebView 실행하기
 
-아래 명령어를 통해 `exampleForWebView` 프로젝트를 실행합니다.
+iamport-react-native 모듈을 클론받아 폴더 위치를 `exampleForWebView` 프로젝트로 이동합니다.
 
 ```
+$ git clone https://github.com/iamport/iamport-react-native.git
 $ cd ./iamport-react-native/exampleForWebView
+```
+
+아래 명령어를 통해 프로젝트를 실행합니다.
+
+```
 $ npm install
-$ react-native link iamport-react-native
-$ react-native link react-native-webview
+$ npx jetifier // iamport-react-native v1.3.0 이상 필수
 $ react-native run-android 또는 react-native run-ios
 ```
 

@@ -2,6 +2,13 @@
 
 아임포트 리액트 네이티브 모듈 예제 안내입니다.
 
+먼저 iamport-react-native 모듈을 클론받아 폴더 위치를 `example` 프로젝트로 이동합니다.
+
+```
+$ git clone https://github.com/iamport/iamport-react-native.git
+$ cd ./iamport-react-native/example
+```
+
 #### IOS에 예제 프로젝트 설치하기
 ##### 1. 디바이스
   - [XCode를 설치](https://developer.apple.com/xcode)합니다.
@@ -25,6 +32,7 @@
     ```
     $ cd [...]/node_modules/iamport-react-native/example
     $ npm install
+    $ npx jetifier // iamport-react-native v1.3.0 이상 필수
     $ react-native run-android
     ```
   - 빌드가 성공하고 example 앱이 디바이스에 설치된 것을 확인하실 수 있습니다.
