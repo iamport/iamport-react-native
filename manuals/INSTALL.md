@@ -1,9 +1,9 @@
 # 설치하기
-아임포트 리액트 네이티브 모듈 설치 안내입니다. 아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다.
+아임포트 리액트 네이티브 모듈 설치 안내입니다. 아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. `react-native-webview` 모듈은 아임포트 모듈에 dependent하기 때문에 반드시 함께 설치해야 합니다. IOS12부터 UIWebView는 deprecated되어 warning이 뜨지만 IOS13부터는 에러가 발생합니다. 때문에 `react-native-webview` 모듈은 이에 대비하기 위해 7.x 이상 버전이 요구됩니다. 이미 `react-native-webview` 모듈을 사용하고 계시다면, 버전 체크 후 7.x 버전으로 업그레이드 하셔야 합니다.
 
 ```
 $ npm install iamport-react-native --save
-$ npm install react-native-webview --save // RN v0.60 이상 필수
+$ npm install react-native-webview --save // IOS13 대비 7.0.0 이상 버전 설치 필수
 ```
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.
@@ -34,7 +34,7 @@ $ react-native link react-native-webview
 1. `android/app/src/main/java/[...]/MainApplication.java` 파일을 열어 아래 코드를 추가합니다.
   ```java
   import com.iamport.IamportPackage; // 아임포트 패키지를 불러옵니다.
-
+  import com.reactnativecommunity.webview.RNCWebViewPackage; // 리액트 네이티브 웹뷰 패키지를 불러옵니다.
   ...
 
   @Override

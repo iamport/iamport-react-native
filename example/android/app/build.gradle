@@ -138,8 +138,8 @@ android {
 }
 
 dependencies {
-    implementation project(':iamport-react-native')
     implementation project(':react-native-webview')
+    implementation project(':iamport-react-native')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"

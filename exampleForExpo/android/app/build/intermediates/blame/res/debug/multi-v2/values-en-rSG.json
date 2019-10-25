@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/iamport/Desktop/iamport-react-native/exampleForExpo/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rSG/values-en-rSG.xml",
+            "map": [
+                {
+                    "source": "/Users/iamport/.gradle/caches/transforms-1/files-1.1/jetified-play-services-wallet-16.0.1.aar/98345fab948f66bf1c460bda2af0b7a3/res/values-en-rSG/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "204",
+                        "endColumns": "99",
+                        "endOffsets": "303"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "103",
+                        "endOffsets": "154"
+                    }
+                }
+            ]
+        }
+    ]
+}

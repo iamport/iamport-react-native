@@ -3,8 +3,10 @@
 [ ![alt text](https://img.shields.io/badge/react-v16.8.6-orange.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react/)
 [ ![alt text](https://img.shields.io/badge/react--native-v0.59.8-yellow.svg?longCache=true&style=flat-square) ](https://github.com/facebook/react-native)
 [ ![alt text](https://img.shields.io/badge/query--string-v6.1.0-green.svg?longCache=true&style=flat-square) ](https://github.com/sindresorhus/query-string)
+[ ![alt text](https://img.shields.io/badge/react--native--webview-v7.4.2-blue.svg?longCache=true&style=flat-square) ](https://github.com/react-native-community/react-native-webview)
 
 아임포트 리액트 네이티브 모듈입니다. 웹 페이지를 리액트 네이티브에서 웹뷰로 띄워 재사용 하는 경우, [아임포트 리액트 네이티브 웹뷰](exampleForWebView/README.md) 문서를 참고해주세요.
+EXPO 환경인 경우, [엑스포에서 아임포트 연동하기](manuals/EXPO.md) 문서를 참고해주세요.
 
 ## 목차
 - [버전정보](manuals/VERSION.md)
@@ -12,22 +14,23 @@
 - [설치하기](manuals/INSTALL.md)
 - 설정하기
   - [IOS 설정하기](manuals/SETTING.md)
+  - AndroidX 설정하기
   - [실시간 계좌이체 설정하기](manuals/TRANS.md)
 - [예제](manuals/EXAMPLE.md)
 - [콜백 함수 설정하기](manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v1.2.3](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
+최신버전은 [v1.3.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
 
 ## 지원정보
-아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](manuals/SUPPORT.md)를 참고하세요.
+아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](manuals/SUPPORT.md)를 참고하세요. 
 
 ## 설치하기
-아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. 보다 자세한 안내는 [설치하기](manuals/INSTALL.md)를 참고하세요.
+아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. `react-native-webview` 모듈은 아임포트 모듈에 dependent하기 때문에 함께 설치해야 합니다. 또한 IOS13에 대비하기 위해 7.x 버전이 요구됩니다. 보다 자세한 안내는 [설치하기](manuals/INSTALL.md)를 참고하세요.
 
 ```
 $ npm install iamport-react-native --save
-$ npm install react-native-webview --save // RN v0.60 이상 필수
+$ npm install react-native-webview --save // IOS13 대비 7.0.0 이상 버전 설치 필수
 ```
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.
@@ -35,7 +38,7 @@ $ npm install react-native-webview --save // RN v0.60 이상 필수
 ```
 $ npm install -g react-native-cli
 $ react-native link iamport-react-native
-$ react-native link react-native-webview // v1.1.0 이상 필수
+$ react-native link react-native-webview
 ```
 
 ## 설정하기
@@ -99,6 +102,22 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
   <key>NSAllowsArbitraryLoads</key>
   <true/>
 </dict>
+```
+
+## AndroidX 설정하기
+AndroidX를 사용하시는 경우 추가 설정이 필요합니다. AndroidX를 사용하려면, 컴파일 SDK를 Android 9.0(API 레벨 28)이상으로 설정하고 android/gradle.properties 파일에 아래 두 Android Gradle 플러그인 플래그를 `true`로 설정해야 합니다.
+
+```
+// android/gradle.properties
+android.useAndroidX=true
+android.enableJetifier=true
+```
+
+iamport-react-native 모듈은 네이티브 코드를 포함하기 때문에 이 또한 AndroidX로 변형해야 합니다. 이를 위해 [jetifier](https://github.com/mikehardy/jetifier)를 사용합니다. jetifier는 리액트 네이티브 버전 0.60 이상에서는 자동으로 포함되어 있기 때문에 0.59 이하 버전을 사용하는 경우에만 아래 코드를 실행해주세요.
+
+```
+npm install --save-dev jetifier
+npx jetifier
 ```
 
 ### 실시간 계좌이체 설정하기

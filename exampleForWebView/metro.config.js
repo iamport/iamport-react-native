@@ -20,16 +20,26 @@ module.exports = {
       },
     }),
   },
+  projectRoot: __dirname,
   watchFolders: [
     path.resolve(__dirname, '../'),
   ],
   resolver: {
     blacklistRE: blacklist([
       new RegExp(
-        `^${escape(path.resolve(__dirname, '..', 'node_modules'))}\\/.*$`
+        `^${escape(path.resolve(__dirname, '..', 'node_modules'))}\/.*$`
       ),
       new RegExp(
-        `^${escape(path.resolve(__dirname, '..', 'example/node_modules'))}\\/.*$`
+        `^${escape(path.resolve(__dirname, '..', 'example/node_modules'))}\/.*$`
+      ),
+      new RegExp(
+        `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/example/node_modules'))}\/.*$`
+      ),
+      new RegExp(
+        `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/exampleForWebView/node_modules'))}\/.*$`
+      ),
+      new RegExp(
+        `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/node_modules'))}\/.*$`
       ),
     ]),
     providesModuleNodeModules: [...peerDependencies],
