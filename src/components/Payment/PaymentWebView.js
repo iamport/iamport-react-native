@@ -52,6 +52,9 @@ export function PaymentWebView({
 
   function onLoadEnd() {
     data.m_redirect_url = IamportUrl.M_REDIRECT_URL;
+    if (data.pg === 'eximbay') {
+      data.popup = false;
+    }
 
     this.xdm.injectJavaScript(`
       setTimeout(() => {

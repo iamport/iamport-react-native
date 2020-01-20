@@ -15,6 +15,7 @@ const PG = [
   'settle',
   'mobilians', 
   'payco', 
+  'eximbay',
   'paypal', 
   'naverco',
   'naverpay',
@@ -34,7 +35,7 @@ const WEBVIEW_SOURCE_HTML = `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js" ></script>
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.7.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
   </head>
   <body></body>
 </html>

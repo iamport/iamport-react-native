@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleGetInfoString</key>
-	<string></string>
+	<string/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -26,7 +26,7 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string></string>
+			<string/>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>example</string>
@@ -36,7 +36,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
-	<string></string>
+	<string/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kftc-bankpay</string>
@@ -56,7 +56,7 @@
 		<string>lottesmartpay</string>
 		<string>lotteappcard</string>
 		<string>cloudpay</string>
-		<string>nhappvardansimclick</string>
+		<string>nhappcardansimclick</string>
 		<string>nonghyupcardansimclick</string>
 		<string>citispay</string>
 		<string>citicardappkr</string>
@@ -87,7 +87,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

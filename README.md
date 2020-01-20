@@ -20,7 +20,7 @@ EXPO 환경인 경우, [엑스포에서 아임포트 연동하기](manuals/EXPO.
 - [콜백 함수 설정하기](manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v1.3.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
+최신버전은 [v1.4.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
 
 ## 지원정보
 아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](manuals/SUPPORT.md)를 참고하세요. 
@@ -74,7 +74,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
   <string>lottesmartpay</string> <!-- 롯데카드-모바일결제 -->
   <string>lotteappcard</string> <!-- 롯데카드-앱카드 -->
   <string>cloudpay</string> <!-- 하나카드-앱카드 -->
-  <string>nhappvardansimclick</string> <!-- 농협카드-앱카드 -->
+  <string>nhappcardansimclick</string> <!-- 농협카드-앱카드 -->
   <string>nonghyupcardansimclick</string> <!-- 농협카드-공인인증서 -->
   <string>citispay</string> <!-- 씨티카드-앱카드 -->
   <string>citicardappkr</string> <!-- 씨티카드-공인인증서 -->
