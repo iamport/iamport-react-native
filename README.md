@@ -74,7 +74,7 @@ IOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
   <string>lottesmartpay</string> <!-- 롯데카드-모바일결제 -->
   <string>lotteappcard</string> <!-- 롯데카드-앱카드 -->
   <string>cloudpay</string> <!-- 하나카드-앱카드 -->
-  <string>nhappvardansimclick</string> <!-- 농협카드-앱카드 -->
+  <string>nhappcardansimclick</string> <!-- 농협카드-앱카드 -->
   <string>nonghyupcardansimclick</string> <!-- 농협카드-공인인증서 -->
   <string>citispay</string> <!-- 씨티카드-앱카드 -->
   <string>citicardappkr</string> <!-- 씨티카드-공인인증서 -->
