@@ -81,12 +81,6 @@ class ValidationForPayment extends Validation {
       return;
     }
 
-    if (pg === 'eximbay') {
-      this.isValid = false;
-      this.message = '해당 모듈은 현재 엑심베이 지원을 위한 개발을 진행중입니다.';
-      return;
-    }
-
     if (pg === 'syrup') {
       this.isValid = false;
       this.message = '해당 모듈은 현재 시럽페이를 지원하지 않습니다.';

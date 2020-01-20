@@ -56,6 +56,10 @@ export const PGS = [
     label: '페이코',
   },
   {
+    value: 'eximbay',
+    label: '엑심베이',
+  },
+  {
     value: 'settle',
     label: '세틀뱅크 가상계좌',
   },
