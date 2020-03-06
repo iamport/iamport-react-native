@@ -10,7 +10,12 @@ import Validation from '../../utils/Validation';
 import { WEBVIEW_SOURCE_HTML, CARRIERS } from '../../constants';
 
 export function Certification({ userCode, data, loading, callback }) {
+  let iamportTriggered = false;
+
   function onLoadEnd() {
+    if (iamportTriggered) return;
+    iamportTriggered = true;
+
     this.xdm.injectJavaScript(`
       IMP.init("${userCode}");
       IMP.certification(${JSON.stringify(data)}, function(response) {
@@ -18,8 +23,8 @@ export function Certification({ userCode, data, loading, callback }) {
       });
     `);
   }
-  
-  function onMessage(e) { // 본인인증 결과를 받아 callback을 실행한다 
+
+  function onMessage(e) { // 본인인증 결과를 받아 callback을 실행한다
     const { data } = e.nativeEvent;
     let response = data;
     while(decodeURIComponent(response) !== response) {

@@ -25,6 +25,8 @@ export function PaymentWebView({
   open3rdPartyApp,
 }) {
   useEffect(() => {
+    let iamportTriggered = false;
+
     function handleOpenURL(event) {
       const { pg, pay_method } = data;
       if (pay_method === 'trans') {
@@ -44,13 +46,16 @@ export function PaymentWebView({
       }
     }
     Linking.addEventListener('url', handleOpenURL);
-    
+
     return function cleanup() {
       Linking.removeEventListener('url', handleOpenURL);
     }
   });
 
   function onLoadEnd() {
+    if (iamportTriggered) return;
+    iamportTriggered = true;
+
     data.m_redirect_url = IamportUrl.M_REDIRECT_URL;
     if (data.pg === 'eximbay') {
       data.popup = false;
@@ -65,7 +70,7 @@ export function PaymentWebView({
       });
     `);
   }
-  
+
   /* PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 */
   function onMessage(e) {
     const { data } = e.nativeEvent;
@@ -108,7 +113,7 @@ export function PaymentWebView({
       />
     );
   }
-  
+
   return <ErrorOnParams message={validation.getMessage()} />;
 }
 
