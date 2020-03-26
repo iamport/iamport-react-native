@@ -29,7 +29,7 @@
     "@babel/runtime": "*",
     "prop-types": "*",
     "query-string": "*",
-    "react-native-webview": "*"
+    "react-native-webview": ">=7.4.0"
   },
   "devDependencies": {
     "@babel/runtime": "^7.4.5",
