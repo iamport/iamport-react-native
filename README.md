@@ -30,8 +30,13 @@ EXPO 환경인 경우, [엑스포에서 아임포트 연동하기](manuals/EXPO.
 
 ```
 $ npm install iamport-react-native --save
-$ npm install react-native-webview --save // IOS13 대비 7.0.0 이상 버전 설치 필수
 ```
+
+`iamport-react-native` 는 `7.4.0`버전 이상의 `react-native-webview` 를 필요로 합니다. (iOS13 대비) 
+위 명령어대로 iamport-react-native 플러그인을 설치했을 때 다음과 같은 Warning Message 가 나온다면 기존에 설치된 `react-native-webview` 플러그인을 업데이트해주세요.
+
+![](manuals/assets/webview-peer-dependency.png)
+  
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.
 
