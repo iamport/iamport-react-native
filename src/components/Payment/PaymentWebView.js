@@ -10,7 +10,6 @@ import ErrorOnParams from '../ErrorOnParams';
 import IamportUrl from '../../utils/IamportUrl.js';
 import ValidationForPayment from '../../utils/ValidationForPayment.js';
 import {
-  PG,
   PAY_METHOD,
   CURRENCY,
   WEBVIEW_SOURCE_HTML,
@@ -51,6 +50,7 @@ export function PaymentWebView({
   });
 
   function onLoadEnd() {
+    console.log('onLoadEnd', new Date().getTime()/1000);
     data.m_redirect_url = IamportUrl.M_REDIRECT_URL;
     if (data.pg === 'eximbay') {
       data.popup = false;
@@ -115,7 +115,7 @@ export function PaymentWebView({
 PaymentWebView.propTypes = {
   userCode: PropTypes.string.isRequired,
   data: PropTypes.shape({
-    pg: PropTypes.oneOf(PG),
+    pg: PropTypes.string,
     pay_method: PropTypes.oneOf(PAY_METHOD),
     currency: PropTypes.oneOf(CURRENCY),
     notice_url: PropTypes.oneOfType([

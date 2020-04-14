@@ -1,5 +1,5 @@
 import Validation from './Validation';
-import { LANGUAGE, EN_AVAILABLE_PG } from '../constants';
+import { PG, LANGUAGE, EN_AVAILABLE_PG } from '../constants';
 
 class ValidationForPayment extends Validation {
   constructor(userCode, loading, callback, data) {
@@ -59,6 +59,14 @@ class ValidationForPayment extends Validation {
       this.isValid = false;
       this.message = 'app_scheme은 필수입력입니다.';
       return;
+    }
+
+    if (pg) {
+      const [pgProvider] = pg.split('.');
+      if (PG.indexOf(pgProvider) === -1) {
+        this.isValid = false;
+        this.message = 'PG사가 올바르지 않습니다.'
+      }
     }
 
     if (language && pg !== 'paypal') {

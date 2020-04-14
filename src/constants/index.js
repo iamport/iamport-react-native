@@ -20,6 +20,9 @@ const PG = [
   'naverco',
   'naverpay',
   'smilepay',
+  'chai',
+  'payple',
+  'alipay',
 ];
 
 const PAY_METHOD = [
