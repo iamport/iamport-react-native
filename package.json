@@ -16,7 +16,7 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "query-string": "^6.1.0",
-    "react-native-webview": "^7.4.2"
+    "react-native-webview": ">=7.4.0"
   },
   "homepage": "https://github.com/iamport/iamport-react-native",
   "repository": {
@@ -29,7 +29,7 @@
     "@babel/runtime": "*",
     "prop-types": "*",
     "query-string": "*",
-    "react-native-webview": "*"
+    "react-native-webview": ">=7.4.0"
   },
   "devDependencies": {
     "@babel/runtime": "^7.4.5",

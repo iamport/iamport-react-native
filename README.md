@@ -30,8 +30,13 @@ EXPO 환경인 경우, [엑스포에서 아임포트 연동하기](manuals/EXPO.
 
 ```
 $ npm install iamport-react-native --save
-$ npm install react-native-webview --save // IOS13 대비 7.0.0 이상 버전 설치 필수
 ```
+
+`iamport-react-native` 는 `7.4.0`버전 이상의 `react-native-webview` 를 필요로 합니다. (iOS13 대비) 
+위 명령어대로 iamport-react-native 플러그인을 설치했을 때 다음과 같은 Warning Message 가 나온다면 기존에 설치된 `react-native-webview` 플러그인을 업데이트해주세요.
+
+![](manuals/assets/webview-peer-dependency.png)
+  
 
 아래 다음 명령어를 통해 아임포트 모듈을 귀하의 안드로이드/IOS 프로젝트에 추가할 수 있습니다.
 
@@ -128,6 +133,9 @@ npx jetifier
 아임포트 결제연동 모듈을 사용해 아래와 같이 일반/정기결제 및 휴대폰 본인인증 기능을 구현할 수 있습니다. 필요한 파라미터는 [예제](manuals/EXAMPLE.md)를 참고하세요.
 
 #### 일반/정기결제 예제
+
+##### JavaScript  
+
 ```javascript
 import React from 'react';
 /* 아임포트 모듈을 불러옵니다. */
@@ -171,8 +179,57 @@ export function Payment({ navigation }) {
 export default Payment;
 ```
 
+##### TypeScript
+```typescript jsx
+import React from 'react';
+/* 아임포트 모듈을 불러옵니다. */
+import IMP from 'iamport-react-native';
+
+/* 로딩 컴포넌트를 불러옵니다. */
+import Loading from './Loading';
+
+export default class IamportPayment extends React.Component {
+  /* [필수입력] 결제에 필요한 데이터를 생성합니다. */
+  getPaymentData() {
+    return {
+      pg: 'html5_inicis',
+      pay_method: 'card',
+      name: '아임포트 결제데이터 분석',
+      merchant_uid: `mid_${new Date().getTime()}`,
+      amount: '39000',
+      buyer_name: '홍길동',
+      buyer_tel: '01012345678',
+      buyer_email: 'example@naver.com',
+      buyer_addr: '서울시 강남구 신사동 661-16',
+      buyer_postcode: '06018',
+      app_scheme: 'example',
+      // [Deprecated v1.0.3]: m_redirect_url
+    };
+  }
+
+  callback(response) {
+    //navigation 을 이용해 결과 렌더링 Component로 이동
+  }
+
+  render() {
+    return (
+      <IMP.Payment
+        userCode={'iamport'} // 가맹점 식별코드
+        loading={<Loading />}   // 웹뷰 로딩 컴포넌트
+        data={this.getPaymentData()} // 결제 데이터
+        callback={this.callback} // 결제 종료 후 콜백
+      />
+    );
+  }
+
+}
+```
+
 
 #### 휴대폰 본인인증 예제
+
+##### JavaScript
+
 ```javascript
 import React from 'react';
 /* 아임포트 모듈을 불러옵니다. */
@@ -207,6 +264,48 @@ export function Certification({ navigation }) {
 }
 
 export default Certification;
+```
+
+##### TypeScript
+
+```typescript jsx
+import React from 'react';
+/* 아임포트 모듈을 불러옵니다. */
+import IMP from 'iamport-react-native';
+
+/* 로딩 컴포넌트를 불러옵니다. */
+import Loading from './Loading';
+
+export default class IamportCertification extends React.Component {
+  /* [필수입력] 본인인증에 필요한 데이터를 생성합니다. */
+  getCertificationData() {
+    return {
+      pg: 'danal',
+      merchant_uid: `mid_${new Date().getTime()}`,
+      company: '아임포트',
+      carrier: 'SKT',
+      name: '홍길동',
+      phone: '01012341234',
+      min_age: 19,
+    };
+  }
+
+  callback(response) {
+    //navigation 을 이용해 결과 렌더링 Component로 이동
+  }
+
+  render() {
+    return (
+      <IMP.Certification
+        userCode={'iamport'} // 가맹점 식별코드
+        loading={<Loading />}   // 웹뷰 로딩 컴포넌트
+        data={this.getPaymentData()} // 본인인증 데이터
+        callback={this.callback} // 본인인증 종료 후 콜백
+      />
+    );
+  }
+
+}
 ```
 
 #### 웹뷰 로딩 컴포넌트 예제
