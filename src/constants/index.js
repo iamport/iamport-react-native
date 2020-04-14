@@ -22,7 +22,23 @@ const PG = [
   'smilepay',
 ];
 
-const PAY_METHOD = ['card', 'trans', 'vbank', 'phone', 'samsung', 'kpay', 'cultureland', 'smartculture', 'happymoney', 'booknlife'];
+const PAY_METHOD = [
+  'card',
+  'trans',
+  'vbank',
+  'phone',
+  'samsung',
+  'kpay',
+  'cultureland',
+  'smartculture',
+  'happymoney',
+  'booknlife',
+  'kakaopay',
+  'lpay',
+  'payco',
+  'ssgpay',
+  'tosspay',
+];
 const CURRENCY = ['KRW', 'USD', 'EUR', 'JPY'];
 const LANGUAGE = ['ko', 'en'];
 const EN_AVAILABLE_PG = ['inicis', 'html5_inicis', 'uplus', 'nice'];
