@@ -75,6 +75,18 @@ export const PGS = [
     value: 'smilepay',
     label: '스마일페이',
   },
+  {
+    value: 'chai',
+    label: '차이페이',
+  },
+  {
+    value: 'payple',
+    label: '페이플',
+  },
+  {
+    value: 'alipay',
+    label: '알리페이',
+  },
 ];
 
 export const METHODS = [
@@ -173,6 +185,13 @@ export const METHOD_FOR_VBANK = [
   {
     value: 'vbank',
     label: '가상계좌',
+  },
+];
+
+export const METHOD_FOR_TRANS = [
+  {
+    value: 'trans',
+    label: '실시간 계좌이체',
   },
 ];
 

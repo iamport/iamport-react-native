@@ -8,6 +8,7 @@ import {
   METHOD_FOR_CARD,
   METHOD_FOR_PHONE,
   METHOD_FOR_VBANK,
+  METHOD_FOR_TRANS,
 } from './constants';
 
 export function getQuotas(pg) {
@@ -43,7 +44,7 @@ export function getQuotas(pg) {
 }
 
 export function getMethods(pg) {
-  switch(pg) {
+  switch (pg) {
     case 'html5_inicis': {
       return METHODS_FOR_INICIS;
     }
@@ -55,7 +56,9 @@ export function getMethods(pg) {
     case 'kakao':
     case 'paypal':
     case 'payco': 
-    case 'smilepay': {
+    case 'smilepay':
+    case 'chai':
+    case 'alipay': {
       return METHOD_FOR_CARD;
     }
     case 'uplus': {
@@ -70,13 +73,16 @@ export function getMethods(pg) {
     case 'settle': {
       return METHOD_FOR_VBANK;
     }
+    case 'payple': {
+      return METHOD_FOR_TRANS;
+    }
     default:
       return METHODS;
   }
 }
 
 export function getUserCode(pg) {
-  switch(pg) {
+  switch (pg) {
     case 'kakao':
       return 'imp10391932';
     case 'paypal':
@@ -86,6 +92,14 @@ export function getUserCode(pg) {
     case 'naverco':
     case 'naverpay':
       return 'imp41073887';
+    case 'smilepay':
+      return 'imp49241793';
+    case 'chai':
+      return 'imp37739582';
+    case 'alipay':
+      return 'imp87936124';
+    case 'payple':
+      return 'imp42284830';
     default:
       return 'imp19424728';
   }

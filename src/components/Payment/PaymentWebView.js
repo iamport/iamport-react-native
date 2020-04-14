@@ -1,16 +1,16 @@
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { WebView } from 'react-native-webview';
-import { Linking, Platform } from 'react-native';
+import { View, Linking, Platform } from 'react-native';
 
 import Loading from '../Loading';
 import ErrorOnParams from '../ErrorOnParams';
 
 import IamportUrl from '../../utils/IamportUrl.js';
 import ValidationForPayment from '../../utils/ValidationForPayment.js';
+import { viewStyles } from '../../styles';
 import {
-  PG,
   PAY_METHOD,
   CURRENCY,
   WEBVIEW_SOURCE_HTML,
@@ -24,6 +24,9 @@ export function PaymentWebView({
   handleInicisTrans,
   open3rdPartyApp,
 }) {
+  const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
+  const [showLoading, setShowLoading] = useState(true);
+
   useEffect(() => {
     function handleOpenURL(event) {
       const { pg, pay_method } = data;
@@ -51,19 +54,26 @@ export function PaymentWebView({
   });
 
   function onLoadEnd() {
-    data.m_redirect_url = IamportUrl.M_REDIRECT_URL;
-    if (data.pg === 'eximbay') {
-      data.popup = false;
-    }
+    if (!isWebViewLoaded) {
+      // html이 load되고 최초 한번만 inject javascript
+      data.m_redirect_url = IamportUrl.M_REDIRECT_URL;
+      if (data.pg === 'eximbay') {
+        data.popup = false;
+      }
 
-    this.xdm.injectJavaScript(`
-      setTimeout(() => {
-        IMP.init("${userCode}");
-        IMP.request_pay(${JSON.stringify(data)}, function(response) {
-          window.ReactNativeWebView.postMessage(JSON.stringify(response));
+      this.xdm.injectJavaScript(`
+        setTimeout(() => {
+          IMP.init("${userCode}");
+          IMP.request_pay(${JSON.stringify(data)}, function(response) {
+            window.ReactNativeWebView.postMessage(JSON.stringify(response));
+          });
         });
-      });
-    `);
+      `);
+      setIsWebViewLoaded(true);
+    } else if (showLoading) {
+      // inject javascript후에 loading 해제
+      setShowLoading(false);
+    }
   }
   
   /* PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 */
@@ -94,18 +104,27 @@ export function PaymentWebView({
 
   const validation = new ValidationForPayment(userCode, loading, callback, data);
   if (validation.getIsValid()) {
+    const { wrapper, loadingContainer, webViewContainer } = viewStyles;
     return (
-      <WebView
-        ref={(xdm) => this.xdm = xdm}
-        useWebKit
-        source={{ html: WEBVIEW_SOURCE_HTML }}
-        onLoadEnd={onLoadEnd}
-        onMessage={onMessage}
-        startInLoadingState
-        renderLoading={() => loading || <Loading />}
-        originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
-        onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
-      />
+      <View style={wrapper}>
+        {
+          showLoading &&
+          <View style={loadingContainer}>
+            {loading || <Loading />}
+          </View>
+        }
+        <View style={webViewContainer}>
+          <WebView
+            ref={(xdm) => this.xdm = xdm}
+            useWebKit
+            source={{ html: WEBVIEW_SOURCE_HTML }}
+            onLoadEnd={onLoadEnd}
+            onMessage={onMessage}
+            originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
+            onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+          />
+        </View>
+      </View>
     );
   }
   
@@ -115,7 +134,7 @@ export function PaymentWebView({
 PaymentWebView.propTypes = {
   userCode: PropTypes.string.isRequired,
   data: PropTypes.shape({
-    pg: PropTypes.oneOf(PG),
+    pg: PropTypes.string,
     pay_method: PropTypes.oneOf(PAY_METHOD),
     currency: PropTypes.oneOf(CURRENCY),
     notice_url: PropTypes.oneOfType([
