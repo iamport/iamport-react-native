@@ -33,10 +33,16 @@ module.exports = {
         `^${escape(path.resolve(__dirname, '..', 'exampleForWebView/node_modules'))}\/.*$`
       ),
       new RegExp(
+        `^${escape(path.resolve(__dirname, '..', 'exampleForExpo/node_modules'))}\/.*$`
+      ),
+      new RegExp(
         `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/example/node_modules'))}\/.*$`
       ),
       new RegExp(
         `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/exampleForWebView/node_modules'))}\/.*$`
+      ),
+      new RegExp(
+        `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/exampleForExpo/node_modules'))}\/.*$`
       ),
       new RegExp(
         `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/node_modules'))}\/.*$`
