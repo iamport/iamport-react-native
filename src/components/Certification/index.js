@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Linking } from 'react-native';
 import { WebView } from 'react-native-webview';
@@ -10,13 +10,19 @@ import Validation from '../../utils/Validation';
 import { WEBVIEW_SOURCE_HTML, CARRIERS } from '../../constants';
 
 export function Certification({ userCode, data, loading, callback }) {
+  const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
+
   function onLoadEnd() {
-    this.xdm.injectJavaScript(`
-      IMP.init("${userCode}");
-      IMP.certification(${JSON.stringify(data)}, function(response) {
-        window.ReactNativeWebView.postMessage(JSON.stringify(response));
-      });
-    `);
+    if (!isWebViewLoaded) {
+      // html이 load되고 최초 한번만 inject javascript
+      this.xdm.injectJavaScript(`
+        IMP.init("${userCode}");
+        IMP.certification(${JSON.stringify(data)}, function(response) {
+          window.ReactNativeWebView.postMessage(JSON.stringify(response));
+        });
+      `);
+      setIsWebViewLoaded(true);
+    }
   }
   
   function onMessage(e) { // 본인인증 결과를 받아 callback을 실행한다 
