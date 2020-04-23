@@ -153,12 +153,6 @@ export function PaymentWebView({
     const { wrapper, loadingContainer, webViewContainer } = viewStyles;
     return (
       <View style={wrapper}>
-        {
-          showLoading &&
-          <View style={loadingContainer}>
-            {loading || <Loading />}
-          </View>
-        }
         <View style={webViewContainer}>
           <WebView
             ref={(xdm) => this.xdm = xdm}
@@ -170,6 +164,12 @@ export function PaymentWebView({
             onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
           />
         </View>
+        {
+          showLoading &&
+          <View style={loadingContainer}>
+            {loading || <Loading />}
+          </View>
+        }
       </View>
     );
   }
