@@ -83,10 +83,10 @@ export function PaymentWebView({
     if (showLoading && isAndroid) {
       // 로딩상태. 안드로이드 플랫폼
       if (isWebViewLoaded) {
-        // 웹뷰 로드 중. iframe 방식
+        // 웹뷰 로드 끝. 리디렉션 방식
         return true;
       }
-      // 웹뷰 로드 끝. 리디렉션 방식
+      // 웹뷰 로드 중. iframe 방식
       return isIframeWayPayment();
     }
     // IOS
