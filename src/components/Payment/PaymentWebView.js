@@ -70,10 +70,48 @@ export function PaymentWebView({
         });
       `);
       setIsWebViewLoaded(true);
-    } else if (showLoading) {
-      // inject javascript후에 loading 해제
+    }
+
+    // only for Android
+    if (removeLoadingNeeded()) {
       setShowLoading(false);
     }
+  }
+
+  function removeLoadingNeeded() {
+    const isAndroid = Platform.OS === 'android';
+    if (showLoading && isAndroid) {
+      // 로딩상태. 안드로이드 플랫폼
+      if (isWebViewLoaded) {
+        // 웹뷰 로드 끝. 리디렉션 방식
+        return true;
+      }
+      // 웹뷰 로드 중. iframe 방식
+      return isIframeWayPayment();
+    }
+    // IOS
+    return false;
+  }
+
+  function isIframeWayPayment() {
+    const { pg, pay_method, customer_uid } = data;
+    if (pg.startsWith('html5_inicis') && customer_uid) {
+      // 이니시스 빌링결제
+      return true;
+    }
+    if (pg.startsWith('mobilians') && pay_method === 'phone') {
+      // 모빌리언스 휴대폰 소액결제
+      return true;
+    }
+    if (
+      pg.startsWith('danal') || // 다날 일반결제
+      pg.startsWith('danal_tpay') || // 다날 휴대폰 소액결제
+      pg.startsWith('smilepay') || // 스마일페이
+      pg.startsWith('payco') // 페이코
+    ) {
+      return true;
+    }
+    return false;
   }
   
   /* PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 */
@@ -98,6 +136,14 @@ export function PaymentWebView({
     if (iamportUrl.isPaymentOver()) {
       callback(iamportUrl.getQuery());
       return false;
+    }
+    if (isWebViewLoaded && showLoading && iamportUrl.isIframeLoaded()) {
+      /**
+       * only for IOS
+       * iframe이 load되면(url이 about:blank 또는 https://service.iamport.kr이 아니면)
+       * webview의 loading 상태를 해제한다
+       */
+      setShowLoading(false);
     }
     return true;
   }
