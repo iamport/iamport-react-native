@@ -2,11 +2,11 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.4.2](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.4.3](https://github.com/iamport/iamport-react-native/tree/master)
   - 새로운 PG사 및 결제수단을 추가하였습니다.
   - PG사의 prop type을 enum에서 string으로 변경하였습니다.
   - inject javascript는 웹뷰 로드 후 최초 한번만 실행하도록 flag를 추가하였습니다.
-  - 로딩 컴포넌트 렌더링 시간을 inject javascript 이후로 연장하였습니다.
+  - 로딩 컴포넌트 렌더링 시간을 inject javascript 이후로 연장하였습니다. (안드로이드 - iframe 방식은 제외)
 
 - [v1.4.0](https://github.com/iamport/iamport-react-native/tree/v1.4.0)
   - 엑심베이 지원을 위한 코드를 추가하였습니다.
