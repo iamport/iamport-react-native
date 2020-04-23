@@ -3,6 +3,7 @@ import queryString from 'query-string';
 class IamportUrl {
   static M_REDIRECT_URL = 'http://localhost/iamport';
   static NICE_TRANS_URL = 'https://web.nicepay.co.kr/smart/bank/payTrans.jsp';
+  static IMP_SDK_URL = 'https://service.iamport.kr';
 
   constructor(url) {
     this.url = url;
@@ -22,6 +23,10 @@ class IamportUrl {
 
   isAppUrl() {
     return this.scheme !== 'http' && this.scheme !== 'https' && this.scheme !== 'about:blank';
+  }
+
+  isIframeLoaded() {
+    return this.url !== 'about:blank' && !this.url.startsWith(IamportUrl.IMP_SDK_URL);
   }
 
   getAppUrl() {
