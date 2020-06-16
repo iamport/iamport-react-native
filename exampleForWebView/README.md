@@ -2,7 +2,7 @@
 
 리액트 네이티브로 앱을 만들때, 기존에 만들어진 웹 페이지를 웹뷰로 띄워 재사용하는 경우가 있습니다. 이 경우, 외부 앱(간편결제, 카드사 앱 등)과 통신하기 위해 네이티브 코드를 추가로 작성해야 합니다. 이 과정이 꽤 번거롭기 때문에 아임포트는 **웹에서 리액트 네이티브로 `post message`를 보내는 방식**을 권장하고 있습니다.
 
-아임포트는 해당 내용이 구현된 리액트 결제/본인인증 테스트용 웹앱 예제 [iamport-react-example](https://github.com/SoleeChoi/iamport-react-example)과 리액트 네이티브 예제 [exampleForWebView](https://github.com/iamport/iamport-react-native/exampleForWebView)를 제공합니다.
+아임포트는 해당 내용이 구현된 리액트 결제/본인인증 테스트용 웹앱 예제 [iamport-react-example](https://github.com/SoleeChoi/iamport-react-example)과 리액트 네이티브 예제 [exampleForWebView](https://github.com/iamport/iamport-react-native/tree/master/exampleForWebView)를 제공합니다.
 
 ## iamport-react-example 다운로드 및 실행
 
