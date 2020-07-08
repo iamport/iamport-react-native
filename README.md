@@ -168,10 +168,11 @@ export function Payment({ navigation }) {
 
   return (
     <IMP.Payment
-      userCode={'iamport'}    // 가맹점 식별코드
-      loading={<Loading />}   // 웹뷰 로딩 컴포넌트
-      data={data}             // 결제 데이터
-      callback={callback}     // 결제 종료 후 콜백
+      userCode={'iamport'}  // 가맹점 식별코드
+      tierCode={'AAA'}      // 티어 코드: agency 기능 사용자에 한함
+      loading={<Loading />} // 웹뷰 로딩 컴포넌트
+      data={data}           // 결제 데이터
+      callback={callback}   // 결제 종료 후 콜백
     />
   );
 }
@@ -180,7 +181,8 @@ export default Payment;
 ```
 
 ##### TypeScript
-```typescript jsx
+
+```javascript
 import React from 'react';
 /* 아임포트 모듈을 불러옵니다. */
 import IMP from 'iamport-react-native';
@@ -188,41 +190,39 @@ import IMP from 'iamport-react-native';
 /* 로딩 컴포넌트를 불러옵니다. */
 import Loading from './Loading';
 
-export default class IamportPayment extends React.Component {
+export function IamportPayment() {
+  function callback(response) {
+    // navigation 을 이용해 결과 렌더링 Component로 이동
+  }
+
   /* [필수입력] 결제에 필요한 데이터를 생성합니다. */
-  getPaymentData() {
-    return {
-      pg: 'html5_inicis',
-      pay_method: 'card',
-      name: '아임포트 결제데이터 분석',
-      merchant_uid: `mid_${new Date().getTime()}`,
-      amount: '39000',
-      buyer_name: '홍길동',
-      buyer_tel: '01012345678',
-      buyer_email: 'example@naver.com',
-      buyer_addr: '서울시 강남구 신사동 661-16',
-      buyer_postcode: '06018',
-      app_scheme: 'example',
-      // [Deprecated v1.0.3]: m_redirect_url
-    };
-  }
+  const data = {
+    pg: 'html5_inicis',
+    pay_method: 'card',
+    name: '아임포트 결제데이터 분석',
+    merchant_uid: `mid_${new Date().getTime()}`,
+    amount: '39000',
+    buyer_name: '홍길동',
+    buyer_tel: '01012345678',
+    buyer_email: 'example@naver.com',
+    buyer_addr: '서울시 강남구 신사동 661-16',
+    buyer_postcode: '06018',
+    app_scheme: 'example',
+    // [Deprecated v1.0.3]: m_redirect_url
+  };
 
-  callback(response) {
-    //navigation 을 이용해 결과 렌더링 Component로 이동
-  }
-
-  render() {
-    return (
-      <IMP.Payment
-        userCode={'iamport'} // 가맹점 식별코드
-        loading={<Loading />}   // 웹뷰 로딩 컴포넌트
-        data={this.getPaymentData()} // 결제 데이터
-        callback={this.callback} // 결제 종료 후 콜백
-      />
-    );
-  }
-
+  return (
+    <IMP.Payment
+      userCode={'iamport'}  // 가맹점 식별코드
+      tierCode={'AAA'}      // 티어 코드: agency 기능 사용자에 한함
+      loading={<Loading />} // 웹뷰 로딩 컴포넌트
+      data={data}           // 결제 데이터
+      callback={callback}   // 결제 종료 후 콜백
+    />
+  );
 }
+
+export default IamportPayment;
 ```
 
 
@@ -255,10 +255,11 @@ export function Certification({ navigation }) {
 
   return (
     <IMP.Certification
-      userCode={'iamport'}    // 가맹점 식별코드
-      loading={<Loading />}   // 웹뷰 로딩 컴포넌트
-      data={data}             // 본인인증 데이터
-      callback={callback}     // 본인인증 종료 후 콜백
+      userCode={'iamport'}  // 가맹점 식별코드
+      tierCode={'AAA'}      // 티어 코드: agency 기능 사용자에 한함
+      loading={<Loading />} // 웹뷰 로딩 컴포넌트
+      data={data}           // 본인인증 데이터
+      callback={callback}   // 본인인증 종료 후 콜백
     />
   );
 }
@@ -268,7 +269,7 @@ export default Certification;
 
 ##### TypeScript
 
-```typescript jsx
+```javascript
 import React from 'react';
 /* 아임포트 모듈을 불러옵니다. */
 import IMP from 'iamport-react-native';
@@ -276,36 +277,33 @@ import IMP from 'iamport-react-native';
 /* 로딩 컴포넌트를 불러옵니다. */
 import Loading from './Loading';
 
-export default class IamportCertification extends React.Component {
+export function IamportCertification() {
+  function callback(response) {
+    // navigation 을 이용해 결과 렌더링 Component로 이동
+  }
+
   /* [필수입력] 본인인증에 필요한 데이터를 생성합니다. */
-  getCertificationData() {
-    return {
-      pg: 'danal',
-      merchant_uid: `mid_${new Date().getTime()}`,
-      company: '아임포트',
-      carrier: 'SKT',
-      name: '홍길동',
-      phone: '01012341234',
-      min_age: 19,
-    };
-  }
+  const data = {
+    merchant_uid: `mid_${new Date().getTime()}`,
+    company: '아임포트',
+    carrier: 'SKT',
+    name: '홍길동',
+    phone: '01012341234',
+    min_age: 19,
+  };
 
-  callback(response) {
-    //navigation 을 이용해 결과 렌더링 Component로 이동
-  }
-
-  render() {
-    return (
-      <IMP.Certification
-        userCode={'iamport'} // 가맹점 식별코드
-        loading={<Loading />}   // 웹뷰 로딩 컴포넌트
-        data={this.getPaymentData()} // 본인인증 데이터
-        callback={this.callback} // 본인인증 종료 후 콜백
-      />
-    );
-  }
-
+  return (
+    <IMP.Certification
+      userCode={'iamport'}  // 가맹점 식별코드
+      tierCode={'AAA'}      // 티어 코드: agency 기능 사용자에 한함
+      loading={<Loading />} // 웹뷰 로딩 컴포넌트
+      data={data}           // 본인인증 데이터
+      callback={callback}   // 본인인증 종료 후 콜백
+    />
+  );
 }
+
+export default IamportCertification;
 ```
 
 #### 웹뷰 로딩 컴포넌트 예제

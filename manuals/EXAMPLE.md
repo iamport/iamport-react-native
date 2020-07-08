@@ -72,10 +72,11 @@ export function Payment({ navigation }) {
 
   return (
     <IMP.Payment
-      userCode={'iamport'}    // 가맹점 식별코드
-      loading={<Loading />}   // 로딩 컴포넌트
-      data={data}             // 결제 데이터
-      callback={callback}     // 결제 종료 후 콜백
+      userCode={'iamport'}  // 가맹점 식별코드
+      tierCode={'AAA'}      // 티어 코드: agency 기능 사용자에 한함
+      loading={<Loading />} // 로딩 컴포넌트
+      data={data}           // 결제 데이터
+      callback={callback}   // 결제 종료 후 콜백
     />
   );
 }
@@ -86,6 +87,7 @@ export default Payment;
 | Prop             | Type          |  Description                                                | Required   |
 | ---------------- | ------------- | ----------------------------------------------------------- | ---------- |
 | userCode         | string        | 가맹점 식별코드                                                 | true       |
+| tierCode         | string        | agency 기능 사용자의 하위 가맹점 코드 3자리                         | false       |
 | data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | true       |
 | - m_redirect_url | string        | [Deprecated]                                                | false       |
 | callback         | function      | 결제 후 실행 될 함수 [자세히보기](#callback)                       | true       |
@@ -119,10 +121,11 @@ export function Certification({ navigation }) {
 
   return (
     <IMP.Certification
-      userCode={'iamport'}    // 가맹점 식별코드
-      loading={<Loading />}   // 로딩 컴포넌트
-      data={data}             // 본인인증 데이터
-      callback={callback}     // 본인인증 종료 후 콜백
+      userCode={'iamport'}  // 가맹점 식별코드
+      tierCode={'AAA'}      // 티어 코드: agency 기능 사용자에 한함
+      loading={<Loading />} // 로딩 컴포넌트
+      data={data}           // 본인인증 데이터
+      callback={callback}   // 본인인증 종료 후 콜백
     />
   );
 }
@@ -133,6 +136,7 @@ export default Certification;
 | Prop          | Type          |  Description                       | Required   |
 | ------------- | ------------- | ---------------------------------- | ---------- |
 | userCode      | string        | 가맹점 식별코드                        | true       |
+| tierCode      | string        | agency 기능 사용자의 하위 가맹점 코드 3자리 | false       |
 | data          | object        | 본인인증에 필요한 정보 [자세히 보기](https://https://docs.iamport.kr/tech/mobile-authentication#call-authentication)      | true       |
 | - merchant_uid| string        | 가맹점 주문번호                        | false      |
 | - company     | string        | 회사명 또는 URL                       | false      |
