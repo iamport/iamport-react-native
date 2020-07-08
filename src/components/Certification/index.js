@@ -9,16 +9,26 @@ import ErrorOnParams from '../ErrorOnParams';
 import Validation from '../../utils/Validation';
 import { WEBVIEW_SOURCE_HTML, CARRIERS } from '../../constants';
 
-export function Certification({ userCode, data, loading, callback }) {
+export function Certification({ userCode, tierCode, data, loading, callback }) {
   const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
 
   function onLoadEnd() {
     if (!isWebViewLoaded) {
       // html이 load되고 최초 한번만 inject javascript
+      if (tierCode) {
+        this.xdm.injectJavaScript(`
+          setTimeout(function() { IMP.agency("${userCode}", "${tierCode}"); });
+        `);
+      } else {
+        this.xdm.injectJavaScript(`
+          setTimeout(function() { IMP.init("${userCode}"); });
+        `);
+      }
       this.xdm.injectJavaScript(`
-        IMP.init("${userCode}");
-        IMP.certification(${JSON.stringify(data)}, function(response) {
-          window.ReactNativeWebView.postMessage(JSON.stringify(response));
+        setTimeout(function() {
+          IMP.certification(${JSON.stringify(data)}, function(response) {
+            window.ReactNativeWebView.postMessage(JSON.stringify(response));
+          });
         });
       `);
       setIsWebViewLoaded(true);
@@ -73,6 +83,7 @@ export function Certification({ userCode, data, loading, callback }) {
 
 Certification.propTypes = {
   userCode: PropTypes.string.isRequired,
+  tierCode: PropTypes.string,
   data: PropTypes.shape({
     merchant_uid: PropTypes.string,
     company: PropTypes.string,

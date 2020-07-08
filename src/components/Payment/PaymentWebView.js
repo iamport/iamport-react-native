@@ -18,6 +18,7 @@ import {
 
 export function PaymentWebView({
   userCode,
+  tierCode,
   data,
   loading,
   callback,
@@ -61,9 +62,17 @@ export function PaymentWebView({
         data.popup = false;
       }
 
+      if (tierCode) {
+        this.xdm.injectJavaScript(`
+          setTimeout(function() { IMP.agency("${userCode}", "${tierCode}"); });
+        `);
+      } else {
+        this.xdm.injectJavaScript(`
+          setTimeout(function() { IMP.init("${userCode}"); });
+        `);
+      }
       this.xdm.injectJavaScript(`
-        setTimeout(() => {
-          IMP.init("${userCode}");
+        setTimeout(function() {
           IMP.request_pay(${JSON.stringify(data)}, function(response) {
             window.ReactNativeWebView.postMessage(JSON.stringify(response));
           });
@@ -179,6 +188,7 @@ export function PaymentWebView({
 
 PaymentWebView.propTypes = {
   userCode: PropTypes.string.isRequired,
+  tierCode: PropTypes.string,
   data: PropTypes.shape({
     pg: PropTypes.string,
     pay_method: PropTypes.oneOf(PAY_METHOD),
