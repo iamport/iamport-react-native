@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Content, Form, Item, Label, Input, Button, Text } from 'native-base';
 import Picker from '../Picker';
 
-import { CARRIERS } from '../constants';
+import { CARRIERS, TIER_CODES } from '../constants';
 import { formStyles } from '../styles';
 
 export default function CertificationTest({ navigation }) {
@@ -13,6 +13,7 @@ export default function CertificationTest({ navigation }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [minAge, setMinAge] = useState();
+  const [tierCode, setTierCode] = useState(undefined);
 
   onPress = () => {
     const params = {
@@ -34,7 +35,7 @@ export default function CertificationTest({ navigation }) {
       params.minAge = minAge;
     }
     
-    navigation.navigate('Certification', { params });
+    navigation.navigate('Certification', { params, tierCode });
   };
 
   return (
@@ -91,6 +92,15 @@ export default function CertificationTest({ navigation }) {
             placeholder="허용 최소 만 나이"
             value={minAge}
             onChangeText={value => setMinAge(value)}
+          />
+        </Item>
+        <Item inlineLabel style={item}>
+          <Label style={label}>티어 코드</Label>
+          <Picker
+            iosHeader="티어 선택"
+            data={TIER_CODES}
+            selectedValue={tierCode}
+            onValueChange={value => setTierCode(value)}
           />
         </Item>
         <Button

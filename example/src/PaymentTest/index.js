@@ -3,12 +3,13 @@ import { Content, Form, Item, Label, Input, Button, Text, Switch } from 'native-
 
 import Picker from '../Picker';
 import { formStyles } from '../styles';
-import { PGS } from '../constants';
+import { PGS, TIER_CODES } from '../constants';
 import { getQuotas, getMethods } from '../utils';
 
 export default function PaymentTest({ navigation }) {
   const { wrapper, form, item, label, input, radio, btn, btnText } = formStyles;
   const [pg, setPg] = useState('html5_inicis');
+  const [tierCode, setTierCode] = useState(undefined);
   const [method, setMethod] = useState('card');
   const [cardQuota, setCardQuota] = useState(0);
   const [merchantUid, setMerchantUid] = useState(`mid_${new Date().getTime()}`);
@@ -62,7 +63,7 @@ export default function PaymentTest({ navigation }) {
       params.customer_uid = `cuid_${new Date().getTime()}`;
     }
 
-    navigation.navigate('Payment', { params });
+    navigation.navigate('Payment', { params, tierCode });
   };
 
   return (
@@ -80,6 +81,15 @@ export default function PaymentTest({ navigation }) {
               const methods = getMethods(value);
               setMethod(methods[0].value);
             }}
+          />
+        </Item>
+        <Item inlineLabel style={item}>
+          <Label style={label}>티어 코드</Label>
+          <Picker
+            iosHeader="티어 선택"
+            data={TIER_CODES}
+            selectedValue={tierCode}
+            onValueChange={value => setTierCode(value)}
           />
         </Item>
         <Item inlineLabel style={item}>
