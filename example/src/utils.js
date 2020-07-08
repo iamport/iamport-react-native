@@ -81,7 +81,14 @@ export function getMethods(pg) {
   }
 }
 
-export function getUserCode(pg) {
+export function getUserCode(pg, tierCode, type = 'payment') {
+  if (tierCode) {
+    return 'imp91623210';
+  }
+  if (type === 'certification') {
+    return 'imp10391932';
+  }
+
   switch (pg) {
     case 'kakao':
       return 'imp10391932';

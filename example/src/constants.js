@@ -89,6 +89,69 @@ export const PGS = [
   },
 ];
 
+export const TIER_CODES = [
+  {
+    value: 'ADD',
+    label: '아디다스',
+  },
+  {
+    value: 'RBK',
+    label: '리복 - 복수PG 사용중',
+  },
+  {
+    value: 'HKT',
+    label: '에어텔닷컴 렌트카 테스트',
+  },
+  {
+    value: 'HKK',
+    label: 'YES Angel',
+  },
+  {
+    value: 'DGA',
+    label: 'CAMPVR대구',
+  },
+  {
+    value: 'SCH',
+    label: 'CAMPVR광화문',
+  },
+  {
+    value: 'SNL',
+    label: '토즈_선릉점',
+  },
+  {
+    value: '111',
+    label: '여기어때',
+  },
+  {
+    value: 'ABC',
+    label: '삼성점',
+  },
+  {
+    value: 'XYZ',
+    label: '삼성점',
+  },
+  {
+    value: '123',
+    label: 'aaaaaaa',
+  },
+  {
+    value: 'AAZ',
+    label: '테스트하위가맹',
+  },
+  {
+    value: '001',
+    label: '테스트',
+  },
+  {
+    value: 'A01',
+    label: '행복쇼핑',
+  },
+  {
+    value: 'T11',
+    label: 'test11',
+  },
+];
+
 export const METHODS = [
   {
     value: 'card',

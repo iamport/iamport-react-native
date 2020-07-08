@@ -6,7 +6,7 @@ import PaymentWebView from './PaymentWebView';
 
 import IamportUrl from '../../utils/IamportUrl.js';
 
-export function Payment({ userCode, data, loading, callback }) {
+export function Payment({ userCode, tierCode, data, loading, callback }) {
   function handleInicisTrans(event) {
     const { url } = event;
     const iamportUrl = new IamportUrl(url);
@@ -36,6 +36,7 @@ export function Payment({ userCode, data, loading, callback }) {
   return (
     <PaymentWebView
       userCode={userCode}
+      tierCode={tierCode}
       data={data}
       loading={loading}
       callback={callback}
