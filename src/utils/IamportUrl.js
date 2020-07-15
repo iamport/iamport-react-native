@@ -54,9 +54,9 @@ class IamportUrl {
       case 'cloudpay': // 하나1Q페이(앱카드)
         return 'https://itunes.apple.com/kr/app/id847268987';
       case 'citimobileapp': // 시티은행 앱카드
-        return 'https://itunes.apple.com/kr/app/id1179759666';
+        return 'https://itunes.apple.com/kr/app/id1179759666';
       case 'payco': // 페이코
-        return 'https://itunes.apple.com/kr/app/id924292102';
+        return 'https://itunes.apple.com/kr/app/id924292102';
       case 'kakaotalk': // 카카오톡
         return 'https://itunes.apple.com/kr/app/id362057947';
       case 'lpayapp': // 롯데 L.pay
