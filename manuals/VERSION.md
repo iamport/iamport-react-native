@@ -2,7 +2,10 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.5.0](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.5.1](https://github.com/iamport/iamport-react-native/tree/master)
+  - [IOS] 페이코 및 시티카드 앱의 마켓 URL 오타를 수정하였습니다.
+
+- [v1.5.0](https://github.com/iamport/iamport-react-native/tree/v1.5.0)
   - agency 기능을 위한 tierCode prop을 추가하였습니다.
 
 - [v1.4.4](https://github.com/iamport/iamport-react-native/tree/v1.4.4)
