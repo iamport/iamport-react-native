@@ -63,6 +63,25 @@ export default function PaymentTest({ navigation }) {
       params.customer_uid = `cuid_${new Date().getTime()}`;
     }
 
+    if (pg === 'naverpay') {
+      const today = new Date();
+      const oneMonthLater = new Date(today.setMonth(today.getMonth() + 1));;
+      const dd = String(oneMonthLater.getDate()).padStart(2, '0');
+      const mm = String(oneMonthLater.getMonth() + 1).padStart(2, '0'); // January is 0!
+      const yyyy = oneMonthLater.getFullYear();
+
+      params.naverPopupMode = false;
+      params.naverUseCfm = `${yyyy}${mm}${dd}`;
+      params.naverProducts = [{
+        categoryType: 'BOOK',
+        categoryId: 'GENERAL',
+        uid: '107922211',
+        name: '한국사',
+        payReferrer: 'NAVER_BOOK',
+        count: 10,
+      }];
+    }
+
     navigation.navigate('Payment', { params, tierCode });
   };
 
