@@ -2,7 +2,11 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.5.1](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.5.2](https://github.com/iamport/iamport-react-native/tree/master)
+  - [안드로이드] KG이니시스 - 실시간계좌이체시 국민리브, NH앱캐시, NG상상뱅크, BNK경남은행 앱의 링크가 누락된 부분을 추가하였습니다.
+  - 예제 코드에 네이버페이 원활한 사용을 위한 네이버페이 전용 파라미터를 추가하였습니다.
+
+- [v1.5.1](https://github.com/iamport/iamport-react-native/tree/v1.5.1)
   - [IOS] 페이코 및 시티카드 앱의 마켓 URL 오타를 수정하였습니다.
 
 - [v1.5.0](https://github.com/iamport/iamport-react-native/tree/v1.5.0)
