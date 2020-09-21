@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { WebView } from 'react-native-webview';
-import { View, Linking, Platform } from 'react-native';
+import { View, Linking, Platform, NativeModules } from 'react-native';
 
 import Loading from '../Loading';
 import ErrorOnParams from '../ErrorOnParams';
@@ -15,6 +15,8 @@ import {
   CURRENCY,
   WEBVIEW_SOURCE_HTML,
 } from '../../constants';
+
+const { RNCWebView } = NativeModules;
 
 export function PaymentWebView({
   userCode,
@@ -135,9 +137,19 @@ export function PaymentWebView({
   }
 
   function onShouldStartLoadWithRequest(request) {
-    const { url } = request;
+    const { url, lockIdentifier } = request;
     const iamportUrl = new IamportUrl(url);
     if (iamportUrl.isAppUrl()) {
+      if (lockIdentifier === 0 /* && react-native-webview 버전이 v10.8.3 이상 */) {
+        /**
+         * [feature/react-native-webview] 웹뷰 첫 렌더링시 lockIdentifier === 0
+         * 이때 무조건 onShouldStartLoadWithRequest를 true 처리하기 때문에
+         * Error Loading Page 에러가 발생하므로
+         * 강제로 lockIdentifier를 1로 변환시키도록 아래 네이티브 코드 호출
+         */
+        RNCWebView.onShouldStartLoadWithRequestCallback(false, lockIdentifier);
+      }
+
       /* 3rd-party 앱 오픈 */
       open3rdPartyApp(iamportUrl);
       return false;
