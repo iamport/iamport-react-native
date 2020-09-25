@@ -47,6 +47,8 @@ const LANGUAGE = ['ko', 'en'];
 const EN_AVAILABLE_PG = ['inicis', 'html5_inicis', 'uplus', 'nice'];
 const CARRIERS = ['SKT', 'KTF', 'LGT', 'MVNO'];
 
+const SMILEPAY_URL = 'https://www.mysmilepay.com';
+
 const WEBVIEW_SOURCE_HTML = `
 <html>
   <head>
@@ -68,4 +70,5 @@ export {
   EN_AVAILABLE_PG,
   CARRIERS,
   WEBVIEW_SOURCE_HTML,
+  SMILEPAY_URL,
 };
