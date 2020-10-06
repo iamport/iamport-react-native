@@ -18,11 +18,11 @@
 | paypal       | 페이팔               | 신용카드                                                                                           |
 | mobilians    | 모빌리언스            | 신용카드, 가상계좌(준비중), 실시간 계좌이체(준비중), 휴대폰 소액결제                                             |
 | payco        | 페이코               | 신용카드                                                                                           |
-| eximbay      | 엑심베이              | 신용카드                                                                                           |
+| eximbay      | 엑심베이              | 신용카드 [주의사항](https://github.com/iamport/iamport-react-native/issues/70#issuecomment-704601908) |
 | settle       | 세틀뱅크             | 가상계좌                                                                                            |
 | naverco      | 네이버 체크아웃        | 신용카드, 가상계좌, 실시간 계좌이체, 휴대폰 소액결제                                                          |
 | naverpay     | 네이버페이            | 신용카드, 가상계좌, 실시간 계좌이체, 휴대폰 소액결제                                                          |
-| smilepay     | 스마일페이            | 신용카드                                                                                            |
+| smilepay     | 스마일페이            | 신용카드 [주의사항](https://github.com/iamport/iamport-react-native/issues/71)                        |
 | chai         | 차이페이             | 신용카드                                                                                            |
 | payple       | 페이플              | 실시간 계좌이체                                                                                       |
 | alipay       | 알리페이             | 신용카드                                                                                            |
