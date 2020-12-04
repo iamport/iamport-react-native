@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { WebView } from 'react-native-webview';
-import { View, Linking, Platform } from 'react-native';
+import { View, Linking, Platform, NativeModules } from 'react-native';
 
 import Loading from '../Loading';
 import ErrorOnParams from '../ErrorOnParams';
@@ -14,7 +14,10 @@ import {
   PAY_METHOD,
   CURRENCY,
   WEBVIEW_SOURCE_HTML,
+  SMILEPAY_URL,
 } from '../../constants';
+
+const { RNCWebView } = NativeModules;
 
 export function PaymentWebView({
   userCode,
@@ -25,8 +28,21 @@ export function PaymentWebView({
   handleInicisTrans,
   open3rdPartyApp,
 }) {
+  const [webviewSource, setWebviewSource] = useState({ html: WEBVIEW_SOURCE_HTML });
   const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    const { pg } = data;
+    if (pg.startsWith('smilepay') && Platform.OS === 'ios') {
+      /**
+       * [feature/smilepay] IOS - 스마일페이 대비 코드 작성
+       * 스마일페이 결제창을 iframe 방식으로 띄우기 때문에 WKWebView에서 서드 파티 쿠키가 허용되지 않아
+       * WKWebView의 baseUrl을 강제로 스마일페이 URL로 적용
+       */
+      setWebviewSource({ ...webviewSource, baseUrl: SMILEPAY_URL });
+    }
+  }, []);
 
   useEffect(() => {
     function handleOpenURL(event) {
@@ -126,18 +142,35 @@ export function PaymentWebView({
   /* PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 */
   function onMessage(e) {
     const { data } = e.nativeEvent;
-    let response = data;
-    while(decodeURIComponent(response) !== response) {
+    /**
+     * [v1.5.3] 다날의 경우 response에 주문명(name)이 포함되어 있는데
+     * 주문명에 %가 들어갈 경우, decodeURIComponent시 URI malformed 에러가 발생하는 것 대비해
+     * 우선 encodeURIComponent를 한 후, decodeURIComponent가 끝나면
+     * 최종적으로 decodeURIComponent를 한 번 더 한다
+     */
+    let response = encodeURIComponent(data);
+    while(decodeURIComponent(response) !== data) {
       response = decodeURIComponent(response);
     }
+    response = decodeURIComponent(response);
     response = JSON.parse(response);
     callback(response);
   }
 
   function onShouldStartLoadWithRequest(request) {
-    const { url } = request;
+    const { url, lockIdentifier } = request;
     const iamportUrl = new IamportUrl(url);
     if (iamportUrl.isAppUrl()) {
+      if (lockIdentifier === 0 /* && react-native-webview 버전이 v10.8.3 이상 */) {
+        /**
+         * [feature/react-native-webview] 웹뷰 첫 렌더링시 lockIdentifier === 0
+         * 이때 무조건 onShouldStartLoadWithRequest를 true 처리하기 때문에
+         * Error Loading Page 에러가 발생하므로
+         * 강제로 lockIdentifier를 1로 변환시키도록 아래 네이티브 코드 호출
+         */
+        RNCWebView.onShouldStartLoadWithRequestCallback(false, lockIdentifier);
+      }
+
       /* 3rd-party 앱 오픈 */
       open3rdPartyApp(iamportUrl);
       return false;
@@ -166,10 +199,11 @@ export function PaymentWebView({
           <WebView
             ref={(xdm) => this.xdm = xdm}
             useWebKit
-            source={{ html: WEBVIEW_SOURCE_HTML }}
+            source={webviewSource}
             onLoadEnd={onLoadEnd}
             onMessage={onMessage}
             originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
+            sharedCookiesEnabled
             onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
           />
         </View>
