@@ -2,7 +2,13 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.5.2](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.6.0](https://github.com/iamport/iamport-react-native/tree/master)
+  - 다날 결제시, 주문명에 %를 포함하는 경우 URI malformed 에러를 해결하였습니다.
+  - [IOS / 네이버페이] 네이버페이 앱 로그인 마켓 URL을 추가하였습니다.
+  - [IOS / 스마일페이] 쿠키 허용을 위해 baseURL을 스마일페이로 설정한 feature 브랜치(feature/smilepay)를 머지하였습니다.
+  - [안드로이드 / react-native-webview] v10.8.3 이상에서 원활한 동작을 위해 작성한 feature 브랜치(feature/react-native-webview)를 머지 하였습니다.
+
+- [v1.5.2](https://github.com/iamport/iamport-react-native/tree/v1.5.2)
   - [안드로이드] KG이니시스 - 실시간계좌이체시 국민리브, NH앱캐시, NG상상뱅크, BNK경남은행 앱의 링크가 누락된 부분을 추가하였습니다.
   - 예제 코드에 네이버페이 원활한 사용을 위한 네이버페이 전용 파라미터를 추가하였습니다.
 

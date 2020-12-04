@@ -20,19 +20,19 @@ EXPO 환경인 경우, [엑스포에서 아임포트 연동하기](manuals/EXPO.
 - [콜백 함수 설정하기](manuals/CALLBACK.md)
 
 ## 버전정보
-최신버전은 [v1.5.2](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
+최신버전은 [v1.6.0](https://github.com/iamport/iamport-react-native/tree/master)입니다. 버전 히스토리는 [버전정보](manuals/VERSION.md)를 참고하세요.
 
 ## 지원정보
 아임포트 리액트 네이티브 모듈은 결제 및 휴대폰 본인인증 기능을 제공합니다. 결제시 지원하는 PG사와 결제수단에 대한 자세한 정보는 [지원정보](manuals/SUPPORT.md)를 참고하세요. 
 
 ## 설치하기
-아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. `react-native-webview` 모듈은 아임포트 모듈에 dependent하기 때문에 함께 설치해야 합니다. 또한 IOS13에 대비하기 위해 7.x 버전이 요구됩니다. 보다 자세한 안내는 [설치하기](manuals/INSTALL.md)를 참고하세요.
+아래 명령어를 통해 아임포트 모듈을 귀하의 리액트 네이티브 프로젝트에 추가할 수 있습니다. `react-native-webview` 모듈은 아임포트 모듈에 dependent하기 때문에 반드시 함께 설치해야 하며 **10.8.3 이상의 버전이 요구**됩니다. 보다 자세한 안내는 [설치하기](manuals/INSTALL.md)를 참고하세요.
 
 ```
 $ npm install iamport-react-native --save
 ```
 
-`iamport-react-native` 는 `7.4.0`버전 이상의 `react-native-webview` 를 필요로 합니다. (iOS13 대비) 
+`iamport-react-native` 는 `v10.8.3` 이상의 `react-native-webview` 를 필요로 합니다.
 위 명령어대로 iamport-react-native 플러그인을 설치했을 때 다음과 같은 Warning Message 가 나온다면 기존에 설치된 `react-native-webview` 플러그인을 업데이트해주세요.
 
 ![](manuals/assets/webview-peer-dependency.png)

@@ -143,7 +143,7 @@ export function PaymentWebView({
   function onMessage(e) {
     const { data } = e.nativeEvent;
     /**
-     * [v1.5.3] 다날의 경우 response에 주문명(name)이 포함되어 있는데
+     * [v1.6.0] 다날의 경우 response에 주문명(name)이 포함되어 있는데
      * 주문명에 %가 들어갈 경우, decodeURIComponent시 URI malformed 에러가 발생하는 것 대비해
      * 우선 encodeURIComponent를 한 후, decodeURIComponent가 끝나면
      * 최종적으로 decodeURIComponent를 한 번 더 한다
