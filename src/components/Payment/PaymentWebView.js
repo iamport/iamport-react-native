@@ -14,6 +14,7 @@ import {
   PAY_METHOD,
   CURRENCY,
   WEBVIEW_SOURCE_HTML,
+  SMILEPAY_URL,
 } from '../../constants';
 
 const { RNCWebView } = NativeModules;
@@ -27,8 +28,21 @@ export function PaymentWebView({
   handleInicisTrans,
   open3rdPartyApp,
 }) {
+  const [webviewSource, setWebviewSource] = useState({ html: WEBVIEW_SOURCE_HTML });
   const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
+
+  useEffect(() => {
+    const { pg } = data;
+    if (pg.startsWith('smilepay') && Platform.OS === 'ios') {
+      /**
+       * [feature/smilepay] IOS - 스마일페이 대비 코드 작성
+       * 스마일페이 결제창을 iframe 방식으로 띄우기 때문에 WKWebView에서 서드 파티 쿠키가 허용되지 않아
+       * WKWebView의 baseUrl을 강제로 스마일페이 URL로 적용
+       */
+      setWebviewSource({ ...webviewSource, baseUrl: SMILEPAY_URL });
+    }
+  }, []);
 
   useEffect(() => {
     function handleOpenURL(event) {
@@ -185,10 +199,11 @@ export function PaymentWebView({
           <WebView
             ref={(xdm) => this.xdm = xdm}
             useWebKit
-            source={{ html: WEBVIEW_SOURCE_HTML }}
+            source={webviewSource}
             onLoadEnd={onLoadEnd}
             onMessage={onMessage}
             originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
+            sharedCookiesEnabled
             onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
           />
         </View>
