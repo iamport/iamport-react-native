@@ -126,10 +126,17 @@ export function PaymentWebView({
   /* PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 */
   function onMessage(e) {
     const { data } = e.nativeEvent;
-    let response = data;
-    while(decodeURIComponent(response) !== response) {
+    /**
+     * [v1.5.3] 다날의 경우 response에 주문명(name)이 포함되어 있는데
+     * 주문명에 %가 들어갈 경우, decodeURIComponent시 URI malformed 에러가 발생하는 것 대비해
+     * 우선 encodeURIComponent를 한 후, decodeURIComponent가 끝나면
+     * 최종적으로 decodeURIComponent를 한 번 더 한다
+     */
+    let response = encodeURIComponent(data);
+    while(decodeURIComponent(response) !== data) {
       response = decodeURIComponent(response);
     }
+    response = decodeURIComponent(response);
     response = JSON.parse(response);
     callback(response);
   }

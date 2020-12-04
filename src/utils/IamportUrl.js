@@ -69,6 +69,8 @@ class IamportUrl {
         return 'https://itunes.apple.com/kr/app/id1038288833';
       case 'shinsegaeeasypayment': // 신세계 SSGPAY
         return 'https://itunes.apple.com/app/id666237916';
+      case 'naversearchthirdlogin': // 네이버페이 앱 로그인
+        return 'https://itunes.apple.com/kr/app/id393499958';
       default:
         return this.url;
     }
