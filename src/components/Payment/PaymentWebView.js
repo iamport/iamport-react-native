@@ -132,7 +132,8 @@ export function PaymentWebView({
       pg.startsWith('danal') || // 다날 일반결제
       pg.startsWith('danal_tpay') || // 다날 휴대폰 소액결제
       pg.startsWith('smilepay') || // 스마일페이
-      pg.startsWith('payco') // 페이코
+      pg.startsWith('payco') || // 페이코
+      pg.startsWith('bluewalnut')  // 블루월넛
     ) {
       return true;
     }

@@ -87,6 +87,10 @@ export const PGS = [
     value: 'alipay',
     label: '알리페이',
   },
+  {
+    value: 'bluewalnut',
+    label: '블루월넛',
+  },
 ];
 
 export const TIER_CODES = [

@@ -71,6 +71,22 @@ export const PGS = [
     value: 'smilepay',
     label: '스마일페이',
   },
+  {
+    value: 'chai',
+    label: '차이페이',
+  },
+  {
+    value: 'payple',
+    label: '페이플',
+  },
+  {
+    value: 'alipay',
+    label: '알리페이',
+  },
+  {
+    value: 'bluewalnut',
+    label: '블루월넛',
+  },
 ];
 
 export const METHODS = [
