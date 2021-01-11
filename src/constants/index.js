@@ -23,6 +23,7 @@ const PG = [
   'chai',
   'payple',
   'alipay',
+  'bluewalnut',
 ];
 
 const PAY_METHOD = [
