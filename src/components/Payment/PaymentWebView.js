@@ -25,7 +25,6 @@ export function PaymentWebView({
   data,
   loading,
   callback,
-  handleInicisTrans,
   open3rdPartyApp,
 }) {
   const [webviewSource, setWebviewSource] = useState({ html: WEBVIEW_SOURCE_HTML });
@@ -49,14 +48,16 @@ export function PaymentWebView({
       const { pg, pay_method } = data;
       if (pay_method === 'trans') {
         /* [IOS] 웹 표준 이니시스 - 실시간 계좌이체 대비 */
-        if (Platform.OS === 'ios') {
-          handleInicisTrans(event);
-        }
-
         const { url } = event;
         const iamportUrl = new IamportUrl(url);
+        if (pg.startsWith('html5_inicis') && Platform.OS === 'ios') {
+          this.xdm.injectJavaScript(`
+            window.location.href = "${IamportUrl.M_REDIRECT_URL}?${iamportUrl.getInicisTransQuery()}";
+          `);
+        }
+
         /* 나이스 - 실시간 계좌이체 대비 */
-        if (pg === 'nice') {
+        if (pg.startsWith('nice')) {
           this.xdm.injectJavaScript(`
             window.location.href = "${IamportUrl.NICE_TRANS_URL}?${iamportUrl.getStringifiedQuery()}";
           `);
@@ -262,7 +263,6 @@ PaymentWebView.propTypes = {
       PropTypes.number,
     ]),
   }),
-  handleInicisTrans: PropTypes.func,
   open3rdPartyApp: PropTypes.func.isRequired,
 };
 
