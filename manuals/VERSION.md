@@ -2,7 +2,10 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.6.1](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.6.2](https://github.com/iamport/iamport-react-native/tree/master)
+  - [IOS / 이니시스 - 실시간 계좌이체] 결제 승인 플로우 관련 버그를 수정하였습니다.
+
+- [v1.6.1](https://github.com/iamport/iamport-react-native/tree/v1.6.1)
   - 블루월넛 PG사 대비 로직을 작성하였습니다.
 
 - [v1.6.0](https://github.com/iamport/iamport-react-native/tree/v1.6.0)
