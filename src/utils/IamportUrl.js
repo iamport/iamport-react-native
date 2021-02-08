@@ -87,6 +87,17 @@ class IamportUrl {
     const decodedUrl = decodeURIComponent(this.url);
     return queryString.extract(decodedUrl);
   }
+
+  getInicisTransQuery() {
+    const { m_redirect_url, imp_uid, merchant_uid } = this.getQuery();
+    const inicisTransQuery = { imp_uid };
+    if (m_redirect_url.includes(IamportUrl.M_REDIRECT_URL)) {
+      inicisTransQuery.merchant_uid = typeof merchant_uid === 'object' ? merchant_uid[0] : merchant_uid;
+    } else {
+      inicisTransQuery.merchant_uid = merchant_uid;
+    }
+    return queryString.stringify(inicisTransQuery);
+  }
 }
 
 export default IamportUrl;
