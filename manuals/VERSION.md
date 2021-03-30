@@ -2,7 +2,10 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.6.2](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.6.3](https://github.com/iamport/iamport-react-native/tree/master)
+  - 엑심베이 전용 결제 수단 및 결제창 언어 옵션을 추가하였습니다.
+
+- [v1.6.2](https://github.com/iamport/iamport-react-native/tree/v1.6.2)
   - [IOS / 이니시스 - 실시간 계좌이체] 결제 승인 플로우 관련 버그를 수정하였습니다.
 
 - [v1.6.1](https://github.com/iamport/iamport-react-native/tree/v1.6.1)
