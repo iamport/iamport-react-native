@@ -42,10 +42,17 @@ const PAY_METHOD = [
   'payco',
   'ssgpay',
   'tosspay',
+  // 엑심베이 전용
+  'unionpay', // 유니온페이
+  'alipay', // 알리페이
+  'tenpay', // 텐페이
+  'wechat', // 위챗페이
+  'molpay', // 몰페이
+  'paysbuy', // 태국 paysbuy
 ];
 const CURRENCY = ['KRW', 'USD', 'EUR', 'JPY'];
 const LANGUAGE = ['ko', 'en'];
-const EN_AVAILABLE_PG = ['inicis', 'html5_inicis', 'uplus', 'nice'];
+const EN_AVAILABLE_PG = ['inicis', 'html5_inicis', 'uplus', 'nice', 'eximbay'];
 const CARRIERS = ['SKT', 'KTF', 'LGT', 'MVNO'];
 
 const SMILEPAY_URL = 'https://www.mysmilepay.com';
