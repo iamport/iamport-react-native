@@ -13,7 +13,7 @@ export const PGS = [
   },
   {
     value: 'uplus',
-    label: 'LG 유플러스',
+    label: '토스페이먼츠 - (구) LG 유플러스',
   },
   {
     value: 'jtnet',
@@ -86,6 +86,10 @@ export const PGS = [
   {
     value: 'bluewalnut',
     label: '블루월넛',
+  },
+  {
+    value: 'tosspay',
+    label: '토스 - 간편결제',
   },
 ];
 
