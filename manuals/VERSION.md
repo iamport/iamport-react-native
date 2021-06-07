@@ -2,7 +2,10 @@
 
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.6.3](https://github.com/iamport/iamport-react-native/tree/master)
+- [v1.6.4](https://github.com/iamport/iamport-react-native/tree/master)
+  - 토스 - 간편결제(tosspay)를 추가하였습니다.
+
+- [v1.6.3](https://github.com/iamport/iamport-react-native/tree/v1.6.4)
   - 엑심베이 전용 결제 수단 및 결제창 언어 옵션을 추가하였습니다.
 
 - [v1.6.2](https://github.com/iamport/iamport-react-native/tree/v1.6.2)
