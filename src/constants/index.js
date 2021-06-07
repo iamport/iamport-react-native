@@ -24,6 +24,7 @@ const PG = [
   'payple',
   'alipay',
   'bluewalnut',
+  'tosspay',
 ];
 
 const PAY_METHOD = [

@@ -55,7 +55,8 @@ export function getMethods(pg) {
     case 'kakao':
     case 'paypal':
     case 'payco': 
-    case 'smilepay': {
+    case 'smilepay':
+    case 'tosspay': {
       return METHOD_FOR_CARD;
     }
     case 'uplus': {
