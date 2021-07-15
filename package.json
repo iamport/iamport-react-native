@@ -76,6 +76,7 @@
     "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
+      "<rootDir>/exampleForExpo/node_modules",
       "<rootDir>/lib/"
     ]
   },
