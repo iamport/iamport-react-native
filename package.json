@@ -70,13 +70,15 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-webview": "*"
   },
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules",
       "<rootDir>/exampleForExpo/node_modules",
+      "<rootDir>/exampleForWebView/node_modules",
       "<rootDir>/lib/"
     ]
   },

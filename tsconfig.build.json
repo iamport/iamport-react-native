@@ -2,6 +2,7 @@
   "extends": "./tsconfig",
   "exclude": [
     "example",
-    "exampleForExpo"
+    "exampleForExpo",
+    "exampleForWebView"
   ]
 }

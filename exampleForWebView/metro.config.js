@@ -18,25 +18,22 @@ module.exports = {
   resolver: {
     blacklistRE: blacklist(
       modules.map(
-        (m) =>
-          new RegExp(`^${escape(path.join(root, 'node_modules', m))}\\/.*$`)
+        m => new RegExp(`^${escape(path.join(root, 'node_modules', m))}\\/.*$`),
       ),
       modules.map(
-        (m) =>
+        m =>
           new RegExp(
-            `^${escape(
-              path.join(root, 'exampleForExpo/node_modules', m)
-            )}\\/.*$`
-          )
+            `^${escape(path.join(root, 'example/node_modules', m))}\\/.*$`,
+          ),
       ),
       modules.map(
-        (m) =>
+        m =>
           new RegExp(
             `^${escape(
-              path.join(root, 'exampleForWebView/node_modules', m)
-            )}\\/.*$`
-          )
-      )
+              path.join(root, 'exampleForExpo/node_modules', m),
+            )}\\/.*$`,
+          ),
+      ),
     ),
 
     extraNodeModules: modules.reduce((acc, name) => {
