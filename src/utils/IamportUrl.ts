@@ -282,12 +282,16 @@ class IamportUrl {
   async launchApp() {
     if (Platform.OS === 'ios') {
       if (await Linking.canOpenURL(this.url)) {
-        return await Linking.openURL(this.getAppUrl()!);
+        return await Linking.openURL(this.getAppUrl() as string);
       }
-      return await Linking.openURL(this.getMarketUrl());
+      try {
+        return await Linking.openURL(this.getAppUrl() as string);
+      } catch (e) {
+        return await Linking.openURL(this.getMarketUrl());
+      }
     } else if (Platform.OS === 'android') {
       try {
-        return await Linking.openURL(this.getAppUrl()!);
+        return await Linking.openURL(this.getAppUrl() as string);
       } catch (e) {
         return await Linking.openURL(this.getMarketUrl());
       }
