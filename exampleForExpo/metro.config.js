@@ -34,6 +34,14 @@ module.exports = {
               path.join(root, 'exampleForWebView/node_modules', m)
             )}\\/.*$`
           )
+      ),
+      modules.map(
+        (m) =>
+          new RegExp(
+            `^${escape(
+              path.join(root, 'exampleForManagedExpo/node_modules', m)
+            )}\\/.*$`
+          )
       )
     ),
 

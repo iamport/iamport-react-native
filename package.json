@@ -79,6 +79,7 @@
       "<rootDir>/example/node_modules",
       "<rootDir>/exampleForExpo/node_modules",
       "<rootDir>/exampleForWebView/node_modules",
+      "<rootDir>/exampleForManagedExpo/node_modules",
       "<rootDir>/lib/"
     ]
   },
