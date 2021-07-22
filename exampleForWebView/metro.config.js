@@ -37,7 +37,9 @@ module.exports = {
       modules.map(
         m =>
           new RegExp(
-            `^${escape(path.join(root, 'exampleForManagedExpo/node_modules', m))}\\/.*$`,
+            `^${escape(
+              path.join(root, 'exampleForManagedExpo/node_modules', m),
+            )}\\/.*$`,
           ),
       ),
     ),

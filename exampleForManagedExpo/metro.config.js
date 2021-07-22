@@ -30,7 +30,9 @@ module.exports = {
       modules.map(
         (m) =>
           new RegExp(
-            `^${escape(path.join(root, 'exampleForExpo/node_modules', m))}\\/.*$`
+            `^${escape(
+              path.join(root, 'exampleForExpo/node_modules', m)
+            )}\\/.*$`
           )
       ),
       modules.map(
@@ -40,7 +42,7 @@ module.exports = {
               path.join(root, 'exampleForWebView/node_modules', m)
             )}\\/.*$`
           )
-      ),
+      )
     ),
 
     extraNodeModules: modules.reduce((acc, name) => {
