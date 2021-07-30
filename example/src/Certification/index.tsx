@@ -4,6 +4,7 @@ import type { RootStackParamList } from '../NavigationService';
 import type { StackScreenProps } from '@react-navigation/stack';
 import { getUserCode } from '../utils';
 import Loading from '../Loading';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type Props = StackScreenProps<RootStackParamList, 'Certification'>;
 
@@ -13,15 +14,17 @@ function Certification({ route, navigation }: Props) {
   const userCode = getUserCode('danal', tierCode, 'certification');
 
   return (
-    <IMP.Certification
-      userCode={userCode}
-      tierCode={tierCode}
-      data={params!}
-      loading={<Loading />}
-      callback={(response) =>
-        navigation.replace('CertificationResult', response)
-      }
-    />
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
+      <IMP.Certification
+        userCode={userCode}
+        tierCode={tierCode}
+        data={params!}
+        loading={<Loading />}
+        callback={(response) =>
+          navigation.replace('CertificationResult', response)
+        }
+      />
+    </SafeAreaView>
   );
 }
 

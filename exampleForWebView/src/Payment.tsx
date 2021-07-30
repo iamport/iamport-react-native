@@ -50,7 +50,7 @@ function Payment({navigation, route}: Props) {
       loading={<Loading />}
       data={{
         ...data,
-        app_scheme: 'exampleForWebView',
+        app_scheme: 'exampleforwebview',
       }}
       callback={callback}
     />

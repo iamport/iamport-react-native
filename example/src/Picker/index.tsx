@@ -10,6 +10,9 @@ type PickerProps = {
 function Picker(props: PickerProps) {
   return (
     <Select
+      mb={2}
+      flex={1}
+      borderColor={'transparent'}
       selectedValue={props.selectedValue}
       onValueChange={props.onValueChange}
     >

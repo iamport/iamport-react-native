@@ -156,7 +156,7 @@ export default function PaymentTest({ navigation }) {
                 merchant_uid: merchantUid,
                 name,
                 amount,
-                app_scheme: 'example',
+                app_scheme: 'exampleformanagedexpo',
                 tax_free: undefined,
                 buyer_name: buyerName,
                 buyer_tel: buyerTel,

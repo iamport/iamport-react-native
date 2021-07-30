@@ -7,7 +7,7 @@ import WebView from 'react-native-webview';
 type Props = StackScreenProps<RootStackParamList, 'Home'>;
 
 function Home({navigation, route}: Props) {
-  const domain = 'http://localhost:3000';
+  const domain = 'http://10.160.43.111:3000';
   const [uri, setUri] = useState(domain);
 
   useEffect(() => {

@@ -1,16 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { createRef, useEffect, useRef, useState } from 'react';
 import type { IMPData } from '../../utils/Validation';
 import ValidationForPayment from '../../utils/ValidationForPayment';
 import ErrorOnParams from '../ErrorOnParams';
-import { Linking, NativeModules, Platform, View } from 'react-native';
+import { Linking, Platform, View } from 'react-native';
 import { IMPConst } from '../../constants';
 import IamportUrl from '../../utils/IamportUrl';
 import WebView from 'react-native-webview';
 import viewStyles from '../../styles';
 import Loading from '../Loading';
 import type { WebViewSource } from 'react-native-webview/lib/WebViewTypes';
-
-const { RNCWebView } = NativeModules;
 
 type Props = {
   userCode: string;
@@ -27,11 +25,16 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
   const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
   const [isInicisTransPaid, setIsInicisTransPaid] = useState(false);
-  const webview = useRef<WebView>();
+  const webview = createRef<WebView>();
+  const smilepayRef = useRef(false);
 
   useEffect(() => {
     const { pg } = data;
-    if (pg.startsWith('smilepay') && Platform.OS === 'ios') {
+    if (
+      pg.startsWith('smilepay') &&
+      Platform.OS === 'ios' &&
+      !smilepayRef.current
+    ) {
       /**
        * [feature/smilepay] IOS - 스마일페이 대비 코드 작성
        * 스마일페이 결제창을 iframe 방식으로 띄우기 때문에 WKWebView에서 서드 파티 쿠키가 허용되지 않아
@@ -41,10 +44,11 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
         ...webviewSource,
         baseUrl: IMPConst.SMILEPAY_BASE_URL,
       });
+      smilepayRef.current = true;
     }
   }, [data, webviewSource]);
 
-  useEffect((): (() => void) => {
+  useEffect(() => {
     const handleOpenURL = (event: { url: string }) => {
       const { pg, pay_method } = data;
       if (pay_method === 'trans') {
@@ -75,20 +79,22 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
 
         /* 나이스 - 실시간 계좌이체 대비 */
         if (pg.startsWith('nice')) {
+          const queryParameters = iamportUrl.getQuery();
+          const scheme = iamportUrl.scheme;
+          let niceTransRedirectionUrl;
+          if (scheme === data.app_scheme?.toLowerCase()) {
+            if (queryParameters.callbackparam1 != null) {
+              niceTransRedirectionUrl = queryParameters.callbackparam1;
+            }
+          }
           webview.current?.injectJavaScript(`
-            window.location.href = "${
-              IMPConst.NICE_TRANS_URL
-            }?${iamportUrl.getStringifiedQuery()}";
+            window.location.href = "${niceTransRedirectionUrl}?${iamportUrl.getStringifiedQuery()}";
           `);
         }
       }
     };
-
     Linking.addEventListener('url', handleOpenURL);
-    return () => {
-      Linking.removeEventListener('url', handleOpenURL);
-    };
-  }, [data, isInicisTransPaid]);
+  }, [data, isInicisTransPaid, webview]);
 
   const removeLoadingNeeded = () => {
     if (showLoading && Platform.OS === 'android') {
@@ -134,12 +140,7 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
       <View style={wrapper}>
         <View style={webViewContainer}>
           <WebView
-            ref={(ref) => {
-              if (ref !== null) {
-                webview.current = ref;
-              }
-            }}
-            useWebKit
+            ref={webview}
             source={webviewSource}
             onLoadEnd={() => {
               if (!isWebViewLoaded) {
@@ -192,27 +193,11 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
               callback(response);
             }}
             originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
-            sharedCookiesEnabled
+            sharedCookiesEnabled={true}
             onShouldStartLoadWithRequest={(request) => {
-              const { url, lockIdentifier } = request;
+              const { url } = request;
               const iamportUrl = new IamportUrl(url);
               if (iamportUrl.isAppUrl()) {
-                if (
-                  lockIdentifier ===
-                  0 /* && react-native-webview 버전이 v10.8.3 이상 */
-                ) {
-                  /**
-                   * [feature/react-native-webview] 웹뷰 첫 렌더링시 lockIdentifier === 0
-                   * 이때 무조건 onShouldStartLoadWithRequest를 true 처리하기 때문에
-                   * Error Loading Page 에러가 발생하므로
-                   * 강제로 lockIdentifier를 1로 변환시키도록 아래 네이티브 코드 호출
-                   */
-                  RNCWebView.onShouldStartLoadWithRequestCallback(
-                    false,
-                    lockIdentifier
-                  );
-                }
-
                 /* 3rd-party 앱 오픈 */
                 iamportUrl.launchApp().catch((e) => {
                   const { code, message } = e;

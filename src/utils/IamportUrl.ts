@@ -254,9 +254,7 @@ class IamportUrl {
   }
 
   getQuery() {
-    const decodedUrl = decodeURIComponent(this.url);
-    const extractedQuery = queryString.extract(decodedUrl);
-    return queryString.parse(extractedQuery);
+    return queryString.parse(this.getStringifiedQuery());
   }
 
   getStringifiedQuery() {
