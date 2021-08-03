@@ -55,11 +55,19 @@ iOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
   <string>citimobileapp</string> <!-- 씨티카드-간편결제 -->
   <string>kakaotalk</string> <!-- 카카오톡 -->
   <string>payco</string> <!-- 페이코 -->
-  <string>lpayapp</string> <!-- 롯데 L페이 -->
+  <string>lpayapp</string> <!-- (구)롯데 L페이 -->
   <string>hanamopmoasign</string> <!-- 하나카드 공인인증앱 -->
-  <string>wooripay</string> <!-- 우리페이 -->
+  <string>wooripay</string> <!-- (구) 우리페이 -->
   <string>nhallonepayansimclick</string> <!-- NH 올원페이 -->
   <string>hanawalletmembers</string> <!-- 하나카드(하나멤버스 월렛) -->
+  <string>chaipayment</string> <!-- 차이 -->
+  <string>kb-auth</string> <!-- 국민 -->
+  <string>hyundaicardappcardid</string>  <!-- 현대카드 -->
+  <string>com.wooricard.wcard</string>  <!-- 우리won페이 -->
+  <string>lmslpay</string>  <!-- 롯데 L페이 -->
+  <string>lguthepay-xpay</string>  <!-- 페이나우 -->
+  <string>liivbank</string>  <!-- Liiv 국민 -->
+  <string>supertoss</string> <!-- 토스 -->
 </array>
 ```
 
