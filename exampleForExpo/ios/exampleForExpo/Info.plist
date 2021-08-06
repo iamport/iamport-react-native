@@ -57,11 +57,14 @@
     <string>citimobileapp</string>
     <string>kakaotalk</string>
     <string>payco</string>
-    <string>lpayapp</string>
-    <string>hanamopmoasign</string>
-    <string>wooripay</string>
-    <string>nhallonepayansimclick</string>
-    <string>hanawalletmembers</string>
+    <string>chaipayment</string>
+    <string>kb-auth</string>
+    <string>hyundaicardappcardid</string>
+    <string>com.wooricard.wcard</string>
+    <string>lmslpay</string>
+    <string>lguthepay-xpay</string>
+    <string>liivbank</string>
+    <string>supertoss</string>
   </array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
