@@ -20,6 +20,8 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -27,52 +29,49 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>exampleForWebView</string>
+				<string>exampleforwebview</string>
 			</array>
 		</dict>
 	</array>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kftc-bankpay</string>
-		<string>ispmobile</string>
-		<string>itms-apps</string>
-		<string>hdcardappcardansimclick</string>
-		<string>smhyundaiansimclick</string>
-		<string>shinhan-sr-ansimclick</string>
-		<string>smshinhanansimclick</string>
-		<string>kb-acp</string>
-		<string>mpocket.online.ansimclick</string>
-		<string>ansimclickscard</string>
-		<string>ansimclickipcollect</string>
-		<string>vguardstart</string>
-		<string>samsungpay</string>
-		<string>scardcertiapp</string>
-		<string>lottesmartpay</string>
-		<string>lotteappcard</string>
-		<string>cloudpay</string>
-		<string>nhappcardansimclick</string>
-		<string>nonghyupcardansimclick</string>
-		<string>citispay</string>
-		<string>citicardappkr</string>
-		<string>citimobileapp</string>
-		<string>kakaotalk</string>
-		<string>payco</string>
-		<string>lpayapp</string>
-		<string>hanamopmoasign</string>
-		<string>wooripay</string>
-		<string>nhallonepayansimclick</string>
-		<string>hanawalletmembers</string>
+    <string>ispmobile</string>
+    <string>itms-apps</string>
+    <string>hdcardappcardansimclick</string>
+    <string>smhyundaiansimclick</string>
+    <string>shinhan-sr-ansimclick</string>
+    <string>smshinhanansimclick</string>
+    <string>kb-acp</string>
+    <string>mpocket.online.ansimclick</string>
+    <string>ansimclickscard</string>
+    <string>ansimclickipcollect</string>
+    <string>vguardstart</string>
+    <string>samsungpay</string>
+    <string>scardcertiapp</string>
+    <string>lottesmartpay</string>
+    <string>lotteappcard</string>
+    <string>cloudpay</string>
+    <string>nhappcardansimclick</string>
+    <string>nonghyupcardansimclick</string>
+    <string>citispay</string>
+    <string>citicardappkr</string>
+    <string>citimobileapp</string>
+    <string>kakaotalk</string>
+    <string>payco</string>
+    <string>chaipayment</string>
+    <string>kb-auth</string>
+    <string>hyundaicardappcardid</string>
+    <string>com.wooricard.wcard</string>
+    <string>lmslpay</string>
+    <string>lguthepay-xpay</string>
+    <string>liivbank</string>
+    <string>supertoss</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSAllowsArbitraryLoadsInWebContent</key>
-		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>

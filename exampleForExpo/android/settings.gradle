@@ -1,11 +1,9 @@
-include ':app'
-include ':iamport-react-native'
-project(':iamport-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/iamport-react-native/android')
+rootProject.name = 'exampleForExpo'
 
-
-// Import gradle helpers for unimodules.
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
+includeUnimodulesProjects()
 
-// Include unimodules.
-includeUnimodulesProjects(
-)
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
+applyNativeModulesSettingsGradle(settings)
+
+include ':app'

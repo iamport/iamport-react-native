@@ -1,11 +1,17 @@
 # 버전정보
-
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
 
-- [v1.6.4](https://github.com/iamport/iamport-react-native/tree/master)
+- [v2.0.0-rc.0](https://github.com/iamport/iamport-react-native/tree/master)
+  - 프로젝트를 타입스크립트로 재작성했습니다.
+  - [안드로이드] 라이브러리의 네이티브 코드에 대한 의존성을 제거했습니다.
+  - Expo managed 프로젝트에서 eject를 하지 않는 예제를 추가했습니다.
+  - [엑심베이] 중국어, 일본어 언어 설정을 추가했습니다.
+  - React(v16.13.1), React Native(v0.63.4) 버전을 업그레이드하였습니다.
+
+- [v1.6.4](https://github.com/iamport/iamport-react-native/tree/v1.6.4)
   - 토스 - 간편결제(tosspay)를 추가하였습니다.
 
-- [v1.6.3](https://github.com/iamport/iamport-react-native/tree/v1.6.4)
+- [v1.6.3](https://github.com/iamport/iamport-react-native/tree/v1.6.3)
   - 엑심베이 전용 결제 수단 및 결제창 언어 옵션을 추가하였습니다.
 
 - [v1.6.2](https://github.com/iamport/iamport-react-native/tree/v1.6.2)
@@ -102,10 +108,10 @@
 - [v1.0.3](https://github.com/iamport/iamport-react-native/tree/v1.0.3)
   - 콜백 함수를 필수입력으로 설정하였습니다.
 
-- [v1.0.2](https://github.com/iamport/iamport-react-native/tree/v1.0.2) 
+- [v1.0.2](https://github.com/iamport/iamport-react-native/tree/v1.0.2)
   - [결제] 다날, 카카오페이, 모빌리언스 등 콜백 지원 PG에 대해 결제시도 완료 후 콜백이 트리거 되지 않는 이슈를 해결하였습니다.
 
-- [v1.0.1](https://github.com/iamport/iamport-react-native/tree/v1.0.1) 
+- [v1.0.1](https://github.com/iamport/iamport-react-native/tree/v1.0.1)
   - 안드로이드와 IOS 모두 지원합니다.
   - 일반/정기결제 및 휴대폰 본인인증 기능을 제공합니다.
 

@@ -1,1 +1,0 @@
-../../../ExpoKit/ios/Exponent/Versioned/Core/UniversalModules/EXScopedFileSystem/EXScopedFilePermissionModule.h

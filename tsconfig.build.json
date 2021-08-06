@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig",
+  "exclude": [
+    "example",
+    "exampleForExpo",
+    "exampleForManagedExpo",
+    "exampleForWebView"
+  ]
+}

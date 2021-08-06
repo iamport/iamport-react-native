@@ -1,45 +1,35 @@
 # 예제 프로젝트
-
 아임포트 리액트 네이티브 모듈 예제 안내입니다.
 
-iamport-react-native 모듈을 clone받아 폴더 위치를 `example` 프로젝트로 이동합니다.
+`iamport-react-native`에서는 4가지의 예제를 통해 서로 다른 개발 스택에서 결제 모듈을 사용하는 방법을 안내드리고 있습니다.
+예제별 상세 설명은 각 예제 폴더의 README 파일을 확인해주시기 바랍니다.
 
+예제 실행을 위해서는 `iamport-react-native` 모듈을 clone받은 후 루트 디렉토리에서 다음의 명령어를 실행합니다.
+```shell
+$ yarn
 ```
-$ git clone https://github.com/iamport/iamport-react-native.git
-$ cd ./iamport-react-native/example
-```
+그 후 각 예제 프로젝트의 폴더로 이동해 예제별 설명을 따라 앱을 빌드 및 실행할 수 있습니다.
 
-필요한 npm 모듈을 설치합니다.
+## 1. [example](../example/README.md)
+일반적인 형태의 리액트 네이티브 애플리케이션입니다.
+타입스크립트로 작성되었습니다.
 
-```
-$ npm install
-$ npx jetifier // AndroidX 환경 대비
-```
+## 2. [exampleForWebView](../exampleForWebView/README.md)
+기존에 만들어진 웹 페이지를 웹뷰에 띄워 결제를 진행하는 예제입니다.
+[iamport-react-example](https://github.com/iamport/iamport-react-example)과 함께 동작할 수 있도록 제작되었습니다.
+타입스크립트로 작성되었습니다.
 
-앱을 실행합니다.
+## 3. [exampleForExpo](../exampleForExpo/README.md)
+Expo bare 프로젝트 입니다.
+Expo에서 eject를 실행해 android 및 ios 폴더를 생성 후 직접 앱을 빌드하는 경우를 가정합니다.
+자바스크립트로 작성되었습니다.
 
-```
-$ npm start -- --reset-cache
-```
+## 4. [exampleForManagedExpo](../exampleForManagedExpo/README.md)
+Expo managed 프로젝트입니다.
+Expo에서 eject하지 않고 앱을 개발하는 경우를 가정합니다.
+자바스크립트로 작성되었습니다.
 
-각 환경에 맞게 앱을 빌드합니다.
-
-### IOS
-- [XCode를 설치](https://developer.apple.com/xcode)합니다.
-- 프로젝트(`[...]/node_modules/iamport-react-native/example/ios/example.xcodeproj`)를 더블클릭해 오픈합니다.
-- 빌드 타깃을 선택하고 앱을 빌드(`Cmd+R`)합니다.
-
-### Android
-- [안드로이드 스튜디오를 설치](https://developer.android.com/studio)합니다.
-- 안드로이드 스튜디오에서 프로젝트(`[...]/node_modules/iamport-react-native/example/android`)를 더블클릭해 오픈합니다.
-- 빌드 타깃을 선택하고 앱을 빌드(![](../src/img/android-studio-build.png) 또는 `Cmd+F9`)합니다.
-
-![](../src/img/ios-emulator-home.png)
-![](../src/img/ios-emulator-payment.png)
-![](../src/img/ios-emulator-certification.png)
-
-
-### 일반/정기결제 코드 예시
+## 일반/정기결제 코드 예시
 ```javascript
 import React from 'react';
 /* 아임포트 결제모듈을 불러옵니다. */
@@ -90,11 +80,11 @@ export default Payment;
 | tierCode         | string        | agency 기능 사용자의 하위 가맹점 코드 3자리                         | false       |
 | data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | true       |
 | - m_redirect_url | string        | [Deprecated]                                                | false       |
-| callback         | function      | 결제 후 실행 될 함수 [자세히보기](#callback)                       | true       |
+| callback         | function      | 결제 후 실행 될 함수 [자세히보기](https://docs.iamport.kr/tech/imp#callback) | true       |
 | loading          | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트                                        | false      |
 
 
-### 휴대폰 본인인증 코드 예시
+## 휴대폰 본인인증 코드 예시
 ```javascript
 import React from 'react';
 /* 아임포트 본인인증 모듈을 불러옵니다. */
@@ -147,8 +137,9 @@ export default Certification;
 | callback      | function      | 본인인증 후 실행 될 함수                 | true       |
 | loading       | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트               | false      |
 
-### 웹뷰 로딩 컴포넌트 코드 예시
-웹뷰가 로드되기 전 보여질 로딩 화면을 컴포넌트로 생성해 loading 파라메터로 넘깁니다. 미 입력시 아임포트가 보여주는 default 로딩 페이지가 렌더링됩니다. 아래는 로딩 컴포넌트 코드 작성 예시입니다.
+## 웹뷰 로딩 컴포넌트 코드 예시
+웹뷰가 로드되기 전 보여질 로딩 화면을 컴포넌트로 생성해 loading 파라메터로 넘깁니다.
+미 입력시 아임포트가 보여주는 default 로딩 페이지가 렌더링됩니다. 아래는 로딩 컴포넌트 코드 작성 예시입니다.
 
 ```javascript
 import React from 'react';
@@ -159,7 +150,7 @@ export function Loading() {
   return (
     <View style={container}>
       <Text>잠시만 기다려주세요...</Text>
-    </View>  
+    </View>
   );
 }
 
@@ -172,4 +163,7 @@ const styles = StyleSheet.create({
 export default Loading;
 ```
 
-로딩 컴포넌트를 감싸고 있는 최상단 View 컴포넌트의 스타일 속성을 지정할때 주의해야합니다. 별도의 설정 없이 작성할 경우, 로딩 컴포넌트는 전체 화면의 절반만 차지하게 됩니다. 이는 react-native-webview 모듈 자체의 이슈로, 스타일 속성을 지정할때 위 예시와 같이 `StyleSheet.absoluteFillObject`값을 추가해주면 됩니다. 자세한 내용은 [Fix: Flex loading view](https://github.com/react-native-community/react-native-webview/pull/663)를 참고해주세요.
+로딩 컴포넌트를 감싸고 있는 최상단 View 컴포넌트의 스타일 속성을 지정할때 주의해야합니다.
+별도의 설정 없이 작성할 경우, 로딩 컴포넌트는 전체 화면의 절반만 차지하게 됩니다.
+이는 react-native-webview 모듈 자체의 이슈로, 스타일 속성을 지정할때 위 예시와 같이 `StyleSheet.absoluteFillObject`값을 추가해주면 됩니다.
+자세한 내용은 [Fix: Flex loading view](https://github.com/react-native-community/react-native-webview/pull/663)를 참고해주세요.

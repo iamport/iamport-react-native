@@ -1,53 +1,64 @@
-/**
- * Metro configuration for React Native
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 const path = require('path');
 const blacklist = require('metro-config/src/defaults/blacklist');
 const escape = require('escape-string-regexp');
-const package = require('../package.json');
-const peerDependencies = Object.keys(package.peerDependencies);
+const pak = require('../package.json');
+
+const root = path.resolve(__dirname, '..');
+
+const modules = Object.keys({
+  ...pak.peerDependencies,
+});
 
 module.exports = {
+  projectRoot: __dirname,
+  watchFolders: [root],
+
+  // We need to make sure that only one version is loaded for peerDependencies
+  // So we blacklist them at the root, and alias them to the versions in example's node_modules
+  resolver: {
+    blacklistRE: blacklist(
+      modules.map(
+        (m) =>
+          new RegExp(`^${escape(path.join(root, 'node_modules', m))}\\/.*$`)
+      ),
+      modules.map(
+        (m) =>
+          new RegExp(
+            `^${escape(
+              path.join(root, 'exampleForExpo/node_modules', m)
+            )}\\/.*$`
+          )
+      ),
+      modules.map(
+        (m) =>
+          new RegExp(
+            `^${escape(
+              path.join(root, 'exampleForManagedExpo/node_modules', m)
+            )}\\/.*$`
+          )
+      ),
+      modules.map(
+        (m) =>
+          new RegExp(
+            `^${escape(
+              path.join(root, 'exampleForWebView/node_modules', m)
+            )}\\/.*$`
+          )
+      )
+    ),
+
+    extraNodeModules: modules.reduce((acc, name) => {
+      acc[name] = path.join(__dirname, 'node_modules', name);
+      return acc;
+    }, {}),
+  },
+
   transformer: {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: false,
+        inlineRequires: true,
       },
     }),
-  },
-  projectRoot: __dirname,
-  watchFolders: [
-    path.resolve(__dirname, '../'),
-  ],
-  resolver: {
-    blacklistRE: blacklist([
-      new RegExp(
-        `^${escape(path.resolve(__dirname, '..', 'node_modules'))}\/.*$`
-      ),
-      new RegExp(
-        `^${escape(path.resolve(__dirname, '..', 'exampleForWebView/node_modules'))}\/.*$`
-      ),
-      new RegExp(
-        `^${escape(path.resolve(__dirname, '..', 'exampleForExpo/node_modules'))}\/.*$`
-      ),
-      new RegExp(
-        `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/example/node_modules'))}\/.*$`
-      ),
-      new RegExp(
-        `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/exampleForWebView/node_modules'))}\/.*$`
-      ),
-      new RegExp(
-        `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/exampleForExpo/node_modules'))}\/.*$`
-      ),
-      new RegExp(
-        `^${escape(path.resolve(__dirname, 'node_modules/iamport-react-native/node_modules'))}\/.*$`
-      ),
-    ]),
-    providesModuleNodeModules: [...peerDependencies],
   },
 };
