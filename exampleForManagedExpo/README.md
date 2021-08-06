@@ -2,8 +2,8 @@
 
 `iamport-react-native` 예제입니다.
 
-Expo를 통해 아잉포트 결제모듈을 연동하는 것을 구현한 예제 프로젝트입니다.
-그 중에서도 managed 프로젝트로 개발하는 것을 가정하여 만들었기 때문에 네 가지 예제들 중 유일하게 iOS 및 안드로이드 폴더가 없으며 실제 앱을 빌드 후 테스트하기 위해서는 [Building Standalone Apps](https://docs.expo.io/distribution/building-standalone-apps/)를 참고하시기 바랍니다.
+Expo를 통해 아임포트 결제모듈을 연동하는 것을 구현한 예제 프로젝트입니다.
+그 중에서도 managed 프로젝트로 개발하는 것을 가정하여 만들었기 때문에 iOS 및 안드로이드 폴더가 없으며 실제 앱을 빌드 후 테스트하기 위해서는 [Building Standalone Apps](https://docs.expo.io/distribution/building-standalone-apps/)를 참고하시기 바랍니다.
 
 Expo 관련 설정은 [Expo 설정하기](../manuals/EXPO.md)에서 보실 수 있습니다.
 

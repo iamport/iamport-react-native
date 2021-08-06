@@ -9,8 +9,6 @@ iOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
 <key>CFBundleURLTypes</key>
 <array>
   <dict>
-    <key>CFBundleTypeRole</key>
-    <string>Editor</string>
     <key>CFBundleURLSchemes</key>
     <array>
       <string>myawesomeapp</string>

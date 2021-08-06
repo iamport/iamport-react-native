@@ -138,7 +138,8 @@ export default Certification;
 | loading       | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트               | false      |
 
 ## 웹뷰 로딩 컴포넌트 코드 예시
-웹뷰가 로드되기 전 보여질 로딩 화면을 컴포넌트로 생성해 loading 파라메터로 넘깁니다. 미 입력시 아임포트가 보여주는 default 로딩 페이지가 렌더링됩니다. 아래는 로딩 컴포넌트 코드 작성 예시입니다.
+웹뷰가 로드되기 전 보여질 로딩 화면을 컴포넌트로 생성해 loading 파라메터로 넘깁니다.
+미 입력시 아임포트가 보여주는 default 로딩 페이지가 렌더링됩니다. 아래는 로딩 컴포넌트 코드 작성 예시입니다.
 
 ```javascript
 import React from 'react';
@@ -162,4 +163,7 @@ const styles = StyleSheet.create({
 export default Loading;
 ```
 
-로딩 컴포넌트를 감싸고 있는 최상단 View 컴포넌트의 스타일 속성을 지정할때 주의해야합니다. 별도의 설정 없이 작성할 경우, 로딩 컴포넌트는 전체 화면의 절반만 차지하게 됩니다. 이는 react-native-webview 모듈 자체의 이슈로, 스타일 속성을 지정할때 위 예시와 같이 `StyleSheet.absoluteFillObject`값을 추가해주면 됩니다. 자세한 내용은 [Fix: Flex loading view](https://github.com/react-native-community/react-native-webview/pull/663)를 참고해주세요.
+로딩 컴포넌트를 감싸고 있는 최상단 View 컴포넌트의 스타일 속성을 지정할때 주의해야합니다.
+별도의 설정 없이 작성할 경우, 로딩 컴포넌트는 전체 화면의 절반만 차지하게 됩니다.
+이는 react-native-webview 모듈 자체의 이슈로, 스타일 속성을 지정할때 위 예시와 같이 `StyleSheet.absoluteFillObject`값을 추가해주면 됩니다.
+자세한 내용은 [Fix: Flex loading view](https://github.com/react-native-community/react-native-webview/pull/663)를 참고해주세요.

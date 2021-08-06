@@ -5,6 +5,7 @@
   - 프로젝트를 타입스크립트로 재작성했습니다.
   - [안드로이드] 라이브러리의 네이티브 코드에 대한 의존성을 제거했습니다.
   - Expo managed 프로젝트에서 eject를 하지 않는 예제를 추가했습니다.
+  - [엑심베이] 중국어, 일본어 언어 설정을 추가했습니다.
   - React(v16.13.1), React Native(v0.63.4) 버전을 업그레이드하였습니다.
 
 - [v1.6.4](https://github.com/iamport/iamport-react-native/tree/v1.6.4)

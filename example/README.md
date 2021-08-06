@@ -29,6 +29,11 @@ $ yarn start
 ### iOS
 
 - Xcode를 설치합니다.
+- 필요한 CocoaPod 라이브러리를 설치합니다.
+```shell
+$ cd ios
+$ pod install
+```
 - Xcode에서 `ios/IamportReactNativeExample.xcworkspace`를 오픈합니다.
 - 빌드 타깃을 선택하고 앱을 빋드 후 실행합니다.
 
