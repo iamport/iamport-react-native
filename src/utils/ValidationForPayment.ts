@@ -6,7 +6,7 @@ class ValidationForPayment extends Validation {
     userCode: string,
     loading: object,
     callback: (response: any) => any,
-    data: IMPData.PaymentData
+    data: IMPData.PaymentData,
   ) {
     super(userCode, loading, callback, data);
   }
@@ -76,10 +76,17 @@ class ValidationForPayment extends Validation {
 
     if (language && pg !== 'paypal') {
       if (IMPConst.EN_AVAILABLE_PG.indexOf(pg as any) !== -1) {
-        if (IMPConst.LANGUAGE.indexOf(language as any) !== -1) {
+        if (pg === 'eximbay') {
+          if (!['ko', 'en', 'zh', 'jp'].includes(language)) {
+            this.isValid = false;
+            this.message =
+              '올바르지 않은 언어 설정입니다.\n 선택하신 PG사는 ko, en, zh jp 옵션을 지원합니다.';
+            return;
+          }
+        } else if (IMPConst.LANGUAGE.indexOf(language as any) !== -1) {
           this.isValid = false;
           this.message =
-            '올바르지 않은 언어 설정입니다.\n 선택하신 PG사는 ko 또는 en 옵션을 지원합니다. ';
+            '올바르지 않은 언어 설정입니다.\n 선택하신 PG사는 ko 또는 en 옵션을 지원합니다.';
           return;
         }
       } else if (language !== 'ko') {
