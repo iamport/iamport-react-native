@@ -25,6 +25,7 @@ function Home({navigation, route}: Props) {
 
   return (
     <WebView
+      style={{flex: 1}}
       source={{uri}}
       onMessage={e => {
         try {
