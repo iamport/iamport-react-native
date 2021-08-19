@@ -6,25 +6,17 @@ const logo = require('../../img/iamport-logo.png');
 function Loading() {
   return (
     <View style={styles.container}>
-      <View style={styles.contents}>
-        <Image style={styles.contents} source={logo} />
-        <Text style={styles.text}>잠시만 기다려주세요...</Text>
-      </View>
+      <Image source={logo} />
+      <Text style={styles.text}>잠시만 기다려주세요...</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
     flex: 1,
     alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  contents: {
-    flex: 1,
-    alignItems: 'center',
+    flexDirection: 'column',
     justifyContent: 'center',
   },
   text: {
