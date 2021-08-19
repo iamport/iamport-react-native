@@ -91,6 +91,10 @@ const PGS = [
     value: 'smartro',
     label: '스마트로',
   },
+  {
+    value: 'smartro',
+    label: '스마트로',
+  },
 ];
 
 const TIER_CODES = [
