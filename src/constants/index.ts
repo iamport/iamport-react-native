@@ -78,7 +78,7 @@ namespace IMPConst {
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
     <script type='text/javascript' src='https://code.jquery.com/jquery-latest.min.js' ></script>
-    <script type='text/javascript' src='https://cdn.iamport.kr/js/iamport.payment-1.1.8.js'></script>
+    <script type='text/javascript' src='https://cdn.iamport.kr/js/iamport.payment-1.2.0.js'></script>
   </head>
   <body></body>
 </html>
