@@ -4,6 +4,9 @@ import { Select } from 'native-base';
 export default function Picker(props) {
   return (
     <Select
+      mb={2}
+      flex={1}
+      borderColor={'transparent'}
       selectedValue={props.selectedValue}
       onValueChange={props.onValueChange}
     >
@@ -14,3 +17,4 @@ export default function Picker(props) {
     </Select>
   );
 }
+
