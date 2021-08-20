@@ -194,7 +194,7 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
           sharedCookiesEnabled={true}
           onShouldStartLoadWithRequest={(request) => {
             const { url } = request;
-            console.log(`url: ${url}`);
+            // console.log(`url: ${url}`);
             const iamportUrl = new IamportUrl(url);
             if (iamportUrl.isAppUrl()) {
               /* 3rd-party 앱 오픈 */
