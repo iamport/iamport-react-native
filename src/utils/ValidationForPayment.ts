@@ -83,7 +83,7 @@ class ValidationForPayment extends Validation {
               '올바르지 않은 언어 설정입니다.\n 선택하신 PG사는 ko, en, zh jp 옵션을 지원합니다.';
             return;
           }
-        } else if (IMPConst.LANGUAGE.indexOf(language as any) !== -1) {
+        } else if (IMPConst.LANGUAGE.indexOf(language as any) === -1) {
           this.isValid = false;
           this.message =
             '올바르지 않은 언어 설정입니다.\n 선택하신 PG사는 ko 또는 en 옵션을 지원합니다.';
