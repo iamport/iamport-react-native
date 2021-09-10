@@ -98,7 +98,7 @@ class IamportUrl {
           return IMPConst.IOS_MARKET_PREFIX + 'id1036098908';
         case 'wooripay': // 우리페이
           return IMPConst.IOS_MARKET_PREFIX + 'id1201113419';
-        case 'com.wooricard.wcard':
+        case 'com.wooricard.wcard': // 우리WON카드
           return IMPConst.IOS_MARKET_PREFIX + 'id1499598869';
         case 'nhallonepayansimclick': // NH농협카드 올원페이(앱카드)
           return IMPConst.IOS_MARKET_PREFIX + 'id1177889176';
@@ -116,6 +116,8 @@ class IamportUrl {
           return IMPConst.IOS_MARKET_PREFIX + 'id1126232922';
         case 'supertoss': // 토스
           return IMPConst.IOS_MARKET_PREFIX + 'id839333328';
+        case 'newsmartpib': // 우리WON뱅킹
+          return IMPConst.IOS_MARKET_PREFIX + 'id1470181651';
         default:
           return this.url;
       }
@@ -263,6 +265,10 @@ class IamportUrl {
           return (
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_SKTAUTH
+        case IMPConst.ANDROID_APPSCHEME.WOORIWONBANK:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_WOORIWONBANK
           );
         default:
           return this.url;

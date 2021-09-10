@@ -53,7 +53,8 @@
           "lmslpay",
           "lguthepay-xpay",
           "liivbank",
-          "supertoss"
+          "supertoss",
+          "newsmartpib"
         ],
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true,

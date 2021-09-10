@@ -113,6 +113,7 @@ namespace IMPConst {
     KTFAUTH: 'ktauthexternalcall',
     LGTAUTH: 'upluscorporation',
     SKTAUTH: 'tauthlink',
+    WOORIWONBANK: 'wooribank',
   } as const;
 
   export const ANDROID_PACKAGE = {
@@ -144,6 +145,7 @@ namespace IMPConst {
     PACKAGE_KTFAUTH: 'com.kt.ktauth',
     PACKAGE_LGTAUTH: 'com.lguplus.smartotp',
     PACKAGE_SKTAUTH: 'com.sktelecom.tauth',
+    PACKAGE_WOORIWONBANK: 'com.wooribank.smart.npib',
   } as const;
 }
 
