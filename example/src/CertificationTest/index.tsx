@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
 import type { StackScreenProps } from '@react-navigation/stack';
-import type {
-  CertificationParams,
-  RootStackParamList,
-} from '../NavigationService';
-import {
-  Button,
-  FormControl,
-  Input,
-  ScrollView,
-  Select,
-  Stack,
-  Text,
-} from 'native-base';
+import type { CertificationParams, RootStackParamList } from '../NavigationService';
+import { Button, FormControl, Input, ScrollView, Select, Stack, Text } from 'native-base';
 import Picker from '../Picker';
 import { CARRIERS, TIER_CODES } from '../constants';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -34,38 +23,52 @@ function CertificationTest({ navigation }: Props) {
     <SafeAreaView
       style={{ flex: 1, justifyContent: 'center', backgroundColor: '#f5f5f5', paddingTop: -insets.top }}
     >
-      <ScrollView m={2} backgroundColor={'#fff'}>
-        <FormControl p={'5%'} borderRadius={3}>
-          <Stack direction={'row'}>
-            <FormControl.Label alignItems={'center'} mb={2} w={'18%'}>
-              주문번호
+      <ScrollView mx={1} backgroundColor={'#fff'}>
+        <FormControl p={2} borderRadius={3}>
+          <Stack direction={'column'}>
+            <FormControl.Label mb={0}>
+              <Text color={'gray.500'} fontSize={15}>
+                주문번호
+              </Text>
             </FormControl.Label>
             <Input
-              mb={2}
+              mx={2}
+              mb={1}
               flex={1}
+              p={1}
+              variant={'underlined'}
               value={merchantUid}
               onChangeText={(value) => setMerchantUid(value)}
             />
           </Stack>
-          <Stack direction={'row'}>
-            <FormControl.Label alignItems={'center'} mb={2} w={'18%'}>
-              회사명
+          <Stack direction={'column'}>
+            <FormControl.Label mb={0}>
+              <Text color={'gray.500'} fontSize={15}>
+                회사명
+              </Text>
             </FormControl.Label>
             <Input
-              mb={2}
+              mx={2}
+              mb={1}
               flex={1}
+              p={1}
+              variant={'underlined'}
               value={company}
               onChangeText={(value) => setCompany(value)}
             />
           </Stack>
-          <Stack direction={'row'}>
-            <FormControl.Label alignItems={'center'} mb={2} w={'18%'}>
-              통신사
+          <Stack direction={'column'}>
+            <FormControl.Label mb={0}>
+              <Text color={'gray.500'} fontSize={15}>
+                통신사
+              </Text>
             </FormControl.Label>
             <Select
-              mb={2}
+              mx={2}
+              mb={1}
               flex={1}
-              borderColor={'transparent'}
+              p={1}
+              variant={'underlined'}
               selectedValue={carrier}
               onValueChange={(value) => setCarrier(value)}
             >
@@ -74,46 +77,63 @@ function CertificationTest({ navigation }: Props) {
               })}
             </Select>
           </Stack>
-          <Stack direction={'row'}>
-            <FormControl.Label alignItems={'center'} mb={2} w={'18%'}>
-              이름
+          <Stack direction={'column'}>
+            <FormControl.Label mb={0}>
+              <Text color={'gray.500'} fontSize={15}>
+                이름
+              </Text>
             </FormControl.Label>
             <Input
-              mb={2}
+              mx={2}
+              mb={1}
               flex={1}
+              p={1}
+              variant={'underlined'}
               value={name}
               onChangeText={(value) => setName(value)}
             />
           </Stack>
-          <Stack direction={'row'}>
-            <FormControl.Label alignItems={'center'} mb={2} w={'18%'}>
-              전화번호
+          <Stack direction={'column'}>
+            <FormControl.Label mb={0}>
+              <Text color={'gray.500'} fontSize={15}>
+                전화번호
+              </Text>
             </FormControl.Label>
             <Input
-              mb={2}
+              mx={2}
+              mb={1}
               flex={1}
+              p={1}
+              variant={'underlined'}
               value={phone}
-              keyboardType="number-pad"
+              keyboardType='number-pad'
               returnKeyType={'done'}
               onChangeText={(value) => setPhone(value)}
             />
           </Stack>
-          <Stack direction={'row'}>
-            <FormControl.Label alignItems={'center'} mb={2} w={'18%'}>
-              최소연령
+          <Stack direction={'column'}>
+            <FormControl.Label mb={0}>
+              <Text color={'gray.500'} fontSize={15}>
+                최소연령
+              </Text>
             </FormControl.Label>
             <Input
-              mb={2}
+              mx={2}
+              mb={1}
               flex={1}
+              p={1}
+              variant={'underlined'}
               value={minAge}
-              keyboardType="number-pad"
+              keyboardType='number-pad'
               returnKeyType={'done'}
               onChangeText={(value) => setMinAge(value)}
             />
           </Stack>
-          <Stack direction={'row'}>
-            <FormControl.Label alignItems={'center'} mb={2} w={'18%'}>
-              티어 코드
+          <Stack direction={'column'}>
+            <FormControl.Label mb={0}>
+              <Text color={'gray.500'} fontSize={15}>
+                티어 코드
+              </Text>
             </FormControl.Label>
             <Picker
               data={TIER_CODES}
@@ -122,6 +142,7 @@ function CertificationTest({ navigation }: Props) {
             />
           </Stack>
           <Button
+            mt={4}
             bgColor={'#344e81'}
             /* @ts-ignore */
             onPress={() => {
