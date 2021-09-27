@@ -26,7 +26,7 @@ function CertificationTest({ navigation }: Props) {
       <ScrollView mx={1} backgroundColor={'#fff'}>
         <FormControl p={2} borderRadius={3}>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 주문번호
               </Text>
@@ -42,7 +42,7 @@ function CertificationTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 회사명
               </Text>
@@ -58,7 +58,7 @@ function CertificationTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 통신사
               </Text>
@@ -78,7 +78,7 @@ function CertificationTest({ navigation }: Props) {
             </Select>
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 이름
               </Text>
@@ -94,7 +94,7 @@ function CertificationTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 전화번호
               </Text>
@@ -112,7 +112,7 @@ function CertificationTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 최소연령
               </Text>
@@ -130,7 +130,7 @@ function CertificationTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 티어 코드
               </Text>

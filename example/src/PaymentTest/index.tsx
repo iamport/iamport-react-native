@@ -51,7 +51,7 @@ function PaymentTest({ navigation }: Props) {
       <ScrollView mx={1} backgroundColor={'#fff'}>
         <FormControl p={2} borderRadius={3}>
           <Stack direction={'column'}>
-            <FormControl.Label m={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 PG사
               </Text>
@@ -67,7 +67,7 @@ function PaymentTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label m={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 티어 코드
               </Text>
@@ -79,7 +79,7 @@ function PaymentTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label m={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 결제수단
               </Text>
@@ -92,7 +92,7 @@ function PaymentTest({ navigation }: Props) {
           </Stack>
           {method === 'card' && (
             <Stack direction={'column'}>
-              <FormControl.Label mb={0}>
+              <FormControl.Label my={1}>
                 <Text color={'gray.500'} fontSize={15}>
                   할부개월수
                 </Text>
@@ -106,7 +106,7 @@ function PaymentTest({ navigation }: Props) {
           )}
           {method === 'vbank' && (
             <Stack direction={'column'}>
-              <FormControl.Label mb={0}>
+              <FormControl.Label my={1}>
                 <Text color={'gray.500'} fontSize={15}>
                   입금기한
                 </Text>
@@ -124,7 +124,7 @@ function PaymentTest({ navigation }: Props) {
           )}
           {method === 'vbank' && pg === 'danal_tpay' && (
             <Stack direction={'column'}>
-              <FormControl.Label mb={0}>
+              <FormControl.Label my={1}>
                 <Text color={'gray.500'} fontSize={15}>
                   사업자번호
                 </Text>
@@ -144,7 +144,7 @@ function PaymentTest({ navigation }: Props) {
           )}
           {method === 'phone' && (
             <Stack direction={'column'}>
-              <FormControl.Label mb={0}>
+              <FormControl.Label my={1}>
                 <Text color={'gray.500'} fontSize={15}>
                   실물컨텐츠
                 </Text>
@@ -160,7 +160,7 @@ function PaymentTest({ navigation }: Props) {
             </Stack>
           )}
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 에스크로
               </Text>
@@ -175,7 +175,7 @@ function PaymentTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 주문명
               </Text>
@@ -191,7 +191,7 @@ function PaymentTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 결제금액
               </Text>
@@ -209,7 +209,7 @@ function PaymentTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 주문번호
               </Text>
@@ -225,7 +225,7 @@ function PaymentTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 이름
               </Text>
@@ -241,7 +241,7 @@ function PaymentTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 전화번호
               </Text>
@@ -259,7 +259,7 @@ function PaymentTest({ navigation }: Props) {
             />
           </Stack>
           <Stack direction={'column'}>
-            <FormControl.Label mb={0}>
+            <FormControl.Label my={1}>
               <Text color={'gray.500'} fontSize={15}>
                 이메일
               </Text>
