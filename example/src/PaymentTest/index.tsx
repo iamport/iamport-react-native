@@ -1,23 +1,12 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  FormControl,
-  Input,
-  ScrollView,
-  Stack,
-  Switch,
-  Text,
-} from 'native-base';
+import { Button, FormControl, Input, ScrollView, Stack, Switch, Text } from 'native-base';
 import Picker from '../Picker';
 import { PGS, TIER_CODES } from '../constants';
 import { getMethods, getQuotas } from '../utils';
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { PaymentParams, RootStackParamList } from '../NavigationService';
 import { IMPConst } from 'iamport-react-native';
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = StackScreenProps<RootStackParamList, 'PaymentTest'>;
 
@@ -307,6 +296,7 @@ function PaymentTest({ navigation }: Props) {
                   naverUseCfm: undefined,
                   naverProducts: undefined,
                   m_redirect_url: IMPConst.M_REDIRECT_URL,
+                  niceMobileV2: true,
                   escrow,
                 },
                 tierCode,

@@ -95,6 +95,7 @@ namespace IMPData {
     naverUseCfm?: string;
     naverProducts?: object[];
     m_redirect_url?: string;
+    niceMobileV2?: boolean;
   }
 }
 
