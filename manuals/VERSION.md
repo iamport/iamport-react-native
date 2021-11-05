@@ -1,7 +1,9 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
+- [v2.0.0-rc.1](https://github.com/iamport/iamport-react-native/tree/v2.0.0-rc.1)
+  - [안드로이드] 다날 본인인증 PASS 앱 실행 로직을 추가했습니다.
 
-- [v2.0.0-rc.0](https://github.com/iamport/iamport-react-native/tree/master)
+- [v2.0.0-rc.0](https://github.com/iamport/iamport-react-native/tree/v2.0.0-rc.0)
   - 프로젝트를 타입스크립트로 재작성했습니다.
   - [안드로이드] 라이브러리의 네이티브 코드에 대한 의존성을 제거했습니다.
   - Expo managed 프로젝트에서 eject를 하지 않는 예제를 추가했습니다.

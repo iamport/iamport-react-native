@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Linking, View } from 'react-native';
+import { View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 import Loading from '../Loading';
@@ -9,6 +9,7 @@ import { IMPData, Validation } from '../../utils/Validation';
 import { IMPConst } from '../../constants';
 
 import viewStyles from '../../styles';
+import IamportUrl from '../../utils/IamportUrl';
 
 type Props = {
   userCode: string;
@@ -77,14 +78,25 @@ function Certification({ userCode, tierCode, data, loading, callback }: Props) {
             originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
             onShouldStartLoadWithRequest={(request) => {
               const { url } = request;
-              if (url.startsWith('https://itunes.apple.com')) {
-                Linking.openURL(url);
+              const iamportUrl = new IamportUrl(url);
+              if (iamportUrl.isAppUrl()) {
+                /* 3rd-party 앱 오픈 */
+                iamportUrl.launchApp().catch((e) => {
+                  const { code, message } = e;
+                  callback({
+                    imp_success: false,
+                    error_code: code,
+                    error_msg: message,
+                  });
+                });
+
                 return false;
               }
-              if (url.startsWith('market://details')) {
-                Linking.openURL(url);
+              if (iamportUrl.isPaymentOver()) {
+                callback(iamportUrl.getQuery());
                 return false;
               }
+
               return true;
             }}
           />
