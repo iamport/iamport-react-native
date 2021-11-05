@@ -109,6 +109,9 @@ namespace IMPConst {
     PAYNOW: 'lguthepay-xpay',
     WOORIWONCARD: 'com.wooricard.smartapp',
     LPOINT: 'lmslpay',
+    KTFAUTH: 'ktauthexternalcall',
+    LGTAUTH: 'upluscorporation',
+    SKTAUTH: 'tauthlink',
   } as const;
 
   export const ANDROID_PACKAGE = {
@@ -137,6 +140,9 @@ namespace IMPConst {
     PACKAGE_PAYNOW: 'com.lguplus.paynow',
     PACKAGE_WOORIWONCARD: 'com.wooricard.smartapp',
     PACKAGE_LPOINT: 'com.lottemembers.android',
+    PACKAGE_KTFAUTH: 'com.kt.ktauth',
+    PACKAGE_LGTAUTH: 'com.lguplus.smartotp',
+    PACKAGE_SKTAUTH: 'com.sktelecom.tauth',
   } as const;
 }
 

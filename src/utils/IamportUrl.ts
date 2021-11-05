@@ -249,6 +249,21 @@ class IamportUrl {
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_LPOINT
           );
+        case IMPConst.ANDROID_APPSCHEME.KTFAUTH:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_KTFAUTH
+          );
+        case IMPConst.ANDROID_APPSCHEME.LGTAUTH:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_LGTAUTH
+          );
+        case IMPConst.ANDROID_APPSCHEME.SKTAUTH:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_SKTAUTH
+          );
         default:
           return this.url;
       }

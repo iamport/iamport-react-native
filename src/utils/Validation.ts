@@ -62,6 +62,7 @@ namespace IMPData {
     name: string;
     phone: string;
     min_age?: string;
+    m_redirect_url?: string;
   }
 
   export interface PaymentData {
