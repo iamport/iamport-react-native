@@ -1,14 +1,14 @@
 import {
-  QUOTAS,
-  METHODS,
-  METHODS_FOR_KCP,
-  METHODS_FOR_UPLUS,
-  METHODS_FOR_INICIS,
-  METHODS_FOR_MOBILIANS,
   METHOD_FOR_CARD,
   METHOD_FOR_PHONE,
-  METHOD_FOR_VBANK,
   METHOD_FOR_TRANS,
+  METHOD_FOR_VBANK,
+  METHODS,
+  METHODS_FOR_INICIS,
+  METHODS_FOR_KCP,
+  METHODS_FOR_MOBILIANS,
+  METHODS_FOR_UPLUS,
+  QUOTAS,
 } from './constants';
 
 function getQuotas(pg: string) {
@@ -58,7 +58,8 @@ function getMethods(pg: string) {
     case 'smilepay':
     case 'chai':
     case 'alipay':
-    case 'tosspay': {
+    case 'tosspay':
+    case 'smartro': {
       return METHOD_FOR_CARD;
     }
     case 'uplus': {

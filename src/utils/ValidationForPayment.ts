@@ -115,7 +115,7 @@ class ValidationForPayment extends Validation {
       return;
     }
 
-    if ((pg === 'naverpay' || pg === 'naverco') && naverPopupMode) {
+    if ((pg === 'naverpay') && naverPopupMode) {
       this.isValid = false;
       this.message =
         '해당 모듈에서 popup은\n네이버 페이 결제시 지원하지 않습니다.';

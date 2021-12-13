@@ -25,6 +25,7 @@ namespace IMPConst {
     'alipay',
     'bluewalnut',
     'tosspay',
+    'smartro',
   ] as const;
 
   export const PAY_METHOD = [
