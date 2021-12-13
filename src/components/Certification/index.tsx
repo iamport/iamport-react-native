@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { createRef, useState } from 'react';
 import { View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
@@ -37,59 +37,66 @@ function Certification({ userCode, tierCode, data, loading, callback }: Props) {
               // html이 load되고 최초 한번만 inject javascript
               if (tierCode) {
                 webview.current?.injectJavaScript(`
+          setTimeout(function() { IMP.agency("${userCode}", "${tierCode}"); });
+        `);
+              } else {
+                webview.current?.injectJavaScript(`
+          setTimeout(function() { IMP.init("${userCode}"); });
+        `);
+              }
+              webview.current?.injectJavaScript(`
           setTimeout(function() {
             IMP.certification(${JSON.stringify(data)}, function(response) {
               window.ReactNativeWebView.postMessage(JSON.stringify(response));
             });
           });
         `);
-                setIsWebViewLoaded(true);
-              }
-            }}
-            onMessage={(e) => {
-              const { data } = e.nativeEvent;
-              let response = data;
-              while (decodeURIComponent(response) !== response) {
-                response = decodeURIComponent(response);
-              }
-              response = JSON.parse(response);
+              setIsWebViewLoaded(true);
+            }
+          }}
+          onMessage={(e) => {
+            const { data } = e.nativeEvent;
+            let response = data;
+            while (decodeURIComponent(response) !== response) {
+              response = decodeURIComponent(response);
+            }
+            response = JSON.parse(response);
 
-              if (typeof callback === 'function') {
-                callback(response);
-              }
-            }}
-            startInLoadingState
-            renderLoading={() => (
-              <View style={loadingContainer}>{loading || <Loading />}</View>
-            )}
-            originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
-            onShouldStartLoadWithRequest={(request) => {
-              const { url } = request;
-              // console.log('url: ' + url);
-              const iamportUrl = new IamportUrl(url);
-              if (iamportUrl.isAppUrl()) {
-                /* 3rd-party 앱 오픈 */
-                iamportUrl.launchApp().catch((e) => {
-                  const { code, message } = e;
-                  callback({
-                    imp_success: false,
-                    error_code: code,
-                    error_msg: message,
-                  });
+            if (typeof callback === 'function') {
+              callback(response);
+            }
+          }}
+          startInLoadingState
+          renderLoading={() => (
+            <View style={loadingContainer}>{loading || <Loading />}</View>
+          )}
+          originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
+          onShouldStartLoadWithRequest={(request) => {
+            const { url } = request;
+            // console.log('url: ' + url);
+            const iamportUrl = new IamportUrl(url);
+            if (iamportUrl.isAppUrl()) {
+              /* 3rd-party 앱 오픈 */
+              iamportUrl.launchApp().catch((e) => {
+                const { code, message } = e;
+                callback({
+                  imp_success: false,
+                  error_code: code,
+                  error_msg: message,
                 });
+              });
 
-                return false;
-              }
-              if (iamportUrl.isPaymentOver()) {
-                callback(iamportUrl.getQuery());
-                return false;
-              }
+              return false;
+            }
+            if (iamportUrl.isPaymentOver()) {
+              callback(iamportUrl.getQuery());
+              return false;
+            }
 
-              return true;
-            }}
-          />
-        </View>
-      </View>
+            return true;
+          }}
+        />
+      </>
     );
   }
 

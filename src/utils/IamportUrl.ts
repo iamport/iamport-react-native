@@ -265,6 +265,7 @@ class IamportUrl {
           return (
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_SKTAUTH
+          );
         case IMPConst.ANDROID_APPSCHEME.WOORIWONBANK:
           return (
             IMPConst.ANDROID_MARKET_PREFIX +
