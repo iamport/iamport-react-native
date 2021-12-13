@@ -53,7 +53,6 @@ function getMethods(pg: string) {
     }
     case 'kcp_billing':
     case 'kakaopay':
-    case 'kakao':
     case 'paypal':
     case 'payco':
     case 'smilepay':
@@ -97,7 +96,6 @@ function getUserCode(pg: string, tierCode?: string, type = 'payment') {
       return 'imp09350031';
     case 'mobilians':
       return 'imp60029475';
-    case 'naverco':
     case 'naverpay':
       return 'imp41073887';
     case 'smilepay':

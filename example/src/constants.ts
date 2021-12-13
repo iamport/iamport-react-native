@@ -13,7 +13,7 @@ const PGS = [
   },
   {
     value: 'uplus',
-    label: '토스페이먼츠 - (구)LG 유플러스',
+    label: '토스페이먼츠',
   },
   {
     value: 'jtnet',
@@ -25,11 +25,7 @@ const PGS = [
   },
   {
     value: 'kakaopay',
-    label: '신 - 카카오페이',
-  },
-  {
-    value: 'kakao',
-    label: '구 - LG CNS 카카오페이',
+    label: '카카오페이',
   },
   {
     value: 'danal',
@@ -64,10 +60,6 @@ const PGS = [
     label: '세틀뱅크 가상계좌',
   },
   {
-    value: 'naverco',
-    label: '네이버 체크아웃',
-  },
-  {
     value: 'naverpay',
     label: '네이버페이',
   },
@@ -93,7 +85,7 @@ const PGS = [
   },
   {
     value: 'tosspay',
-    label: '토스 - 간편결제',
+    label: '토스 간편결제',
   },
 ];
 
