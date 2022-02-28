@@ -6,7 +6,7 @@ RCT_EXPORT_VIEW_PROPERTY(color, NSString)
 
 + (BOOL)requiresMainQueueSetup
 {
-    return NO;
+    return YES;
 }
 
 @end
