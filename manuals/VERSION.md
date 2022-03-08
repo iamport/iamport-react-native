@@ -1,5 +1,8 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
+- [v2.0.0-rc.2](https://github.com/iamport/iamport-react-native/tree/v2.0.0-rc.2)
+  - `requiresMainQueueSetup` 관련 워닝을 해결했습니다.
+
 - [v2.0.0-rc.1](https://github.com/iamport/iamport-react-native/tree/v2.0.0-rc.1)
   - [안드로이드] 다날 본인인증 PASS 앱 실행 로직을 추가했습니다.
 
