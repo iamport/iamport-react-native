@@ -154,6 +154,8 @@ function CertificationTest({ navigation }: Props) {
                   name,
                   phone,
                   min_age: minAge,
+                  popup: false,
+                  m_redirect_url: IMPConst.M_REDIRECT_URL,
                 },
                 tierCode,
               };

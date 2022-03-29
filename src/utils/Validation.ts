@@ -62,6 +62,7 @@ namespace IMPData {
     name: string;
     phone: string;
     min_age?: string;
+    popup?: boolean;
     m_redirect_url?: string;
   }
 
@@ -73,6 +74,8 @@ namespace IMPData {
       name: string,
       phone: string,
       min_age?: string,
+      popup?: boolean,
+      m_redirect_url?: string
     ) {
       this.carrier = carrier;
       this.company = company;
@@ -80,6 +83,8 @@ namespace IMPData {
       this.name = name;
       this.phone = phone;
       this.min_age = min_age;
+      this.popup = popup;
+      this.m_redirect_url = m_redirect_url;
     }
 
     carrier: string;
@@ -88,6 +93,8 @@ namespace IMPData {
     name: string;
     phone: string;
     min_age?: string;
+    popup?: boolean;
+    m_redirect_url?: string;
   }
 
   interface IPaymentData {
