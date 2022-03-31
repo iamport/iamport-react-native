@@ -5,6 +5,7 @@ import { Button, FormControl, Input, ScrollView, Select, Stack, Text } from 'nat
 import Picker from '../Picker';
 import { CARRIERS, TIER_CODES } from '../constants';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { IMPConst } from 'iamport-react-native';
 
 type Props = StackScreenProps<RootStackParamList, 'CertificationTest'>;
 
