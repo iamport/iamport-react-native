@@ -26,7 +26,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string/>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>exampleforrn</string>
@@ -70,6 +70,7 @@
 		<string>liivbank</string>
 		<string>supertoss</string>
 		<string>newsmartpib</string>
+		<string>ukbanksmartbanknonloginpay</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

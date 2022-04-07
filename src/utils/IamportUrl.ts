@@ -32,8 +32,7 @@ class IamportUrl {
               this.path = scheme + '://' + host;
               this.scheme = scheme;
             } else if (s.startsWith('package')) {
-              let p = s.split('=')[1];
-              this.package = p;
+              this.package = s.split('=')[1];
             }
           });
         } else {
@@ -118,6 +117,8 @@ class IamportUrl {
           return IMPConst.IOS_MARKET_PREFIX + 'id839333328';
         case 'newsmartpib': // 우리WON뱅킹
           return IMPConst.IOS_MARKET_PREFIX + 'id1470181651';
+        case 'ukbanksmartbanknonloginpay': // 케이뱅크 페이
+          return IMPConst.IOS_MARKET_PREFIX + 'id1178872627';
         default:
           return this.url;
       }
@@ -235,6 +236,11 @@ class IamportUrl {
           return (
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_KPAY
+          );
+        case IMPConst.ANDROID_APPSCHEME.KBANKPAY:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_KBANKPAY
           );
         case IMPConst.ANDROID_APPSCHEME.PAYNOW:
           return (
