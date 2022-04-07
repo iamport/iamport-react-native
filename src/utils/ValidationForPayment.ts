@@ -6,7 +6,7 @@ class ValidationForPayment extends Validation {
     userCode: string,
     loading: object,
     callback: (response: any) => any,
-    data: IMPData.PaymentData,
+    data: IMPData.PaymentData
   ) {
     super(userCode, loading, callback, data);
   }
@@ -109,13 +109,13 @@ class ValidationForPayment extends Validation {
       return;
     }
 
-    if (pg === 'paypal' && popup) {
+    if (popup) {
       this.isValid = false;
-      this.message = '해당 모듈에서 popup은\n페이팔 결제시 지원하지 않습니다.';
+      this.message = '해당 모듈은 팝업을 지원하지 않습니다.';
       return;
     }
 
-    if ((pg === 'naverpay') && naverPopupMode) {
+    if (pg === 'naverpay' && naverPopupMode) {
       this.isValid = false;
       this.message =
         '해당 모듈에서 popup은\n네이버 페이 결제시 지원하지 않습니다.';
