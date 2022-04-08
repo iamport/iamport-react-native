@@ -22,7 +22,7 @@ type Props = {
 function Certification({ userCode, tierCode, data, loading, callback }: Props) {
   const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
   const webview = createRef<WebView>();
-  const validation = new Validation(userCode, loading);
+  const validation = new Validation(userCode, loading, callback, data);
 
   if (validation.getIsValid()) {
     const { loadingContainer, webViewContainer } = viewStyles;
