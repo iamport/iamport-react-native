@@ -11,15 +11,6 @@ class ValidationForPayment extends Validation {
     super(userCode, loading, callback, data);
   }
 
-  validateCallback() {
-    if (this.callback !== undefined && typeof this.callback !== 'function') {
-      this.isValid = false;
-      this.message = '콜백 함수(callback)가 올바르지 않습니다.';
-      return;
-    }
-    this.validateData();
-  }
-
   validateData() {
     const {
       pg,

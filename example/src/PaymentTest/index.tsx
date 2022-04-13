@@ -305,7 +305,6 @@ function PaymentTest({ navigation }: Props) {
                     buyer_postcode: undefined,
                     custom_data: undefined,
                     vbank_due: undefined,
-                    popup: undefined,
                     digital: undefined,
                     language: undefined,
                     biz_num: undefined,

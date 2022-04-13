@@ -23,6 +23,10 @@ function Certification({ userCode, tierCode, data, loading, callback }: Props) {
   const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
   const webview = createRef<WebView>();
   const validation = new Validation(userCode, loading, callback, data);
+  let redirectUrl = IMPConst.M_REDIRECT_URL;
+  if (data.m_redirect_url !== undefined) {
+    redirectUrl = data.m_redirect_url;
+  }
 
   if (validation.getIsValid()) {
     const { loadingContainer, webViewContainer } = viewStyles;
@@ -55,12 +59,11 @@ function Certification({ userCode, tierCode, data, loading, callback }: Props) {
             }
           }}
           onMessage={(e) => {
-            const { data } = e.nativeEvent;
-            let response = data;
-            while (decodeURIComponent(response) !== response) {
-              response = decodeURIComponent(response);
+            let data = e.nativeEvent.data;
+            if (decodeURIComponent(data) !== data) {
+              data = decodeURIComponent(data);
             }
-            response = JSON.parse(response);
+            let response = JSON.parse(data);
 
             if (typeof callback === 'function') {
               callback(response);
@@ -88,7 +91,7 @@ function Certification({ userCode, tierCode, data, loading, callback }: Props) {
 
               return false;
             }
-            if (iamportUrl.isPaymentOver()) {
+            if (iamportUrl.isPaymentOver(redirectUrl)) {
               callback(iamportUrl.getQuery());
               return false;
             }

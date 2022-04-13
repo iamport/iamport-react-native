@@ -48,8 +48,8 @@ class IamportUrl {
     return this.url;
   }
 
-  isPaymentOver() {
-    return this.url.includes(IMPConst.M_REDIRECT_URL);
+  isPaymentOver(redirectUrl: string) {
+    return this.url.includes(redirectUrl);
   }
 
   isAppUrl() {

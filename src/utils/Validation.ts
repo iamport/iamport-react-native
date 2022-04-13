@@ -38,19 +38,25 @@ class Validation {
       this.message = '로딩(loading) 컴포넌트가 올바르지 않습니다.';
       return;
     }
-    this.validatePopup();
+    this.validateCallback();
   }
 
-  validatePopup() {
+  validateCallback() {
+    if (this.callback !== undefined && typeof this.callback !== 'function') {
+      this.isValid = false;
+      this.message = '콜백 함수(callback)가 올바르지 않습니다.';
+      return;
+    }
+    this.validateData();
+  }
+
+  validateData() {
     if (this.data?.popup) {
       this.isValid = false;
       this.message = '해당 모듈은 팝업을 지원하지 않습니다.';
       return;
     }
-    this.validateCallback();
   }
-
-  validateCallback() {}
 
   getIsValid() {
     return this.isValid;

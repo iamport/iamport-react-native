@@ -27,6 +27,10 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
   const [isInicisTransPaid, setIsInicisTransPaid] = useState(false);
   const webview = createRef<WebView>();
   const smilepayRef = useRef(false);
+  let redirectUrl = IMPConst.M_REDIRECT_URL;
+  if (data.m_redirect_url !== undefined) {
+    redirectUrl = data.m_redirect_url;
+  }
 
   useEffect(() => {
     const { pg } = data;
@@ -209,7 +213,7 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
 
               return false;
             }
-            if (iamportUrl.isPaymentOver()) {
+            if (iamportUrl.isPaymentOver(redirectUrl)) {
               if (typeof callback === 'function') {
                 callback(iamportUrl.getQuery());
               }
