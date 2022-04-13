@@ -310,18 +310,13 @@ class IamportUrl {
   }
 
   async launchApp() {
-    if (Platform.OS === 'ios') {
-      if (await Linking.canOpenURL(this.url)) {
-        return await Linking.openURL(this.getAppUrl() as string);
-      }
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
       try {
-        return await Linking.openURL(this.getAppUrl() as string);
-      } catch (e) {
-        return await Linking.openURL(this.getMarketUrl());
-      }
-    } else if (Platform.OS === 'android') {
-      try {
-        return await Linking.openURL(this.getAppUrl() as string);
+        if (await Linking.canOpenURL(this.url)) {
+          return await Linking.openURL(this.getAppUrl() as string);
+        } else {
+          return await Linking.openURL(this.getAppUrl() as string);
+        }
       } catch (e) {
         return await Linking.openURL(this.getMarketUrl());
       }
