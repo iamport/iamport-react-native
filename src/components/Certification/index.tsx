@@ -24,7 +24,7 @@ function Certification({ userCode, tierCode, data, loading, callback }: Props) {
   const webview = createRef<WebView>();
   const validation = new Validation(userCode, loading, callback, data);
   let redirectUrl = IMPConst.M_REDIRECT_URL;
-  if (data.m_redirect_url !== undefined) {
+  if (data.m_redirect_url !== undefined && data.m_redirect_url.trim() !== '') {
     redirectUrl = data.m_redirect_url;
   }
 

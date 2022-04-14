@@ -294,13 +294,10 @@ class IamportUrl {
     return queryString.extract(decodedUrl);
   }
 
-  getInicisTransQuery() {
+  getInicisTransQuery(redirectUrl: string) {
     const { m_redirect_url, imp_uid, merchant_uid } = this.getQuery();
-    const inicisTransQuery = {
-      imp_uid: imp_uid,
-      merchant_uid,
-    };
-    if (m_redirect_url?.includes(IMPConst.M_REDIRECT_URL)) {
+    const inicisTransQuery = { imp_uid, merchant_uid };
+    if (m_redirect_url?.includes(redirectUrl)) {
       inicisTransQuery.merchant_uid =
         typeof merchant_uid === 'object' ? merchant_uid![0] : merchant_uid;
     } else {

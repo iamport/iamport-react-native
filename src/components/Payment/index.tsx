@@ -28,7 +28,7 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
   const webview = createRef<WebView>();
   const smilepayRef = useRef(false);
   let redirectUrl = IMPConst.M_REDIRECT_URL;
-  if (data.m_redirect_url !== undefined) {
+  if (data.m_redirect_url !== undefined && data.m_redirect_url.trim() !== '') {
     redirectUrl = data.m_redirect_url;
   }
 
@@ -72,9 +72,9 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
         if (pg.startsWith('html5_inicis') && Platform.OS === 'ios') {
           if (isInicisTransPaid) {
             webview.current?.injectJavaScript(`
-              window.location.href = "${
-                IMPConst.M_REDIRECT_URL
-              }?${iamportUrl.getInicisTransQuery()}";
+              window.location.href = "${redirectUrl}?${iamportUrl.getInicisTransQuery(
+              redirectUrl
+            )}";
             `);
           } else {
             setIsInicisTransPaid(true);
@@ -98,7 +98,7 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
       }
     };
     Linking.addEventListener('url', handleOpenURL);
-  }, [data, isInicisTransPaid, webview]);
+  }, [data, isInicisTransPaid, redirectUrl, webview]);
 
   const removeLoadingNeeded = () => {
     if (showLoading && Platform.OS === 'android') {
@@ -148,7 +148,6 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
           source={webviewSource}
           onLoadEnd={() => {
             if (!isWebViewLoaded) {
-              data.m_redirect_url = IMPConst.M_REDIRECT_URL;
               if (data.pg.startsWith('eximbay')) {
                 data.popup = false;
               }
