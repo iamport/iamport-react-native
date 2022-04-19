@@ -95,6 +95,10 @@ const PGS = [
     value: 'tosspay',
     label: '토스 - 간편결제',
   },
+  {
+    value: 'smartro',
+    label: '스마트로',
+  },
 ];
 
 const TIER_CODES = [

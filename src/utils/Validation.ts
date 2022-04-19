@@ -41,9 +41,22 @@ class Validation {
     this.validateCallback();
   }
 
-  validateCallback() {}
+  validateCallback() {
+    if (this.callback !== undefined && typeof this.callback !== 'function') {
+      this.isValid = false;
+      this.message = '콜백 함수(callback)가 올바르지 않습니다.';
+      return;
+    }
+    this.validateData();
+  }
 
-  validateData() {}
+  validateData() {
+    if (this.data?.popup) {
+      this.isValid = false;
+      this.message = '해당 모듈은 팝업을 지원하지 않습니다.';
+      return;
+    }
+  }
 
   getIsValid() {
     return this.isValid;
@@ -55,17 +68,49 @@ class Validation {
 }
 
 namespace IMPData {
-  export interface CertificationData {
+  interface ICertificationData {
     merchant_uid: string;
     company: string;
     carrier: string;
     name: string;
     phone: string;
     min_age?: string;
+    popup?: boolean;
     m_redirect_url?: string;
   }
 
-  export interface PaymentData {
+  export class CertificationData implements ICertificationData {
+    constructor(
+      carrier: string,
+      company: string,
+      merchant_uid: string,
+      name: string,
+      phone: string,
+      min_age?: string,
+      popup?: boolean,
+      m_redirect_url?: string
+    ) {
+      this.carrier = carrier;
+      this.company = company;
+      this.merchant_uid = merchant_uid;
+      this.name = name;
+      this.phone = phone;
+      this.min_age = min_age;
+      this.popup = popup;
+      this.m_redirect_url = m_redirect_url;
+    }
+
+    carrier: string;
+    company: string;
+    merchant_uid: string;
+    name: string;
+    phone: string;
+    min_age?: string;
+    popup?: boolean;
+    m_redirect_url?: string;
+  }
+
+  interface IPaymentData {
     pg: string;
     pay_method: string;
     currency?: string;
@@ -95,6 +140,98 @@ namespace IMPData {
     naverUseCfm?: string;
     naverProducts?: object[];
     m_redirect_url?: string;
+    niceMobileV2?: boolean;
+  }
+
+  export class PaymentData implements IPaymentData {
+    constructor(
+      amount: string | number,
+      buyer_email: string,
+      buyer_name: string,
+      buyer_tel: string,
+      escrow: boolean,
+      merchant_uid: string,
+      name: string,
+      pay_method: string,
+      pg: string,
+      language?: string,
+      naverPopupMode?: boolean,
+      naverProducts?: object[],
+      naverUseCfm?: string,
+      niceMobileV2?: boolean,
+      notice_url?: string | string[],
+      m_redirect_url?: string,
+      currency?: string,
+      custom_data?: object,
+      customer_uid?: string,
+      digital?: boolean,
+      display?: { card_quota: number[] },
+      buyer_postcode?: string,
+      app_scheme?: string,
+      biz_num?: string,
+      buyer_addr?: string,
+      popup?: boolean,
+      tax_free?: number,
+      vbank_due?: string
+    ) {
+      this.amount = amount;
+      this.app_scheme = app_scheme;
+      this.biz_num = biz_num;
+      this.buyer_addr = buyer_addr;
+      this.buyer_email = buyer_email;
+      this.buyer_name = buyer_name;
+      this.buyer_postcode = buyer_postcode;
+      this.buyer_tel = buyer_tel;
+      this.currency = currency;
+      this.custom_data = custom_data;
+      this.customer_uid = customer_uid;
+      this.digital = digital;
+      this.display = display;
+      this.escrow = escrow;
+      this.language = language;
+      this.m_redirect_url = m_redirect_url;
+      this.merchant_uid = merchant_uid;
+      this.name = name;
+      this.naverPopupMode = naverPopupMode;
+      this.naverProducts = naverProducts;
+      this.naverUseCfm = naverUseCfm;
+      this.niceMobileV2 = niceMobileV2;
+      this.notice_url = notice_url;
+      this.pay_method = pay_method;
+      this.pg = pg;
+      this.popup = popup;
+      this.tax_free = tax_free;
+      this.vbank_due = vbank_due;
+    }
+
+    amount: string | number;
+    app_scheme?: string;
+    biz_num?: string;
+    buyer_addr?: string;
+    buyer_email: string;
+    buyer_name: string;
+    buyer_postcode?: string;
+    buyer_tel: string;
+    currency?: string;
+    custom_data?: object;
+    customer_uid?: string;
+    digital?: boolean;
+    display?: { card_quota: number[] };
+    escrow: boolean;
+    language?: string;
+    m_redirect_url?: string;
+    merchant_uid: string;
+    name: string;
+    naverPopupMode?: boolean;
+    naverProducts?: object[];
+    naverUseCfm?: string;
+    niceMobileV2?: boolean = true;
+    notice_url?: string | string[];
+    pay_method: string;
+    pg: string;
+    popup?: boolean;
+    tax_free?: number;
+    vbank_due?: string;
   }
 }
 

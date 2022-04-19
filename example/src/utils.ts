@@ -57,9 +57,7 @@ function getMethods(pg: string) {
     case 'payco':
     case 'smilepay':
     case 'chai':
-    case 'alipay':
-    case 'tosspay':
-    case 'smartro': {
+    case 'alipay': {
       return METHOD_FOR_CARD;
     }
     case 'uplus': {

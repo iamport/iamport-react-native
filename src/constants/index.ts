@@ -78,7 +78,7 @@ namespace IMPConst {
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
     <script type='text/javascript' src='https://code.jquery.com/jquery-latest.min.js' ></script>
-    <script type='text/javascript' src='https://cdn.iamport.kr/js/iamport.payment-1.1.8.js'></script>
+    <script type='text/javascript' src='https://cdn.iamport.kr/js/iamport.payment-1.2.0.js'></script>
   </head>
   <body></body>
 </html>
@@ -107,12 +107,14 @@ namespace IMPConst {
     LPAY: 'lpayapp',
     SSGPAY: 'shinsegaeeasypayment',
     KPAY: 'kpay',
+    KBANKPAY: 'ukbanksmartbanknonloginpay',
     PAYNOW: 'lguthepay-xpay',
     WOORIWONCARD: 'com.wooricard.smartapp',
     LPOINT: 'lmslpay',
     KTFAUTH: 'ktauthexternalcall',
     LGTAUTH: 'upluscorporation',
     SKTAUTH: 'tauthlink',
+    WOORIWONBANK: 'wooribank',
   } as const;
 
   export const ANDROID_PACKAGE = {
@@ -138,12 +140,14 @@ namespace IMPConst {
     PACKAGE_LPAY: 'com.lotte.lpay',
     PACKAGE_SSGPAY: 'com.ssg.serviceapp.android.egiftcertificate',
     PACKAGE_KPAY: 'com.inicis.kpay',
+    PACKAGE_KBANKPAY: 'com.kbankwith.smartbank',
     PACKAGE_PAYNOW: 'com.lguplus.paynow',
     PACKAGE_WOORIWONCARD: 'com.wooricard.smartapp',
     PACKAGE_LPOINT: 'com.lottemembers.android',
     PACKAGE_KTFAUTH: 'com.kt.ktauth',
     PACKAGE_LGTAUTH: 'com.lguplus.smartotp',
     PACKAGE_SKTAUTH: 'com.sktelecom.tauth',
+    PACKAGE_WOORIWONBANK: 'com.wooribank.smart.npib',
   } as const;
 }
 

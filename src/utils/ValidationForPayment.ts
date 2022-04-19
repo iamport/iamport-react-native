@@ -6,18 +6,9 @@ class ValidationForPayment extends Validation {
     userCode: string,
     loading: object,
     callback: (response: any) => any,
-    data: IMPData.PaymentData,
+    data: IMPData.PaymentData
   ) {
     super(userCode, loading, callback, data);
-  }
-
-  validateCallback() {
-    if (this.callback !== undefined && typeof this.callback !== 'function') {
-      this.isValid = false;
-      this.message = '콜백 함수(callback)가 올바르지 않습니다.';
-      return;
-    }
-    this.validateData();
   }
 
   validateData() {
@@ -83,7 +74,7 @@ class ValidationForPayment extends Validation {
               '올바르지 않은 언어 설정입니다.\n 선택하신 PG사는 ko, en, zh jp 옵션을 지원합니다.';
             return;
           }
-        } else if (IMPConst.LANGUAGE.indexOf(language as any) !== -1) {
+        } else if (IMPConst.LANGUAGE.indexOf(language as any) === -1) {
           this.isValid = false;
           this.message =
             '올바르지 않은 언어 설정입니다.\n 선택하신 PG사는 ko 또는 en 옵션을 지원합니다.';
@@ -109,13 +100,13 @@ class ValidationForPayment extends Validation {
       return;
     }
 
-    if (pg === 'paypal' && popup) {
+    if (popup) {
       this.isValid = false;
-      this.message = '해당 모듈에서 popup은\n페이팔 결제시 지원하지 않습니다.';
+      this.message = '해당 모듈은 팝업을 지원하지 않습니다.';
       return;
     }
 
-    if ((pg === 'naverpay') && naverPopupMode) {
+    if (pg === 'naverpay' && naverPopupMode) {
       this.isValid = false;
       this.message =
         '해당 모듈에서 popup은\n네이버 페이 결제시 지원하지 않습니다.';

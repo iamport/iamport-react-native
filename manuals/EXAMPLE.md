@@ -156,14 +156,13 @@ export function Loading() {
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
+    flex: 1,
   },
 });
 
 export default Loading;
 ```
 
-로딩 컴포넌트를 감싸고 있는 최상단 View 컴포넌트의 스타일 속성을 지정할때 주의해야합니다.
-별도의 설정 없이 작성할 경우, 로딩 컴포넌트는 전체 화면의 절반만 차지하게 됩니다.
-이는 react-native-webview 모듈 자체의 이슈로, 스타일 속성을 지정할때 위 예시와 같이 `StyleSheet.absoluteFillObject`값을 추가해주면 됩니다.
-자세한 내용은 [Fix: Flex loading view](https://github.com/react-native-community/react-native-webview/pull/663)를 참고해주세요.
+로딩 컴포넌트 및 웹뷰 컴포넌트(IMP.Certification, IMP Payment)를 감싸고 있는 최상단 View 컴포넌트의 스타일 속성을 지정할때 주의해야합니다.
+별도의 설정 없이 작성할 경우, 컴포넌트들이 전체화면으로 보이지 않을 수 있습니다.
+따라서 스타일 속성을 지정할 때, 각 컴포넌트의 `flex`값을 1로 설정해주셔야 합니다.

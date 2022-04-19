@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon, Text, View } from 'native-base';
+import { Button, Stack, Text, View } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { RootStackParamList } from '../NavigationService';
@@ -40,24 +40,19 @@ function Home({ navigation }: Props) {
         flexDir={'row'}
         alignSelf={'center'}
       >
-        <Button.Group bottom={'16.5%'} width={'100%'} alignSelf={'center'}>
+        <Button.Group bottom={'50%'} width={'100%'} alignSelf={'center'}>
           <Button
             m={'4%'}
             bgColor={'#fff'}
             borderRadius={3}
             flex={1}
             shadow={1}
-            /* @ts-ignore */
             onPress={() => navigation.push('PaymentTest')}
           >
-            <Icon
-              as={FontAwesome}
-              name={'credit-card'}
-              textAlign={'center'}
-              w={'100%'}
-              mb={'6%'}
-            />
-            <Text>결제 테스트</Text>
+            <Stack direction={'column'} alignItems={'center'}>
+              <FontAwesome name={'credit-card'} size={30} />
+              <Text fontSize={15}>결제 테스트</Text>
+            </Stack>
           </Button>
           <Button
             m={'4%'}
@@ -65,17 +60,12 @@ function Home({ navigation }: Props) {
             borderRadius={3}
             flex={1}
             shadow={1}
-            /* @ts-ignore */
             onPress={() => navigation.push('CertificationTest')}
           >
-            <Icon
-              as={FontAwesome}
-              name={'user'}
-              textAlign={'center'}
-              w={'100%'}
-              mb={'6%'}
-            />
-            <Text>본인인증 테스트</Text>
+            <Stack direction={'column'} alignItems={'center'}>
+              <FontAwesome name={'user'} size={30} />
+              <Text fontSize={15}>본인인증 테스트</Text>
+            </Stack>
           </Button>
         </Button.Group>
       </View>

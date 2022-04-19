@@ -3,6 +3,7 @@ import type {StackScreenProps} from '@react-navigation/stack';
 import type {RootStackParamList} from './App';
 import IMP from 'iamport-react-native';
 import Loading from './Loading';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 type Props = StackScreenProps<RootStackParamList, 'Certification'>;
 
@@ -39,12 +40,14 @@ function Certification({navigation, route}: Props) {
   }
 
   return (
-    <IMP.Certification
-      userCode={userCode as string}
-      loading={<Loading />}
-      data={data}
-      callback={callback}
-    />
+    <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
+      <IMP.Certification
+        userCode={userCode as string}
+        loading={<Loading />}
+        data={data}
+        callback={callback}
+      />
+    </SafeAreaView>
   );
 }
 

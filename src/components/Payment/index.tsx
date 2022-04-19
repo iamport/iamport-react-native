@@ -14,7 +14,7 @@ type Props = {
   userCode: string;
   tierCode?: string;
   data: IMPData.PaymentData;
-  loading: any;
+  loading?: any;
   callback: (response: any) => any;
 };
 
@@ -27,6 +27,10 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
   const [isInicisTransPaid, setIsInicisTransPaid] = useState(false);
   const webview = createRef<WebView>();
   const smilepayRef = useRef(false);
+  let redirectUrl = IMPConst.M_REDIRECT_URL;
+  if (data.m_redirect_url !== undefined && data.m_redirect_url.trim() !== '') {
+    redirectUrl = data.m_redirect_url;
+  }
 
   useEffect(() => {
     const { pg } = data;
@@ -68,9 +72,9 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
         if (pg.startsWith('html5_inicis') && Platform.OS === 'ios') {
           if (isInicisTransPaid) {
             webview.current?.injectJavaScript(`
-              window.location.href = "${
-                IMPConst.M_REDIRECT_URL
-              }?${iamportUrl.getInicisTransQuery()}";
+              window.location.href = "${redirectUrl}?${iamportUrl.getInicisTransQuery(
+              redirectUrl
+            )}";
             `);
           } else {
             setIsInicisTransPaid(true);
@@ -94,7 +98,7 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
       }
     };
     Linking.addEventListener('url', handleOpenURL);
-  }, [data, isInicisTransPaid, webview]);
+  }, [data, isInicisTransPaid, redirectUrl, webview]);
 
   const removeLoadingNeeded = () => {
     if (showLoading && Platform.OS === 'android') {
@@ -135,30 +139,29 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
     data
   );
   if (validation.getIsValid()) {
-    const { wrapper, loadingContainer, webViewContainer } = viewStyles;
+    const { loadingContainer, webViewContainer } = viewStyles;
     return (
-      <View style={wrapper}>
-        <View style={webViewContainer}>
-          <WebView
-            ref={webview}
-            source={webviewSource}
-            onLoadEnd={() => {
-              if (!isWebViewLoaded) {
-                data.m_redirect_url = IMPConst.M_REDIRECT_URL;
-                if (data.pg.startsWith('eximbay')) {
-                  data.popup = false;
-                }
+      <>
+        <WebView
+          containerStyle={webViewContainer}
+          ref={webview}
+          source={webviewSource}
+          onLoadEnd={() => {
+            if (!isWebViewLoaded) {
+              if (data.pg.startsWith('eximbay')) {
+                data.popup = false;
+              }
 
-                if (tierCode) {
-                  webview.current?.injectJavaScript(`
+              if (tierCode) {
+                webview.current?.injectJavaScript(`
                     setTimeout(function() { IMP.agency("${userCode}", "${tierCode}"); });
                   `);
-                } else {
-                  webview.current?.injectJavaScript(`
+              } else {
+                webview.current?.injectJavaScript(`
                     setTimeout(function() { IMP.init("${userCode}"); });
                   `);
-                }
-                webview.current?.injectJavaScript(`
+              }
+              webview.current?.injectJavaScript(`
                   setTimeout(function() {
                     IMP.request_pay(${JSON.stringify(
                       data
@@ -167,73 +170,69 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
                     });
                   });
                 `);
-                setIsWebViewLoaded(true);
-              }
+              setIsWebViewLoaded(true);
+            }
 
-              // only for Android
-              if (removeLoadingNeeded()) {
-                setShowLoading(false);
-              }
-            }}
-            /* PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 */
-            onMessage={(e) => {
-              const { data } = e.nativeEvent;
-              /**
-               * [v1.6.0] 다날의 경우 response에 주문명(name)이 포함되어 있는데
-               * 주문명에 %가 들어갈 경우, decodeURIComponent시 URI malformed 에러가 발생하는 것 대비해
-               * 우선 encodeURIComponent를 한 후, decodeURIComponent가 끝나면
-               * 최종적으로 decodeURIComponent를 한 번 더 한다
-               */
-              let response = encodeURIComponent(data);
-              while (decodeURIComponent(response) !== data) {
-                response = decodeURIComponent(response);
-              }
-              response = decodeURIComponent(response);
-              response = JSON.parse(response);
+            // only for Android
+            if (removeLoadingNeeded()) {
+              setShowLoading(false);
+            }
+          }}
+          /* PG사가 callback을 지원하는 경우, 결제결과를 받아 callback을 실행한다 */
+          onMessage={(e) => {
+            /**
+             * [v1.6.0] 다날의 경우 response에 주문명(name)이 포함되어 있는데
+             * 주문명에 %가 들어갈 경우, decodeURIComponent시 URI malformed 에러가 발생하는 것 대비해
+             * 우선 encodeURIComponent를 한 후, decodeURIComponent가 끝나면
+             * 최종적으로 decodeURIComponent를 한 번 더 한다
+             */
+            const encoded = encodeURIComponent(e.nativeEvent.data);
+            const decoded = decodeURIComponent(encoded);
+            const response = JSON.parse(decoded);
+            if (typeof callback === 'function') {
               callback(response);
-            }}
-            originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
-            sharedCookiesEnabled={true}
-            onShouldStartLoadWithRequest={(request) => {
-              const { url } = request;
-              const iamportUrl = new IamportUrl(url);
-              if (iamportUrl.isAppUrl()) {
-                /* 3rd-party 앱 오픈 */
-                iamportUrl.launchApp().catch((e) => {
-                  const { code, message } = e;
-                  callback({
-                    imp_success: false,
-                    error_code: code,
-                    error_msg: message,
-                  });
+            }
+          }}
+          originWhitelist={['*']} // https://github.com/facebook/react-native/issues/19986
+          sharedCookiesEnabled={true}
+          onShouldStartLoadWithRequest={(request) => {
+            const { url } = request;
+            // console.log(`url: ${url}`);
+            const iamportUrl = new IamportUrl(url);
+            if (iamportUrl.isAppUrl()) {
+              /* 3rd-party 앱 오픈 */
+              iamportUrl.launchApp().catch((e) => {
+                const { code, message } = e;
+                callback({
+                  imp_success: false,
+                  error_code: code,
+                  error_msg: message,
                 });
+              });
 
-                return false;
-              }
-              if (iamportUrl.isPaymentOver()) {
+              return false;
+            }
+            if (iamportUrl.isPaymentOver(redirectUrl)) {
+              if (typeof callback === 'function') {
                 callback(iamportUrl.getQuery());
-                return false;
               }
-              if (
-                isWebViewLoaded &&
-                showLoading &&
-                iamportUrl.isIframeLoaded()
-              ) {
-                /**
-                 * only for IOS
-                 * iframe이 load되면(url이 about:blank 또는 https://service.iamport.kr이 아니면)
-                 * webview의 loading 상태를 해제한다
-                 */
-                setShowLoading(false);
-              }
-              return true;
-            }}
-          />
-        </View>
+              return false;
+            }
+            if (isWebViewLoaded && showLoading && iamportUrl.isIframeLoaded()) {
+              /**
+               * only for IOS
+               * iframe이 load되면(url이 about:blank 또는 https://service.iamport.kr이 아니면)
+               * webview의 loading 상태를 해제한다
+               */
+              setShowLoading(false);
+            }
+            return true;
+          }}
+        />
         {showLoading && (
           <View style={loadingContainer}>{loading || <Loading />}</View>
         )}
-      </View>
+      </>
     );
   }
 

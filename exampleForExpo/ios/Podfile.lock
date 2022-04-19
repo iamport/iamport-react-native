@@ -34,7 +34,7 @@ PODS:
     - UMCore
   - EXStructuredHeaders (1.1.1):
     - UMCore
-  - EXUpdates (0.8.2):
+  - EXUpdates (0.8.4):
     - EXStructuredHeaders
     - EXUpdatesInterface
     - React-Core
@@ -506,7 +506,7 @@ SPEC CHECKSUMS:
   ExpoModulesCore: 2734852616127a6c1fc23012197890a6f3763dc7
   EXSplashScreen: 6208ca88470ff5979fd49a08ef3feb01143a2b79
   EXStructuredHeaders: e52b880264d15b8ad07d36670226c29476af6334
-  EXUpdates: dcc9d0432e1ad0a3f51b8721375401b4708bf7a1
+  EXUpdates: af3ecad91644a171deaa310326e73b4e70f6963c
   EXUpdatesInterface: b68e78b912a03fff7901a5f46ec200c45e3506a5
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e

@@ -32,8 +32,7 @@ class IamportUrl {
               this.path = scheme + '://' + host;
               this.scheme = scheme;
             } else if (s.startsWith('package')) {
-              let p = s.split('=')[1];
-              this.package = p;
+              this.package = s.split('=')[1];
             }
           });
         } else {
@@ -49,8 +48,8 @@ class IamportUrl {
     return this.url;
   }
 
-  isPaymentOver() {
-    return this.url.includes(IMPConst.M_REDIRECT_URL);
+  isPaymentOver(redirectUrl: string) {
+    return this.url.includes(redirectUrl);
   }
 
   isAppUrl() {
@@ -98,7 +97,7 @@ class IamportUrl {
           return IMPConst.IOS_MARKET_PREFIX + 'id1036098908';
         case 'wooripay': // 우리페이
           return IMPConst.IOS_MARKET_PREFIX + 'id1201113419';
-        case 'com.wooricard.wcard':
+        case 'com.wooricard.wcard': // 우리WON카드
           return IMPConst.IOS_MARKET_PREFIX + 'id1499598869';
         case 'nhallonepayansimclick': // NH농협카드 올원페이(앱카드)
           return IMPConst.IOS_MARKET_PREFIX + 'id1177889176';
@@ -116,6 +115,10 @@ class IamportUrl {
           return IMPConst.IOS_MARKET_PREFIX + 'id1126232922';
         case 'supertoss': // 토스
           return IMPConst.IOS_MARKET_PREFIX + 'id839333328';
+        case 'newsmartpib': // 우리WON뱅킹
+          return IMPConst.IOS_MARKET_PREFIX + 'id1470181651';
+        case 'ukbanksmartbanknonloginpay': // 케이뱅크 페이
+          return IMPConst.IOS_MARKET_PREFIX + 'id1178872627';
         default:
           return this.url;
       }
@@ -234,6 +237,11 @@ class IamportUrl {
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_KPAY
           );
+        case IMPConst.ANDROID_APPSCHEME.KBANKPAY:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_KBANKPAY
+          );
         case IMPConst.ANDROID_APPSCHEME.PAYNOW:
           return (
             IMPConst.ANDROID_MARKET_PREFIX +
@@ -264,6 +272,11 @@ class IamportUrl {
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_SKTAUTH
           );
+        case IMPConst.ANDROID_APPSCHEME.WOORIWONBANK:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_WOORIWONBANK
+          );
         default:
           return this.url;
       }
@@ -281,13 +294,10 @@ class IamportUrl {
     return queryString.extract(decodedUrl);
   }
 
-  getInicisTransQuery() {
+  getInicisTransQuery(redirectUrl: string) {
     const { m_redirect_url, imp_uid, merchant_uid } = this.getQuery();
-    const inicisTransQuery = {
-      imp_uid: imp_uid,
-      merchant_uid,
-    };
-    if (m_redirect_url?.includes(IMPConst.M_REDIRECT_URL)) {
+    const inicisTransQuery = { imp_uid, merchant_uid };
+    if (m_redirect_url?.includes(redirectUrl)) {
       inicisTransQuery.merchant_uid =
         typeof merchant_uid === 'object' ? merchant_uid![0] : merchant_uid;
     } else {
@@ -297,18 +307,13 @@ class IamportUrl {
   }
 
   async launchApp() {
-    if (Platform.OS === 'ios') {
-      if (await Linking.canOpenURL(this.url)) {
-        return await Linking.openURL(this.getAppUrl() as string);
-      }
+    if (Platform.OS === 'ios' || Platform.OS === 'android') {
       try {
-        return await Linking.openURL(this.getAppUrl() as string);
-      } catch (e) {
-        return await Linking.openURL(this.getMarketUrl());
-      }
-    } else if (Platform.OS === 'android') {
-      try {
-        return await Linking.openURL(this.getAppUrl() as string);
+        if (await Linking.canOpenURL(this.url)) {
+          return await Linking.openURL(this.getAppUrl() as string);
+        } else {
+          return await Linking.openURL(this.getAppUrl() as string);
+        }
       } catch (e) {
         return await Linking.openURL(this.getMarketUrl());
       }

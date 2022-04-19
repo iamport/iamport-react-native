@@ -27,9 +27,21 @@ function App() {
   return (
     <NavigationContainer>
       <RootStack.Navigator initialRouteName="Home">
-        <RootStack.Screen name="Home" component={Home} />
-        <RootStack.Screen name="Certification" component={Certification} />
-        <RootStack.Screen name="Payment" component={Payment} />
+        <RootStack.Screen
+          options={{headerShown: false}}
+          name="Home"
+          component={Home}
+        />
+        <RootStack.Screen
+          options={{headerShown: false}}
+          name="Certification"
+          component={Certification}
+        />
+        <RootStack.Screen
+          options={{headerShown: false}}
+          name="Payment"
+          component={Payment}
+        />
       </RootStack.Navigator>
     </NavigationContainer>
   );

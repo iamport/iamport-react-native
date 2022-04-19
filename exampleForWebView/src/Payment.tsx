@@ -3,6 +3,7 @@ import type {StackScreenProps} from '@react-navigation/stack';
 import type {RootStackParamList} from './App';
 import IMP from 'iamport-react-native';
 import Loading from './Loading';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 type Props = StackScreenProps<RootStackParamList, 'Payment'>;
 
@@ -45,15 +46,17 @@ function Payment({navigation, route}: Props) {
   }
 
   return (
-    <IMP.Payment
-      userCode={userCode as string}
-      loading={<Loading />}
-      data={{
-        ...data,
-        app_scheme: 'exampleforwebview',
-      }}
-      callback={callback}
-    />
+    <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
+      <IMP.Payment
+        userCode={userCode as string}
+        loading={<Loading />}
+        data={{
+          ...data,
+          app_scheme: 'exampleforwebview',
+        }}
+        callback={callback}
+      />
+    </SafeAreaView>
   );
 }
 
