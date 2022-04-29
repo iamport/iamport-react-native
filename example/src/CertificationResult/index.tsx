@@ -8,10 +8,18 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 type Props = StackScreenProps<RootStackParamList, 'CertificationResult'>;
 
 function CertificationResult({ route, navigation }: Props) {
+  const imp_success = route.params?.imp_success;
   const success = route.params?.success;
   const imp_uid = route.params?.imp_uid;
   const merchant_uid = route.params?.merchant_uid;
   const error_msg = route.params?.error_msg;
+
+  const isSuccess = !(
+    imp_success === 'false' ||
+    imp_success === false ||
+    success === 'false' ||
+    success === false
+  );
 
   return (
     <SafeAreaView
@@ -23,7 +31,7 @@ function CertificationResult({ route, navigation }: Props) {
         alignItems: 'center',
       }}
     >
-      {success ? (
+      {isSuccess ? (
         <Icon
           as={FontAwesome}
           name={'check-circle'}
@@ -34,7 +42,7 @@ function CertificationResult({ route, navigation }: Props) {
         <Icon as={FontAwesome} name={'warning'} size={20} color={'#f5222d'} />
       )}
       <Text fontSize={25} fontWeight={'bold'} mb={20}>{`본인인증에 ${
-        success ? '성공' : '실패'
+        isSuccess ? '성공' : '실패'
       }하였습니다`}</Text>
       <List width={'90%'} mb={50} borderRadius={3}>
         <List.Item>
