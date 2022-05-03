@@ -30,6 +30,8 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
   let redirectUrl = IMPConst.M_REDIRECT_URL;
   if (data.m_redirect_url !== undefined && data.m_redirect_url.trim() !== '') {
     redirectUrl = data.m_redirect_url;
+  } else {
+    data.m_redirect_url = redirectUrl;
   }
 
   useEffect(() => {

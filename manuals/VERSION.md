@@ -1,6 +1,9 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
-- [v2.0.0](https://github.com/iamport/iamport-react-native/tree/main)
+- [v2.0.1](https://github.com/iamport/iamport-react-native/tree/main)
+  - 앱 내부 redirection 방식을 보완했습니다.
+
+- [v2.0.0](https://github.com/iamport/iamport-react-native/tree/v2.0.0)
   - 예제 UI가 개선되었습니다.
   - popup 파라미터가 추가되었습니다.(미설정하거나 false로 설정 요망)
   - redirect 관련 로직이 수정되었습니다.

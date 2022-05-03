@@ -74,14 +74,14 @@ export function Payment({ navigation }) {
 export default Payment;
 ```
 
-| Prop             | Type          |  Description                                                | Required   |
-| ---------------- | ------------- | ----------------------------------------------------------- | ---------- |
-| userCode         | string        | 가맹점 식별코드                                                 | true       |
-| tierCode         | string        | agency 기능 사용자의 하위 가맹점 코드 3자리                         | false       |
-| data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp) | true       |
-| - m_redirect_url | string        | [Deprecated]                                                | false       |
+| Prop             | Type          | Description                                                     | Required   |
+|------------------| ------------- |-----------------------------------------------------------------| ---------- |
+| userCode         | string        | 가맹점 식별코드                                                        | true       |
+| tierCode         | string        | agency 기능 사용자의 하위 가맹점 코드 3자리                                    | false       |
+| data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp)           | true       |
+| - m_redirect_url | string        | 결제 후 이동할 url                                                    | false       |
 | callback         | function      | 결제 후 실행 될 함수 [자세히보기](https://docs.iamport.kr/tech/imp#callback) | true       |
-| loading          | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트                                        | false      |
+| loading          | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트                                                 | false      |
 
 
 ## 휴대폰 본인인증 코드 예시
