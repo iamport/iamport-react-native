@@ -10,8 +10,8 @@ class IamportUrl {
 
   constructor(url: string) {
     this.url = url;
-    let splittedUrl = url.replace('://', ' ').split(' ');
-    this.scheme = splittedUrl[0];
+    this.scheme = url.split('://', 1)[0];
+    let splittedUrl = [this.scheme, url.slice(this.scheme.length + 3)];
     if (Platform.OS === 'ios') {
       this.path =
         this.scheme === 'itmss' ? `https://${splittedUrl[1]}` : this.url;
