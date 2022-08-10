@@ -1,6 +1,9 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
-- [v2.0.1](https://github.com/iamport/iamport-react-native/tree/main)
+- [v2.0.2](https://github.com/iamport/iamport-react-native/tree/main)
+  - intent 파싱 로직을 변경했습니다. (@Gijuno)
+
+- [v2.0.1](https://github.com/iamport/iamport-react-native/tree/v2.0.1)
   - 앱 내부 redirection 방식을 보완했습니다.
 
 - [v2.0.0](https://github.com/iamport/iamport-react-native/tree/v2.0.0)
