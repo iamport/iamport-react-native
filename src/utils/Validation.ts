@@ -68,6 +68,58 @@ class Validation {
 }
 
 namespace IMPData {
+  /**
+   * @details 결제수단
+   * @param card 신용카드
+   * @param trans 실시간계좌이체
+   * @param vbank 가상계좌
+   * @param phone 휴대폰소액결제
+   * @param kakaopay 이니시스, KCP, 나이스페이먼츠를 통한 카카오페이 직접 호출
+   * @param payco 이니시스, KCP를 통한 페이코 직접 호출
+   * @param lpay 이니시스를 통한 LPAY 직접 호출
+   * @param ssgpay 이니시스를 통한 SSG페이 직접 호출
+   * @param tosspay 이니시스를 통한 토스간편결제 직접 호출
+   * @param point 카카오페이, PAYCO, 이니시스, 나이스페이먼츠 내 간편결제 시 해당 간편결제 자체 포인트 100% 결제
+   */
+  type PayMethod =
+    | 'card'
+    | 'trans'
+    | 'vbank'
+    | 'phone'
+    | 'kakaopay'
+    | 'payco'
+    | 'lpay'
+    | 'ssgpay'
+    | 'tosspay'
+    | 'point';
+
+  /**
+   * @details 결제상태
+   * @param ready 브라우저 창 이탈, 가상계좌 발급 완료 등 미결제 상태
+   * @param paid 결제완료
+   * @param failed 신용카드 한도 초과, 체크카드 잔액 부족, 브라우저 창 종료 또는 취소 버튼 클릭 등 결제실패 상태
+   */
+  type Status = 'ready' | 'paid' | 'failed';
+
+  /**
+   * @details 결제승인/시도된 PG사
+   * @param html5_inicis 웹표준방식의 KG이니시스
+   * @param inicis 일반 KG이니시스
+   * @param kakaopay 카카오페이
+   * @param uplus 토스페이먼츠(구 LG U+)
+   * @param nice 나이스정보통신
+   * @param jtnet JTNet
+   * @param danal 다날
+   */
+  type PgProvider =
+    | 'html5_inicis'
+    | 'inicis'
+    | 'kakaopay'
+    | 'uplus'
+    | 'nice'
+    | 'jtnet'
+    | 'danal';
+
   interface ICertificationData {
     merchant_uid: string;
     company: string;
@@ -232,6 +284,95 @@ namespace IMPData {
     popup?: boolean;
     tax_free?: number;
     vbank_due?: string;
+  }
+
+  interface IPaymentResponse {
+    success: boolean;
+    error_code: string;
+    error_msg: string;
+    imp_uid: string | null;
+    merchant_uid: string;
+    pay_method?: PayMethod;
+    paid_amount?: number;
+    status?: Status;
+    name?: string;
+    pg_provider?: PgProvider;
+    emb_pg_provider?: string;
+    pg_tid?: string;
+    buyer_name?: string;
+    buyer_email?: string;
+    buyer_tel?: string;
+    buyer_addr?: string;
+    buyer_postcode?: string;
+    custom_data?: object;
+    paid_at?: number;
+    receipt_url?: string;
+  }
+
+  export class PaymentResponse implements IPaymentResponse {
+    constructor(
+      success: boolean,
+      error_code: string,
+      error_msg: string,
+      imp_uid: string | null,
+      merchant_uid: string,
+      pay_method?: PayMethod,
+      paid_amount?: number,
+      status?: Status,
+      name?: string,
+      pg_provider?: PgProvider,
+      emb_pg_provider?: string,
+      pg_tid?: string,
+      buyer_name?: string,
+      buyer_email?: string,
+      buyer_tel?: string,
+      buyer_addr?: string,
+      buyer_postcode?: string,
+      custom_data?: object,
+      paid_at?: number,
+      receipt_url?: string
+    ) {
+      this.success = success;
+      this.error_code = error_code;
+      this.error_msg = error_msg;
+      this.imp_uid = imp_uid;
+      this.merchant_uid = merchant_uid;
+      this.pay_method = pay_method;
+      this.paid_amount = paid_amount;
+      this.status = status;
+      this.name = name;
+      this.pg_provider = pg_provider;
+      this.emb_pg_provider = emb_pg_provider;
+      this.pg_tid = pg_tid;
+      this.buyer_name = buyer_name;
+      this.buyer_email = buyer_email;
+      this.buyer_tel = buyer_tel;
+      this.buyer_addr = buyer_addr;
+      this.buyer_postcode = buyer_postcode;
+      this.custom_data = custom_data;
+      this.paid_at = paid_at;
+      this.receipt_url = receipt_url;
+    }
+    success: boolean;
+    error_code: string;
+    error_msg: string;
+    imp_uid: string | null;
+    merchant_uid: string;
+    pay_method?: PayMethod;
+    paid_amount?: number;
+    status?: Status;
+    name?: string;
+    pg_provider?: PgProvider;
+    emb_pg_provider?: string;
+    pg_tid?: string;
+    buyer_name?: string;
+    buyer_email?: string;
+    buyer_tel?: string;
+    buyer_addr?: string;
+    buyer_postcode?: string;
+    custom_data?: object;
+    paid_at?: number;
+    receipt_url?: string;
   }
 }
 
