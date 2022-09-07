@@ -81,7 +81,7 @@ namespace IMPData {
    * @param tosspay 이니시스를 통한 토스간편결제 직접 호출
    * @param point 카카오페이, PAYCO, 이니시스, 나이스페이먼츠 내 간편결제 시 해당 간편결제 자체 포인트 100% 결제
    */
-  type PayMethod =
+  type IPayMethod =
     | 'card'
     | 'trans'
     | 'vbank'
@@ -99,7 +99,7 @@ namespace IMPData {
    * @param paid 결제완료
    * @param failed 신용카드 한도 초과, 체크카드 잔액 부족, 브라우저 창 종료 또는 취소 버튼 클릭 등 결제실패 상태
    */
-  type Status = 'ready' | 'paid' | 'failed';
+  type IStatus = 'ready' | 'paid' | 'failed';
 
   /**
    * @details 결제승인/시도된 PG사
@@ -111,7 +111,7 @@ namespace IMPData {
    * @param jtnet JTNet
    * @param danal 다날
    */
-  type PgProvider =
+  type IPgProvider =
     | 'html5_inicis'
     | 'inicis'
     | 'kakaopay'
@@ -119,6 +119,8 @@ namespace IMPData {
     | 'nice'
     | 'jtnet'
     | 'danal';
+
+  type ISuccess = 'true' | 'false' | true | false;
 
   interface ICertificationData {
     merchant_uid: string;
@@ -164,7 +166,7 @@ namespace IMPData {
 
   interface IPaymentData {
     pg: string;
-    pay_method: string;
+    pay_method: IPayMethod;
     currency?: string;
     notice_url?: string | string[];
     display?: {
@@ -204,7 +206,7 @@ namespace IMPData {
       escrow: boolean,
       merchant_uid: string,
       name: string,
-      pay_method: string,
+      pay_method: IPayMethod,
       pg: string,
       language?: string,
       naverPopupMode?: boolean,
@@ -279,7 +281,7 @@ namespace IMPData {
     naverUseCfm?: string;
     niceMobileV2?: boolean = true;
     notice_url?: string | string[];
-    pay_method: string;
+    pay_method: IPayMethod;
     pg: string;
     popup?: boolean;
     tax_free?: number;
@@ -287,16 +289,17 @@ namespace IMPData {
   }
 
   interface IPaymentResponse {
-    success: boolean;
+    success?: ISuccess;
+    imp_success?: ISuccess;
     error_code: string;
     error_msg: string;
     imp_uid: string | null;
     merchant_uid: string;
-    pay_method?: PayMethod;
+    pay_method?: IPayMethod;
     paid_amount?: number;
-    status?: Status;
+    status?: IStatus;
     name?: string;
-    pg_provider?: PgProvider;
+    pg_provider?: IPgProvider;
     emb_pg_provider?: string;
     pg_tid?: string;
     buyer_name?: string;
@@ -311,16 +314,17 @@ namespace IMPData {
 
   export class PaymentResponse implements IPaymentResponse {
     constructor(
-      success: boolean,
       error_code: string,
       error_msg: string,
       imp_uid: string | null,
       merchant_uid: string,
-      pay_method?: PayMethod,
+      success?: ISuccess,
+      imp_success?: ISuccess,
+      pay_method?: IPayMethod,
       paid_amount?: number,
-      status?: Status,
+      status?: IStatus,
       name?: string,
-      pg_provider?: PgProvider,
+      pg_provider?: IPgProvider,
       emb_pg_provider?: string,
       pg_tid?: string,
       buyer_name?: string,
@@ -333,6 +337,7 @@ namespace IMPData {
       receipt_url?: string
     ) {
       this.success = success;
+      this.imp_success = imp_success;
       this.error_code = error_code;
       this.error_msg = error_msg;
       this.imp_uid = imp_uid;
@@ -353,16 +358,17 @@ namespace IMPData {
       this.paid_at = paid_at;
       this.receipt_url = receipt_url;
     }
-    success: boolean;
+    success?: ISuccess;
+    imp_success?: ISuccess;
     error_code: string;
     error_msg: string;
     imp_uid: string | null;
     merchant_uid: string;
-    pay_method?: PayMethod;
+    pay_method?: IPayMethod;
     paid_amount?: number;
-    status?: Status;
+    status?: IStatus;
     name?: string;
-    pg_provider?: PgProvider;
+    pg_provider?: IPgProvider;
     emb_pg_provider?: string;
     pg_tid?: string;
     buyer_name?: string;

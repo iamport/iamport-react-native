@@ -1,5 +1,5 @@
 import React from 'react';
-import IMP from 'iamport-react-native';
+import IMP, { IMPData } from 'iamport-react-native';
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { RootStackParamList } from '../NavigationService';
 import { getUserCode } from '../utils';
@@ -20,7 +20,9 @@ function Payment({ route, navigation }: Props) {
         tierCode={tierCode}
         loading={<Loading />}
         data={params!}
-        callback={(response) => navigation.replace('PaymentResult', response)}
+        callback={(response: IMPData.PaymentResponse) =>
+          navigation.replace('PaymentResult', response)
+        }
       />
     </SafeAreaView>
   );

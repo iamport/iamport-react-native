@@ -27,7 +27,7 @@ export type RootStackParamList = {
   CertificationResult: any;
   Payment: PaymentParams | undefined;
   PaymentTest: undefined;
-  PaymentResult: any;
+  PaymentResult: IMPData.PaymentResponse;
 };
 
 const RootStack = createStackNavigator<RootStackParamList>();
