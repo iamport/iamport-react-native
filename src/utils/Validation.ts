@@ -70,16 +70,16 @@ class Validation {
 namespace IMPData {
   /**
    * @details 결제수단
-   * @param card 신용카드
-   * @param trans 실시간계좌이체
-   * @param vbank 가상계좌
-   * @param phone 휴대폰소액결제
-   * @param kakaopay 이니시스, KCP, 나이스페이먼츠를 통한 카카오페이 직접 호출
-   * @param payco 이니시스, KCP를 통한 페이코 직접 호출
-   * @param lpay 이니시스를 통한 LPAY 직접 호출
-   * @param ssgpay 이니시스를 통한 SSG페이 직접 호출
-   * @param tosspay 이니시스를 통한 토스간편결제 직접 호출
-   * @param point 카카오페이, PAYCO, 이니시스, 나이스페이먼츠 내 간편결제 시 해당 간편결제 자체 포인트 100% 결제
+   * @type card 신용카드
+   * @type trans 실시간계좌이체
+   * @type vbank 가상계좌
+   * @type phone 휴대폰소액결제
+   * @type kakaopay 이니시스, KCP, 나이스페이먼츠를 통한 카카오페이 직접 호출
+   * @type payco 이니시스, KCP를 통한 페이코 직접 호출
+   * @type lpay 이니시스를 통한 LPAY 직접 호출
+   * @type ssgpay 이니시스를 통한 SSG페이 직접 호출
+   * @type tosspay 이니시스를 통한 토스간편결제 직접 호출
+   * @type point 카카오페이, PAYCO, 이니시스, 나이스페이먼츠 내 간편결제 시 해당 간편결제 자체 포인트 100% 결제
    */
   type IPayMethod =
     | 'card'
@@ -95,21 +95,21 @@ namespace IMPData {
 
   /**
    * @details 결제상태
-   * @param ready 브라우저 창 이탈, 가상계좌 발급 완료 등 미결제 상태
-   * @param paid 결제완료
-   * @param failed 신용카드 한도 초과, 체크카드 잔액 부족, 브라우저 창 종료 또는 취소 버튼 클릭 등 결제실패 상태
+   * @type ready 브라우저 창 이탈, 가상계좌 발급 완료 등 미결제 상태
+   * @type paid 결제완료
+   * @type failed 신용카드 한도 초과, 체크카드 잔액 부족, 브라우저 창 종료 또는 취소 버튼 클릭 등 결제실패 상태
    */
   type IStatus = 'ready' | 'paid' | 'failed';
 
   /**
    * @details 결제승인/시도된 PG사
-   * @param html5_inicis 웹표준방식의 KG이니시스
-   * @param inicis 일반 KG이니시스
-   * @param kakaopay 카카오페이
-   * @param uplus 토스페이먼츠(구 LG U+)
-   * @param nice 나이스정보통신
-   * @param jtnet JTNet
-   * @param danal 다날
+   * @type html5_inicis 웹표준방식의 KG이니시스
+   * @type inicis 일반 KG이니시스
+   * @type kakaopay 카카오페이
+   * @type uplus 토스페이먼츠(구 LG U+)
+   * @type nice 나이스정보통신
+   * @type jtnet JTNet
+   * @type danal 다날
    */
   type IPgProvider =
     | 'html5_inicis'
