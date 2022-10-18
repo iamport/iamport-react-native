@@ -57,6 +57,7 @@ export function Payment({ navigation }) {
     buyer_addr: '서울시 강남구 신사동 661-16',
     buyer_postcode: '06018',
     app_scheme: 'example',
+    // customer_uid: 'example' (정기결제 시)
     // [Deprecated v1.0.3]: m_redirect_url
   };
 
