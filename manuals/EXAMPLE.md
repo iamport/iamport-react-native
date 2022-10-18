@@ -78,9 +78,9 @@ export default Payment;
 |------------------| ------------- |-----------------------------------------------------------------| ---------- |
 | userCode         | string        | 가맹점 식별코드                                                        | true       |
 | tierCode         | string        | agency 기능 사용자의 하위 가맹점 코드 3자리                                    | false       |
-| data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/tech/imp)           | true       |
+| data             | object        | 결제에 필요한 정보 [자세히 보기](https://docs.iamport.kr/sdk/javascript-sdk#request_pay)           | true       |
 | - m_redirect_url | string        | 결제 후 이동할 url                                                    | false       |
-| callback         | function      | 결제 후 실행 될 함수 [자세히보기](https://docs.iamport.kr/tech/imp#callback) | true       |
+| callback         | function      | 결제 후 실행 될 함수 [자세히보기](https://docs.iamport.kr/sdk/javascript-sdk) | true       |
 | loading          | RN 컴포넌트     | 웹뷰 로드시 보여질 컴포넌트                                                 | false      |
 
 
