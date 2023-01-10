@@ -5,6 +5,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "android": {
+      "package": "kr.iamport.exampleForExpo"
+    },
+    "ios": {
+      "bundleIdentifier": "kr.iamport.exampleForExpo"
+    }
   }
 }
