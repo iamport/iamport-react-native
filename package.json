@@ -66,8 +66,8 @@
   },
   "peerDependencies": {
     "query-string": "8.x",
-    "react": ">=18.2.0",
-    "react-native": ">=0.70.6",
+    "react": "*",
+    "react-native": "*",
     "react-native-webview": "11.x"
   },
   "resolutions": {
