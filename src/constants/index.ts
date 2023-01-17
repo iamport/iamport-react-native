@@ -26,7 +26,8 @@ namespace IMPConst {
     'bluewalnut',
     'tosspay',
     'smartro',
-    'tosspayments'
+    'tosspayments',
+    'ksnet',
   ] as const;
 
   export const PAY_METHOD = [
