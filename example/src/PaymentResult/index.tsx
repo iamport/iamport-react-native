@@ -12,6 +12,7 @@ function PaymentResult({ route, navigation }: Props) {
   const success = route.params?.success;
   const imp_uid = route.params?.imp_uid;
   const merchant_uid = route.params?.merchant_uid;
+  const error_code = route.params?.error_code;
   const error_msg = route.params?.error_msg;
 
   // [WARNING: 이해를 돕기 위한 것일 뿐, imp_success 또는 success 파라미터로 결제 성공 여부를 장담할 수 없습니다.]
@@ -20,7 +21,9 @@ function PaymentResult({ route, navigation }: Props) {
     imp_success === 'false' ||
     imp_success === false ||
     success === 'false' ||
-    success === false
+    success === false ||
+    error_code !== null ||
+    error_code !== undefined
   );
 
   return (

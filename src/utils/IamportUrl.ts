@@ -13,7 +13,6 @@ class IamportUrl {
     this.scheme = url.split('://', 1)[0];
     let splittedUrl = [this.scheme, url.slice(this.scheme.length + 3)];
     if (Platform.OS === 'ios') {
-      // this.path = this.url;
       this.path = this.scheme.startsWith('itms')
         ? `https://${splittedUrl[1]}`
         : this.url;
