@@ -26,7 +26,9 @@ function PaymentResult({ route, navigation }: Props) {
   // [WARNING: 이해를 돕기 위한 것일 뿐, imp_success 또는 success 파라미터로 결제 성공 여부를 장담할 수 없습니다.]
   // 아임포트 서버로 결제내역 조회(GET /payments/${imp_uid})를 통해 그 응답(status)에 따라 결제 성공 여부를 판단하세요.
   const isSuccess =
-    getBoolean(imp_success) ?? getBoolean(success) ?? code == null;
+    getBoolean(imp_success) ??
+    getBoolean(success) ??
+    (error_code == null && code == null);
 
   return (
     <SafeAreaView
