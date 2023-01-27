@@ -50,7 +50,7 @@ class IamportUrl {
   }
 
   isPaymentOver(redirectUrl: string) {
-    return this.url.includes(redirectUrl);
+    return this.url.startsWith(redirectUrl);
   }
 
   isAppUrl() {

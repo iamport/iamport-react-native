@@ -17,7 +17,9 @@ function PaymentResult({ route, navigation }: Props) {
   const imp_success = route.params?.imp_success;
   const success = route.params?.success;
   const imp_uid = route.params?.imp_uid;
+  const tx_id = route.params?.txId;
   const merchant_uid = route.params?.merchant_uid;
+  const payment_id = route.params?.paymentId;
   const error_code = route.params?.error_code;
   const code = route.params?.code;
   const message = route.params?.message;
@@ -56,12 +58,12 @@ function PaymentResult({ route, navigation }: Props) {
       <List width={'90%'} mb={50} borderRadius={3}>
         <List.Item>
           <Text w={'40%'}>아임포트 번호</Text>
-          <Text w={'60%'}>{imp_uid}</Text>
+          <Text w={'60%'}>{imp_uid ?? tx_id}</Text>
         </List.Item>
         {isSuccess ? (
           <List.Item>
             <Text w={'40%'}>주문번호</Text>
-            <Text w={'60%'}>{merchant_uid}</Text>
+            <Text w={'60%'}>{merchant_uid ?? payment_id}</Text>
           </List.Item>
         ) : (
           <List.Item>
