@@ -5,6 +5,16 @@ import IMP from 'iamport-react-native';
 import Loading from './Loading';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
+function getBoolean(value: string | boolean | undefined) {
+  if (typeof value === 'boolean') {
+    return value;
+  }
+  if (typeof value === 'string') {
+    return value === 'true';
+  }
+  return undefined;
+}
+
 type Props = StackScreenProps<RootStackParamList, 'Payment'>;
 
 function Payment({navigation, route}: Props) {
@@ -29,20 +39,12 @@ function Payment({navigation, route}: Props) {
   }
 
   function getIsSuccessed(response: any) {
-    const {imp_success, success} = response;
-
-    if (typeof imp_success === 'string') {
-      return imp_success === 'true';
-    }
-    if (typeof imp_success === 'boolean') {
-      return imp_success === true;
-    }
-    if (typeof success === 'string') {
-      return success === 'true';
-    }
-    if (typeof success === 'boolean') {
-      return success === true;
-    }
+    const {imp_success, success, error_code, code} = response;
+    return (
+      getBoolean(imp_success) ??
+      getBoolean(success) ??
+      (error_code == null && code == null)
+    );
   }
 
   return (

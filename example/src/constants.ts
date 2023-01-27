@@ -91,6 +91,14 @@ const PGS = [
     value: 'smartro',
     label: '스마트로',
   },
+  {
+    value: 'tosspayments',
+    label: '토스페이먼츠 (신모듈)',
+  },
+  {
+    value: 'ksnet',
+    label: 'KSNET',
+  },
 ];
 
 const TIER_CODES = [
