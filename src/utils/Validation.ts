@@ -141,6 +141,12 @@ namespace IMPData {
     naverProducts?: object[];
     m_redirect_url?: string;
     niceMobileV2?: boolean;
+    bypass?: {
+      daou?: {
+        PRODUCTCODE?: string;
+        CASHRECEIPTFLAG: number;
+      };
+    };
   }
 
   export class PaymentData implements IPaymentData {
@@ -172,7 +178,13 @@ namespace IMPData {
       buyer_addr?: string,
       popup?: boolean,
       tax_free?: number,
-      vbank_due?: string
+      vbank_due?: string,
+      bypass?: {
+        daou?: {
+          PRODUCTCODE?: string;
+          CASHRECEIPTFLAG: number;
+        };
+      }
     ) {
       this.amount = amount;
       this.app_scheme = app_scheme;
@@ -202,6 +214,7 @@ namespace IMPData {
       this.popup = popup;
       this.tax_free = tax_free;
       this.vbank_due = vbank_due;
+      this.bypass = bypass;
     }
 
     amount: string | number;
@@ -232,6 +245,12 @@ namespace IMPData {
     popup?: boolean;
     tax_free?: number;
     vbank_due?: string;
+    bypass?: {
+      daou?: {
+        PRODUCTCODE?: string;
+        CASHRECEIPTFLAG: number;
+      };
+    };
   }
 }
 

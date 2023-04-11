@@ -28,6 +28,7 @@ namespace IMPConst {
     'smartro',
     'tosspayments',
     'ksnet',
+    'daou',
   ] as const;
 
   export const PAY_METHOD = [

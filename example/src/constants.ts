@@ -99,6 +99,10 @@ const PGS = [
     value: 'ksnet',
     label: 'KSNET',
   },
+  {
+    value: 'daou',
+    label: '키움페이 (다우데이터, 페이조아)',
+  },
 ];
 
 const TIER_CODES = [
