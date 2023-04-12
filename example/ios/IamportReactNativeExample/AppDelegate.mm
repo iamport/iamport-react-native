@@ -31,7 +31,12 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  RCTAppSetupPrepareApp(application);
+  BOOL enableTM = NO;
+  #if RCT_NEW_ARCH_ENABLED
+    enableTM = self.turboModuleEnabled;
+  #endif
+  
+  RCTAppSetupPrepareApp(application, enableTM);
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
@@ -44,7 +49,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 #endif
 
   NSDictionary *initProps = [self prepareInitialProps];
-  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"IamportReactNativeExample", initProps);
+  UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"IamportReactNativeExample", initProps, YES);
 
   if (@available(iOS 13.0, *)) {
     rootView.backgroundColor = [UIColor systemBackgroundColor];

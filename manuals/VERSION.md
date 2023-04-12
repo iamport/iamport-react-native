@@ -1,6 +1,9 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
-- [v2.0.4](https://github.com/iamport/iamport-react-native/tree/main)
+- [v2.0.5](https://github.com/iamport/iamport-react-native/tree/main)
+  - 키움페이(다우데이터, 페이조아)를 추가했습니다.
+
+- [v2.0.4](https://github.com/iamport/iamport-react-native/tree/v2.0.4)
   - 아임포트 JavaScript SDK 버전을 신규 v1으로 업그레이드하였습니다.
   - SDK 업그레이드를 통해 KSNET, 토스페이먼츠 (신 모듈)를 추가했습니다.
 
