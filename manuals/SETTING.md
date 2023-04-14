@@ -60,6 +60,7 @@ iOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
   <string>hanawalletmembers</string> <!-- 하나카드(하나멤버스 월렛) -->
   <string>chaipayment</string> <!-- 차이 -->
   <string>kb-auth</string> <!-- 국민 -->
+  <string>kbbank</string> <!-- 국민 스타뱅킹 -->
   <string>hyundaicardappcardid</string>  <!-- 현대카드 -->
   <string>com.wooricard.wcard</string>  <!-- 우리won페이 -->
   <string>lmslpay</string>  <!-- 롯데 L페이 -->
