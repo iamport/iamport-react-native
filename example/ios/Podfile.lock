@@ -76,7 +76,7 @@ PODS:
   - hermes-engine (0.71.6):
     - hermes-engine/Pre-built (= 0.71.6)
   - hermes-engine/Pre-built (0.71.6)
-  - iamport-react-native (2.0.5):
+  - iamport-react-native (2.0.6):
     - React-Core
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.1100)
@@ -331,13 +331,9 @@ PODS:
   - React-jsinspector (0.71.6)
   - React-logger (0.71.6):
     - glog
-  - react-native-safe-area-context (4.4.1):
-    - RCT-Folly
-    - RCTRequired
-    - RCTTypeSafety
+  - react-native-safe-area-context (4.7.2):
     - React-Core
-    - ReactCommon/turbomodule/core
-  - react-native-webview (11.26.0):
+  - react-native-webview (11.26.1):
     - React-Core
   - React-perflogger (0.71.6)
   - React-RCTActionSheet (0.71.6):
@@ -425,12 +421,12 @@ PODS:
     - React-perflogger (= 0.71.6)
   - RNCMaskedView (0.1.11):
     - React
-  - RNGestureHandler (2.8.0):
+  - RNGestureHandler (2.12.1):
     - React-Core
-  - RNScreens (3.18.2):
+  - RNScreens (3.25.0):
     - React-Core
     - React-RCTImage
-  - RNSVG (13.6.0):
+  - RNSVG (13.13.0):
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
@@ -630,7 +626,7 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: b434cea529ad0152c56c7cb6486b0c4c0b23b5de
-  iamport-react-native: f6b2ad6b089ff7fb23be33bb61db61b0e577eee2
+  iamport-react-native: 33733173b4b3e75e644318b8da1721988355d89b
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 0080d0a6ebf2577475bda044aa59e2ca1f909cda
@@ -647,8 +643,8 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 7894956638ff3e00819dd3f9f6f4a84da38f2409
   React-jsinspector: d5ce2ef3eb8fd30c28389d0bc577918c70821bd6
   React-logger: 9332c3e7b4ef007a0211c0a9868253aac3e1da82
-  react-native-safe-area-context: 99b24a0c5acd0d5dcac2b1a7f18c49ea317be99a
-  react-native-webview: 994b9f8fbb504d6314dc40d83f94f27c6831b3bf
+  react-native-safe-area-context: 7aa8e6d9d0f3100a820efb1a98af68aa747f9284
+  react-native-webview: 9f111dfbcfc826084d6c507f569e5e03342ee1c1
   React-perflogger: 43392072a5b867a504e2b4857606f8fc5a403d7f
   React-RCTActionSheet: c7b67c125bebeda9fb19fc7b200d85cb9d6899c4
   React-RCTAnimation: c2de79906f607986633a7114bee44854e4c7e2f5
@@ -663,9 +659,9 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 8692ac548bec648fa121980ccb4304afd136d584
   ReactCommon: 0c43eaeaaee231d7d8dc24fc5a6e4cf2b75bf196
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNGestureHandler: 62232ba8f562f7dea5ba1b3383494eb5bf97a4d3
-  RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
-  RNSVG: 3a79c0c4992213e4f06c08e62730c5e7b9e4dc17
+  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
+  RNScreens: 85d3880b52d34db7b8eeebe2f1a0e807c05e69fa
+  RNSVG: ed492aaf3af9ca01bc945f7a149d76d62e73ec82
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: ba09b6b11e6139e3df8229238aa794205ca6a02a
@@ -673,4 +669,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c90dd62a6f9a53f0a4b510c4969f486fd8fe2897
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

@@ -6341,10 +6341,10 @@ react-native-eject@^0.2.0:
   resolved "https://registry.yarnpkg.com/react-native-eject/-/react-native-eject-0.2.0.tgz#84b5bd123e883562e72801d23028bff062f9fbb3"
   integrity sha512-muPhImNfKWa9hsdkrYeIkXM8/6lhZj3NnFCxI7kRrD3F50l6a6lc7crRWjg0i0aBt6XdkoE4efATjxCRkmTOFA==
 
-react-native-gesture-handler@^2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.8.0.tgz#ef9857871c10663c95a51546225b6e00cd4740cf"
-  integrity sha512-poOSfz/w0IyD6Qwq7aaIRRfEaVTl1ecQFoyiIbpOpfNTjm2B1niY2FLrdVQIOtIOe+K9nH55Qal04nr4jGkHdQ==
+react-native-gesture-handler@^2.9.0:
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.12.1.tgz#f11a99fb95169810c6886fad5efa01a17fd81660"
+  integrity sha512-deqh36bw82CFUV9EC4tTo2PP1i9HfCOORGS3Zmv71UYhEZEHkzZv18IZNPB+2Awzj45vLIidZxGYGFxHlDSQ5A==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
     hoist-non-react-statics "^3.3.0"
