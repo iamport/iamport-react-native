@@ -423,7 +423,7 @@ PODS:
     - React-perflogger (= 0.71.6)
   - RNCMaskedView (0.1.11):
     - React
-  - RNGestureHandler (2.8.0):
+  - RNGestureHandler (2.12.1):
     - React-Core
   - RNScreens (3.18.2):
     - React-Core
@@ -647,7 +647,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 8692ac548bec648fa121980ccb4304afd136d584
   ReactCommon: 0c43eaeaaee231d7d8dc24fc5a6e4cf2b75bf196
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNGestureHandler: 62232ba8f562f7dea5ba1b3383494eb5bf97a4d3
+  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: ba09b6b11e6139e3df8229238aa794205ca6a02a
@@ -655,4 +655,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 34147cba6c149fe5e6f78d27dfa853ea52026e47
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

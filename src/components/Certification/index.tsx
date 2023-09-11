@@ -38,6 +38,7 @@ function Certification({ userCode, tierCode, data, loading, callback }: Props) {
           containerStyle={webViewContainer}
           ref={webview}
           source={{ html: IMPConst.WEBVIEW_SOURCE_HTML }}
+          mixedContentMode={'always'}
           onLoadEnd={() => {
             if (!isWebViewLoaded) {
               // html이 load되고 최초 한번만 inject javascript

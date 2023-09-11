@@ -148,6 +148,7 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
           containerStyle={webViewContainer}
           ref={webview}
           source={webviewSource}
+          mixedContentMode={'always'}
           onLoadEnd={() => {
             if (!isWebViewLoaded) {
               if (data.pg.startsWith('eximbay')) {
