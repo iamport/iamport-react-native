@@ -1,6 +1,9 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
-- [v2.0.6](https://github.com/iamport/iamport-react-native/tree/main)
+- [v2.0.7](https://github.com/iamport/iamport-react-native/tree/main)
+  - React Native(v0.72) 버전을 업그레이드하였습니다.
+
+- [v2.0.6](https://github.com/iamport/iamport-react-native/tree/v2.0.6)
   - 안드로이드에서 이니시스 간편결제 아이콘이 깨지는 문제를 해결했습니다.
 
 - [v2.0.5](https://github.com/iamport/iamport-react-native/tree/v2.0.5)
