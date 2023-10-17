@@ -99,7 +99,10 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
         }
       }
     };
-    Linking.addEventListener('url', handleOpenURL);
+    const subscription = Linking.addEventListener('url', handleOpenURL);
+    return function cleanup() {
+      subscription.remove();
+    }
   }, [data, isInicisTransPaid, redirectUrl, webview]);
 
   const removeLoadingNeeded = () => {
