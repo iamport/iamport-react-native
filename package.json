@@ -1,6 +1,6 @@
 {
   "name": "iamport-react-native",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "리액트 네이티브용 아임포트 결제/본인인증 연동 라이브러리",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
