@@ -103,6 +103,10 @@ const PGS = [
     value: 'daou',
     label: '키움페이 (다우데이터, 페이조아)',
   },
+  {
+    value: 'nice_v2',
+    label: '(신) 나이스페이먼츠',
+  },
 ];
 
 const TIER_CODES = [
