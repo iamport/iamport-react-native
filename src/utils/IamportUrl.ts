@@ -193,6 +193,11 @@ class IamportUrl {
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_SHINHANCARD
           );
+        case IMPConst.ANDROID_APPSCHEME.SHINHANSUPERSOL:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_SHINHANSUPERSOL
+          );
         case IMPConst.ANDROID_APPSCHEME.HANACARD:
           return (
             IMPConst.ANDROID_MARKET_PREFIX +
