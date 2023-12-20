@@ -1,6 +1,10 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
-- [v2.0.8](https://github.com/iamport/iamport-react-native/tree/main)
+- [v2.0.9](https://github.com/iamport/iamport-react-native/tree/main)
+  - settle_acc enum을 추가했습니다.
+  - 신한 슈퍼SOL 앱스킴을 추가했습니다.
+
+- [v2.0.8](https://github.com/iamport/iamport-react-native/tree/v2.0.8)
   - (신) 나이스페이먼츠를 추가했습니다.
 
 - [v2.0.7](https://github.com/iamport/iamport-react-native/tree/v2.0.7)
