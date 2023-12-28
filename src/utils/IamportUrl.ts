@@ -12,11 +12,7 @@ class IamportUrl {
     this.url = url;
     this.scheme = url.split('://', 1)[0];
     let splittedUrl = [this.scheme, url.slice(this.scheme.length + 3)];
-    if (Platform.OS === 'ios') {
-      this.path = this.scheme.startsWith('itms')
-        ? `https://${splittedUrl[1]}`
-        : this.url;
-    } else if (Platform.OS === 'android') {
+    if (Platform.OS === 'android') {
       if (this.isAppUrl()) {
         if (this.scheme.includes('intent')) {
           let intentUrl = splittedUrl[1].split('#Intent;');
@@ -42,18 +38,23 @@ class IamportUrl {
       } else {
         this.path = this.url;
       }
+    } else {
+      this.path = this.url;
     }
   }
-
-  getUrl() {
-    return this.url;
-  }
-
   isPaymentOver(redirectUrl: string) {
     return this.url.startsWith(redirectUrl);
   }
 
   isAppUrl() {
+    if (Platform.OS === 'android' && this.scheme === 'https') {
+      if (
+        this.url.startsWith('https://play.google.com/store/apps/details?id=')
+      ) {
+        return true;
+      }
+    }
+
     return !['http', 'https', 'about:blank'].includes(this.scheme);
   }
 
@@ -283,6 +284,11 @@ class IamportUrl {
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_WOORIWONBANK
           );
+        case IMPConst.ANDROID_APPSCHEME.NAVER:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_NAVER
+          );
         default:
           return this.url;
       }
@@ -315,11 +321,7 @@ class IamportUrl {
   async launchApp() {
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
       try {
-        if (await Linking.canOpenURL(this.url)) {
-          return await Linking.openURL(this.getAppUrl() as string);
-        } else {
-          return await Linking.openURL(this.getAppUrl() as string);
-        }
+        return await Linking.openURL(this.getAppUrl() as string);
       } catch (e) {
         return await Linking.openURL(this.getMarketUrl());
       }

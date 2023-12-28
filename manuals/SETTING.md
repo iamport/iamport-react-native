@@ -68,6 +68,7 @@ iOS에서 아임포트 결제연동 모듈을 사용하기 위해서는 아래 3
   <string>supertoss</string> <!-- 토스 -->
   <string>newsmartpib</string> <!-- 우리WON뱅킹 -->
   <string>ukbanksmartbanknonloginpay</string> <!-- 케이뱅크 페이 -->
+  <string>naversearchthirdlogin</string> <!-- 네이버페이 앱 로그인 -->
 </array>
 ```
 
