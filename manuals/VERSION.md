@@ -1,6 +1,9 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
-- [v2.0.10](https://github.com/iamport/iamport-react-native/tree/main)
+- [v2.0.11](https://github.com/iamport/iamport-react-native/tree/main)
+  - 앱 실행 방식을 개선했습니다.
+
+- [v2.0.10](https://github.com/iamport/iamport-react-native/tree/v2.0.10)
   - 헥토파이낸셜 내통장결제에서 안드로이드 환경에서 로딩 컴포넌트가 제거되지 않는 현상을 해결했습니다.
 
 - [v2.0.9](https://github.com/iamport/iamport-react-native/tree/v2.0.9)

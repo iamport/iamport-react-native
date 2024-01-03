@@ -69,7 +69,7 @@ namespace IMPConst {
   export const CARRIERS = ['SKT', 'KTF', 'LGT', 'MVNO'] as const;
 
   export const ANDROID_MARKET_PREFIX = 'market://details?id=';
-  export const IOS_MARKET_PREFIX = 'https://apps.apple.com/app/';
+  export const IOS_MARKET_PREFIX = 'itms-apps://itunes.apple.com/app/';
   export const M_REDIRECT_URL = 'http://detectchangingwebview/iamport/rn';
   export const NICE_TRANS_URL =
     'https://web.nicepay.co.kr/smart/bank/payTrans.jsp';
@@ -120,6 +120,7 @@ namespace IMPConst {
     LGTAUTH: 'upluscorporation',
     SKTAUTH: 'tauthlink',
     WOORIWONBANK: 'wooribank',
+    NAVER: 'nidlogin',
   } as const;
 
   export const ANDROID_PACKAGE = {
@@ -154,6 +155,7 @@ namespace IMPConst {
     PACKAGE_LGTAUTH: 'com.lguplus.smartotp',
     PACKAGE_SKTAUTH: 'com.sktelecom.tauth',
     PACKAGE_WOORIWONBANK: 'com.wooribank.smart.npib',
+    PACKAGE_NAVER: 'com.nhn.android.search',
   } as const;
 }
 
