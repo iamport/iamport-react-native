@@ -133,7 +133,8 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
       pg.startsWith('danal_tpay') ||
       pg.startsWith('smilepay') ||
       pg.startsWith('payco') ||
-      pg.startsWith('bluewalnut')
+      pg.startsWith('bluewalnut') ||
+      pg.startsWith('settle_acc')
     );
   };
 
