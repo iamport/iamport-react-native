@@ -1,16 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  FormControl,
-  Input,
-  KeyboardAvoidingView,
-  ScrollView,
-  Stack,
-  Switch,
-  Text,
-} from 'native-base';
-import Picker from '../Picker';
-import { PGS, TIER_CODES } from '../constants';
+import { PGS } from '../constants';
 import { getMethods, getQuotas } from '../utils';
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { PaymentParams, RootStackParamList } from '../NavigationService';
@@ -20,17 +9,31 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import { Platform } from 'react-native';
+import {
+  Button,
+  ButtonText,
+  FormControl,
+  Input,
+  InputField,
+  KeyboardAvoidingView,
+  ScrollView,
+  Switch,
+  Text,
+  VStack,
+} from '@gluestack-ui/themed';
+import Picker from '../Picker';
 
 type Props = StackScreenProps<RootStackParamList, 'PaymentTest'>;
 
 function PaymentTest({ navigation }: Props) {
+  const [userCode, setUserCode] = useState('');
   const [pg, setPg] = useState('html5_inicis');
-  const [tierCode, setTierCode] = useState(undefined);
+  const [tierCode, setTierCode] = useState('');
   const [method, setMethod] = useState('card');
   const [cardQuota, setCardQuota] = useState(0);
   const [merchantUid, setMerchantUid] = useState(`mid_${new Date().getTime()}`);
   const [name, setName] = useState('아임포트 결제데이터분석');
-  const [amount, setAmount] = useState('39000');
+  const [amount, setAmount] = useState('1000');
   const [buyerName, setBuyerName] = useState('홍길동');
   const [buyerTel, setBuyerTel] = useState('01012341234');
   const [buyerEmail, setBuyerEmail] = useState('example@example.com');
@@ -57,9 +60,22 @@ function PaymentTest({ navigation }: Props) {
       >
         <ScrollView mx={1} backgroundColor={'#fff'}>
           <FormControl p={2} borderRadius={3}>
-            <Stack direction={'column'}>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
+                  가맹점 식별코드
+                </Text>
+              </FormControl.Label>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={userCode}
+                  onChangeText={(value) => setUserCode(value)}
+                />
+              </Input>
+            </VStack>
+            <VStack>
+              <FormControl.Label my={1}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   PG사
                 </Text>
               </FormControl.Label>
@@ -72,22 +88,23 @@ function PaymentTest({ navigation }: Props) {
                   setMethod(methods[0].value);
                 }}
               />
-            </Stack>
-            <Stack direction={'column'}>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   티어 코드
                 </Text>
               </FormControl.Label>
-              <Picker
-                data={TIER_CODES}
-                selectedValue={tierCode}
-                onValueChange={(value) => setTierCode(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={tierCode}
+                  onChangeText={(value) => setTierCode(value)}
+                />
+              </Input>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   결제수단
                 </Text>
               </FormControl.Label>
@@ -96,11 +113,11 @@ function PaymentTest({ navigation }: Props) {
                 selectedValue={method}
                 onValueChange={(value) => setMethod(value)}
               />
-            </Stack>
+            </VStack>
             {method === 'card' && (
-              <Stack direction={'column'}>
+              <VStack>
                 <FormControl.Label my={1}>
-                  <Text color={'gray.500'} fontSize={15}>
+                  <Text color={'#9e9e9e'} fontSize={15}>
                     할부개월수
                   </Text>
                 </FormControl.Label>
@@ -109,50 +126,44 @@ function PaymentTest({ navigation }: Props) {
                   selectedValue={cardQuota}
                   onValueChange={(value) => setCardQuota(parseInt(value, 10))}
                 />
-              </Stack>
+              </VStack>
             )}
             {method === 'vbank' && (
-              <Stack direction={'column'}>
+              <VStack>
                 <FormControl.Label my={1}>
-                  <Text color={'gray.500'} fontSize={15}>
+                  <Text color={'#9e9e9e'} fontSize={15}>
                     입금기한
                   </Text>
                 </FormControl.Label>
-                <Input
-                  mx={2}
-                  mb={1}
-                  flex={1}
-                  p={1}
-                  variant={'underlined'}
-                  value={vbankDue}
-                  onChangeText={(value) => setVbankDue(value)}
-                />
-              </Stack>
+                <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                  <InputField
+                    value={vbankDue}
+                    onChangeText={(value) => setVbankDue(value)}
+                  />
+                </Input>
+              </VStack>
             )}
             {method === 'vbank' && pg === 'danal_tpay' && (
-              <Stack direction={'column'}>
+              <VStack>
                 <FormControl.Label my={1}>
-                  <Text color={'gray.500'} fontSize={15}>
+                  <Text color={'#9e9e9e'} fontSize={15}>
                     사업자번호
                   </Text>
                 </FormControl.Label>
-                <Input
-                  mx={2}
-                  mb={1}
-                  flex={1}
-                  p={1}
-                  variant={'underlined'}
-                  value={bizNum}
-                  keyboardType="number-pad"
-                  returnKeyType={'done'}
-                  onChangeText={(value) => setBizNum(value)}
-                />
-              </Stack>
+                <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                  <InputField
+                    keyboardType="number-pad"
+                    returnKeyType={'done'}
+                    value={bizNum}
+                    onChangeText={(value) => setBizNum(value)}
+                  />
+                </Input>
+              </VStack>
             )}
             {method === 'phone' && (
-              <Stack direction={'column'}>
+              <VStack>
                 <FormControl.Label my={1}>
-                  <Text color={'gray.500'} fontSize={15}>
+                  <Text color={'#9e9e9e'} fontSize={15}>
                     실물컨텐츠
                   </Text>
                 </FormControl.Label>
@@ -164,11 +175,11 @@ function PaymentTest({ navigation }: Props) {
                   alignSelf={'flex-start'}
                   onValueChange={(value) => setDigital(value)}
                 />
-              </Stack>
+              </VStack>
             )}
-            <Stack direction={'column'}>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   에스크로
                 </Text>
               </FormControl.Label>
@@ -180,107 +191,89 @@ function PaymentTest({ navigation }: Props) {
                 alignSelf={'flex-start'}
                 onValueChange={(value) => setEscrow(value)}
               />
-            </Stack>
-            <Stack direction={'column'}>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   주문명
                 </Text>
               </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={name}
-                onChangeText={(value) => setName(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={name}
+                  onChangeText={(value) => setName(value)}
+                />
+              </Input>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   결제금액
                 </Text>
               </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={amount}
-                keyboardType="number-pad"
-                returnKeyType={'done'}
-                onChangeText={(value) => setAmount(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  keyboardType="number-pad"
+                  returnKeyType={'done'}
+                  value={amount}
+                  onChangeText={(value) => setAmount(value)}
+                />
+              </Input>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   주문번호
                 </Text>
               </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={merchantUid}
-                onChangeText={(value) => setMerchantUid(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={merchantUid}
+                  onChangeText={(value) => setMerchantUid(value)}
+                />
+              </Input>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   이름
                 </Text>
               </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={buyerName}
-                onChangeText={(value) => setBuyerName(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={buyerName}
+                  onChangeText={(value) => setBuyerName(value)}
+                />
+              </Input>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   전화번호
                 </Text>
               </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={buyerTel}
-                keyboardType="number-pad"
-                returnKeyType={'done'}
-                onChangeText={(value) => setBuyerTel(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  keyboardType="number-pad"
+                  returnKeyType={'done'}
+                  value={buyerTel}
+                  onChangeText={(value) => setBuyerTel(value)}
+                />
+              </Input>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
+                <Text color={'#9e9e9e'} fontSize={15}>
                   이메일
                 </Text>
               </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={buyerEmail}
-                onChangeText={(value) => setBuyerEmail(value)}
-              />
-            </Stack>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={buyerEmail}
+                  onChangeText={(value) => setBuyerEmail(value)}
+                />
+              </Input>
+            </VStack>
             <Button
               bgColor={'#344e81'}
               mt={4}
@@ -316,6 +309,7 @@ function PaymentTest({ navigation }: Props) {
                     niceMobileV2: true,
                     escrow,
                   },
+                  userCode,
                   tierCode,
                 };
 
@@ -375,9 +369,9 @@ function PaymentTest({ navigation }: Props) {
                 navigation.navigate('Payment', data);
               }}
             >
-              <Text fontWeight={'bold'} color={'#fff'}>
+              <ButtonText fontWeight={'bold'} color={'#fff'}>
                 결제하기
-              </Text>
+              </ButtonText>
             </Button>
           </FormControl>
         </ScrollView>

@@ -1,15 +1,16 @@
 import React from 'react';
-import { NativeBaseProvider } from 'native-base';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { IamportNavigation } from './NavigationService';
+import { GluestackUIProvider } from '@gluestack-ui/themed';
+import { config } from '@gluestack-ui/config';
 
 function App() {
   return (
-    <NativeBaseProvider>
+    <GluestackUIProvider config={config}>
       <SafeAreaProvider>
         <IamportNavigation />
       </SafeAreaProvider>
-    </NativeBaseProvider>
+    </GluestackUIProvider>
   );
 }
 

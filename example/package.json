@@ -6,15 +6,16 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
-    "postinstall": "patch-package"
+    "start": "react-native start"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/stack": "^6.3.10",
     "@types/react-native-vector-icons": "^6.4.12",
-    "native-base": "^3.4.25",
+    "@gluestack-ui/themed": "^1.0.33",
+    "@gluestack-ui/config": "^1.0.10",
+    "@gluestack-style/react": "^1.0.30",
     "react": "18.2.0",
     "react-native": "0.72.6",
     "react-native-gesture-handler": "^2.9.0",
@@ -34,8 +35,6 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "metro-react-native-babel-preset": "^0.73.6",
     "react-native-codegen": "^0.71.3",
-    "patch-package": "^8.0.0",
-    "postinstall-postinstall": "^2.1.0",
     "@react-native/metro-config": "^0.74.0"
   }
 }

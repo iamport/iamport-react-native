@@ -1,9 +1,22 @@
 import React from 'react';
-import { Select } from 'native-base';
+import {
+  ChevronDownIcon,
+  Icon,
+  Select,
+  SelectBackdrop,
+  SelectContent,
+  SelectDragIndicator,
+  SelectDragIndicatorWrapper,
+  SelectIcon,
+  SelectInput,
+  SelectItem,
+  SelectPortal,
+  SelectTrigger,
+} from '@gluestack-ui/themed';
 
 type PickerProps = {
   data: any[];
-  selectedValue: any;
+  selectedValue: string | number | undefined;
   onValueChange?: ((value: any) => void) | undefined;
 };
 
@@ -14,14 +27,32 @@ function Picker(props: PickerProps) {
       mb={1}
       flex={1}
       p={1}
-      variant={'underlined'}
-      selectedValue={props.selectedValue}
+      selectedValue={
+        props.data.find(({ value }) => value === props.selectedValue)?.value
+      }
+      selectedLabel={
+        props.data.find(({ value }) => value === props.selectedValue)?.label
+      }
       onValueChange={props.onValueChange}
     >
-      {props.data.map((e, index) => {
-        const { label, value } = e;
-        return <Select.Item label={label} value={value} key={index} />;
-      })}
+      <SelectTrigger variant={'underlined'}>
+        <SelectInput />
+        <SelectIcon>
+          <Icon as={ChevronDownIcon} />
+        </SelectIcon>
+      </SelectTrigger>
+      <SelectPortal>
+        <SelectBackdrop />
+        <SelectContent>
+          <SelectDragIndicatorWrapper>
+            <SelectDragIndicator />
+          </SelectDragIndicatorWrapper>
+          {props.data.map((e, index) => {
+            const { label, value } = e;
+            return <SelectItem label={label} value={value} key={index} />;
+          })}
+        </SelectContent>
+      </SelectPortal>
     </Select>
   );
 }
