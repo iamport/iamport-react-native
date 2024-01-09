@@ -1,8 +1,15 @@
 import React from 'react';
-import { Button, Stack, Text, View } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { RootStackParamList } from '../NavigationService';
+import {
+  Button,
+  ButtonGroup,
+  Center,
+  Text,
+  View,
+  VStack,
+} from '@gluestack-ui/themed';
 
 type Props = StackScreenProps<RootStackParamList, 'Home'>;
 
@@ -11,7 +18,7 @@ function Home({ navigation }: Props) {
     <View flex={1}>
       <View
         flex={1}
-        pos={'relative'}
+        position={'relative'}
         alignItems={'center'}
         bgColor={'#344e81'}
         justifyContent={'center'}
@@ -34,40 +41,44 @@ function Home({ navigation }: Props) {
       </View>
       <View
         flex={1}
-        pos={'relative'}
+        position={'relative'}
         bottom={'0%'}
         w={'90%'}
-        flexDir={'row'}
+        flexDirection={'row'}
         alignSelf={'center'}
       >
-        <Button.Group bottom={'50%'} width={'100%'} alignSelf={'center'}>
+        <ButtonGroup bottom={'50%'} width={'100%'} alignSelf={'center'}>
           <Button
+            h={60}
             m={'4%'}
             bgColor={'#fff'}
             borderRadius={3}
             flex={1}
-            shadow={1}
             onPress={() => navigation.push('PaymentTest')}
           >
-            <Stack direction={'column'} alignItems={'center'}>
-              <FontAwesome name={'credit-card'} size={30} />
-              <Text fontSize={15}>결제 테스트</Text>
-            </Stack>
+            <VStack alignItems={'center'}>
+              <Center>
+                <FontAwesome name={'credit-card'} size={30} />
+                <Text fontSize={15}>결제 테스트</Text>
+              </Center>
+            </VStack>
           </Button>
           <Button
+            h={60}
             m={'4%'}
             bgColor={'#fff'}
             borderRadius={3}
             flex={1}
-            shadow={1}
             onPress={() => navigation.push('CertificationTest')}
           >
-            <Stack direction={'column'} alignItems={'center'}>
-              <FontAwesome name={'user'} size={30} />
-              <Text fontSize={15}>본인인증 테스트</Text>
-            </Stack>
+            <VStack alignItems={'center'}>
+              <Center>
+                <FontAwesome name={'user'} size={30} />
+                <Text fontSize={15}>본인인증 테스트</Text>
+              </Center>
+            </VStack>
           </Button>
-        </Button.Group>
+        </ButtonGroup>
       </View>
     </View>
   );

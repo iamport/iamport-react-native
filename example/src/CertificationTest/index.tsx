@@ -4,31 +4,34 @@ import type {
   CertificationParams,
   RootStackParamList,
 } from '../NavigationService';
-import {
-  Button,
-  FormControl,
-  Input,
-  KeyboardAvoidingView,
-  ScrollView,
-  Select,
-  Stack,
-  Text,
-} from 'native-base';
-import Picker from '../Picker';
-import { CARRIERS, TIER_CODES } from '../constants';
+import { CARRIERS, CERT_PGS } from '../constants';
 import {
   SafeAreaView,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import { IMPConst } from 'iamport-react-native';
 import { Platform } from 'react-native';
+import {
+  Button,
+  ButtonText,
+  FormControl,
+  Input,
+  InputField,
+  KeyboardAvoidingView,
+  ScrollView,
+  Text,
+  VStack,
+} from '@gluestack-ui/themed';
+import Picker from '../Picker';
 
 type Props = StackScreenProps<RootStackParamList, 'CertificationTest'>;
 
 function CertificationTest({ navigation }: Props) {
+  const [userCode, setUserCode] = useState('');
+  const [pg, setPg] = useState('danal');
   const [merchantUid, setMerchantUid] = useState(`mid_${new Date().getTime()}`);
   const [company, setCompany] = useState('아임포트');
-  const [carrier, setCarrier] = useState('SKT');
+  const [carrier, setCarrier] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [minAge, setMinAge] = useState('');
@@ -52,124 +55,129 @@ function CertificationTest({ navigation }: Props) {
       >
         <ScrollView mx={1} backgroundColor={'#fff'}>
           <FormControl p={2} borderRadius={3}>
-            <Stack direction={'column'}>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
-                  주문번호
+                <Text color={'#9e9e9e'} fontSize={15}>
+                  가맹점 식별코드
                 </Text>
               </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={merchantUid}
-                onChangeText={(value) => setMerchantUid(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={userCode}
+                  onChangeText={(value) => setUserCode(value)}
+                />
+              </Input>
+            </VStack>
+            <VStack>
               <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
-                  회사명
-                </Text>
-              </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={company}
-                onChangeText={(value) => setCompany(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
-              <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
-                  통신사
-                </Text>
-              </FormControl.Label>
-              <Select
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                selectedValue={carrier}
-                onValueChange={(value) => setCarrier(value)}
-              >
-                {CARRIERS.map(({ label, value }, index) => {
-                  return (
-                    <Select.Item label={label} value={value} key={index} />
-                  );
-                })}
-              </Select>
-            </Stack>
-            <Stack direction={'column'}>
-              <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
-                  이름
-                </Text>
-              </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={name}
-                onChangeText={(value) => setName(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
-              <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
-                  전화번호
-                </Text>
-              </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={phone}
-                keyboardType="number-pad"
-                returnKeyType={'done'}
-                onChangeText={(value) => setPhone(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
-              <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
-                  최소연령
-                </Text>
-              </FormControl.Label>
-              <Input
-                mx={2}
-                mb={1}
-                flex={1}
-                p={1}
-                variant={'underlined'}
-                value={minAge}
-                keyboardType="number-pad"
-                returnKeyType={'done'}
-                onChangeText={(value) => setMinAge(value)}
-              />
-            </Stack>
-            <Stack direction={'column'}>
-              <FormControl.Label my={1}>
-                <Text color={'gray.500'} fontSize={15}>
-                  티어 코드
+                <Text color={'#9e9e9e'} fontSize={15}>
+                  PG사
                 </Text>
               </FormControl.Label>
               <Picker
-                data={TIER_CODES}
-                selectedValue={tierCode}
-                onValueChange={(value) => setTierCode(value)}
+                data={CERT_PGS}
+                selectedValue={pg}
+                onValueChange={(value) => setPg(value)}
               />
-            </Stack>
+            </VStack>
+            <VStack>
+              <FormControl.Label my={1}>
+                <Text color={'#9e9e9e'} fontSize={15}>
+                  주문번호
+                </Text>
+              </FormControl.Label>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={merchantUid}
+                  onChangeText={(value) => setMerchantUid(value)}
+                />
+              </Input>
+            </VStack>
+            {pg === 'danal' && (
+              <>
+                <VStack>
+                  <FormControl.Label my={1}>
+                    <Text color={'#9e9e9e'} fontSize={15}>
+                      회사명
+                    </Text>
+                  </FormControl.Label>
+                  <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                    <InputField
+                      value={company}
+                      onChangeText={(value) => setCompany(value)}
+                    />
+                  </Input>
+                </VStack>
+                <VStack>
+                  <FormControl.Label my={1}>
+                    <Text color={'#9e9e9e'} fontSize={15}>
+                      통신사
+                    </Text>
+                  </FormControl.Label>
+                  <Picker
+                    data={CARRIERS}
+                    selectedValue={carrier}
+                    onValueChange={(value) => setCarrier(value)}
+                  />
+                </VStack>
+                <VStack>
+                  <FormControl.Label my={1}>
+                    <Text color={'#9e9e9e'} fontSize={15}>
+                      이름
+                    </Text>
+                  </FormControl.Label>
+                  <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                    <InputField
+                      value={name}
+                      onChangeText={(value) => setName(value)}
+                    />
+                  </Input>
+                </VStack>
+                <VStack>
+                  <FormControl.Label my={1}>
+                    <Text color={'#9e9e9e'} fontSize={15}>
+                      전화번호
+                    </Text>
+                  </FormControl.Label>
+                  <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                    <InputField
+                      keyboardType="number-pad"
+                      returnKeyType={'done'}
+                      value={phone}
+                      onChangeText={(value) => setPhone(value)}
+                    />
+                  </Input>
+                </VStack>
+                <VStack>
+                  <FormControl.Label my={1}>
+                    <Text color={'#9e9e9e'} fontSize={15}>
+                      최소연령
+                    </Text>
+                  </FormControl.Label>
+                  <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                    <InputField
+                      keyboardType="number-pad"
+                      returnKeyType={'done'}
+                      value={minAge}
+                      onChangeText={(value) => setMinAge(value)}
+                    />
+                  </Input>
+                </VStack>
+              </>
+            )}
+            <VStack>
+              <FormControl.Label my={1}>
+                <Text color={'#9e9e9e'} fontSize={15}>
+                  티어 코드
+                </Text>
+              </FormControl.Label>
+              <Input mx={2} mb={1} flex={1} p={1} variant={'underlined'}>
+                <InputField
+                  value={tierCode}
+                  onChangeText={(value) => setTierCode(value)}
+                />
+              </Input>
+            </VStack>
             <Button
               mt={4}
               bgColor={'#344e81'}
@@ -182,17 +190,19 @@ function CertificationTest({ navigation }: Props) {
                     carrier,
                     name,
                     phone,
+                    pg,
                     min_age: minAge,
                     m_redirect_url: IMPConst.M_REDIRECT_URL,
                   },
+                  userCode,
                   tierCode,
                 };
                 navigation.navigate('Certification', data);
               }}
             >
-              <Text fontWeight={'bold'} color={'#fff'}>
+              <ButtonText fontWeight={'bold'} color={'#fff'}>
                 본인인증 하기
-              </Text>
+              </ButtonText>
             </Button>
           </FormControl>
         </ScrollView>

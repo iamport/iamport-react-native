@@ -1,8 +1,18 @@
 import React from 'react';
 import type { StackScreenProps } from '@react-navigation/stack';
 import type { RootStackParamList } from '../NavigationService';
-import { Icon, IconButton, List, Text } from 'native-base';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  ArrowLeftIcon,
+  Box,
+  Button,
+  ButtonIcon,
+  ButtonText,
+  Heading,
+  HStack,
+  Text,
+  VStack,
+} from '@gluestack-ui/themed';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 type Props = StackScreenProps<RootStackParamList, 'CertificationResult'>;
@@ -32,42 +42,36 @@ function CertificationResult({ route, navigation }: Props) {
       }}
     >
       {isSuccess ? (
-        <Icon
-          as={FontAwesome}
-          name={'check-circle'}
-          size={20}
-          color={'#52c41a'}
-        />
+        <FontAwesome name={'check-circle'} color={'#52c41a'} size={150} />
       ) : (
-        <Icon as={FontAwesome} name={'warning'} size={20} color={'#f5222d'} />
+        <FontAwesome name={'warning'} color={'#f5222d'} size={150} />
       )}
-      <Text fontSize={25} fontWeight={'bold'} mb={20}>{`본인인증에 ${
-        isSuccess ? '성공' : '실패'
-      }하였습니다`}</Text>
-      <List width={'90%'} mb={50} borderRadius={3}>
-        <List.Item>
-          <Text w={'40%'}>아임포트 번호</Text>
-          <Text w={'60%'}>{imp_uid}</Text>
-        </List.Item>
-        {success ? (
-          <List.Item>
-            <Text w={'40%'}>주문번호</Text>
-            <Text w={'60%'}>{merchant_uid}</Text>
-          </List.Item>
-        ) : (
-          <List.Item>
-            <Text w={'40%'}>에러메시지</Text>
-            <Text w={'60%'}>{error_msg}</Text>
-          </List.Item>
-        )}
-      </List>
-      <IconButton
-        icon={<Icon as={FontAwesome} name={'arrow-left'} size={20} />}
-        /* @ts-ignore */
-        onPress={() => navigation.navigate('Home')}
-      >
-        <Text>돌아가기</Text>
-      </IconButton>
+      <Heading size={'2xl'}>
+        {`본인인증에 ${isSuccess ? '성공' : '실패'}하였습니다`}
+      </Heading>
+      <Box>
+        <VStack my={10}>
+          <HStack mx={'15%'} my={10}>
+            <Text w={'40%'}>아임포트 번호</Text>
+            <Text w={'60%'}>{imp_uid}</Text>
+          </HStack>
+          {success ? (
+            <HStack mx={'15%'} my={10}>
+              <Text w={'40%'}>주문번호</Text>
+              <Text w={'60%'}>{merchant_uid}</Text>
+            </HStack>
+          ) : (
+            <HStack mx={'15%'} my={10}>
+              <Text w={'40%'}>에러메시지</Text>
+              <Text w={'60%'}>{error_msg}</Text>
+            </HStack>
+          )}
+        </VStack>
+      </Box>
+      <Button size={'md'} onPress={() => navigation.navigate('Home')}>
+        <ButtonIcon as={ArrowLeftIcon} />
+        <ButtonText>돌아가기</ButtonText>
+      </Button>
     </SafeAreaView>
   );
 }

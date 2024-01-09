@@ -74,6 +74,7 @@ namespace IMPData {
     carrier: string;
     name: string;
     phone: string;
+    pg?: string;
     min_age?: string;
     popup?: boolean;
     m_redirect_url?: string;
@@ -86,6 +87,7 @@ namespace IMPData {
       merchant_uid: string,
       name: string,
       phone: string,
+      pg?: string,
       min_age?: string,
       popup?: boolean,
       m_redirect_url?: string
@@ -95,6 +97,7 @@ namespace IMPData {
       this.merchant_uid = merchant_uid;
       this.name = name;
       this.phone = phone;
+      this.pg = pg;
       this.min_age = min_age;
       this.popup = popup;
       this.m_redirect_url = m_redirect_url;
@@ -105,6 +108,7 @@ namespace IMPData {
     merchant_uid: string;
     name: string;
     phone: string;
+    pg?: string;
     min_age?: string;
     popup?: boolean;
     m_redirect_url?: string;

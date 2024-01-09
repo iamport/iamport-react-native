@@ -12,11 +12,13 @@ import type { IMPData } from 'iamport-react-native';
 
 export interface CertificationParams {
   params: IMPData.CertificationData;
+  userCode: string;
   tierCode?: string;
 }
 
 export interface PaymentParams {
   params: IMPData.PaymentData;
+  userCode: string;
   tierCode?: string;
 }
 
