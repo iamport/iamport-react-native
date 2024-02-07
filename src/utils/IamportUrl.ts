@@ -54,7 +54,9 @@ class IamportUrl {
   }
 
   isAppUrl() {
-    return !['http', 'https', 'about:blank'].includes(this.scheme);
+    return !['http', 'https', 'about:blank', 'about:srcdoc'].includes(
+      this.scheme
+    );
   }
 
   isIframeLoaded() {
