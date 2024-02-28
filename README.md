@@ -4,7 +4,7 @@
 아임포트 리액트 네이티브 모듈입니다.
 
 ## 버전 정보
-최신버전은 [v2.0.11](https://github.com/iamport/iamport-react-native/tree/v2.0.11)입니다.
+최신버전은 [v2.0.12](https://github.com/iamport/iamport-react-native/tree/main)입니다.
 버전 히스토리는 [버전 정보](./manuals/VERSION.md)를 참고하세요.
 
 ## 지원 정보

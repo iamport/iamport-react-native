@@ -1,5 +1,5 @@
 import React, { createRef, useEffect, useRef, useState } from 'react';
-import type { IMPData } from '../../utils/Validation';
+import type { IMPData } from 'iamport-react-native';
 import ValidationForPayment from '../../utils/ValidationForPayment';
 import ErrorOnParams from '../ErrorOnParams';
 import { Linking, Platform, View } from 'react-native';
@@ -24,7 +24,6 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
   });
   const [isWebViewLoaded, setIsWebViewLoaded] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
-  const [isInicisTransPaid, setIsInicisTransPaid] = useState(false);
   const webview = createRef<WebView>();
   const smilepayRef = useRef(false);
   let redirectUrl = IMPConst.M_REDIRECT_URL;
@@ -59,29 +58,6 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
       const { pg, pay_method } = data;
       if (pay_method === 'trans') {
         const iamportUrl = new IamportUrl(event.url);
-        /**
-         * [IOS] 웹 표준 이니시스 - 실시간 계좌이체 대비
-         * 아래 로직대로 동작해야 최종적으로 결제가 승인된 후 콜백 함수가 호출됨
-         * 1. 사파리 앱에서 복귀(app_scheme://imp_uid=%26merchant_uid=%26m_redirect_url=)
-         * 2. 최종 결제 승인을 위해 이니시스가 HTTP 리퀘스트 호출
-         * 3. "다음" 버튼이 있는 최종 화면으로 이동
-         * 4. "다음" 버튼을 클릭
-         * 5. 1번과 마찬가지로 app_scheme://imp_uid=%26merchant_uid=%26m_redirect_url=로 HTTP 리퀘스트 호출
-         * 6. 콜백 함수 호출
-         * 따라서 현재 handleOpenURL이 트리거 되는 사유가 1번 때문인지 5번 때문인지 구분이 필요하여
-         * 이를 위한 isInicisTransPaid 플래그 추가
-         */
-        if (pg.startsWith('html5_inicis') && Platform.OS === 'ios') {
-          if (isInicisTransPaid) {
-            webview.current?.injectJavaScript(`
-              window.location.href = "${redirectUrl}?${iamportUrl.getInicisTransQuery(
-              redirectUrl
-            )}";
-            `);
-          } else {
-            setIsInicisTransPaid(true);
-          }
-        }
 
         /* 나이스 - 실시간 계좌이체 대비 */
         if (pg.startsWith('nice')) {
@@ -102,8 +78,8 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
     const subscription = Linking.addEventListener('url', handleOpenURL);
     return function cleanup() {
       subscription.remove();
-    }
-  }, [data, isInicisTransPaid, redirectUrl, webview]);
+    };
+  }, [data, redirectUrl, webview]);
 
   const removeLoadingNeeded = () => {
     if (showLoading && Platform.OS === 'android') {
@@ -206,6 +182,22 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
             const { url } = request;
             // console.log(`url: ${url}`);
             const iamportUrl = new IamportUrl(url);
+
+            if (iamportUrl.isPaymentOver(redirectUrl, data)) {
+              if (typeof callback === 'function') {
+                if (
+                  data.pg.startsWith('html5_inicis') &&
+                  data.pay_method === 'trans' &&
+                  Platform.OS === 'ios'
+                ) {
+                  callback(iamportUrl.getInicisTransQuery(redirectUrl));
+                } else {
+                  callback(iamportUrl.getQuery());
+                }
+              }
+              return false;
+            }
+
             if (iamportUrl.isAppUrl()) {
               /* 3rd-party 앱 오픈 */
               iamportUrl.launchApp().catch((e) => {
@@ -217,12 +209,6 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
                 });
               });
 
-              return false;
-            }
-            if (iamportUrl.isPaymentOver(redirectUrl)) {
-              if (typeof callback === 'function') {
-                callback(iamportUrl.getQuery());
-              }
               return false;
             }
             if (isWebViewLoaded && showLoading && iamportUrl.isIframeLoaded()) {

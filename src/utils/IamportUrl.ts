@@ -1,6 +1,7 @@
 import queryString from 'query-string';
 import { Linking, Platform } from 'react-native';
 import { IMPConst } from '../constants';
+import type { IMPData } from 'iamport-react-native';
 
 class IamportUrl {
   url: string;
@@ -49,8 +50,39 @@ class IamportUrl {
     return this.url;
   }
 
-  isPaymentOver(redirectUrl: string) {
-    return this.url.startsWith(redirectUrl);
+  isPaymentOver(redirectUrl: string, data?: IMPData.PaymentData) {
+    if (this.url.startsWith(redirectUrl)) {
+      return true;
+    }
+
+    if (data?.pay_method === 'trans') {
+      const decodeUrl = decodeURIComponent(this.url);
+      const parsedUrl = queryString.parse(decodeUrl);
+      const scheme = data?.app_scheme;
+      /**
+       * [IOS] 웹 표준 이니시스 - 실시간 계좌이체 대비
+       * 아래 로직대로 동작해야 최종적으로 결제가 승인된 후 콜백 함수가 호출됨
+       * 1. 사파리 앱에서 복귀(app_scheme://imp_uid=%26merchant_uid=%26m_redirect_url=)
+       * 2. 최종 결제 승인을 위해 이니시스가 HTTP 리퀘스트 호출
+       * 3. "다음" 버튼이 있는 최종 화면으로 이동
+       * 4. "다음" 버튼을 클릭
+       * 5. 1번과 마찬가지로 app_scheme://imp_uid=%26merchant_uid=%26m_redirect_url=로 HTTP 리퀘스트 호출
+       * 6. 콜백 함수 호출
+       * 따라서 현재 handleOpenURL이 트리거 되는 사유가 1번 때문인지 5번 때문인지 구분이 필요하여
+       * 이를 위한 isInicisTransPaid 플래그 추가
+       */
+      if (data.pg.startsWith('html5_inicis') && Platform.OS === 'ios') {
+        const query = parsedUrl;
+        if (
+          query.m_redirect_url !== null &&
+          scheme === data.app_scheme?.toLowerCase()
+        ) {
+          if ((query.m_redirect_url as string | null)?.includes(redirectUrl)) {
+            return true;
+          }
+        }
+      }
+    }
   }
 
   isAppUrl() {
@@ -311,7 +343,7 @@ class IamportUrl {
     } else {
       inicisTransQuery.merchant_uid = merchant_uid;
     }
-    return queryString.stringify(inicisTransQuery);
+    return inicisTransQuery;
   }
 
   async launchApp() {
