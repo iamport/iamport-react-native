@@ -44,13 +44,20 @@ managed로 개발하는 경우 빌드를 Expo 서버에서 원격으로 진행�
 }
 ```
 
-### 1-2. Third-party 앱 실행을 위한 설정
+### 1-2. 외부 앱 실행을 위한 설정
 
 Expo bare 프로젝트나 일반 리액트 네이티브 프로젝트의 경우 AndroidManifest.xml 및 Info.plist에 앱 scheme [관련 설정](./SETTING.md)을 작성하지만, managed 프로젝트의 경우 네이티브 코드가 없어 app.json에 대신 설정을 적어주셔야 합니다.
+
+먼저 안드로이드를 위한 외부 앱 설정에 필요한 expo-build-properties를 설치합니다.
+
+```sh
+npx expo install expo-build-properties
+```
 
 - `ios.infoPlist.LSApplicationQueriesSchemes`에는 외부 앱 리스트를 작성합니다.
 - `ios.infoPlist.NSAppTransportSecurity`의 두 항목을 `YES`로 설정합니다.
 - `android.intentFilters`에 개발하시는 앱의 scheme을 설정합니다.
+- `plugins`에 expo-build-properties를 이용해 안드로이드 외부 앱 리스트를 추가로 작성합니다.
 
 ```json
 // app.json
@@ -92,7 +99,8 @@ Expo bare 프로젝트나 일반 리액트 네이티브 프로젝트의 경우 A
           "lmslpay",
           "lguthepay-xpay",
           "liivbank",
-          "supertoss"
+          "supertoss",
+          "kakaobank"
         ],
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true,
@@ -115,7 +123,60 @@ Expo bare 프로젝트나 일반 리액트 네이티브 프로젝트의 경우 A
           }
         }
       ]
-    }
+    },
+    ...
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "manifestQueries": {
+              "intent": {
+                "action": "android.intent.action.VIEW",
+                "category": "android.intent.category.BROWSABLE",
+                "data": {
+                  "scheme": "https"
+                }
+              },
+              "package": [
+                "kvp.jjy.MispAndroid320",
+                "com.kftc.bankpay.android",
+                "com.kbstar.liivbank",
+                "com.nh.cashcardapp",
+                "kr.co.kfcc.mobilebank",
+                "com.knb.psb",
+                "com.kakao.talk",
+                "com.mysmilepay.app",
+                "finance.chai.app",
+                "com.nhnent.payapp",
+                "com.hyundaicard.appcard",
+                "viva.republica.toss",
+                "com.shcard.smartpay",
+                "com.shinhan.smartcaremgr",
+                "com.hanaskard.paycla",
+                "kr.co.samsungcard.mpocket",
+                "com.kbcard.cxh.appcard",
+                "nh.smart.nhallonepay",
+                "kr.co.citibank.citimobile",
+                "com.lcacApp",
+                "com.lotte.lpay",
+                "com.ssg.serviceapp.android.egiftcertificate",
+                "com.inicis.kpay",
+                "com.kbankwith.smartbank",
+                "com.lguplus.paynow",
+                "com.wooricard.smartapp",
+                "com.lottemembers.android",
+                "com.kt.ktauth",
+                "com.lguplus.smartotp",
+                "com.sktelecom.tauth",
+                "com.wooribank.smart.npib",
+                "com.kakaobank.channel"
+              ]
+            }
+          }
+        }
+      ]
+    ]
   }
 }
 ```

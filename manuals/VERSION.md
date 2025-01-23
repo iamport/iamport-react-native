@@ -1,6 +1,9 @@
 # 버전정보
 아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
-- [v2.0.12](https://github.com/iamport/iamport-react-native/tree/main)
+- [v2.0.13](https://github.com/iamport/iamport-react-native/tree/main)
+  - 카카오뱅크 앱이 열리지 않는 문제를 해결했습니다.
+
+- [v2.0.12](https://github.com/iamport/iamport-react-native/tree/v2.0.12)
   - 이니시스 실시간 계좌이체에서 결제완료가 되지 않는 문제를 해결했습니다.
 
 - [v2.0.10](https://github.com/iamport/iamport-react-native/tree/v2.0.10)

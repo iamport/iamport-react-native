@@ -27,12 +27,7 @@ export default function CertificationResult({ route, navigation }) {
           color={'#52c41a'}
         />
       ) : (
-        <Icon
-          as={FontAwesome}
-          name={'warning'}
-          size={20}
-          color={'#f5222d'}
-        />
+        <Icon as={FontAwesome} name={'warning'} size={20} color={'#f5222d'} />
       )}
       <Text fontSize={25} fontWeight={'bold'} mb={20}>{`본인인증에 ${
         success ? '성공' : '실패'
