@@ -4,7 +4,7 @@
 아임포트 리액트 네이티브 모듈입니다.
 
 ## 버전 정보
-최신버전은 [v2.0.12](https://github.com/iamport/iamport-react-native/tree/main)입니다.
+최신버전은 [v2.0.13](https://github.com/iamport/iamport-react-native/tree/main)입니다.
 버전 히스토리는 [버전 정보](./manuals/VERSION.md)를 참고하세요.
 
 ## 지원 정보
@@ -17,9 +17,9 @@
 보다 자세한 안내는 [설치하기](./manuals/INSTALL.md)를 참고하세요.
 
 ## 설정하기
-### iOS 설정하기
-iOS에서 아임포트 모듈을 사용하기 위해서는 추가적인 설정이 필요합니다.
-보다 자세한 설명은 [iOS 설정하기](./manuals/SETTING.md)를 참고하세요.
+### 안드로이드 및 iOS 설정하기
+아임포트 모듈을 사용하기 위해서는 추가적인 설정이 필요합니다.
+보다 자세한 설명은 [안드로이드 및 iOS 설정하기](./manuals/SETTING.md)를 참고하세요.
 
 ### Expo 설정하기
 Expo 프로젝트에서 아임포트 모듈을 사용하기 위해서는 추가적인 설정이 필요합니다.

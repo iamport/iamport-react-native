@@ -1,7 +1,7 @@
+import type { IMPData } from 'iamport-react-native';
 import queryString from 'query-string';
 import { Linking, Platform } from 'react-native';
 import { IMPConst } from '../constants';
-import type { IMPData } from 'iamport-react-native';
 
 class IamportUrl {
   url: string;
@@ -154,6 +154,8 @@ class IamportUrl {
           return IMPConst.IOS_MARKET_PREFIX + 'id1470181651';
         case 'ukbanksmartbanknonloginpay': // 케이뱅크 페이
           return IMPConst.IOS_MARKET_PREFIX + 'id1178872627';
+        case 'kakaobank':
+          return IMPConst.IOS_MARKET_PREFIX + 'id1258016944';
         default:
           return this.url;
       }
@@ -316,6 +318,11 @@ class IamportUrl {
           return (
             IMPConst.ANDROID_MARKET_PREFIX +
             IMPConst.ANDROID_PACKAGE.PACKAGE_WOORIWONBANK
+          );
+        case IMPConst.ANDROID_APPSCHEME.KAKAOBANK:
+          return (
+            IMPConst.ANDROID_MARKET_PREFIX +
+            IMPConst.ANDROID_PACKAGE.PACKAGE_KAKAOBANK
           );
         default:
           return this.url;
