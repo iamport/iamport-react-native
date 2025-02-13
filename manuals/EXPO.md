@@ -130,49 +130,51 @@ npx expo install expo-build-properties
         "expo-build-properties",
         {
           "android": {
-            "manifestQueries": {
-              "intent": {
-                "action": "android.intent.action.VIEW",
-                "category": "android.intent.category.BROWSABLE",
-                "data": {
-                  "scheme": "https"
-                }
-              },
-              "package": [
-                "kvp.jjy.MispAndroid320",
-                "com.kftc.bankpay.android",
-                "com.kbstar.liivbank",
-                "com.nh.cashcardapp",
-                "kr.co.kfcc.mobilebank",
-                "com.knb.psb",
-                "com.kakao.talk",
-                "com.mysmilepay.app",
-                "finance.chai.app",
-                "com.nhnent.payapp",
-                "com.hyundaicard.appcard",
-                "viva.republica.toss",
-                "com.shcard.smartpay",
-                "com.shinhan.smartcaremgr",
-                "com.hanaskard.paycla",
-                "kr.co.samsungcard.mpocket",
-                "com.kbcard.cxh.appcard",
-                "nh.smart.nhallonepay",
-                "kr.co.citibank.citimobile",
-                "com.lcacApp",
-                "com.lotte.lpay",
-                "com.ssg.serviceapp.android.egiftcertificate",
-                "com.inicis.kpay",
-                "com.kbankwith.smartbank",
-                "com.lguplus.paynow",
-                "com.wooricard.smartapp",
-                "com.lottemembers.android",
-                "com.kt.ktauth",
-                "com.lguplus.smartotp",
-                "com.sktelecom.tauth",
-                "com.wooribank.smart.npib",
-                "com.kakaobank.channel"
-              ]
-            }
+            "manifestQueries": [
+              {
+                "intent": {
+                  "action": "android.intent.action.VIEW",
+                  "category": "android.intent.category.BROWSABLE",
+                  "data": {
+                    "scheme": "https"
+                  }
+                },
+                "package": [
+                  "kvp.jjy.MispAndroid320",
+                  "com.kftc.bankpay.android",
+                  "com.kbstar.liivbank",
+                  "com.nh.cashcardapp",
+                  "kr.co.kfcc.mobilebank",
+                  "com.knb.psb",
+                  "com.kakao.talk",
+                  "com.mysmilepay.app",
+                  "finance.chai.app",
+                  "com.nhnent.payapp",
+                  "com.hyundaicard.appcard",
+                  "viva.republica.toss",
+                  "com.shcard.smartpay",
+                  "com.shinhan.smartcaremgr",
+                  "com.hanaskard.paycla",
+                  "kr.co.samsungcard.mpocket",
+                  "com.kbcard.cxh.appcard",
+                  "nh.smart.nhallonepay",
+                  "kr.co.citibank.citimobile",
+                  "com.lcacApp",
+                  "com.lotte.lpay",
+                  "com.ssg.serviceapp.android.egiftcertificate",
+                  "com.inicis.kpay",
+                  "com.kbankwith.smartbank",
+                  "com.lguplus.paynow",
+                  "com.wooricard.smartapp",
+                  "com.lottemembers.android",
+                  "com.kt.ktauth",
+                  "com.lguplus.smartotp",
+                  "com.sktelecom.tauth",
+                  "com.wooribank.smart.npib",
+                  "com.kakaobank.channel"
+                ]
+              }
+            ]
           }
         }
       ]
