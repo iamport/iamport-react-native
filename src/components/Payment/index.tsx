@@ -64,7 +64,7 @@ function Payment({ userCode, tierCode, data, loading, callback }: Props) {
           const queryParameters = iamportUrl.getQuery();
           const scheme = iamportUrl.scheme;
           let niceTransRedirectionUrl;
-          if (scheme === data.app_scheme?.toLowerCase()) {
+          if (data.app_scheme?.split('://')[0].toLowerCase() === scheme) {
             if (queryParameters.callbackparam1 != null) {
               niceTransRedirectionUrl = queryParameters.callbackparam1;
             }
