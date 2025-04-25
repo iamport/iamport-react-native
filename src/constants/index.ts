@@ -31,6 +31,14 @@ namespace IMPConst {
     'ksnet',
     'daou',
     'nice_v2',
+    'tosspay_v2',
+    'smartro_v2',
+    'kpn',
+    'inicis_jp',
+    'welcome',
+    'paymentwall',
+    'toss_brandpay',
+    'hyphen',
   ] as const;
 
   export const PAY_METHOD = [
