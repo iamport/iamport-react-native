@@ -56,7 +56,7 @@ export function Payment({ navigation }) {
     buyer_email: 'example@naver.com',
     buyer_addr: '서울시 강남구 신사동 661-16',
     buyer_postcode: '06018',
-    app_scheme: 'example',
+    app_scheme: 'example://',
     // [Deprecated v1.0.3]: m_redirect_url
   };
 
