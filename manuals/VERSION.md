@@ -1,6 +1,17 @@
 # 버전정보
-아임포트 리액트 네이티브 모듈 버전 정보 안내입니다.
-- [v2.0.13](https://github.com/iamport/iamport-react-native/tree/main)
+포트원 리액트 네이티브 모듈 버전 정보 안내입니다.
+- [v2.0.14](https://github.com/iamport/iamport-react-native/tree/main)
+  - 신규 연동된 PG사를 추가합니다.
+    - (신) 토스페이
+    - (신) 스마트로
+    - 한국결제네트웍스 (kpn)
+    - 이니시스 일본결제
+    - 웰컴페이먼츠
+    - 페이먼트월
+    - 토스 브랜드페이
+    - 하이픈
+
+- [v2.0.13](https://github.com/iamport/iamport-react-native/tree/v2.0.13)
   - 카카오뱅크 앱이 열리지 않는 문제를 해결했습니다.
 
 - [v2.0.12](https://github.com/iamport/iamport-react-native/tree/v2.0.12)
