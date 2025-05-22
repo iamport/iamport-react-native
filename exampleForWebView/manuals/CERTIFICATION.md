@@ -94,7 +94,7 @@
 
     return (
       <WebView
-        source={{ uri: domain }} 
+        source={{ uri: domain }}
         onMessage={onMessage}
         style={{ flex: 1 }}
         injectedJavascript={`(function() {
@@ -122,7 +122,7 @@
     /* 가맹점 식별코드, 본인인증 데이터 추출 */
     const userCode = navigation.getParam('userCode');
     const data = navigation.getParam('data');
-    
+
     /* 본인인증 후 실행될 콜백 함수 입력 */
     function callback(response) {
       const isSuccessed = getIsSuccessed(response);
@@ -151,7 +151,7 @@
         userCode={userCode}
         data={{
           ...data,
-          app_scheme: 'test',
+          app_scheme: 'test://',
         }}
         callback={callback}
       />
@@ -191,7 +191,7 @@
         const { type } = query;
         if (type === 'certification') {
           /* 본인인증 후 렌더링 되었을 경우, https://example.com/certification/result로 리디렉션 시킨다 */
-          setUri(`${domain}/certification/result?${query}`);    
+          setUri(`${domain}/certification/result?${query}`);
         }
         ...
       }
@@ -207,7 +207,7 @@
 
     return (
       <WebView
-        source={{ uri }} 
+        source={{ uri }}
         onMessage={onMessage}
         style={{ flex: 1 }}
         injectedJavascript={`(function() {
